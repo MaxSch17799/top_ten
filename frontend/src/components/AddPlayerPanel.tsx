@@ -41,7 +41,7 @@ export default function AddPlayerPanel({ joinUrl, visible, onClose }: AddPlayerP
         <div className="invite-header">
           <h3>Invite players</h3>
           <button type="button" className="ghost" onClick={onClose} aria-label="Close invite panel">
-            ?
+            X
           </button>
         </div>
         {qr && <img src={qr} alt="Join link QR code" className="qr" />}

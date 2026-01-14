@@ -67,9 +67,7 @@ export default function HostSetup() {
     <main className="page sheet">
       <section className="host-form">
         <h1>Host a Top 10 session</h1>
-        <p className="tagline">
-          Share the generated join link or QR. Up to 10 players can reserve seats even if someone drops.
-        </p>
+        <p className="tagline">Share the generated join link or QR. Up to 10 players can join.</p>
         <form onSubmit={handleSubmit} className="stack">
           <label className="field">
             <span>Nickname (20 chars max)</span>
@@ -100,14 +98,10 @@ export default function HostSetup() {
             <select className="input" value={questionBankId} onChange={(event) => setQuestionBankId(event.target.value)}>
               <option value={DEFAULT_BANK}>{bank?.name ?? 'Classic'}</option>
             </select>
-            {bank ? (
-              <p className="footnote">{bank.questions.length} prompts ready for randomness.</p>
-            ) : (
-              <p className="footnote">Loading question bank...</p>
-            )}
+            {!bank && <p className="footnote">Loading question bank...</p>}
           </label>
           <button type="submit" className="primary" disabled={loading}>
-            {loading ? 'Creating game…' : 'Create lobby'}
+            {loading ? 'Creating game...' : 'Create lobby'}
           </button>
           {error && <p className="error">{error}</p>}
         </form>
@@ -115,3 +109,4 @@ export default function HostSetup() {
     </main>
   );
 }
+

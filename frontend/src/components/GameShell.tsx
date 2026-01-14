@@ -36,10 +36,41 @@ export default function GameShell() {
     if (!connection.state?.questionBankId) {
       return;
     }
-    void loadQuestionBank(connection.state.questionBankId)
-      .then((payload) => setQuestionBank(payload))
-      .catch(() => setQuestionBank(null));
+    let cancelled = false;
+    let attempts = 0;
+    const loadBank = async () => {
+      try {
+        const payload = await loadQuestionBank(connection.state.questionBankId);
+        if (!cancelled) {
+          setQuestionBank(payload);
+        }
+      } catch {
+        if (cancelled) {
+          return;
+        }
+        attempts += 1;
+        if (attempts <= 2) {
+          setTimeout(loadBank, 800);
+        } else {
+          setQuestionBank(null);
+        }
+      }
+    };
+    loadBank();
+    return () => {
+      cancelled = true;
+    };
   }, [connection.state?.questionBankId]);
+
+  useEffect(() => {
+    if (!state) {
+      return;
+    }
+    const allowed = state.phase === 'LOBBY' || state.yourRole === 'HOST';
+    if (!allowed && inviteOpen) {
+      setInviteOpen(false);
+    }
+  }, [inviteOpen, state]);
 
   useEffect(() => {
     if (joinOrigin) {
@@ -148,11 +179,10 @@ export default function GameShell() {
     return (
       <main className="page sheet">
         <section className="host-form">
-          <h1>Join {gameId}</h1>
-          <p className="tagline">Enter a nickname and tap Join. Seat numbers stay reserved between rounds.</p>
+          <h1>Join the Game</h1>
           <form onSubmit={handleJoin} className="stack">
             <label className="field">
-              <span>Nickname</span>
+              <span>Enter a nickname</span>
               <input
                 className="input"
                 maxLength={20}
@@ -162,10 +192,9 @@ export default function GameShell() {
               />
             </label>
             <button type="submit" className="primary" disabled={joining}>
-              {joining ? 'Joining…' : 'Join lobby'}
+              {joining ? 'Joining...' : 'Join lobby'}
             </button>
             {joinError && <p className="error">{joinError}</p>}
-            <p className="footnote">Use the join link or ask the host for a QR code.</p>
           </form>
         </section>
       </main>
@@ -176,8 +205,8 @@ export default function GameShell() {
     return (
       <main className="page sheet">
         <section className="host-form">
-          <p className="tagline">Waiting for game data…</p>
-          <p className="footnote">{connection.lastError ?? 'Connecting to the host…'}</p>
+          <p className="tagline">Waiting for game data...</p>
+          <p className="footnote">{connection.lastError ?? 'Connecting to the host...'}</p>
         </section>
       </main>
     );
@@ -199,13 +228,10 @@ export default function GameShell() {
 
   return (
     <main className="page sheet">
-      <div className="status-bar">
-        <span>{`Realtime: ${connection.wsStatus}`}</span>
-        <span className="footnote">{connection.lastError ?? 'Live sync active'}</span>
-      </div>
       {state.phase === 'LOBBY' && (
         <LobbyView
           state={state}
+          joinUrl={joinUrl}
           onStartRound={handleStartRound}
           onEndGame={handleEndGame}
           onReorder={handleReorder}
@@ -223,7 +249,12 @@ export default function GameShell() {
           actionError={actionError}
         />
       )}
-      <AddPlayerPanel joinUrl={joinUrl} visible={inviteOpen} onClose={() => setInviteOpen(false)} />
+      <AddPlayerPanel
+        joinUrl={joinUrl}
+        visible={Boolean(state && inviteOpen && (state.phase === 'LOBBY' || state.yourRole === 'HOST'))}
+        onClose={() => setInviteOpen(false)}
+      />
     </main>
   );
 }
+

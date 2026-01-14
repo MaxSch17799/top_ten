@@ -7,10 +7,12 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import QRCode from 'qrcode';
 import type { PlayerSummary, SerializedStateForPlayer } from '../lib/types';
 
 interface LobbyViewProps {
   state: SerializedStateForPlayer;
+  joinUrl: string;
   onStartRound: () => Promise<void>;
   onEndGame: () => Promise<void>;
   onReorder: (order: string[]) => Promise<void>;
@@ -30,39 +32,35 @@ function SortablePlayerRow({ player }: { player: PlayerSummary }) {
     <div
       ref={setNodeRef}
       style={style}
-      className={`player-row ${player.status === 'PENDING' ? 'pending' : ''} ${isDragging ? 'dragging' : ''}`}
+      className={`player-row sortable ${player.status === 'PENDING' ? 'pending' : ''} ${isDragging ? 'dragging' : ''}`}
     >
       <span className="drag-handle" {...attributes} {...listeners} aria-hidden>
         =
       </span>
-      <span className="seat-label">{player.seatLabel ? `${player.seatLabel})` : '—'}</span>
+      <span className="seat-label">{player.seatLabel ? `${player.seatLabel})` : '-'}</span>
       <span className="nickname">
         {player.nickname}
         {player.role === 'HOST' ? ' (Host)' : ''}
       </span>
-      <span className="status-label">{player.status === 'PENDING' ? 'pending' : 'active'}</span>
     </div>
   );
 }
 
 function PlayerRow({ player }: { player: PlayerSummary }) {
   return (
-    <div className={`player-row ${player.status === 'PENDING' ? 'pending' : ''}`}>
-      <span className="drag-handle" aria-hidden>
-        •
-      </span>
-      <span className="seat-label">{player.seatLabel ? `${player.seatLabel})` : '—'}</span>
+    <div className={`player-row simple ${player.status === 'PENDING' ? 'pending' : ''}`}>
+      <span className="seat-label">{player.seatLabel ? `${player.seatLabel})` : '-'}</span>
       <span className="nickname">
         {player.nickname}
         {player.role === 'HOST' ? ' (Host)' : ''}
       </span>
-      <span className="status-label">{player.status === 'PENDING' ? 'pending' : 'active'}</span>
     </div>
   );
 }
 
-export default function LobbyView({ state, onStartRound, onEndGame, onReorder, onOpenInvite, actionError }: LobbyViewProps) {
+export default function LobbyView({ state, joinUrl, onStartRound, onEndGame, onReorder, onOpenInvite, actionError }: LobbyViewProps) {
   const [localOrder, setLocalOrder] = useState<string[]>(state.order);
+  const [qr, setQr] = useState('');
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
   const isHost = state.yourRole === 'HOST';
   const reorderEnabled = isHost && state.phase === 'LOBBY';
@@ -70,6 +68,17 @@ export default function LobbyView({ state, onStartRound, onEndGame, onReorder, o
   useEffect(() => {
     setLocalOrder(state.order);
   }, [state.order]);
+
+  useEffect(() => {
+    if (!isHost || !joinUrl) {
+      setQr('');
+      return;
+    }
+    void QRCode.toDataURL(joinUrl, {
+      margin: 1,
+      color: { dark: '#39ff14', light: '#07070f' },
+    }).then(setQr);
+  }, [isHost, joinUrl]);
 
   const orderedPlayers = useMemo(() => {
     return localOrder
@@ -103,9 +112,11 @@ export default function LobbyView({ state, onStartRound, onEndGame, onReorder, o
           <h2>Seat order</h2>
         </div>
         <div className="button-row">
-          <button className="ghost" onClick={onOpenInvite}>
-            Add player
-          </button>
+          {!isHost && (
+            <button className="ghost" onClick={onOpenInvite}>
+              Add player
+            </button>
+          )}
           {isHost && (
             <button className="primary" onClick={onStartRound}>
               Start Round 1
@@ -113,6 +124,15 @@ export default function LobbyView({ state, onStartRound, onEndGame, onReorder, o
           )}
         </div>
       </header>
+      {isHost && (
+        <div className="card invite-inline">
+          <h3>Invite players</h3>
+          {qr && <img src={qr} alt="Join link QR code" className="qr" />}
+          <div className="invite-link">
+            <input readOnly value={joinUrl} />
+          </div>
+        </div>
+      )}
       <div className="card">
         {reorderEnabled ? (
           <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
@@ -138,9 +158,6 @@ export default function LobbyView({ state, onStartRound, onEndGame, onReorder, o
         {actionError && <p className="error">{actionError}</p>}
         {isHost && (
           <div className="button-row">
-            <button className="secondary" onClick={onOpenInvite}>
-              Add player
-            </button>
             <button className="ghost" onClick={onEndGame}>
               End game
             </button>
@@ -150,3 +167,6 @@ export default function LobbyView({ state, onStartRound, onEndGame, onReorder, o
     </section>
   );
 }
+
+
+
