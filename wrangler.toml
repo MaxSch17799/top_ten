@@ -1,12 +1,12 @@
-name = "top10-top10-game-backend"
-main = "backend-do/src/index.ts"
-type = "javascript"
+name = "top-ten"
 compatibility_date = "2026-01-14"
-
-[build]
-  upload.format = "modules"
+main = "backend-do/src/index.ts"
 
 [durable_objects]
 bindings = [
   { name = "GAME_DO", class_name = "GameDurableObject" },
 ]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["GameDurableObject"]
