@@ -9,5 +9,4 @@ bindings = [
 
 [[migrations]]
 tag = "v1"
-new_classes = ["GameDurableObject"]
 new_sqlite_classes = ["GameDurableObject"]
