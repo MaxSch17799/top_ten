@@ -90,7 +90,7 @@ export default function HostSetup() {
                 className="input"
                 value={seed}
                 onChange={(event) => setSeed(event.target.value)}
-                placeholder="leave blank for random"
+                placeholder="leave blank for random seed"
               />
               <button type="button" className="secondary" onClick={handleRandomSeed}>
                 Randomize

@@ -47,12 +47,17 @@ export default function LandingView() {
       {infoOpen && (
         <div className="overlay" role="dialog" aria-modal="true">
           <div className="info-card">
-            <div className="invite-header">
-              <h3>How to play</h3>
-              <button type="button" className="ghost" onClick={() => setInfoOpen(false)} aria-label="Close rules">
-                X
-              </button>
-            </div>
+          <div className="info-header">
+            <h3>How to play</h3>
+            <button
+              type="button"
+              className="ghost info-close"
+              onClick={() => setInfoOpen(false)}
+              aria-label="Close rules"
+            >
+              X
+            </button>
+          </div>
             <p className="info-body">
               The host starts a game and shares the link, QR, or game code.
               <br />

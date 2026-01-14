@@ -139,6 +139,7 @@ export default function GameShell() {
     setActionError(null);
     try {
       await startRound(gameId, session);
+      await connection.requestState();
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Failed to start the round');
     }
@@ -151,6 +152,7 @@ export default function GameShell() {
     setActionError(null);
     try {
       await advanceRound(gameId, session);
+      await connection.requestState();
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Failed to advance round');
     }
@@ -163,6 +165,7 @@ export default function GameShell() {
     setActionError(null);
     try {
       await endGame(gameId, session);
+      await connection.requestState();
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Failed to end the game');
     }
