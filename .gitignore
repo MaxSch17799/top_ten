@@ -1,0 +1,7 @@
+node_modules/
+frontend/node_modules/
+backend-do/node_modules/
+frontend/dist/
+backend-do/dist/
+*.log
+temp_*.py

@@ -1,0 +1,18 @@
+{
+  "name": "top10-backend-do",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "wrangler build",
+    "dev": "wrangler dev --log-level error",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "itty-router": "^5.0.22"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.2",
+    "@cloudflare/workers-types": "^4.201.0"
+  }
+}

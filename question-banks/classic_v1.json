@@ -1,0 +1,198 @@
+{
+  "id": "classic_v1",
+  "name": "Classic",
+  "version": 1,
+  "questions": [
+    {
+      "id": "q001","prompt": "Name something you bring to a desert island; from 1 = completely useless to 10 = the most useful thing in existence."
+    },
+    {
+      "id": "q002", "prompt": "Suggest a snack for a long road trip; from 1 = worst possible snack to 10 = perfect road-trip snack."
+    },
+    {
+      "id": "q003", "prompt": "Give a karaoke song you would choose; from 1 = clears the room to 10 = everyone sings along."
+    },
+    {
+      "id": "q004", "prompt": "Give an excuse for being late to work/school; from 1 = obviously fake to 10 = impossible to doubt."
+    },
+    {
+      "id": "q005", "prompt": "Name a superpower; from 1 = basically useless to 10 = world-changing."
+    },
+    {
+      "id": "q006", "prompt": "Describe a first-date activity; from 1 = terrible idea to 10 = perfect date."
+    },
+    {
+      "id": "q007", "prompt": "Name a smell; from 1 = disgusting to 10 = absolutely amazing."
+    },
+    {
+      "id": "q008", "prompt": "Suggest a weekend-trip destination; from 1 = instant regret to 10 = dream getaway."
+    },
+    {
+      "id": "q009", "prompt": "Name a household item you could use as a weapon in a zombie apocalypse; from 1 = makes things worse to 10 = surprisingly effective."
+    },
+    {
+      "id": "q010", "prompt": "Pitch a new flavor of potato chips; from 1 = revolting to 10 = instantly iconic."
+    },
+
+    {
+      "id": "q011", "prompt": "ACT OUT: You step on a LEGO barefoot; from 1 = tiny wince to 10 = full dramatic agony."
+    },
+    {
+      "id": "q012", "prompt": "ACT OUT: How you greet a friend you haven’t seen in years; from 1 = awkward nod to 10 = movie-level reunion."
+    },
+    {
+      "id": "q013", "prompt": "ACT OUT (no words): Your reaction when you realize you forgot your wallet at checkout; from 1 = totally chill to 10 = total meltdown."
+    },
+    {
+      "id": "q014", "prompt": "ACT OUT: How you try to look busy when someone important walks by; from 1 = obviously pretending to 10 = Oscar-worthy performance."
+    },
+    {
+      "id": "q015", "prompt": "ACT OUT: You taste something WAY too spicy; from 1 = mild discomfort to 10 = emergency-level suffering."
+    },
+
+    {
+      "id": "q016", "prompt": "Complete the sentence: “In a job interview, I accidentally …”; from 1 = tiny awkward moment to 10 = absolute disaster."
+    },
+    {
+      "id": "q017", "prompt": "Complete the sentence: “I tried to impress my crush by …”; from 1 = slightly cringe to 10 = legendary confidence."
+    },
+    {
+      "id": "q018", "prompt": "Complete the sentence: “My superhero name would be …”; from 1 = embarrassing to 10 = genuinely awesome."
+    },
+    {
+      "id": "q019", "prompt": "Suggest a rule for a house party; from 1 = kills the vibe to 10 = makes the party amazing."
+    },
+    {
+      "id": "q020", "prompt": "Name something you would bring to a fancy dinner; from 1 = totally inappropriate to 10 = perfectly classy."
+    },
+    {
+      "id": "q021", "prompt": "Name something you would pack for a one-week trip; from 1 = completely pointless to 10 = essential."
+    },
+    {
+      "id": "q022", "prompt": "Suggest a hobby to start this year; from 1 = terrible fit for most people to 10 = almost everyone would love it."
+    },
+    {
+      "id": "q023", "prompt": "Name a pet to own; from 1 = worst pet ever to 10 = perfect pet."
+    },
+    {
+      "id": "q024", "prompt": "Suggest a topping for pizza; from 1 = should be illegal to 10 = absolute masterpiece."
+    },
+    {
+      "id": "q025", "prompt": "Name a place to take a first-time visitor in your city; from 1 = boring mistake to 10 = guaranteed wow."
+    },
+    {
+      "id": "q026", "prompt": "Name something you do when you can’t sleep; from 1 = makes it worse to 10 = works every time."
+    },
+    { "id": "q027", "prompt": "Suggest a name for a new band; from 1 = awful name to 10 = iconic." },
+    { "id": "q028", "prompt": "Name a rule you would add to school/work; from 1 = chaos and misery to 10 = life-changing improvement." },
+    { "id": "q029", "prompt": "Name a movie genre for a cozy night; from 1 = worst choice to 10 = perfect vibe." },
+    { "id": "q030", "prompt": "Name something you would buy with your last $10; from 1 = dumb choice to 10 = smartest possible." },
+
+    { "id": "q031", "prompt": "Describe a dream job perk; from 1 = useless perk to 10 = can’t-live-without perk." },
+    { "id": "q032", "prompt": "Name a clothing item for a job interview; from 1 = instantly rejected to 10 = perfectly professional." },
+    { "id": "q033", "prompt": "Suggest a breakfast; from 1 = sad and terrible to 10 = best breakfast ever." },
+    { "id": "q034", "prompt": "Name a drink to order at a cafe; from 1 = regrettable choice to 10 = perfect order." },
+    { "id": "q035", "prompt": "Name a game to play with family; from 1 = instant arguments to 10 = everyone has fun." },
+    { "id": "q036", "prompt": "Suggest a surprise gift; from 1 = awkward and wrong to 10 = unbelievably thoughtful." },
+    { "id": "q037", "prompt": "Name a reason to cancel plans; from 1 = weak excuse to 10 = totally valid." },
+    { "id": "q038", "prompt": "Suggest a way to spend a free afternoon; from 1 = waste of time to 10 = perfect use of time." },
+    { "id": "q039", "prompt": "Name something you would do with a million dollars; from 1 = reckless to 10 = brilliant." },
+    { "id": "q040", "prompt": "Name a way to make someone laugh; from 1 = cringey to 10 = unstoppable laughter." },
+
+    { "id": "q041", "prompt": "ACT OUT: You just got an amazing compliment; from 1 = tiny smile to 10 = full celebration." },
+    { "id": "q042", "prompt": "ACT OUT: You realize you’ve been calling someone the wrong name for months; from 1 = minor awkwardness to 10 = total panic." },
+    { "id": "q043", "prompt": "ACT OUT (no words): You open a gift you don’t like; from 1 = barely hiding it to 10 = performance of the year." },
+    { "id": "q044", "prompt": "ACT OUT: Your reaction when someone cuts in line; from 1 = ignore it to 10 = dramatic confrontation." },
+    { "id": "q045", "prompt": "ACT OUT: You drop your phone and pick it up; from 1 = not worried to 10 = life flashing before your eyes." },
+
+    { "id": "q046", "prompt": "Name a skill you wish you had instantly; from 1 = meh to 10 = life upgrade." },
+    { "id": "q047", "prompt": "Name a subject you’d want to be great at; from 1 = least useful to 10 = most useful." },
+    { "id": "q048", "prompt": "Name an app everyone uses; from 1 = annoying to 10 = genuinely helpful." },
+    { "id": "q049", "prompt": "Suggest a way to save money; from 1 = impossible to follow to 10 = super easy and effective." },
+    { "id": "q050", "prompt": "Name a chore; from 1 = worst chore to 10 = oddly satisfying." },
+
+    { "id": "q051", "prompt": "Name something you’d do on a rainy day; from 1 = miserable to 10 = cozy perfection." },
+    { "id": "q052", "prompt": "Suggest a “treat yourself” purchase; from 1 = wasteful to 10 = totally worth it." },
+    { "id": "q053", "prompt": "Name a smell from childhood; from 1 = unpleasant memory to 10 = pure comfort." },
+    { "id": "q054", "prompt": "Name a place you’d hide a snack at home; from 1 = gets found instantly to 10 = impossible to discover." },
+    { "id": "q055", "prompt": "Name a way to make instant noodles better; from 1 = ruins it to 10 = gourmet upgrade." },
+
+    { "id": "q056", "prompt": "ACT OUT: You’re trying to open a stubborn jar; from 1 = mild effort to 10 = full struggle." },
+    { "id": "q057", "prompt": "ACT OUT: You see a cute dog across the street; from 1 = quiet appreciation to 10 = uncontrollable excitement." },
+    { "id": "q058", "prompt": "ACT OUT (no words): You receive a text that just says “We need to talk.”; from 1 = slightly concerned to 10 = total dread." },
+    { "id": "q059", "prompt": "ACT OUT: You walk into a room and forget why; from 1 = small pause to 10 = existential confusion." },
+    { "id": "q060", "prompt": "ACT OUT: You taste a drink that’s way too hot; from 1 = careful sip to 10 = instant regret." },
+
+    { "id": "q061", "prompt": "Complete the sentence: “The worst thing to hear from a mechanic is …”; from 1 = minor issue to 10 = financial catastrophe." },
+    { "id": "q062", "prompt": "Complete the sentence: “My biggest weakness is …”; from 1 = harmless quirk to 10 = absolute dealbreaker." },
+    { "id": "q063", "prompt": "Complete the sentence: “I knew it was going to be a bad day when …”; from 1 = small annoyance to 10 = doomed." },
+    { "id": "q064", "prompt": "Complete the sentence: “I tried to cook and accidentally …”; from 1 = tiny mistake to 10 = kitchen disaster." },
+    { "id": "q065", "prompt": "Complete the sentence: “My secret talent is …”; from 1 = barely a talent to 10 = mind-blowing." },
+
+    { "id": "q066", "prompt": "Name a sound that drives you crazy; from 1 = slightly annoying to 10 = unbearable." },
+    { "id": "q067", "prompt": "Name a smell you never want in your house; from 1 = mildly bad to 10 = evacuate immediately." },
+    { "id": "q068", "prompt": "Name something you’d do to impress a boss/teacher; from 1 = pointless effort to 10 = guaranteed promotion/A+." },
+    { "id": "q069", "prompt": "Suggest a theme for a party; from 1 = embarrassing flop to 10 = legendary night." },
+    { "id": "q070", "prompt": "Name a social media post you’d make; from 1 = instantly deleted to 10 = goes viral for good reasons." },
+
+    { "id": "q071", "prompt": "ACT OUT: You’re trying to sneak a snack at night; from 1 = barely sneaky to 10 = master thief." },
+    { "id": "q072", "prompt": "ACT OUT: You wave at someone who wasn’t waving at you; from 1 = smooth recovery to 10 = catastrophic embarrassment." },
+    { "id": "q073", "prompt": "ACT OUT (no words): You step into something wet while wearing socks; from 1 = mild disgust to 10 = pure horror." },
+    { "id": "q074", "prompt": "ACT OUT: You’re stuck behind a slow walker; from 1 = patient angel to 10 = internally exploding." },
+    { "id": "q075", "prompt": "ACT OUT: Your reaction to a surprise birthday party; from 1 = polite smile to 10 = over-the-top excitement." },
+
+    { "id": "q076", "prompt": "Name a thing that makes a person instantly cool; from 1 = not cool at all to 10 = unbelievably cool." },
+    { "id": "q077", "prompt": "Name a thing that makes a person instantly suspicious; from 1 = harmless to 10 = absolute red flag." },
+    { "id": "q078", "prompt": "Name a reason to be proud of yourself today; from 1 = tiny win to 10 = huge achievement." },
+    { "id": "q079", "prompt": "Suggest a way to cheer someone up; from 1 = makes it worse to 10 = instantly uplifting." },
+    { "id": "q080", "prompt": "Name a place you’d rather not be stuck for 3 hours; from 1 = mildly annoying to 10 = nightmare." },
+
+    { "id": "q081", "prompt": "Name something you’d put in a time capsule; from 1 = pointless to 10 = perfect snapshot of today." },
+    { "id": "q082", "prompt": "Name a food you’d eat every day if it were healthy; from 1 = not worth it to 10 = dream food." },
+    { "id": "q083", "prompt": "Name a TV show to binge; from 1 = waste of time to 10 = can’t stop watching." },
+    { "id": "q084", "prompt": "Suggest a name for a pet goldfish; from 1 = awful name to 10 = perfect name." },
+    { "id": "q085", "prompt": "Name a thing you’d put on a personal flag; from 1 = embarrassing symbol to 10 = iconic symbol." },
+
+    { "id": "q086", "prompt": "ACT OUT: You’re pretending you understand something complicated; from 1 = slightly confused to 10 = totally lost but committed." },
+    { "id": "q087", "prompt": "ACT OUT: You hear a weird noise at night; from 1 = ignore it to 10 = full survival mode." },
+    { "id": "q088", "prompt": "ACT OUT (no words): You walk into a glass door; from 1 = smooth recovery to 10 = total humiliation." },
+    { "id": "q089", "prompt": "ACT OUT: You realize you sent a message to the wrong person; from 1 = mild worry to 10 = immediate disaster response." },
+    { "id": "q090", "prompt": "ACT OUT: You’re trying to be quiet but everything is loud; from 1 = minor noise to 10 = cartoon-level chaos." },
+
+    { "id": "q091", "prompt": "Name a “small luxury” that feels expensive; from 1 = not special to 10 = pure royalty." },
+    { "id": "q092", "prompt": "Name something you’d do if you were invisible for one hour; from 1 = boring to 10 = unbelievably clever." },
+    { "id": "q093", "prompt": "Name a place to take a nap; from 1 = terrible spot to 10 = perfect spot." },
+    { "id": "q094", "prompt": "Suggest a way to survive a boring meeting/class; from 1 = makes it worse to 10 = actually works." },
+    { "id": "q095", "prompt": "Name a way to apologize; from 1 = makes them angrier to 10 = instantly forgiven." },
+
+    { "id": "q096", "prompt": "Complete the sentence: “My superhero weakness is …”; from 1 = silly inconvenience to 10 = completely fatal." },
+    { "id": "q097", "prompt": "Complete the sentence: “The worst slogan for a gym would be …”; from 1 = mildly bad to 10 = disastrous." },
+    { "id": "q098", "prompt": "Complete the sentence: “I knew it was a fancy restaurant when …”; from 1 = small hint to 10 = extremely fancy." },
+    { "id": "q099", "prompt": "Complete the sentence: “The most dramatic way to quit a job is …”; from 1 = quiet exit to 10 = legendary scene." },
+    { "id": "q100", "prompt": "Complete the sentence: “My last two brain cells are arguing about …”; from 1 = mildly silly to 10 = completely unhinged." },
+
+    { "id": "q101", "prompt": "Name a thing that’s fun as a kid but stressful as an adult; from 1 = barely different to 10 = completely changed." },
+    { "id": "q102", "prompt": "Name something you’d put on your “do not disturb” door sign; from 1 = polite to 10 = terrifying." },
+    { "id": "q103", "prompt": "Suggest a name for a new ice cream flavor; from 1 = awful idea to 10 = instant hit." },
+    { "id": "q104", "prompt": "Name a way to make a boring room nicer; from 1 = pointless change to 10 = huge upgrade." },
+    { "id": "q105", "prompt": "Name a reason to break a New Year’s resolution; from 1 = weak excuse to 10 = totally fair." },
+
+    { "id": "q106", "prompt": "ACT OUT: You’re trying to take a flattering selfie; from 1 = casual snap to 10 = full photo shoot." },
+    { "id": "q107", "prompt": "ACT OUT: You spill a drink in public; from 1 = calm cleanup to 10 = absolute chaos." },
+    { "id": "q108", "prompt": "ACT OUT (no words): You get caught dancing alone; from 1 = tiny embarrassment to 10 = full-body cringe." },
+    { "id": "q109", "prompt": "ACT OUT: You’re trying to open a bag quietly during a movie; from 1 = minor rustle to 10 = sounds like fireworks." },
+    { "id": "q110", "prompt": "ACT OUT: You win something unexpectedly; from 1 = surprised smile to 10 = championship celebration." },
+
+    { "id": "q111", "prompt": "Name something that should have an instruction manual but doesn’t; from 1 = mildly helpful to 10 = desperately needed." },
+    { "id": "q112", "prompt": "Name a smell that means “vacation”; from 1 = not vacation-y to 10 = instant getaway." },
+    { "id": "q113", "prompt": "Name a compliment you’d love to hear; from 1 = nice but generic to 10 = best compliment ever." },
+    { "id": "q114", "prompt": "Name a text you’d send to a group chat; from 1 = ignored instantly to 10 = everyone replies." },
+    { "id": "q115", "prompt": "Name a thing you’d want automated in your life; from 1 = not worth automating to 10 = please automate now." },
+
+    { "id": "q116", "prompt": "Suggest a new law everyone would secretly like; from 1 = terrible idea to 10 = universally loved." },
+    { "id": "q117", "prompt": "Name a way to become famous; from 1 = embarrassing fame to 10 = respected fame." },
+    { "id": "q118", "prompt": "Name something you’d add to a dream home; from 1 = pointless feature to 10 = absolute must-have." },
+    { "id": "q119", "prompt": "Name a way to spend a Sunday; from 1 = depressing to 10 = perfect reset." },
+    { "id": "q120", "prompt": "Name a sound effect you could do with your mouth; from 1 = terrible imitation to 10 = shockingly accurate." }
+  ]
+}

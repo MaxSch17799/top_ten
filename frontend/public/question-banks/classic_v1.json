@@ -1,0 +1,27 @@
+{
+  "id": "classic_v1",
+  "name": "Classic",
+  "version": 1,
+  "questions": [
+    { "id": "q001", "prompt": "Name something you would bring to a desert island." },
+    { "id": "q002", "prompt": "List a skill that impresses people at parties." },
+    { "id": "q003", "prompt": "Name a movie everyone should watch once." },
+    { "id": "q004", "prompt": "Top answer for what adults still love about cartoons." },
+    { "id": "q005", "prompt": "Name a flavor that goes great with ice cream." },
+    { "id": "q006", "prompt": "What’s the best excuse to be late to work?" },
+    { "id": "q007", "prompt": "Name something that always smells amazing." },
+    { "id": "q008", "prompt": "Top holiday destination for a spontaneous weekend trip." },
+    { "id": "q009", "prompt": "Name a board game you can teach in under five minutes." },
+    { "id": "q010", "prompt": "List a food that looks better than it tastes." },
+    { "id": "q011", "prompt": "Name a song you know by heart from childhood." },
+    { "id": "q012", "prompt": "What hero archetype do you gravitate toward in stories?" },
+    { "id": "q013", "prompt": "Pick something you can't live without while traveling." },
+    { "id": "q014", "prompt": "Best gift you ever received, according to you." },
+    { "id": "q015", "prompt": "Name a sport that would be hilarious if everyone played it in slow motion." },
+    { "id": "q016", "prompt": "List a comfort food that reminds you of your childhood." },
+    { "id": "q017", "prompt": "What would make a job interview unforgettable (in a good way)?" },
+    { "id": "q018", "prompt": "Name a creature people secretly wish existed." },
+    { "id": "q019", "prompt": "List an item that deserves to be in a modern museum." },
+    { "id": "q020", "prompt": "What’s the most useful thing you learned in the last year?" }
+  ]
+}

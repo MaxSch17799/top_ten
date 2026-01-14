@@ -1,0 +1,117 @@
+import { useEffect, useState } from 'react';
+import type { FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createGame } from '../api';
+import { loadQuestionBank } from '../lib/questionBank';
+import { saveSession } from '../lib/session';
+import type { QuestionBank, SessionData } from '../lib/types';
+
+const DEFAULT_BANK = 'classic_v1';
+
+export default function HostSetup() {
+  const navigate = useNavigate();
+  const [nickname, setNickname] = useState('');
+  const [seed, setSeed] = useState('');
+  const [questionBankId, setQuestionBankId] = useState(DEFAULT_BANK);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [bank, setBank] = useState<QuestionBank | null>(null);
+
+  useEffect(() => {
+    void loadQuestionBank(DEFAULT_BANK)
+      .then((data) => {
+        setBank(data);
+      })
+      .catch(() => {
+        setBank(null);
+      });
+  }, []);
+
+  const handleRandomSeed = () => {
+    setSeed(Math.random().toString(36).slice(2, 10));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const clean = nickname.trim();
+    if (!clean) {
+      setError('Enter a nickname (max 20 characters)');
+      return;
+    }
+    setError(null);
+    setLoading(true);
+    try {
+      const result = await createGame({
+        hostNickname: clean,
+        seed: seed.trim() || undefined,
+        questionBankId,
+      });
+      const session: SessionData = {
+        gameId: result.gameId,
+        playerId: result.playerId,
+        playerToken: result.playerToken,
+        hostToken: result.hostToken,
+        role: 'HOST',
+      };
+      saveSession(session);
+      navigate(`/g/${result.gameId}`);
+    } catch (cause) {
+      const message = cause instanceof Error ? cause.message : 'Game creation failed';
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className="page sheet">
+      <section className="host-form">
+        <h1>Host a Top 10 session</h1>
+        <p className="tagline">
+          Share the generated join link or QR. Up to 10 players can reserve seats even if someone drops.
+        </p>
+        <form onSubmit={handleSubmit} className="stack">
+          <label className="field">
+            <span>Nickname (20 chars max)</span>
+            <input
+              className="input"
+              maxLength={20}
+              value={nickname}
+              onChange={(event) => setNickname(event.target.value)}
+              placeholder="Host nickname"
+            />
+          </label>
+          <label className="field">
+            <span>Seed (optional)</span>
+            <div className="seed-row">
+              <input
+                className="input"
+                value={seed}
+                onChange={(event) => setSeed(event.target.value)}
+                placeholder="leave blank for random"
+              />
+              <button type="button" className="secondary" onClick={handleRandomSeed}>
+                Randomize
+              </button>
+            </div>
+          </label>
+          <label className="field">
+            <span>Question bank</span>
+            <select className="input" value={questionBankId} onChange={(event) => setQuestionBankId(event.target.value)}>
+              <option value={DEFAULT_BANK}>{bank?.name ?? 'Classic'}</option>
+            </select>
+            {bank ? (
+              <p className="footnote">{bank.questions.length} prompts ready for randomness.</p>
+            ) : (
+              <p className="footnote">Loading question bank...</p>
+            )}
+          </label>
+          <button type="submit" className="primary" disabled={loading}>
+            {loading ? 'Creating game…' : 'Create lobby'}
+          </button>
+          {error && <p className="error">{error}</p>}
+        </form>
+      </section>
+    </main>
+  );
+}
