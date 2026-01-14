@@ -4,7 +4,7 @@ type HostActionResponse = { success: boolean };
 
 type JsonPayload = Record<string, unknown>;
 
-const BACKEND_BASE = (import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:8787').replace(/\/$/, '');
+const BACKEND_BASE = (import.meta.env.VITE_BACKEND_URL ?? 'https://top-ten.maxschimmel17799.workers.dev').replace(/\/$/, '');
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
