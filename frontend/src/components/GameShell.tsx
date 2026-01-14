@@ -33,14 +33,15 @@ export default function GameShell() {
   }, [gameId]);
 
   useEffect(() => {
-    if (!connection.state?.questionBankId) {
+    const bankId = connection.state?.questionBankId;
+    if (!bankId) {
       return;
     }
     let cancelled = false;
     let attempts = 0;
     const loadBank = async () => {
       try {
-        const payload = await loadQuestionBank(connection.state.questionBankId);
+        const payload = await loadQuestionBank(bankId);
         if (!cancelled) {
           setQuestionBank(payload);
         }
