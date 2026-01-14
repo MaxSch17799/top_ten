@@ -1,0 +1,9 @@
+{
+  "name": "top-ten",
+  "private": true,
+  "type": "module",
+  "workspaces": ["backend-do"],
+  "scripts": {
+    "deploy:worker": "cd backend-do && npx wrangler deploy"
+  }
+}

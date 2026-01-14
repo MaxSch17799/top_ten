@@ -5,3 +5,4 @@ frontend/dist/
 backend-do/dist/
 *.log
 temp_*.py
+dev chat.docx
