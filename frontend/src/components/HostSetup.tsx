@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { FormEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createGame } from '../api';
 import { loadQuestionBank } from '../lib/questionBank';
@@ -15,6 +15,7 @@ export default function HostSetup() {
   const [questionBankId, setQuestionBankId] = useState(DEFAULT_BANK);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [nicknameError, setNicknameError] = useState<string | null>(null);
   const [bank, setBank] = useState<QuestionBank | null>(null);
 
   useEffect(() => {
@@ -31,8 +32,24 @@ export default function HostSetup() {
     setSeed(Math.random().toString(36).slice(2, 10));
   };
 
+  const handleNicknameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const next = event.target.value;
+    if (next.length > 20) {
+      setNicknameError('Nickname max 20 characters.');
+      return;
+    }
+    setNickname(next);
+    if (nicknameError) {
+      setNicknameError(null);
+    }
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (nicknameError) {
+      setError(nicknameError);
+      return;
+    }
     const clean = nickname.trim();
     if (!clean) {
       setError('Enter a nickname (max 20 characters)');
@@ -79,9 +96,10 @@ export default function HostSetup() {
               className="input"
               maxLength={20}
               value={nickname}
-              onChange={(event) => setNickname(event.target.value)}
+              onChange={handleNicknameChange}
               placeholder="Host nickname"
             />
+            {nicknameError && <p className="error">{nicknameError}</p>}
           </label>
           <label className="field">
             <span>Seed (optional)</span>
@@ -90,7 +108,7 @@ export default function HostSetup() {
                 className="input"
                 value={seed}
                 onChange={(event) => setSeed(event.target.value)}
-                placeholder="leave blank for random seed"
+                placeholder="blank = random seed"
               />
               <button type="button" className="secondary" onClick={handleRandomSeed}>
                 Randomize

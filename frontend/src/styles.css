@@ -55,6 +55,12 @@ body {
   margin: 0 auto;
 }
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero h1,
 .host-form h1,
 .game-header h2 {
@@ -100,6 +106,8 @@ select {
   padding: 0.85rem;
   outline: none;
   text-align: center;
+  font-size: clamp(0.6rem, 2.6vw, 0.8rem);
+  line-height: 1.2;
 }
 
 .input:focus,
@@ -151,6 +159,7 @@ button:disabled {
 
 .hero .button-row {
   width: 100%;
+  align-items: center;
 }
 
 .hero .button-row button.primary {
@@ -193,13 +202,13 @@ button:disabled {
 }
 
 .player-row.sortable {
-  grid-template-columns: 24px 38px minmax(0, 1fr);
+  grid-template-columns: 20px 34px minmax(0, 1fr);
   cursor: grab;
   touch-action: none;
 }
 
 .player-row.simple {
-  grid-template-columns: 38px minmax(0, 1fr);
+  grid-template-columns: 34px minmax(0, 1fr);
 }
 
 .player-row.pending {
@@ -399,7 +408,9 @@ button:disabled {
 }
 
 .invite-card .qr {
-  width: min(260px, 70vw);
+  width: 100%;
+  max-width: 260px;
+  height: auto;
   margin: 1rem auto;
   border: 2px solid var(--border);
   border-radius: 12px;
@@ -449,6 +460,7 @@ button:disabled {
 
 .join-inline {
   width: min(360px, 100%);
+  margin: 0 auto;
 }
 
 .join-inline .input {
@@ -485,7 +497,13 @@ button:disabled {
 
 .info-header {
   position: relative;
-  padding-top: 0.25rem;
+  padding-top: 0.75rem;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-header h3 {
@@ -494,8 +512,8 @@ button:disabled {
 
 .info-close {
   position: absolute;
-  top: 0.15rem;
-  right: 0.15rem;
+  top: 0.2rem;
+  right: 0.4rem;
 }
 
 .info-body {
@@ -511,10 +529,13 @@ button:disabled {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: min(360px, 100%);
 }
 
 .invite-inline .qr {
-  width: min(260px, 70vw);
+  width: 100%;
+  max-width: 260px;
+  height: auto;
   margin: 1rem auto;
   border: 2px solid var(--border);
   border-radius: 12px;
@@ -530,11 +551,11 @@ button:disabled {
   }
 
   .player-row.sortable {
-    grid-template-columns: 24px 30px minmax(0, 1fr);
+    grid-template-columns: 20px 26px minmax(0, 1fr);
   }
 
   .player-row.simple {
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: 26px minmax(0, 1fr);
   }
 
   .button-row {
@@ -543,9 +564,24 @@ button:disabled {
 
   .join-inline {
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .seed-row .input {
+    width: 100%;
+  }
+
+  .join-inline button {
+    width: 100%;
+  }
+
+  .seed-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .seed-row button {
     width: 100%;
   }
 }

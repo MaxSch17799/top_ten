@@ -1,4 +1,4 @@
-import type { FormEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { advanceRound, endGame, joinGame, reorderPlayers, startRound } from '../api';
@@ -15,6 +15,7 @@ export default function GameShell() {
   const [session, setSession] = useState<SessionData | null>(null);
   const [nickname, setNickname] = useState('');
   const [joining, setJoining] = useState(false);
+  const [nicknameError, setNicknameError] = useState<string | null>(null);
   const [joinError, setJoinError] = useState<string | null>(null);
   const [inviteOpen, setInviteOpen] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -95,6 +96,10 @@ export default function GameShell() {
     if (!gameId) {
       return;
     }
+    if (nicknameError) {
+      setJoinError(nicknameError);
+      return;
+    }
     const clean = nickname.trim();
     if (!clean) {
       setJoinError('Enter a nickname (max 20 chars)');
@@ -117,6 +122,18 @@ export default function GameShell() {
       setJoinError(err instanceof Error ? err.message : 'Join failed');
     } finally {
       setJoining(false);
+    }
+  };
+
+  const handleNicknameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const next = event.target.value;
+    if (next.length > 20) {
+      setNicknameError('Nickname max 20 characters.');
+      return;
+    }
+    setNickname(next);
+    if (nicknameError) {
+      setNicknameError(null);
     }
   };
 
@@ -191,13 +208,14 @@ export default function GameShell() {
                 className="input"
                 maxLength={20}
                 value={nickname}
-                onChange={(event) => setNickname(event.target.value)}
+                onChange={handleNicknameChange}
                 placeholder="Your nickname"
               />
             </label>
             <button type="submit" className="primary" disabled={joining}>
               {joining ? 'Joining...' : 'Join lobby'}
             </button>
+            {nicknameError && <p className="error">{nicknameError}</p>}
             {joinError && <p className="error">{joinError}</p>}
           </form>
         </section>
