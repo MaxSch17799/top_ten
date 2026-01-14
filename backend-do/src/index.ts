@@ -1,5 +1,5 @@
 import { GameDurableObject, Env } from './game.js';
-import { generateShortId } from './utils.js';
+import { generateNumericCode } from './utils.js';
 
 type JsonPayload = Record<string, unknown>;
 
@@ -24,17 +24,28 @@ function createCorsHeaders(request: Request): Record<string, string> {
 async function handleCreate(request: Request, env: Env): Promise<Response> {
   const corsHeaders = createCorsHeaders(request);
   const payload = await parseJson(request);
-  const gameId = generateShortId(6);
-  const durable = env.GAME_DO.get(env.GAME_DO.idFromName(gameId));
-  const internalRequest = new Request('https://durable.internal/api/internal/create', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...payload, gameId }),
-  });
-  const response = await durable.fetch(internalRequest);
-  const body = await response.text();
-  return new Response(body, {
-    status: response.status,
+  let attempts = 0;
+  while (attempts < 12) {
+    const gameId = generateNumericCode(4);
+    const durable = env.GAME_DO.get(env.GAME_DO.idFromName(gameId));
+    const internalRequest = new Request('https://durable.internal/api/internal/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, gameId }),
+    });
+    const response = await durable.fetch(internalRequest);
+    if (response.status === 409) {
+      attempts += 1;
+      continue;
+    }
+    const body = await response.text();
+    return new Response(body, {
+      status: response.status,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders },
+    });
+  }
+  return new Response(JSON.stringify({ error: 'CODE_UNAVAILABLE' }), {
+    status: 503,
     headers: { 'Content-Type': 'application/json', ...corsHeaders },
   });
 }

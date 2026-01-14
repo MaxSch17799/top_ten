@@ -234,7 +234,6 @@ export default function GameShell() {
           state={state}
           joinUrl={joinUrl}
           onStartRound={handleStartRound}
-          onEndGame={handleEndGame}
           onReorder={handleReorder}
           onOpenInvite={() => setInviteOpen(true)}
           actionError={actionError}
@@ -252,6 +251,7 @@ export default function GameShell() {
       )}
       <AddPlayerPanel
         joinUrl={joinUrl}
+        gameCode={gameId ?? ''}
         visible={Boolean(state && inviteOpen && (state.phase === 'LOBBY' || state.yourRole === 'HOST'))}
         onClose={() => setInviteOpen(false)}
       />

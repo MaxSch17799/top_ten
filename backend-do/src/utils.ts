@@ -3,6 +3,7 @@ export function normalizeNickname(nickname: string): string {
 }
 
 const charset = 'abcdefghijklmnopqrstuvwxyz0123456789';
+const numericCharset = '0123456789';
 
 export function generateShortId(length = 6): string {
   const array = new Uint8Array(length);
@@ -12,6 +13,16 @@ export function generateShortId(length = 6): string {
     id += charset[value % charset.length];
   }
   return id;
+}
+
+export function generateNumericCode(length = 4): string {
+  const array = new Uint8Array(length);
+  crypto.getRandomValues(array);
+  let code = '';
+  for (const value of array) {
+    code += numericCharset[value % numericCharset.length];
+  }
+  return code;
 }
 
 export function generateToken(length = 48): string {

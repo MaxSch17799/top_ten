@@ -3,11 +3,12 @@ import QRCode from 'qrcode';
 
 export interface AddPlayerPanelProps {
   joinUrl: string;
+  gameCode: string;
   visible: boolean;
   onClose: () => void;
 }
 
-export default function AddPlayerPanel({ joinUrl, visible, onClose }: AddPlayerPanelProps) {
+export default function AddPlayerPanel({ joinUrl, gameCode, visible, onClose }: AddPlayerPanelProps) {
   const [qr, setQr] = useState<string>('');
   const [copied, setCopied] = useState(false);
 
@@ -45,6 +46,7 @@ export default function AddPlayerPanel({ joinUrl, visible, onClose }: AddPlayerP
           </button>
         </div>
         {qr && <img src={qr} alt="Join link QR code" className="qr" />}
+        <p className="footnote">Game code: {gameCode}</p>
         <p className="footnote">Share this link or QR to add players mid-game.</p>
         <div className="invite-link">
           <input readOnly value={joinUrl} />

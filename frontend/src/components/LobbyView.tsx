@@ -14,7 +14,6 @@ interface LobbyViewProps {
   state: SerializedStateForPlayer;
   joinUrl: string;
   onStartRound: () => Promise<void>;
-  onEndGame: () => Promise<void>;
   onReorder: (order: string[]) => Promise<void>;
   onOpenInvite: () => void;
   actionError?: string | null;
@@ -32,15 +31,17 @@ function SortablePlayerRow({ player }: { player: PlayerSummary }) {
     <div
       ref={setNodeRef}
       style={style}
+      {...attributes}
+      {...listeners}
       className={`player-row sortable ${player.status === 'PENDING' ? 'pending' : ''} ${isDragging ? 'dragging' : ''}`}
     >
-      <span className="drag-handle" {...attributes} {...listeners} aria-hidden>
+      <span className="drag-handle" aria-hidden>
         =
       </span>
       <span className="seat-label">{player.seatLabel ? `${player.seatLabel})` : '-'}</span>
       <span className="nickname">
         {player.nickname}
-        {player.role === 'HOST' ? ' (Host)' : ''}
+        {player.role === 'HOST' && <span className="host-tag"> (Host)</span>}
       </span>
     </div>
   );
@@ -52,13 +53,13 @@ function PlayerRow({ player }: { player: PlayerSummary }) {
       <span className="seat-label">{player.seatLabel ? `${player.seatLabel})` : '-'}</span>
       <span className="nickname">
         {player.nickname}
-        {player.role === 'HOST' ? ' (Host)' : ''}
+        {player.role === 'HOST' && <span className="host-tag"> (Host)</span>}
       </span>
     </div>
   );
 }
 
-export default function LobbyView({ state, joinUrl, onStartRound, onEndGame, onReorder, onOpenInvite, actionError }: LobbyViewProps) {
+export default function LobbyView({ state, joinUrl, onStartRound, onReorder, onOpenInvite, actionError }: LobbyViewProps) {
   const [localOrder, setLocalOrder] = useState<string[]>(state.order);
   const [qr, setQr] = useState('');
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
@@ -117,17 +118,13 @@ export default function LobbyView({ state, joinUrl, onStartRound, onEndGame, onR
               Add player
             </button>
           )}
-          {isHost && (
-            <button className="primary" onClick={onStartRound}>
-              Start Round 1
-            </button>
-          )}
         </div>
       </header>
       {isHost && (
         <div className="card invite-inline">
           <h3>Invite players</h3>
           {qr && <img src={qr} alt="Join link QR code" className="qr" />}
+          <p className="footnote">Game code: {state.gameId}</p>
           <div className="invite-link">
             <input readOnly value={joinUrl} />
           </div>
@@ -150,16 +147,14 @@ export default function LobbyView({ state, joinUrl, onStartRound, onEndGame, onR
           </div>
         )}
         <div className="lobby-meta">
-          <p>
-            Active players: {state.activeCount} / {state.maxPlayers}
-          </p>
+          <p>Players: {state.activeCount} / {state.maxPlayers}</p>
           {state.pendingCount > 0 && <p className="footnote">{state.pendingCount} pending player(s) will join next round.</p>}
         </div>
         {actionError && <p className="error">{actionError}</p>}
         {isHost && (
           <div className="button-row">
-            <button className="ghost" onClick={onEndGame}>
-              End game
+            <button className="primary" onClick={onStartRound}>
+              Start Round 1
             </button>
           </div>
         )}

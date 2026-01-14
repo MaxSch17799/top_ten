@@ -67,7 +67,11 @@ export default function HostSetup() {
     <main className="page sheet">
       <section className="host-form">
         <h1>Host a Top 10 session</h1>
-        <p className="tagline">Share the generated join link or QR. Up to 10 players can join.</p>
+        <p className="tagline">
+          Share the general join link or QR or game code.
+          <br />
+          Up to 10 players can join.
+        </p>
         <form onSubmit={handleSubmit} className="stack">
           <label className="field">
             <span>Nickname (20 chars max)</span>
