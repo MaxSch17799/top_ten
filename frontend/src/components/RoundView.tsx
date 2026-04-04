@@ -1,13 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
-import type { QuestionBank, SerializedStateForPlayer } from '../lib/types';
+import { useMemo, useState } from 'react';
+import type { SerializedStateForPlayer } from '../lib/types';
 
 interface RoundViewProps {
   state: SerializedStateForPlayer;
-  questionBank?: QuestionBank | null;
   onNextRound: () => Promise<void>;
   onEndGame: () => Promise<void>;
   onOpenInvite: () => void;
   actionError?: string | null;
+  warningActive?: boolean;
+  warningLabel?: string | null;
 }
 
 function splitPromptExample(prompt: string): { main: string; example?: string } {
@@ -21,30 +22,50 @@ function splitPromptExample(prompt: string): { main: string; example?: string } 
   return { main, example };
 }
 
-export default function RoundView({ state, questionBank, onNextRound, onEndGame, onOpenInvite, actionError }: RoundViewProps) {
+function SecretNumberCard({ secretNumber }: { secretNumber: number | null }) {
+  const [revealed, setRevealed] = useState(false);
+
+  return (
+    <button
+      type="button"
+      className={`secret-card ${revealed ? 'revealed' : ''}`}
+      onClick={() => setRevealed((current) => !current)}
+      aria-pressed={revealed}
+    >
+      <div className="secret-number">{secretNumber ?? '??'}</div>
+      <div className="secret-cover">
+        <span>{revealed ? 'Tap to hide your number' : 'Tap to reveal your number'}</span>
+      </div>
+      <div className="secret-footnote">Keep your number secret.</div>
+    </button>
+  );
+}
+
+export default function RoundView({
+  state,
+  onNextRound,
+  onEndGame,
+  onOpenInvite,
+  actionError,
+  warningActive,
+  warningLabel,
+}: RoundViewProps) {
   const questionMaster = useMemo(
     () => state.players.find((player) => player.playerId === state.roundHostPlayerId),
     [state.players, state.roundHostPlayerId]
   );
   const isSessionHost = state.yourRole === 'HOST';
   const isQuestionMaster = Boolean(state.yourPlayerId && state.yourPlayerId === state.roundHostPlayerId);
-  const [revealed, setRevealed] = useState(false);
-  const promptIds = isQuestionMaster ? state.promptOptions ?? [] : [];
   const promptDetails = useMemo(() => {
-    if (!questionBank || !promptIds.length) {
+    const promptOptions = isQuestionMaster ? state.promptOptions ?? [] : [];
+    if (!promptOptions.length) {
       return [];
     }
-    return promptIds.map((id) => ({
-      id,
-      ...splitPromptExample(
-        questionBank.questions.find((question) => question.id === id)?.prompt ?? 'Prompt not available'
-      ),
+    return promptOptions.map((prompt) => ({
+      id: prompt.id,
+      ...splitPromptExample(prompt.prompt || 'Prompt not available'),
     }));
-  }, [questionBank, promptIds]);
-
-  useEffect(() => {
-    setRevealed(false);
-  }, [state.round, state.yourPlayerId]);
+  }, [isQuestionMaster, state.promptOptions]);
 
   return (
     <section className="game-view">
@@ -73,18 +94,8 @@ export default function RoundView({ state, questionBank, onNextRound, onEndGame,
         </div>
       </header>
       <div className="card round-card">
-        <button
-          type="button"
-          className={`secret-card ${revealed ? 'revealed' : ''}`}
-          onClick={() => setRevealed((current) => !current)}
-          aria-pressed={revealed}
-        >
-          <div className="secret-number">{state.yourSecretNumber ?? '??'}</div>
-          <div className="secret-cover">
-            <span>{revealed ? 'Tap to hide your number' : 'Tap to reveal your number'}</span>
-          </div>
-          <div className="secret-footnote">Keep your number secret.</div>
-        </button>
+        {warningActive && warningLabel && <p className="warning-banner">{warningLabel}</p>}
+        <SecretNumberCard key={`${state.round}-${state.yourPlayerId ?? 'anon'}`} secretNumber={state.yourSecretNumber} />
         {isQuestionMaster && (
           <div className="prompt-list">
             <h3>Prompt options</h3>

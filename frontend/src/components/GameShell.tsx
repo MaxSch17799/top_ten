@@ -1,14 +1,13 @@
 import type { FormEvent, ChangeEvent } from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { advanceRound, endGame, joinGame, reorderPlayers, startRound } from '../api';
-import { loadQuestionBank } from '../lib/questionBank';
 import { loadSessionForGame, saveSession } from '../lib/session';
 import { useGameConnection } from '../hooks/useGameConnection';
 import AddPlayerPanel from './AddPlayerPanel';
 import LobbyView from './LobbyView';
 import RoundView from './RoundView';
-import type { QuestionBank, SessionData } from '../lib/types';
+import type { SessionData } from '../lib/types';
 
 export default function GameShell() {
   const { gameId } = useParams<{ gameId: string }>();
@@ -19,8 +18,9 @@ export default function GameShell() {
   const [joinError, setJoinError] = useState<string | null>(null);
   const [inviteOpen, setInviteOpen] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
-  const [questionBank, setQuestionBank] = useState<QuestionBank | null>(null);
   const [joinOrigin, setJoinOrigin] = useState(import.meta.env.VITE_FRONTEND_URL ?? '');
+  const [clockNow, setClockNow] = useState(() => Date.now());
+  const warningPlayedRef = useRef(false);
 
   const connection = useGameConnection({ gameId: gameId ?? '', playerToken: session?.playerToken });
   const state = connection.state;
@@ -32,37 +32,6 @@ export default function GameShell() {
     const stored = loadSessionForGame(gameId);
     setSession(stored);
   }, [gameId]);
-
-  useEffect(() => {
-    const bankId = connection.state?.questionBankId;
-    if (!bankId) {
-      return;
-    }
-    let cancelled = false;
-    let attempts = 0;
-    const loadBank = async () => {
-      try {
-        const payload = await loadQuestionBank(bankId);
-        if (!cancelled) {
-          setQuestionBank(payload);
-        }
-      } catch {
-        if (cancelled) {
-          return;
-        }
-        attempts += 1;
-        if (attempts <= 2) {
-          setTimeout(loadBank, 800);
-        } else {
-          setQuestionBank(null);
-        }
-      }
-    };
-    loadBank();
-    return () => {
-      cancelled = true;
-    };
-  }, [connection.state?.questionBankId]);
 
   useEffect(() => {
     if (!state) {
@@ -83,6 +52,11 @@ export default function GameShell() {
     }
   }, [joinOrigin]);
 
+  useEffect(() => {
+    const timer = window.setInterval(() => setClockNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   const joinUrl = useMemo(() => {
     if (!gameId) {
       return '';
@@ -90,6 +64,74 @@ export default function GameShell() {
     const origin = (joinOrigin || (typeof window !== 'undefined' ? window.location.origin : '')).replace(/\/$/, '');
     return `${origin}/g/${gameId}`;
   }, [gameId, joinOrigin]);
+
+  const warningActive = Boolean(
+    state &&
+      state.phase !== 'ENDED' &&
+      state.inactivityWarningAt &&
+      state.inactivityEndsAt &&
+      clockNow >= state.inactivityWarningAt &&
+      clockNow < state.inactivityEndsAt
+  );
+
+  const warningLabel = useMemo(() => {
+    if (!state?.inactivityEndsAt || !warningActive) {
+      return null;
+    }
+    const remainingSeconds = Math.max(0, Math.ceil((state.inactivityEndsAt - clockNow) / 1000));
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
+    const prefix =
+      state.inactivityKind === 'LOBBY'
+        ? 'This lobby will expire soon due to inactivity'
+        : 'This round will end soon due to inactivity';
+    return `${prefix}: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }, [clockNow, state?.inactivityEndsAt, state?.inactivityKind, warningActive]);
+
+  useEffect(() => {
+    if (!warningActive) {
+      warningPlayedRef.current = false;
+      return;
+    }
+    if (warningPlayedRef.current) {
+      return;
+    }
+    warningPlayedRef.current = true;
+    try {
+      const AudioCtx = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) {
+        return;
+      }
+      const context = new AudioCtx();
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      oscillator.type = 'square';
+      oscillator.frequency.value = 880;
+      gain.gain.value = 0.015;
+      oscillator.connect(gain);
+      gain.connect(context.destination);
+      oscillator.start();
+      oscillator.stop(context.currentTime + 0.14);
+      window.setTimeout(() => void context.close().catch(() => undefined), 250);
+    } catch {
+      /* warning sound is optional */
+    }
+  }, [warningActive]);
+
+  const endedMessage = useMemo(() => {
+    switch (state?.endedReason) {
+      case 'HOST_TIMEOUT':
+        return 'The game ended because the host connection was inactive for too long.';
+      case 'ROUND_TIMEOUT':
+        return 'The game ended because this round was inactive for 30 minutes.';
+      case 'LOBBY_TIMEOUT':
+        return 'The lobby expired after 30 minutes of inactivity.';
+      case 'HOST_REQUESTED':
+        return 'The session has concluded. Start a new game to keep playing.';
+      default:
+        return 'The session has concluded. Start a new game to keep playing.';
+    }
+  }, [state?.endedReason]);
 
   const handleJoin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -239,7 +281,7 @@ export default function GameShell() {
       <main className="page sheet">
         <section className="host-form">
           <h1>Game ended</h1>
-          <p className="footnote">The session has concluded. Start a new game to keep playing.</p>
+          <p className="footnote">{endedMessage}</p>
           <Link to="/" className="primary">
             Back home
           </Link>
@@ -258,24 +300,24 @@ export default function GameShell() {
           onReorder={handleReorder}
           onOpenInvite={() => setInviteOpen(true)}
           actionError={actionError}
+          warningActive={warningActive}
+          warningLabel={warningLabel}
         />
       )}
       {state.phase === 'ACTIVE' && (
         <RoundView
           state={state}
-          questionBank={questionBank}
           onNextRound={handleNextRound}
           onEndGame={handleEndGame}
           onOpenInvite={() => setInviteOpen(true)}
           actionError={actionError}
+          warningActive={warningActive}
+          warningLabel={warningLabel}
         />
       )}
-      <AddPlayerPanel
-        joinUrl={joinUrl}
-        gameCode={gameId ?? ''}
-        visible={Boolean(state && inviteOpen && (state.phase === 'LOBBY' || state.yourRole === 'HOST'))}
-        onClose={() => setInviteOpen(false)}
-      />
+      {state && inviteOpen && (state.phase === 'LOBBY' || state.yourRole === 'HOST') ? (
+        <AddPlayerPanel joinUrl={joinUrl} gameCode={gameId ?? ''} onClose={() => setInviteOpen(false)} />
+      ) : null}
     </main>
   );
 }

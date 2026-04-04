@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LandingView() {
   const navigate = useNavigate();
@@ -43,6 +43,9 @@ export default function LandingView() {
         <button type="button" className="ghost info-button" onClick={() => setInfoOpen(true)}>
           Info
         </button>
+        <Link to="/admin/login" className="admin-link">
+          Admin
+        </Link>
       </section>
       {infoOpen && (
         <div className="overlay" role="dialog" aria-modal="true">

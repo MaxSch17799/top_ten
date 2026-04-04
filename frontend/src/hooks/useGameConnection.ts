@@ -23,6 +23,7 @@ export function useGameConnection({ gameId, playerToken }: UseGameConnectionProp
   const sinceVersionRef = useRef(0);
   const wsRef = useRef<WebSocket | null>(null);
   const pollRef = useRef<number | null>(null);
+  const pingRef = useRef<number | null>(null);
 
   const fetchLatestState = useCallback(async () => {
     if (!playerToken) {
@@ -50,6 +51,24 @@ export function useGameConnection({ gameId, playerToken }: UseGameConnectionProp
     }
   }, []);
 
+  const stopPinging = useCallback(() => {
+    if (pingRef.current) {
+      clearInterval(pingRef.current);
+      pingRef.current = null;
+    }
+  }, []);
+
+  const startPinging = useCallback(() => {
+    if (pingRef.current || typeof window === 'undefined') {
+      return;
+    }
+    pingRef.current = window.setInterval(() => {
+      if (wsRef.current?.readyState === WebSocket.OPEN) {
+        wsRef.current.send(JSON.stringify({ type: 'PING' }));
+      }
+    }, 60_000);
+  }, []);
+
   const startPolling = useCallback(() => {
     if (pollRef.current || !playerToken || typeof window === 'undefined') {
       return;
@@ -61,23 +80,22 @@ export function useGameConnection({ gameId, playerToken }: UseGameConnectionProp
 
   useEffect(() => {
     if (!playerToken) {
-      setState(null);
-      setWsStatus('idle');
       sinceVersionRef.current = 0;
       stopPolling();
+      stopPinging();
       wsRef.current?.close();
       wsRef.current = null;
       return;
     }
 
     sinceVersionRef.current = 0;
-    setWsStatus('connecting');
     const ws = new WebSocket(buildWsUrl(gameId, playerToken));
     wsRef.current = ws;
     ws.onopen = () => {
       setWsStatus('open');
       setLastError(null);
       stopPolling();
+      startPinging();
     };
     ws.onmessage = (event) => {
       try {
@@ -94,10 +112,12 @@ export function useGameConnection({ gameId, playerToken }: UseGameConnectionProp
     ws.onerror = () => {
       setWsStatus('error');
       setLastError('Realtime connection failed');
+      stopPinging();
       startPolling();
     };
     ws.onclose = () => {
       setWsStatus((current) => (current === 'open' ? 'closed' : current));
+      stopPinging();
       startPolling();
     };
 
@@ -108,8 +128,9 @@ export function useGameConnection({ gameId, playerToken }: UseGameConnectionProp
       wsRef.current?.close();
       wsRef.current = null;
       stopPolling();
+      stopPinging();
     };
-  }, [gameId, playerToken, fetchLatestState, startPolling, stopPolling]);
+  }, [gameId, playerToken, fetchLatestState, startPinging, startPolling, stopPinging, stopPolling]);
 
   useEffect(() => {
     if (wsStatus === 'open') {
@@ -117,10 +138,19 @@ export function useGameConnection({ gameId, playerToken }: UseGameConnectionProp
     }
   }, [stopPolling, wsStatus]);
 
+  const hasFreshState = state?.gameId === gameId;
+  const effectiveState = playerToken && hasFreshState ? state : null;
+  const effectiveWsStatus: WebSocketStatus = !playerToken
+    ? 'idle'
+    : !hasFreshState || wsStatus === 'idle'
+      ? 'connecting'
+      : wsStatus;
+  const effectiveLastError = playerToken && hasFreshState ? lastError : null;
+
   return {
-    state,
-    wsStatus,
-    lastError,
+    state: effectiveState,
+    wsStatus: effectiveWsStatus,
+    lastError: effectiveLastError,
     requestState: fetchLatestState,
   };
 }

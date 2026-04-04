@@ -4,6 +4,7 @@
   "type": "module",
   "workspaces": ["backend-do"],
   "scripts": {
-    "deploy:worker": "cd backend-do && npx wrangler deploy"
+    "sync:question-banks": "node scripts/sync-question-banks.mjs",
+    "deploy:worker": "npm run sync:question-banks && cd backend-do && npx wrangler deploy"
   }
 }

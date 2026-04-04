@@ -1,9 +1,34 @@
-const CACHE_NAME = 'top10-cache-v1';
-const ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/vite.svg', '/question-banks/classic_v1.json'];
+const CACHE_NAME = 'top10-cache-v2';
+const CORE_ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/vite.svg', '/question-banks/manifest.json'];
+
+async function getQuestionBankAssets() {
+  try {
+    const response = await fetch('/question-banks/manifest.json', { cache: 'no-store' });
+    if (!response.ok) {
+      return [];
+    }
+    const manifest = await response.json();
+    if (!manifest || !Array.isArray(manifest.banks)) {
+      return [];
+    }
+    return manifest.banks
+      .filter((bank) => bank && typeof bank.id === 'string' && bank.id)
+      .map((bank) => `/question-banks/${bank.id}.json`);
+  } catch {
+    return [];
+  }
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(CORE_ASSETS);
+      const bankAssets = await getQuestionBankAssets();
+      if (bankAssets.length > 0) {
+        await cache.addAll(bankAssets);
+      }
+    })()
   );
   self.skipWaiting();
 });

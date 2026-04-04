@@ -1,0 +1,23 @@
+{
+  "defaultBankId": "classic_v1",
+  "banks": [
+    {
+      "id": "classic_v1",
+      "name": "Classic",
+      "version": 1,
+      "questionCount": 120
+    },
+    {
+      "id": "Tobi_Fragen",
+      "name": "Tobi_Fragen",
+      "version": 1,
+      "questionCount": 76
+    },
+    {
+      "id": "Tobi+Chatty_Fragen",
+      "name": "Tobi+Chatty_Fragen",
+      "version": 1,
+      "questionCount": 200
+    }
+  ]
+}

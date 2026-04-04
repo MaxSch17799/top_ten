@@ -115,6 +115,11 @@ select:focus {
   border-color: var(--accent-strong);
 }
 
+textarea.input {
+  resize: vertical;
+  text-align: left;
+}
+
 button {
   font-family: inherit;
   font-size: 0.75rem;
@@ -149,6 +154,33 @@ button:disabled {
   cursor: not-allowed;
 }
 
+a.primary,
+a.secondary-link,
+a.admin-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+a.primary {
+  background: var(--accent);
+  color: #020205;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+}
+
+a.secondary-link,
+a.admin-link {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+}
+
+a.secondary-link {
+  text-align: center;
+}
+
 .button-row {
   display: flex;
   gap: 1rem;
@@ -170,6 +202,17 @@ button:disabled {
   color: var(--muted);
   font-size: 0.65rem;
   letter-spacing: 0.1rem;
+}
+
+.warning-banner {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border: 2px solid rgba(255, 214, 84, 0.8);
+  border-radius: 12px;
+  background: rgba(255, 214, 84, 0.12);
+  color: #ffe48f;
+  font-size: 0.62rem;
+  line-height: 1.7;
 }
 
 .card {
@@ -485,6 +528,11 @@ button:disabled {
   margin-top: 1rem;
 }
 
+.admin-link {
+  margin-top: 1rem;
+  font-size: 0.62rem;
+}
+
 .info-card {
   background: #05030a;
   border: 3px solid var(--accent);
@@ -543,6 +591,111 @@ button:disabled {
   display: block;
 }
 
+.admin-shell {
+  max-width: 520px;
+}
+
+.admin-page {
+  text-align: left;
+}
+
+.admin-header {
+  align-items: stretch;
+  text-align: left;
+}
+
+.admin-header .button-row {
+  justify-content: flex-start;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1.4fr) minmax(220px, 0.9fr);
+  gap: 1rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.admin-sidebar,
+.admin-editor,
+.admin-usage,
+.admin-import,
+.admin-revisions {
+  text-align: left;
+}
+
+.bank-list,
+.revision-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bank-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  color: #f5f6ff;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.65rem;
+  padding: 0.85rem 1rem;
+}
+
+.bank-row.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.18);
+}
+
+.bank-meta {
+  color: var(--muted);
+  font-size: 0.55rem;
+  white-space: nowrap;
+}
+
+.multiline-input {
+  min-height: 7rem;
+}
+
+.tall-input {
+  min-height: 18rem;
+}
+
+.usage-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.usage-grid p,
+.revision-row p {
+  margin: 0;
+}
+
+.revision-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-import input[type='file'] {
+  width: 100%;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(2, 2, 5, 0.55);
+  color: #f5f6ff;
+}
+
 @media (max-width: 640px) {
   .game-header,
   .hero,
@@ -583,5 +736,14 @@ button:disabled {
 
   .seed-row button {
     width: 100%;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .revision-row {
+    flex-direction: column;
+    align-items: stretch;
   }
 }

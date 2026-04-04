@@ -1,0 +1,2 @@
+-- The rough in-app usage monitor is implemented as a singleton Durable Object.
+-- No D1 schema is required for coarse usage tracking in v1.

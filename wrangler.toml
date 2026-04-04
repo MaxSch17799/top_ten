@@ -5,8 +5,23 @@ main = "backend-do/src/index.ts"
 [durable_objects]
 bindings = [
   { name = "GAME_DO", class_name = "GameDurableObject" },
+  { name = "USAGE_MONITOR_DO", class_name = "UsageMonitorDurableObject" },
 ]
 
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["GameDurableObject"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["UsageMonitorDurableObject"]
+
+[[d1_databases]]
+binding = "QUESTION_BANKS_DB"
+database_name = "top10-question-banks"
+database_id = "239b0c47-1be1-432f-a3ee-777b4ff61968"
+preview_database_id = "239b0c47-1be1-432f-a3ee-777b4ff61968"
+
+[vars]
+USAGE_WARN_PERCENT = "80"
+USAGE_BLOCK_PERCENT = "95"

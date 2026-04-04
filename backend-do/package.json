@@ -4,8 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "wrangler build",
-    "dev": "wrangler dev --log-level error",
+    "prebuild": "node ../scripts/sync-question-banks.mjs",
+    "build": "npx wrangler build",
+    "predev": "node ../scripts/sync-question-banks.mjs",
+    "dev": "npx wrangler dev --log-level error",
+    "prelint": "node ../scripts/sync-question-banks.mjs",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

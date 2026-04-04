@@ -17,6 +17,8 @@ interface LobbyViewProps {
   onReorder: (order: string[]) => Promise<void>;
   onOpenInvite: () => void;
   actionError?: string | null;
+  warningActive?: boolean;
+  warningLabel?: string | null;
 }
 
 function SortablePlayerRow({ player }: { player: PlayerSummary }) {
@@ -59,7 +61,20 @@ function PlayerRow({ player }: { player: PlayerSummary }) {
   );
 }
 
-export default function LobbyView({ state, joinUrl, onStartRound, onReorder, onOpenInvite, actionError }: LobbyViewProps) {
+function sameOrder(left: string[], right: string[]): boolean {
+  return left.length === right.length && left.every((value, index) => value === right[index]);
+}
+
+export default function LobbyView({
+  state,
+  joinUrl,
+  onStartRound,
+  onReorder,
+  onOpenInvite,
+  actionError,
+  warningActive,
+  warningLabel,
+}: LobbyViewProps) {
   const [localOrder, setLocalOrder] = useState<string[]>(state.order);
   const [qr, setQr] = useState('');
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
@@ -67,12 +82,7 @@ export default function LobbyView({ state, joinUrl, onStartRound, onReorder, onO
   const reorderEnabled = isHost && state.phase === 'LOBBY';
 
   useEffect(() => {
-    setLocalOrder(state.order);
-  }, [state.order]);
-
-  useEffect(() => {
     if (!isHost || !joinUrl) {
-      setQr('');
       return;
     }
     void QRCode.toDataURL(joinUrl, {
@@ -81,11 +91,13 @@ export default function LobbyView({ state, joinUrl, onStartRound, onReorder, onO
     }).then(setQr);
   }, [isHost, joinUrl]);
 
+  const displayOrder = sameOrder(localOrder, state.order) ? localOrder : state.order;
+
   const orderedPlayers = useMemo(() => {
-    return localOrder
+    return displayOrder
       .map((playerId) => state.players.find((player) => player.playerId === playerId))
       .filter((player): player is PlayerSummary => Boolean(player));
-  }, [localOrder, state.players]);
+  }, [displayOrder, state.players]);
 
   const handleDragEnd = async (event: DragEndEvent) => {
     if (!reorderEnabled) {
@@ -95,12 +107,12 @@ export default function LobbyView({ state, joinUrl, onStartRound, onReorder, onO
     if (!over || active.id === over.id) {
       return;
     }
-    const oldIndex = localOrder.indexOf(active.id as string);
-    const newIndex = localOrder.indexOf(over.id as string);
+    const oldIndex = displayOrder.indexOf(active.id as string);
+    const newIndex = displayOrder.indexOf(over.id as string);
     if (oldIndex === -1 || newIndex === -1) {
       return;
     }
-    const nextOrder = arrayMove(localOrder, oldIndex, newIndex);
+    const nextOrder = arrayMove(displayOrder, oldIndex, newIndex);
     setLocalOrder(nextOrder);
     await onReorder(nextOrder);
   };
@@ -131,9 +143,10 @@ export default function LobbyView({ state, joinUrl, onStartRound, onReorder, onO
         </div>
       )}
       <div className="card">
+        {warningActive && warningLabel && <p className="warning-banner">{warningLabel}</p>}
         {reorderEnabled ? (
           <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-            <SortableContext items={localOrder} strategy={verticalListSortingStrategy}>
+            <SortableContext items={displayOrder} strategy={verticalListSortingStrategy}>
               {orderedPlayers.map((player) => (
                 <SortablePlayerRow key={player.playerId} player={player} />
               ))}

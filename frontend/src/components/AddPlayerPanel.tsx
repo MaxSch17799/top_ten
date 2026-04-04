@@ -4,28 +4,19 @@ import QRCode from 'qrcode';
 export interface AddPlayerPanelProps {
   joinUrl: string;
   gameCode: string;
-  visible: boolean;
   onClose: () => void;
 }
 
-export default function AddPlayerPanel({ joinUrl, gameCode, visible, onClose }: AddPlayerPanelProps) {
+export default function AddPlayerPanel({ joinUrl, gameCode, onClose }: AddPlayerPanelProps) {
   const [qr, setQr] = useState<string>('');
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (!visible) {
-      return;
-    }
-    setCopied(false);
     void QRCode.toDataURL(joinUrl, {
       margin: 1,
       color: { dark: '#39ff14', light: '#07070f' },
     }).then(setQr);
-  }, [joinUrl, visible]);
-
-  if (!visible) {
-    return null;
-  }
+  }, [joinUrl]);
 
   const handleCopy = async () => {
     try {

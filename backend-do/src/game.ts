@@ -1,45 +1,30 @@
-import questionBankClassic from '../question-banks/classic_v1.json' with { type: 'json' };
+import { defaultQuestionBankId, questionBanks as staticQuestionBanks } from './generated/questionBanks.js';
+import type { DbEnv } from './questionBanksDb.js';
+import type { QuestionBankDefinition } from './questionBankTypes.js';
+import { trackUsageEvent, type UsageMonitorEnv } from './usageMonitor.js';
 import {
   generateShortId,
   generateToken,
   normalizeNickname,
+  pickUniqueIndexes,
   seededRng,
   shuffleWithRng,
-  pickUniqueIndexes,
 } from './utils.js';
 
 type JsonPayload = Record<string, unknown>;
 
-async function parseJson(request: Request): Promise<JsonPayload> {
-  try {
-    return (await request.json()) as JsonPayload;
-  } catch {
-    return {};
-  }
-}
-
-const questionBanks: Record<string, QuestionBankDefinition> = {
-  [questionBankClassic.id]: questionBankClassic as QuestionBankDefinition,
-};
-
 const MAX_PLAYERS = 10;
 const HOST_TIMEOUT_MS = 10 * 60 * 1000;
+const LOBBY_TIMEOUT_MS = 30 * 60 * 1000;
+const ROUND_TIMEOUT_MS = 30 * 60 * 1000;
+const WARNING_LEAD_MS = 5 * 60 * 1000;
+const HEARTBEAT_PERSIST_MS = 30 * 1000;
 
 export type Phase = 'LOBBY' | 'ACTIVE' | 'ENDED';
 export type PlayerStatus = 'ACTIVE' | 'PENDING';
 export type PlayerRole = 'HOST' | 'PLAYER';
-
-interface QuestionDefinition {
-  id: string;
-  prompt: string;
-}
-
-interface QuestionBankDefinition {
-  id: string;
-  name: string;
-  version: number;
-  questions: QuestionDefinition[];
-}
+export type GameEndReason = 'HOST_REQUESTED' | 'HOST_TIMEOUT' | 'ROUND_TIMEOUT' | 'LOBBY_TIMEOUT';
+export type InactivityKind = 'LOBBY' | 'ROUND' | null;
 
 interface PlayerState {
   playerId: string;
@@ -62,8 +47,12 @@ interface GameState {
   gameId: string;
   seed: string;
   questionBankId: string;
+  questionBankSource: 'static' | 'db';
+  questionBankRevision: number;
+  questionBankSnapshot: QuestionBankDefinition;
   hostToken: string;
   phase: Phase;
+  endReason: GameEndReason | null;
   createdAt: number;
   updatedAt: number;
   round: number;
@@ -75,6 +64,11 @@ interface GameState {
   roundPromptsByRound: Record<number, RoundPromptState>;
   version: number;
   hostLastSeenAt: number;
+  lobbyActivityAt: number;
+  roundStartedAt: number | null;
+  inactivityKind: InactivityKind;
+  inactivityWarningAt: number | null;
+  inactivityEndsAt: number | null;
 }
 
 interface SerializedPlayer {
@@ -101,21 +95,53 @@ interface SerializedStateBase {
   seed: string;
   maxPlayers: number;
   chosenPromptId?: string;
+  endedReason: GameEndReason | null;
+  inactivityKind: InactivityKind;
+  inactivityWarningAt: number | null;
+  inactivityEndsAt: number | null;
 }
 
 interface SerializedStateForPlayer extends SerializedStateBase {
   yourPlayerId: string | null;
   yourRole: PlayerRole | null;
   yourSecretNumber: number | null;
-  promptOptions?: string[];
+  promptOptions?: QuestionBankDefinition['questions'];
 }
 
 type ClientMessage =
   | { type: 'PING' }
   | { type: 'HOST_CHOOSE_PROMPT'; promptId: string };
 
-export interface Env {
+export interface Env extends DbEnv, UsageMonitorEnv {
   GAME_DO: DurableObjectNamespace;
+  ADMIN_PASSWORD?: string;
+  ADMIN_SESSION_SECRET?: string;
+}
+
+async function parseJson(request: Request): Promise<JsonPayload> {
+  try {
+    return (await request.json()) as JsonPayload;
+  } catch {
+    return {};
+  }
+}
+
+function fallbackStaticBank(): QuestionBankDefinition {
+  return staticQuestionBanks[defaultQuestionBankId] as QuestionBankDefinition;
+}
+
+function isQuestionBankDefinition(value: unknown): value is QuestionBankDefinition {
+  if (!value || typeof value !== 'object') {
+    return false;
+  }
+  const candidate = value as QuestionBankDefinition;
+  return (
+    typeof candidate.id === 'string' &&
+    typeof candidate.name === 'string' &&
+    typeof candidate.version === 'number' &&
+    Array.isArray(candidate.questions) &&
+    candidate.questions.every((question) => typeof question.id === 'string' && typeof question.prompt === 'string')
+  );
 }
 
 export class GameDurableObject {
@@ -130,7 +156,7 @@ export class GameDurableObject {
   }
 
   private async loadState(): Promise<void> {
-    if (this.state !== null) {
+    if (this.state) {
       return;
     }
     if (!this.loadingStatePromise) {
@@ -142,25 +168,81 @@ export class GameDurableObject {
   }
 
   private async persistState(): Promise<void> {
-    if (!this.state) {
-      return;
+    if (this.state) {
+      await this.storage.put('state', this.state);
     }
-    await this.storage.put('state', this.state);
   }
 
-  private async saveStateSilently(): Promise<void> {
-    if (!this.state) {
-      return;
-    }
-    await this.storage.put('state', this.state);
-  }
-
-  private bumpVersion(): void {
+  private bumpVersion(now = Date.now()): void {
     if (!this.state) {
       return;
     }
     this.state.version += 1;
-    this.state.updatedAt = Date.now();
+    this.state.updatedAt = now;
+  }
+
+  private connectedPlayerCount(): number {
+    if (!this.state) {
+      return 0;
+    }
+    return Object.values(this.state.players).filter((player) => player.connected).length;
+  }
+
+  private trackUsage(payload: Parameters<typeof trackUsageEvent>[1]): void {
+    this.stateController.waitUntil(trackUsageEvent(this.env, payload).catch(() => undefined));
+  }
+
+  private notifyUsageStateChanged(): void {
+    if (!this.state || this.state.phase === 'ENDED') {
+      return;
+    }
+    this.trackUsage({
+      type: 'GAME_STATE_CHANGED',
+      gameId: this.state.gameId,
+      phase: this.state.phase,
+      connectedPlayers: this.connectedPlayerCount(),
+    });
+  }
+
+  private updateInactivityWindow(now = Date.now()): void {
+    if (!this.state) {
+      return;
+    }
+    if (this.state.phase === 'LOBBY') {
+      this.state.inactivityKind = 'LOBBY';
+      this.state.inactivityEndsAt = this.state.lobbyActivityAt + LOBBY_TIMEOUT_MS;
+      this.state.inactivityWarningAt = this.state.inactivityEndsAt - WARNING_LEAD_MS;
+      return;
+    }
+    if (this.state.phase === 'ACTIVE') {
+      const base = this.state.roundStartedAt ?? now;
+      this.state.inactivityKind = 'ROUND';
+      this.state.inactivityEndsAt = base + ROUND_TIMEOUT_MS;
+      this.state.inactivityWarningAt = this.state.inactivityEndsAt - WARNING_LEAD_MS;
+      return;
+    }
+    this.state.inactivityKind = null;
+    this.state.inactivityEndsAt = null;
+    this.state.inactivityWarningAt = null;
+  }
+
+  private async scheduleNextAlarm(): Promise<void> {
+    if (!this.state || this.state.phase === 'ENDED') {
+      await this.storage.deleteAlarm();
+      return;
+    }
+    const candidates: number[] = [];
+    if (this.state.inactivityEndsAt) {
+      candidates.push(this.state.inactivityEndsAt);
+    }
+    if (this.state.phase === 'ACTIVE') {
+      candidates.push(this.state.hostLastSeenAt + HOST_TIMEOUT_MS);
+    }
+    if (!candidates.length) {
+      await this.storage.deleteAlarm();
+      return;
+    }
+    await this.storage.setAlarm(Math.min(...candidates));
   }
 
   private createCorsHeaders(request: Request): Record<string, string> {
@@ -189,18 +271,16 @@ export class GameDurableObject {
       return new Response('Game not initialized', { status: 404, headers: corsHeaders });
     }
 
-    const gameRoute = url.pathname.match(/^\/api\/game\/([^\/]+)(\/.*)?$/);
-    if (!gameRoute) {
+    const match = url.pathname.match(/^\/api\/game\/([^/]+)(\/.*)?$/);
+    if (!match) {
       return new Response('Not found', { status: 404, headers: corsHeaders });
     }
-
-    const [, gameId, route] = gameRoute;
+    const [, gameId, route] = match;
     if (gameId !== this.state.gameId) {
       return new Response('Game mismatch', { status: 400, headers: corsHeaders });
     }
 
-    await this.checkAndAutoEndHostTimeout();
-
+    await this.checkAutoEndConditions();
     const normalizedRoute = (route ?? '').replace(/\/$/, '');
     switch (true) {
       case normalizedRoute === '/ws':
@@ -222,9 +302,14 @@ export class GameDurableObject {
     }
   }
 
+  public async alarm(): Promise<void> {
+    await this.loadState();
+    await this.checkAutoEndConditions();
+  }
+
   private async handleInternalCreate(request: Request, corsHeaders: Record<string, string>): Promise<Response> {
     const payload = await parseJson(request);
-    const gameId = typeof payload.gameId === 'string' ? payload.gameId : undefined;
+    const gameId = typeof payload.gameId === 'string' ? payload.gameId : '';
     if (!gameId) {
       return new Response('Missing gameId', { status: 400, headers: corsHeaders });
     }
@@ -232,22 +317,34 @@ export class GameDurableObject {
     if (this.state) {
       return new Response('Game already exists', { status: 409, headers: corsHeaders });
     }
+
     const now = Date.now();
     const hostPlayerId = generateShortId(8);
-    const playerToken = generateToken(48);
     const hostToken = generateToken(56);
+    const playerToken = generateToken(48);
     const nickname = normalizeNickname(String(payload.hostNickname ?? 'Host'));
-    const providedSeed = typeof payload.seed === 'string' ? payload.seed.trim() : '';
-    const seed = providedSeed || crypto.randomUUID();
+    const seed = typeof payload.seed === 'string' && payload.seed.trim() ? payload.seed.trim() : crypto.randomUUID();
+    const fallbackBank = fallbackStaticBank();
+    const providedSnapshot = isQuestionBankDefinition(payload.questionBankSnapshot) ? payload.questionBankSnapshot : null;
+    const snapshot = providedSnapshot ?? fallbackBank;
     const questionBankId =
-      typeof payload.questionBankId === 'string' ? payload.questionBankId : questionBankClassic.id;
+      typeof payload.questionBankId === 'string' && payload.questionBankId.trim() ? payload.questionBankId.trim() : snapshot.id;
+    const questionBankSource = payload.questionBankSource === 'db' ? 'db' : 'static';
+    const questionBankRevision =
+      typeof payload.questionBankRevision === 'number' && Number.isFinite(payload.questionBankRevision)
+        ? payload.questionBankRevision
+        : snapshot.version;
 
     this.state = {
       gameId,
       seed,
       questionBankId,
+      questionBankSource,
+      questionBankRevision,
+      questionBankSnapshot: snapshot,
       hostToken,
       phase: 'LOBBY',
+      endReason: null,
       createdAt: now,
       updatedAt: now,
       round: 0,
@@ -270,25 +367,40 @@ export class GameDurableObject {
       roundPromptsByRound: {},
       version: 1,
       hostLastSeenAt: now,
+      lobbyActivityAt: now,
+      roundStartedAt: null,
+      inactivityKind: 'LOBBY',
+      inactivityWarningAt: null,
+      inactivityEndsAt: null,
     };
-
+    this.updateInactivityWindow(now);
     await this.persistState();
-    this.broadcastState();
+    await this.scheduleNextAlarm();
+    this.trackUsage({ type: 'GAME_CREATED', gameId, connectedPlayers: 0 });
 
-    const responsePayload = {
-      gameId,
-      seed,
-      questionBankId,
-      hostToken,
-      playerId: hostPlayerId,
-      playerToken,
-      role: 'HOST',
-      joinPath: `/g/${gameId}`,
-    };
-    return new Response(JSON.stringify(responsePayload), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json', ...corsHeaders },
-    });
+    return new Response(
+      JSON.stringify({
+        gameId,
+        seed,
+        questionBankId,
+        hostToken,
+        playerId: hostPlayerId,
+        playerToken,
+        role: 'HOST',
+        joinPath: `/g/${gameId}`,
+      }),
+      { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+    );
+  }
+
+  private requireHostAuth(request: Request, body: JsonPayload | null): boolean {
+    if (!this.state) {
+      return false;
+    }
+    const headerToken = request.headers.get('x-host-token') ?? request.headers.get('authorization')?.split(' ')[1];
+    const bodyToken = typeof body?.hostToken === 'string' ? body.hostToken : undefined;
+    const token = bodyToken ?? headerToken;
+    return !!token && token === this.state.hostToken;
   }
 
   private async handleJoin(request: Request, corsHeaders: Record<string, string>): Promise<Response> {
@@ -304,8 +416,7 @@ export class GameDurableObject {
 
     const payload = await parseJson(request);
     const nickname = normalizeNickname(String(payload.nickname ?? 'Player'));
-    const totalPlayers = Object.keys(this.state.players).length;
-    if (totalPlayers >= MAX_PLAYERS) {
+    if (Object.keys(this.state.players).length >= MAX_PLAYERS) {
       return new Response(JSON.stringify({ error: 'FULL' }), {
         status: 409,
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -329,9 +440,14 @@ export class GameDurableObject {
     this.state.order.push(playerId);
     if (status === 'PENDING') {
       this.state.pendingJoinQueue.push(playerId);
+    } else {
+      this.state.lobbyActivityAt = now;
+      this.updateInactivityWindow(now);
     }
-    this.bumpVersion();
+    this.bumpVersion(now);
     await this.persistState();
+    await this.scheduleNextAlarm();
+    this.notifyUsageStateChanged();
     this.broadcastState();
 
     return new Response(
@@ -343,21 +459,8 @@ export class GameDurableObject {
         seed: this.state.seed,
         questionBankId: this.state.questionBankId,
       }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json', ...corsHeaders },
-      }
+      { status: 200, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
     );
-  }
-
-  private requireHostAuth(request: Request, body: JsonPayload | null): boolean {
-    if (!this.state) {
-      return false;
-    }
-    const headerToken = request.headers.get('x-host-token') ?? request.headers.get('authorization')?.split(' ')[1];
-    const bodyToken = typeof body?.hostToken === 'string' ? body.hostToken : undefined;
-    const token = bodyToken ?? headerToken;
-    return !!token && token === this.state.hostToken;
   }
 
   private async handleReorder(request: Request, corsHeaders: Record<string, string>): Promise<Response> {
@@ -374,20 +477,27 @@ export class GameDurableObject {
     if (!this.requireHostAuth(request, payload)) {
       return new Response('Unauthorized', { status: 401, headers: corsHeaders });
     }
-    const requestedOrder: string[] = Array.isArray(payload.order)
-      ? payload.order.map((item) => String(item))
-      : [];
-    const currentIds = new Set(Object.keys(this.state.players));
-    const providedIds = new Set(requestedOrder);
-    if (currentIds.size !== providedIds.size || ![...currentIds].every((id) => providedIds.has(id))) {
+
+    const requestedOrder = Array.isArray(payload.order) ? payload.order.map((item) => String(item)) : [];
+    const currentIds = Object.keys(this.state.players);
+    if (
+      requestedOrder.length !== currentIds.length ||
+      currentIds.some((playerId) => !requestedOrder.includes(playerId))
+    ) {
       return new Response(JSON.stringify({ error: 'INVALID_ORDER' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
       });
     }
+
+    const now = Date.now();
     this.state.order = requestedOrder;
-    this.bumpVersion();
+    this.state.lobbyActivityAt = now;
+    this.updateInactivityWindow(now);
+    this.bumpVersion(now);
     await this.persistState();
+    await this.scheduleNextAlarm();
+    this.notifyUsageStateChanged();
     this.broadcastState();
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
@@ -409,14 +519,20 @@ export class GameDurableObject {
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
       });
     }
+
+    const now = Date.now();
     this.state.phase = 'ACTIVE';
+    this.state.endReason = null;
     this.state.round = 1;
+    this.state.roundStartedAt = now;
     this.promotePendingPlayers();
     this.dealRound();
-    this.bumpVersion();
+    this.updateInactivityWindow(now);
+    this.bumpVersion(now);
     await this.persistState();
+    await this.scheduleNextAlarm();
+    this.notifyUsageStateChanged();
     this.broadcastState();
-    this.broadcastRoundStart();
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -437,13 +553,18 @@ export class GameDurableObject {
         headers: { 'Content-Type': 'application/json', ...corsHeaders },
       });
     }
+
+    const now = Date.now();
     this.state.round += 1;
+    this.state.roundStartedAt = now;
     this.promotePendingPlayers();
     this.dealRound();
-    this.bumpVersion();
+    this.updateInactivityWindow(now);
+    this.bumpVersion(now);
     await this.persistState();
+    await this.scheduleNextAlarm();
+    this.notifyUsageStateChanged();
     this.broadcastState();
-    this.broadcastRoundStart();
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -458,19 +579,9 @@ export class GameDurableObject {
     if (!this.requireHostAuth(request, payload)) {
       return new Response('Unauthorized', { status: 401, headers: corsHeaders });
     }
-    if (this.state.phase === 'ENDED') {
-      return new Response(JSON.stringify({ success: true }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json', ...corsHeaders },
-      });
+    if (this.state.phase !== 'ENDED') {
+      await this.endGame('HOST_REQUESTED');
     }
-    this.state.phase = 'ENDED';
-    this.state.roundHostPlayerId = null;
-    this.state.roundAssignments = {};
-    this.bumpVersion();
-    await this.persistState();
-    this.broadcastState();
-    this.broadcastGameEnded('HOST_REQUESTED');
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },
@@ -486,16 +597,13 @@ export class GameDurableObject {
     if (!playerInfo) {
       return new Response('Unauthorized', { status: 401, headers: corsHeaders });
     }
+
     await this.touchPlayerLastSeen(playerInfo.playerId);
     const sinceVersion = Number(url.searchParams.get('sinceVersion')) || 0;
     if (sinceVersion >= this.state.version) {
-      return new Response(null, {
-        status: 204,
-        headers: { 'X-Version': `${this.state.version}`, ...corsHeaders },
-      });
+      return new Response(null, { status: 204, headers: { 'X-Version': `${this.state.version}`, ...corsHeaders } });
     }
-    const payload = this.serializeStateForPlayer(playerInfo.playerId);
-    return new Response(JSON.stringify(payload), {
+    return new Response(JSON.stringify(this.serializeStateForPlayer(playerInfo.playerId)), {
       status: 200,
       headers: { 'Content-Type': 'application/json', 'X-Version': `${this.state.version}`, ...corsHeaders },
     });
@@ -516,63 +624,59 @@ export class GameDurableObject {
     const [client, server] = Object.values(pair);
     server.accept();
     this.addClient(playerInfo.playerId, server);
-    server.addEventListener('message', (event) => this.handleSocketMessage(playerInfo.playerId, server, event));
+    server.addEventListener('message', (event) => this.handleSocketMessage(playerInfo.playerId, event));
     server.addEventListener('close', () => void this.handleSocketClose(playerInfo.playerId, server));
     await this.touchPlayerLastSeen(playerInfo.playerId);
     this.bumpVersion();
     await this.persistState();
+    this.notifyUsageStateChanged();
     this.broadcastState();
-
-    const payload = this.serializeStateForPlayer(playerInfo.playerId);
-    server.send(JSON.stringify({ type: 'STATE', payload }));
-
+    server.send(JSON.stringify({ type: 'STATE', payload: this.serializeStateForPlayer(playerInfo.playerId) }));
     return new Response(null, { status: 101, webSocket: client });
   }
 
   private addClient(playerId: string, socket: WebSocket): void {
-    const set = this.clients.get(playerId) ?? new Set<WebSocket>();
-    set.add(socket);
-    this.clients.set(playerId, set);
-    const player = this.state?.players[playerId];
-    if (player) {
-      player.connected = true;
+    const sockets = this.clients.get(playerId) ?? new Set<WebSocket>();
+    sockets.add(socket);
+    this.clients.set(playerId, sockets);
+    if (this.state?.players[playerId]) {
+      this.state.players[playerId].connected = true;
     }
   }
 
   private async handleSocketClose(playerId: string, socket: WebSocket): Promise<void> {
-    const set = this.clients.get(playerId);
-    if (!set) {
+    const sockets = this.clients.get(playerId);
+    if (!sockets) {
       return;
     }
-    set.delete(socket);
-    if (set.size === 0) {
+    sockets.delete(socket);
+    if (sockets.size === 0) {
       this.clients.delete(playerId);
-      const player = this.state?.players[playerId];
-      if (player) {
-        player.connected = false;
+      if (this.state?.players[playerId]) {
+        this.state.players[playerId].connected = false;
         this.bumpVersion();
         await this.persistState();
+        this.notifyUsageStateChanged();
         this.broadcastState();
       }
     }
   }
 
-  private handleSocketMessage(playerId: string, socket: WebSocket, event: MessageEvent): void {
+  private handleSocketMessage(playerId: string, event: MessageEvent): void {
     try {
-      const data = typeof event.data === 'string' ? JSON.parse(event.data) : null;
+      const data = typeof event.data === 'string' ? (JSON.parse(event.data) as ClientMessage) : null;
       if (!data || typeof data.type !== 'string') {
         return;
       }
-      switch (data.type) {
-        case 'PING':
-          void this.touchPlayerLastSeen(playerId);
-          break;
-        case 'HOST_CHOOSE_PROMPT':
-          this.handleHostChoosePrompt(playerId, data.promptId);
-          break;
+      if (data.type === 'PING') {
+        void this.touchPlayerLastSeen(playerId);
+        return;
       }
-    } catch (error) {
-      console.error('ws message error', error);
+      if (data.type === 'HOST_CHOOSE_PROMPT') {
+        this.handleHostChoosePrompt(playerId, data.promptId);
+      }
+    } catch {
+      /* ignore malformed messages */
     }
   }
 
@@ -581,33 +685,30 @@ export class GameDurableObject {
       return;
     }
     const roundMeta = this.state.roundPromptsByRound[this.state.round];
-    if (!roundMeta || roundMeta.hostPlayerId !== playerId) {
-      return;
-    }
-    if (!roundMeta.promptIds.includes(promptId)) {
+    if (!roundMeta || roundMeta.hostPlayerId !== playerId || !roundMeta.promptIds.includes(promptId)) {
       return;
     }
     roundMeta.chosenPromptId = promptId;
     this.bumpVersion();
-    this.persistState();
+    this.stateController.waitUntil(this.persistState().catch(() => undefined));
     this.broadcastState();
-    this.broadcastEvent({ type: 'ROUND_META', payload: { chosenPromptId: promptId } });
   }
 
   private async touchPlayerLastSeen(playerId: string): Promise<void> {
-    if (!this.state) {
-      return;
-    }
-    const player = this.state.players[playerId];
-    if (!player) {
+    if (!this.state?.players[playerId]) {
       return;
     }
     const now = Date.now();
+    const player = this.state.players[playerId];
+    if (now - player.lastSeenAt < HEARTBEAT_PERSIST_MS) {
+      return;
+    }
     player.lastSeenAt = now;
     if (player.role === 'HOST') {
       this.state.hostLastSeenAt = now;
+      await this.scheduleNextAlarm();
     }
-    await this.saveStateSilently();
+    await this.persistState();
   }
 
   private getPlayerByToken(token: string | null): { playerId: string; player: PlayerState } | null {
@@ -624,27 +725,41 @@ export class GameDurableObject {
 
   private extractPlayerToken(request: Request, url: URL): string | null {
     const headerToken = request.headers.get('x-player-token') ?? request.headers.get('authorization')?.split(' ')[1];
-    if (headerToken) {
-      return headerToken;
-    }
-    return url.searchParams.get('token');
+    return headerToken ?? url.searchParams.get('token');
   }
 
-  private async checkAndAutoEndHostTimeout(): Promise<void> {
-    if (!this.state || this.state.phase !== 'ACTIVE') {
+  private async checkAutoEndConditions(): Promise<void> {
+    if (!this.state || this.state.phase === 'ENDED') {
       return;
     }
     const now = Date.now();
-    if (now - this.state.hostLastSeenAt <= HOST_TIMEOUT_MS) {
+    let reason: GameEndReason | null = null;
+    if (this.state.phase === 'ACTIVE' && now - this.state.hostLastSeenAt > HOST_TIMEOUT_MS) {
+      reason = 'HOST_TIMEOUT';
+    } else if (this.state.inactivityEndsAt && now >= this.state.inactivityEndsAt) {
+      reason = this.state.phase === 'LOBBY' ? 'LOBBY_TIMEOUT' : 'ROUND_TIMEOUT';
+    }
+    if (reason) {
+      await this.endGame(reason);
+      return;
+    }
+    await this.scheduleNextAlarm();
+  }
+
+  private async endGame(reason: GameEndReason): Promise<void> {
+    if (!this.state || this.state.phase === 'ENDED') {
       return;
     }
     this.state.phase = 'ENDED';
+    this.state.endReason = reason;
     this.state.roundHostPlayerId = null;
     this.state.roundAssignments = {};
+    this.updateInactivityWindow(Date.now());
     this.bumpVersion();
     await this.persistState();
+    await this.scheduleNextAlarm();
+    this.trackUsage({ type: 'GAME_ENDED', gameId: this.state.gameId });
     this.broadcastState();
-    this.broadcastGameEnded('HOST_TIMEOUT');
   }
 
   private promotePendingPlayers(): void {
@@ -652,42 +767,47 @@ export class GameDurableObject {
       return;
     }
     for (const playerId of this.state.pendingJoinQueue) {
-      const player = this.state.players[playerId];
-      if (player) {
-        player.status = 'ACTIVE';
+      if (this.state.players[playerId]) {
+        this.state.players[playerId].status = 'ACTIVE';
       }
     }
     this.state.pendingJoinQueue = [];
   }
 
   private dealRound(): void {
-    const state = this.state;
-    if (!state) {
+    if (!this.state) {
       return;
     }
-    const activeIds = state.order.filter((id) => state.players[id]?.status === 'ACTIVE');
-    if (activeIds.length === 0) {
-      state.roundHostPlayerId = null;
-      state.roundAssignments = {};
+    const activeIds = this.state.order.filter((playerId) => this.state?.players[playerId]?.status === 'ACTIVE');
+    if (!activeIds.length) {
+      this.state.roundHostPlayerId = null;
+      this.state.roundAssignments = {};
       return;
     }
-    const assignmentRng = seededRng(`${state.seed}-round-${state.round}-assign`);
+
+    const assignmentRng = seededRng(`${this.state.seed}-round-${this.state.round}-assign`);
     const assignmentMap: Record<string, number> = {};
-    const secretNumbers = shuffleWithRng(Array.from({ length: 10 }, (_, i) => i + 1), assignmentRng);
+    const secretNumbers = shuffleWithRng(
+      Array.from({ length: 10 }, (_, index) => index + 1),
+      assignmentRng
+    );
     for (let index = 0; index < activeIds.length; index += 1) {
       assignmentMap[activeIds[index]] = secretNumbers[index % secretNumbers.length];
     }
-    const hostIndex = (state.round - 1) % activeIds.length;
-    const roundHostId = activeIds[hostIndex];
-    state.roundAssignments = assignmentMap;
-    state.roundHostPlayerId = roundHostId;
 
-    const bank = questionBanks[state.questionBankId] ?? questionBankClassic;
-    const promptRng = seededRng(`${state.seed}-round-${state.round}-prompt`);
-    const indexes = pickUniqueIndexes(3, bank.questions.length, promptRng);
-    state.roundPromptsByRound[state.round] = {
+    const hostIndex = (this.state.round - 1) % activeIds.length;
+    const roundHostId = activeIds[hostIndex];
+    const promptIndexes = pickUniqueIndexes(
+      3,
+      this.state.questionBankSnapshot.questions.length,
+      seededRng(`${this.state.seed}-round-${this.state.round}-prompt`)
+    );
+
+    this.state.roundAssignments = assignmentMap;
+    this.state.roundHostPlayerId = roundHostId;
+    this.state.roundPromptsByRound[this.state.round] = {
       hostPlayerId: roundHostId,
-      promptIds: indexes.map((idx) => bank.questions[idx % bank.questions.length].id),
+      promptIds: promptIndexes.map((index) => this.state!.questionBankSnapshot.questions[index].id),
     };
   }
 
@@ -696,54 +816,34 @@ export class GameDurableObject {
       return;
     }
     for (const [playerId, sockets] of this.clients.entries()) {
-      const payload = this.serializeStateForPlayer(playerId);
-      const message = JSON.stringify({ type: 'STATE', payload });
-      for (const socket of sockets) {
-        socket.send(message);
+      const message = JSON.stringify({ type: 'STATE', payload: this.serializeStateForPlayer(playerId) });
+      for (const socket of [...sockets]) {
+        try {
+          socket.send(message);
+        } catch {
+          sockets.delete(socket);
+          try {
+            socket.close();
+          } catch {
+            /* ignore close failures */
+          }
+        }
+      }
+      if (sockets.size === 0) {
+        this.clients.delete(playerId);
+        if (this.state.players[playerId]) {
+          this.state.players[playerId].connected = false;
+        }
       }
     }
-  }
-
-  private broadcastRoundStart(): void {
-    if (!this.state) {
-      return;
-    }
-    const roundMeta = this.state.roundPromptsByRound[this.state.round];
-    for (const [playerId, sockets] of this.clients.entries()) {
-      const payload = {
-        round: this.state.round,
-        roundHostPlayerId: this.state.roundHostPlayerId,
-        yourSecretNumber: this.state.roundAssignments[playerId] ?? null,
-        promptIds: roundMeta?.hostPlayerId === playerId ? roundMeta.promptIds : undefined,
-        chosenPromptId: roundMeta?.chosenPromptId,
-      };
-      const message = JSON.stringify({ type: 'ROUND_START', payload });
-      for (const socket of sockets) {
-        socket.send(message);
-      }
-    }
-  }
-
-  private broadcastEvent(event: unknown): void {
-    for (const sockets of this.clients.values()) {
-      const message = JSON.stringify(event);
-      for (const socket of sockets) {
-        socket.send(message);
-      }
-    }
-  }
-
-  private broadcastGameEnded(reason: string): void {
-    this.broadcastEvent({ type: 'GAME_ENDED', payload: { reason } });
   }
 
   private serializeStateForPlayer(playerId: string | null): SerializedStateForPlayer {
-    const state = this.state;
-    if (!state) {
+    if (!this.state) {
       throw new Error('State unavailable');
     }
-    const serializedPlayers = state.order
-      .map((id) => state.players[id])
+    const serializedPlayers = this.state.order
+      .map((id) => this.state!.players[id])
       .filter((player): player is PlayerState => Boolean(player))
       .map((player, index) => ({
         playerId: player.playerId,
@@ -751,36 +851,42 @@ export class GameDurableObject {
         role: player.role,
         status: player.status,
         connected: player.connected,
-        seatLabel: index >= 0 ? index + 1 : null,
+        seatLabel: index + 1,
         joinedAt: player.joinedAt,
       }));
-    const pendingCount = state.order.filter((id) => state.players[id]?.status === 'PENDING').length;
-    const activeCount = state.order.filter((id) => state.players[id]?.status === 'ACTIVE').length;
-    const roundMeta = state.roundPromptsByRound[state.round];
+
+    const roundMeta = this.state.roundPromptsByRound[this.state.round];
     const base: SerializedStateBase = {
-      gameId: state.gameId,
-      version: state.version,
-      phase: state.phase,
-      round: state.round,
+      gameId: this.state.gameId,
+      version: this.state.version,
+      phase: this.state.phase,
+      round: this.state.round,
       players: serializedPlayers,
-      order: state.order,
-      pendingCount,
-      activeCount,
-      roundHostPlayerId: state.roundHostPlayerId,
-      questionBankId: state.questionBankId,
-      seed: state.seed,
+      order: this.state.order,
+      pendingCount: this.state.order.filter((id) => this.state!.players[id]?.status === 'PENDING').length,
+      activeCount: this.state.order.filter((id) => this.state!.players[id]?.status === 'ACTIVE').length,
+      roundHostPlayerId: this.state.roundHostPlayerId,
+      questionBankId: this.state.questionBankId,
+      seed: this.state.seed,
       maxPlayers: MAX_PLAYERS,
       chosenPromptId: roundMeta?.chosenPromptId,
+      endedReason: this.state.endReason,
+      inactivityKind: this.state.inactivityKind,
+      inactivityWarningAt: this.state.inactivityWarningAt,
+      inactivityEndsAt: this.state.inactivityEndsAt,
     };
-    const playerInfo = playerId ? state.players[playerId] : null;
+
+    const player = playerId ? this.state.players[playerId] : null;
     const payload: SerializedStateForPlayer = {
       ...base,
       yourPlayerId: playerId,
-      yourRole: playerInfo?.role ?? null,
-      yourSecretNumber: playerId ? state.roundAssignments[playerId] ?? null : null,
+      yourRole: player?.role ?? null,
+      yourSecretNumber: playerId ? this.state.roundAssignments[playerId] ?? null : null,
     };
     if (roundMeta?.hostPlayerId === playerId) {
-      payload.promptOptions = roundMeta.promptIds;
+      payload.promptOptions = roundMeta.promptIds
+        .map((promptId) => this.state!.questionBankSnapshot.questions.find((question) => question.id === promptId) ?? null)
+        .filter((question): question is QuestionBankDefinition['questions'][number] => Boolean(question));
     }
     return payload;
   }
