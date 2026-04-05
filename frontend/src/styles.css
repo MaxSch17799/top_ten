@@ -595,8 +595,54 @@ a.secondary-link {
   max-width: 520px;
 }
 
+.sheet.admin-shell-page {
+  width: min(1360px, 100%);
+}
+
 .admin-page {
   text-align: left;
+}
+
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.admin-toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-toggle-label {
+  color: var(--muted);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+}
+
+.admin-toggle-set {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-toggle-chip {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f6ff;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 0.95rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.05rem;
+  text-transform: none;
+}
+
+.admin-toggle-chip.active {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .admin-header {
@@ -608,20 +654,78 @@ a.secondary-link {
   justify-content: flex-start;
 }
 
-.admin-grid {
-  display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1.4fr) minmax(220px, 0.9fr);
-  gap: 1rem;
-  align-items: start;
+.admin-tabbar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.admin-sidebar,
-.admin-editor,
-.admin-usage,
-.admin-import,
-.admin-revisions {
+.admin-tab {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f6ff;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  text-transform: none;
+  letter-spacing: normal;
+  padding: 0.85rem 1.2rem;
+}
+
+.admin-tab.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.admin-tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-panel {
   text-align: left;
+  width: 100%;
+}
+
+.admin-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.admin-panel-head h3 {
+  margin: 0;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.admin-question-textarea {
+  min-height: 26rem;
+}
+
+.admin-section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.admin-section-head h3 {
+  margin: 0;
+}
+
+.admin-editor-count {
+  margin: 0;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
 .bank-list,
@@ -666,9 +770,81 @@ a.secondary-link {
   min-height: 18rem;
 }
 
+.question-editor-dynamic {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.question-row-editor {
+  display: grid;
+  grid-template-columns: 44px 42px minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.85rem;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.question-row-editor.dragging {
+  border-color: var(--accent);
+  background: rgba(57, 255, 20, 0.08);
+}
+
+.question-row-grip {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  padding: 0.75rem 0.4rem;
+  min-width: 0;
+  line-height: 1;
+}
+
+.question-row-index {
+  color: var(--muted);
+  padding-top: 0.85rem;
+  text-align: center;
+}
+
+.question-row-input {
+  min-height: 5.2rem;
+}
+
+.question-row-remove {
+  align-self: center;
+}
+
+.question-editor-footer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.75rem;
+}
+
 .usage-grid {
   display: grid;
   gap: 0.65rem;
+}
+
+.admin-usage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.admin-usage-card {
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-usage-card strong {
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .usage-grid p,
@@ -694,6 +870,125 @@ a.secondary-link {
   padding: 1rem;
   background: rgba(2, 2, 5, 0.55);
   color: #f5f6ff;
+}
+
+.admin-modal-card {
+  width: min(560px, 100%);
+}
+
+.admin-theme-serious {
+  align-items: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.admin-theme-serious .admin-page,
+.admin-theme-serious .admin-page .card {
+  background: #f5f7fa;
+  color: #1f2937;
+  border: 1px solid #d8dde5;
+  box-shadow: none;
+}
+
+.admin-theme-serious .admin-page,
+.admin-theme-serious .admin-page * {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: normal;
+}
+
+.admin-theme-serious .admin-page h2,
+.admin-theme-serious .admin-page h3,
+.admin-theme-serious .admin-page .eyebrow,
+.admin-theme-serious .admin-page .field,
+.admin-theme-serious .admin-page button,
+.admin-theme-serious .admin-page a {
+  text-transform: none;
+}
+
+.admin-theme-serious .admin-page h2 {
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+}
+
+.admin-theme-serious .admin-page h3 {
+  font-size: 1.05rem;
+}
+
+.admin-theme-serious .admin-page .eyebrow,
+.admin-theme-serious .admin-page .footnote,
+.admin-theme-serious .admin-page .bank-meta,
+.admin-theme-serious .admin-page .admin-toggle-label,
+.admin-theme-serious .admin-page .admin-editor-count {
+  color: #667085;
+}
+
+.admin-theme-serious .admin-page .input,
+.admin-theme-serious .admin-page select,
+.admin-theme-serious .admin-page .invite-link input {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #cfd6de;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.admin-theme-serious .admin-page .input:focus,
+.admin-theme-serious .admin-page select:focus {
+  border-color: #5b89ff;
+}
+
+.admin-theme-serious .admin-page button.primary,
+.admin-theme-serious .admin-page a.primary {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.admin-theme-serious .admin-page button.secondary,
+.admin-theme-serious .admin-page button.ghost,
+.admin-theme-serious .admin-page a.secondary-link,
+.admin-theme-serious .admin-page a.admin-link,
+.admin-theme-serious .admin-page .admin-toggle-chip,
+.admin-theme-serious .admin-page .bank-row,
+.admin-theme-serious .admin-page .admin-tab,
+.admin-theme-serious .admin-page .question-row-grip {
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #cfd6de;
+}
+
+.admin-theme-serious .admin-page .bank-row.active,
+.admin-theme-serious .admin-page .admin-tab.active,
+.admin-theme-serious .admin-page .admin-toggle-chip.active,
+.admin-theme-serious .admin-page .question-row-editor.dragging {
+  border-color: #5b89ff;
+  box-shadow: none;
+  color: #1d4ed8;
+}
+
+.admin-theme-serious .admin-page .question-row-editor,
+.admin-theme-serious .admin-page .revision-row,
+.admin-theme-serious .admin-page .admin-usage-card {
+  background: #ffffff;
+  border: 1px solid #d8dde5;
+}
+
+.admin-theme-serious .admin-page .warning-banner {
+  background: #fff7db;
+  color: #7a4f01;
+  border: 1px solid #f2cd70;
+}
+
+.admin-theme-serious .admin-page .status {
+  color: #1d4ed8;
+}
+
+.admin-theme-serious .admin-page .error {
+  color: #c2410c;
+}
+
+.admin-theme-serious .admin-page .admin-import input[type='file'] {
+  background: #ffffff;
+  color: #111827;
+  border: 1px dashed #cfd6de;
 }
 
 @media (max-width: 640px) {
@@ -742,8 +1037,36 @@ a.secondary-link {
     grid-template-columns: 1fr;
   }
 
-  .revision-row {
+  .admin-toolbar,
+  .admin-section-head,
+  .admin-panel-head {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .admin-form-actions,
+  .admin-tabbar {
+    flex-direction: column;
+  }
+
+  .question-row-editor {
+    grid-template-columns: 36px 36px minmax(0, 1fr);
+  }
+
+  .admin-usage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .question-row-remove {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .revision-row,
+  .admin-form-actions button,
+  .admin-tab {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
   }
 }
