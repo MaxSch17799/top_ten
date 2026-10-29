@@ -2,155 +2,140 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { buildWsUrl, fetchGameState } from '../api';
 import type { SerializedStateForPlayer } from '../lib/types';
 
-type WebSocketStatus = 'idle' | 'connecting' | 'open' | 'closed' | 'error';
+type Status = 'idle' | 'connecting' | 'open' | 'closed' | 'error';
+type VersionedState = { gameId: string; version: number };
 
-interface UseGameConnectionProps {
-  gameId: string;
-  playerToken?: string;
-}
-
-interface UseGameConnectionResult {
-  state: SerializedStateForPlayer | null;
-  wsStatus: WebSocketStatus;
-  lastError: string | null;
-  requestState: () => Promise<void>;
-}
-
-export function useGameConnection({ gameId, playerToken }: UseGameConnectionProps): UseGameConnectionResult {
-  const [state, setState] = useState<SerializedStateForPlayer | null>(null);
-  const [wsStatus, setWsStatus] = useState<WebSocketStatus>('idle');
+export function useGameConnection<
+  T extends VersionedState = SerializedStateForPlayer,
+>({ gameId, playerToken }: { gameId: string; playerToken?: string }) {
+  const identity = `${gameId}:${playerToken ?? ''}`;
+  const [snapshot, setSnapshot] = useState<{
+    state: T;
+    identity: string;
+    receivedAt: number;
+  } | null>(null);
+  const [wsStatus, setWsStatus] = useState<Status>('idle');
   const [lastError, setLastError] = useState<string | null>(null);
-  const sinceVersionRef = useRef(0);
-  const wsRef = useRef<WebSocket | null>(null);
-  const pollRef = useRef<number | null>(null);
-  const pingRef = useRef<number | null>(null);
-
-  const fetchLatestState = useCallback(async () => {
-    if (!playerToken) {
-      return;
-    }
-    try {
-      const payload = await fetchGameState({
-        gameId,
-        token: playerToken,
-        sinceVersion: sinceVersionRef.current,
-      });
-      if (payload) {
-        sinceVersionRef.current = payload.version;
-        setState(payload);
-      }
-    } catch (error) {
-      setLastError(error instanceof Error ? error.message : 'Failed to load state');
-    }
-  }, [gameId, playerToken]);
-
-  const stopPolling = useCallback(() => {
-    if (pollRef.current) {
-      clearInterval(pollRef.current);
-      pollRef.current = null;
-    }
-  }, []);
-
-  const stopPinging = useCallback(() => {
-    if (pingRef.current) {
-      clearInterval(pingRef.current);
-      pingRef.current = null;
-    }
-  }, []);
-
-  const startPinging = useCallback(() => {
-    if (pingRef.current || typeof window === 'undefined') {
-      return;
-    }
-    pingRef.current = window.setInterval(() => {
-      if (wsRef.current?.readyState === WebSocket.OPEN) {
-        wsRef.current.send(JSON.stringify({ type: 'PING' }));
-      }
-    }, 60_000);
-  }, []);
-
-  const startPolling = useCallback(() => {
-    if (pollRef.current || !playerToken || typeof window === 'undefined') {
-      return;
-    }
-    pollRef.current = window.setInterval(() => {
-      void fetchLatestState();
-    }, 5000);
-  }, [fetchLatestState, playerToken]);
-
+  const refreshRef = useRef<() => Promise<void>>(async () => {});
   useEffect(() => {
-    if (!playerToken) {
-      sinceVersionRef.current = 0;
-      stopPolling();
-      stopPinging();
-      wsRef.current?.close();
-      wsRef.current = null;
-      return;
-    }
-
-    sinceVersionRef.current = 0;
-    const ws = new WebSocket(buildWsUrl(gameId, playerToken));
-    wsRef.current = ws;
-    ws.onopen = () => {
-      setWsStatus('open');
+    if (!playerToken) return;
+    let disposed = false;
+    let version = 0;
+    let socket: WebSocket | null = null;
+    let retry: number | undefined;
+    let attempts = 0;
+    let lastMessageAt = Date.now();
+    const accept = (payload: T) => {
+      if (disposed || payload.gameId !== gameId || payload.version < version)
+        return;
+      version = payload.version;
+      setSnapshot({ state: payload, identity, receivedAt: Date.now() });
       setLastError(null);
-      stopPolling();
-      startPinging();
     };
-    ws.onmessage = (event) => {
+    const refresh = async () => {
       try {
-        const message = JSON.parse(event.data);
-        if (message?.type === 'STATE' && message.payload) {
-          const payload = message.payload as SerializedStateForPlayer;
-          sinceVersionRef.current = payload.version;
-          setState(payload);
-        }
+        const payload = await fetchGameState<T>({
+          gameId,
+          token: playerToken,
+          sinceVersion: version,
+        });
+        if (!disposed) setLastError(null);
+        if (payload) accept(payload);
       } catch (error) {
-        console.error('ws payload', error);
+        if (!disposed)
+          setLastError(
+            error instanceof Error ? error.message : 'Connection failed',
+          );
       }
     };
-    ws.onerror = () => {
-      setWsStatus('error');
-      setLastError('Realtime connection failed');
-      stopPinging();
-      startPolling();
+    refreshRef.current = refresh;
+    const connect = () => {
+      if (disposed) return;
+      if (retry !== undefined) {
+        clearTimeout(retry);
+        retry = undefined;
+      }
+      if (
+        socket &&
+        (socket.readyState === WebSocket.OPEN ||
+          socket.readyState === WebSocket.CONNECTING)
+      )
+        return;
+      setWsStatus('connecting');
+      socket = new WebSocket(buildWsUrl(gameId, playerToken));
+      const ws = socket;
+      ws.onopen = () => {
+        if (!disposed) {
+          attempts = 0;
+          lastMessageAt = Date.now();
+          setWsStatus('open');
+          void refresh();
+        }
+      };
+      ws.onmessage = (event) => {
+        lastMessageAt = Date.now();
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'STATE' && data.payload) accept(data.payload as T);
+        } catch {
+          /* ignore malformed messages */
+        }
+      };
+      ws.onerror = () => {
+        if (!disposed) {
+          setWsStatus('error');
+          ws.close();
+        }
+      };
+      ws.onclose = () => {
+        if (disposed) return;
+        socket = null;
+        setWsStatus('closed');
+        retry = window.setTimeout(
+          connect,
+          Math.min(30_000, 1000 * 2 ** attempts++),
+        );
+      };
     };
-    ws.onclose = () => {
-      setWsStatus((current) => (current === 'open' ? 'closed' : current));
-      stopPinging();
-      startPolling();
+    const wake = () => {
+      if (document.visibilityState === 'visible') {
+        void refresh();
+        connect();
+      }
     };
-
-    void fetchLatestState();
-    startPolling();
-
+    const poll = window.setInterval(() => {
+      if (socket?.readyState !== WebSocket.OPEN) void refresh();
+    }, 5000);
+    const ping = window.setInterval(() => {
+      if (socket?.readyState === WebSocket.OPEN) {
+        if (Date.now() - lastMessageAt > 90_000) {
+          socket.close();
+          return;
+        }
+        socket.send('{"type":"PING"}');
+      }
+    }, 30_000);
+    connect();
+    void refresh();
+    window.addEventListener('online', wake);
+    document.addEventListener('visibilitychange', wake);
     return () => {
-      wsRef.current?.close();
-      wsRef.current = null;
-      stopPolling();
-      stopPinging();
+      disposed = true;
+      if (retry !== undefined) clearTimeout(retry);
+      clearInterval(poll);
+      clearInterval(ping);
+      socket?.close();
+      window.removeEventListener('online', wake);
+      document.removeEventListener('visibilitychange', wake);
     };
-  }, [gameId, playerToken, fetchLatestState, startPinging, startPolling, stopPinging, stopPolling]);
-
-  useEffect(() => {
-    if (wsStatus === 'open') {
-      stopPolling();
-    }
-  }, [stopPolling, wsStatus]);
-
-  const hasFreshState = state?.gameId === gameId;
-  const effectiveState = playerToken && hasFreshState ? state : null;
-  const effectiveWsStatus: WebSocketStatus = !playerToken
-    ? 'idle'
-    : !hasFreshState || wsStatus === 'idle'
-      ? 'connecting'
-      : wsStatus;
-  const effectiveLastError = playerToken && hasFreshState ? lastError : null;
-
+  }, [gameId, identity, playerToken]);
+  const requestState = useCallback(() => refreshRef.current(), []);
   return {
-    state: effectiveState,
-    wsStatus: effectiveWsStatus,
-    lastError: effectiveLastError,
-    requestState: fetchLatestState,
+    state:
+      playerToken && snapshot?.identity === identity ? snapshot.state : null,
+    receivedAt: snapshot?.identity === identity ? snapshot.receivedAt : 0,
+    wsStatus: playerToken ? wsStatus : ('idle' as Status),
+    lastError: playerToken ? lastError : null,
+    requestState,
   };
 }

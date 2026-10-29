@@ -45,7 +45,7 @@ async function parseJson<T>(response: Response): Promise<T> {
   return payload as T;
 }
 
-async function request<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
+export async function request<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
   const response = await fetch(input, init);
   return parseJson<T>(response);
 }
@@ -55,30 +55,34 @@ function authHeaders(token?: string | null): Record<string, string> {
 }
 
 export interface CreateGamePayload {
+  gameType?: 'top10' | 'just-one';
+  settings?: import('../../shared/justOne').JustOneSettings;
   hostNickname: string;
   seed?: string;
-  questionBankId: string;
+  questionBankId?: string;
   overrideToken?: string;
 }
 
 export interface CreateGameResult {
+  gameType?: 'top10' | 'just-one';
   gameId: string;
   hostToken: string;
   playerId: string;
   playerToken: string;
   role: 'HOST';
-  seed: string;
-  questionBankId: string;
+  seed?: string;
+  questionBankId?: string;
   joinPath: string;
 }
 
 export interface JoinGameResult {
+  gameType?: 'top10' | 'just-one';
   playerId: string;
   playerToken: string;
   role: 'PLAYER';
   status: 'ACTIVE' | 'PENDING';
-  seed: string;
-  questionBankId: string;
+  seed?: string;
+  questionBankId?: string;
 }
 
 export interface AdminLoginResult {
@@ -102,11 +106,11 @@ export async function joinGame(gameId: string, nickname: string): Promise<JoinGa
   });
 }
 
-export async function fetchGameState(options: {
+export async function fetchGameState<T = SerializedStateForPlayer>(options: {
   gameId: string;
   token: string;
   sinceVersion?: number;
-}): Promise<SerializedStateForPlayer | null> {
+}): Promise<T | null> {
   const searchParams = new URLSearchParams();
   searchParams.set('token', options.token);
   if (options.sinceVersion) {
@@ -116,7 +120,7 @@ export async function fetchGameState(options: {
   if (response.status === 204) {
     return null;
   }
-  return parseJson<SerializedStateForPlayer>(response);
+  return parseJson<T>(response);
 }
 
 async function hostAction(gameId: string, action: string, session: SessionData, payload: JsonPayload = {}): Promise<HostActionResponse> {

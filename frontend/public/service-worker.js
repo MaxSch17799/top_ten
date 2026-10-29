@@ -1,5 +1,5 @@
-const CACHE_NAME = 'top10-cache-v2';
-const CORE_ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/vite.svg', '/question-banks/manifest.json'];
+const CACHE_NAME = 'party-cache-v3';
+const CORE_ASSETS = ['/', '/index.html', '/manifest.webmanifest', '/party.svg', '/question-banks/manifest.json'];
 
 async function getQuestionBankAssets() {
   try {
@@ -50,6 +50,18 @@ self.addEventListener('fetch', (event) => {
   if (requestUrl.origin !== location.origin) {
     return;
   }
+  // Session data must never enter the PWA cache. Development modules stay live too.
+  if (requestUrl.pathname.startsWith('/api/') || requestUrl.pathname.startsWith('/src/') || requestUrl.pathname.startsWith('/@')) return;
+  if (event.request.mode === 'navigate' || requestUrl.pathname.endsWith('.json') || requestUrl.pathname.endsWith('.webmanifest')) {
+    event.respondWith(fetch(event.request).then((response) => {
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(event.request.mode === 'navigate' ? '/index.html' : event.request, copy)));
+      }
+      return response;
+    }).catch(async () => (await caches.match(event.request)) || (event.request.mode === 'navigate' ? await caches.match('/index.html') : Response.error())));
+    return;
+  }
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) {
@@ -58,7 +70,7 @@ self.addEventListener('fetch', (event) => {
       return fetch(event.request)
         .then((response) => {
           const cloned = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned));
+          if (response.ok) event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned)));
           return response;
         })
         .catch(() => caches.match('/index.html'));

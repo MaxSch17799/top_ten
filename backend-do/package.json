@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "node ../scripts/sync-question-banks.mjs",
-    "build": "npx wrangler build",
-    "predev": "node ../scripts/sync-question-banks.mjs",
+    "prebuild": "npm --prefix .. run sync:banks",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "predev": "npm --prefix .. run sync:banks",
     "dev": "npx wrangler dev --log-level error",
-    "prelint": "node ../scripts/sync-question-banks.mjs",
+    "prelint": "npm --prefix .. run sync:banks",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

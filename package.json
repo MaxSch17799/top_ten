@@ -2,9 +2,21 @@
   "name": "top-ten",
   "private": true,
   "type": "module",
-  "workspaces": ["backend-do"],
+  "workspaces": [
+    "backend-do"
+  ],
   "scripts": {
     "sync:question-banks": "node scripts/sync-question-banks.mjs",
-    "deploy:worker": "npm run sync:question-banks && cd backend-do && npx wrangler deploy"
+    "sync:just-one-banks": "node scripts/sync-just-one-banks.mjs",
+    "sync:banks": "npm run sync:question-banks && npm run sync:just-one-banks",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "playwright test",
+    "test:live": "node scripts/verify-live.mjs",
+    "deploy:worker": "npm run sync:banks && cd backend-do && wrangler deploy"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "tsx": "^4.23.15",
+    "wrangler": "^4.156.0"
   }
 }

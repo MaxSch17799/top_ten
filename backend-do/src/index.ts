@@ -22,6 +22,9 @@ import {
 } from './questionBanksDb.js';
 import { fetchUsageStatus, trackUsageEvent, UsageMonitorDurableObject } from './usageMonitor.js';
 import { generateNumericCode } from './utils.js';
+import { justOneBankSummaries } from './generated/justOneBanks.js';
+import { checkedSettings } from './justOne/engine.js';
+import { defaultJustOneSettings } from '../../shared/justOne.js';
 
 type JsonPayload = Record<string, unknown>;
 
@@ -130,15 +133,24 @@ async function requireOverrideIfNeeded(request: Request, env: Env, payload: Json
 
 async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const payload = await parseJson(request);
+  if (payload.gameType !== undefined && !['top10', 'just-one'].includes(String(payload.gameType))) {
+    return errorResponse(request, 400, 'UNKNOWN_GAME', 'Unknown game type');
+  }
+  if (payload.gameType === 'just-one') {
+    try { checkedSettings(defaultJustOneSettings, payload.settings ?? {}); }
+    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
+  }
   const overrideRequired = await requireOverrideIfNeeded(request, env, payload);
   if (overrideRequired) {
     return overrideRequired;
   }
 
   const requestedBankId = typeof payload.questionBankId === 'string' ? payload.questionBankId : '';
-  const resolvedBank = await getQuestionBankById(env, requestedBankId);
+  const resolvedBank = payload.gameType === 'just-one'
+    ? { bank: null, source: null, usage: null }
+    : await getQuestionBankById(env, requestedBankId);
   trackD1Usage(ctx, env, resolvedBank.usage);
-  if (!resolvedBank.bank || !resolvedBank.source) {
+  if (payload.gameType !== 'just-one' && (!resolvedBank.bank || !resolvedBank.source)) {
     return errorResponse(request, 400, 'QUESTION_BANK_NOT_FOUND', 'Could not find the selected question bank');
   }
 
@@ -152,9 +164,9 @@ async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): 
       body: JSON.stringify({
         ...payload,
         gameId,
-        questionBankId: resolvedBank.bank.id,
+        questionBankId: resolvedBank.bank?.id,
         questionBankSource: resolvedBank.source,
-        questionBankRevision: resolvedBank.bank.version,
+        questionBankRevision: resolvedBank.bank?.version,
         questionBankSnapshot: resolvedBank.bank,
       }),
     });
@@ -380,6 +392,9 @@ export default {
     }
 
     const url = new URL(request.url);
+    if (url.pathname === '/api/just-one/banks' && request.method === 'GET') {
+      return jsonResponse(request, 200, { banks: justOneBankSummaries });
+    }
 
     if (url.pathname === '/api/game/create' && request.method === 'POST') {
       return handleCreate(request, env, ctx);

@@ -1,5 +1,6 @@
 import { defaultQuestionBankId, questionBanks as staticQuestionBanks } from './generated/questionBanks.js';
 import type { DbEnv } from './questionBanksDb.js';
+import { JustOneRoom } from './justOne/room.js';
 import type { QuestionBankDefinition } from './questionBankTypes.js';
 import { trackUsageEvent, type UsageMonitorEnv } from './usageMonitor.js';
 import {
@@ -145,11 +146,14 @@ function isQuestionBankDefinition(value: unknown): value is QuestionBankDefiniti
 }
 
 export class GameDurableObject {
+  private justOne: JustOneRoom;
   private state: GameState | null = null;
   private clients = new Map<string, Set<WebSocket>>();
   private loadingStatePromise: Promise<void> | null = null;
 
-  constructor(private readonly stateController: DurableObjectState, private readonly env: Env) {}
+  constructor(private readonly stateController: DurableObjectState, private readonly env: Env) {
+    this.justOne = new JustOneRoom(stateController, env);
+  }
 
   private get storage(): DurableObjectStorage {
     return this.stateController.storage;
@@ -263,9 +267,12 @@ export class GameDurableObject {
 
     const url = new URL(request.url);
     if (url.pathname === '/api/internal/create') {
+      const payload = await request.clone().json() as JsonPayload;
+      if (payload.gameType === 'just-one' || await this.justOne.exists()) return this.justOne.fetch(request);
       return this.handleInternalCreate(request, corsHeaders);
     }
 
+    if (await this.justOne.exists()) return this.justOne.fetch(request);
     await this.loadState();
     if (!this.state) {
       return new Response('Game not initialized', { status: 404, headers: corsHeaders });
@@ -282,6 +289,11 @@ export class GameDurableObject {
 
     await this.checkAutoEndConditions();
     const normalizedRoute = (route ?? '').replace(/\/$/, '');
+    if (normalizedRoute === '/info' && request.method === 'GET') {
+      return new Response(JSON.stringify({ gameType: 'top10', phase: this.state.phase }), {
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...corsHeaders },
+      });
+    }
     switch (true) {
       case normalizedRoute === '/ws':
         return this.handleWebSocket(request, corsHeaders);
@@ -303,6 +315,7 @@ export class GameDurableObject {
   }
 
   public async alarm(): Promise<void> {
+    if (await this.justOne.exists()) return this.justOne.alarm();
     await this.loadState();
     await this.checkAutoEndConditions();
   }
@@ -669,6 +682,9 @@ export class GameDurableObject {
         return;
       }
       if (data.type === 'PING') {
+        for (const socket of this.clients.get(playerId) ?? []) {
+          try { socket.send('{"type":"PONG"}'); } catch { /* next connection will recover */ }
+        }
         void this.touchPlayerLastSeen(playerId);
         return;
       }

@@ -7,6 +7,7 @@ import { useGameConnection } from '../hooks/useGameConnection';
 import AddPlayerPanel from './AddPlayerPanel';
 import LobbyView from './LobbyView';
 import RoundView from './RoundView';
+import SessionNavigation from './SessionNavigation';
 import type { SessionData } from '../lib/types';
 
 export default function GameShell() {
@@ -242,6 +243,7 @@ export default function GameShell() {
     return (
       <main className="page sheet">
         <section className="host-form">
+          <SessionNavigation />
           <h1>Join the Game</h1>
           <form onSubmit={handleJoin} className="stack">
             <label className="field">
@@ -292,6 +294,7 @@ export default function GameShell() {
 
   return (
     <main className="page sheet">
+      <div className="session-layout"><SessionNavigation active={state.phase === 'ACTIVE'} />
       {state.phase === 'LOBBY' && (
         <LobbyView
           state={state}
@@ -318,6 +321,7 @@ export default function GameShell() {
       {state && inviteOpen && (state.phase === 'LOBBY' || state.yourRole === 'HOST') ? (
         <AddPlayerPanel joinUrl={joinUrl} gameCode={gameId ?? ''} onClose={() => setInviteOpen(false)} />
       ) : null}
+      </div>
     </main>
   );
 }

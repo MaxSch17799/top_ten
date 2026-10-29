@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node ../scripts/sync-question-banks.mjs",
+    "predev": "npm --prefix .. run sync:banks",
     "dev": "vite",
-    "prebuild": "node ../scripts/sync-question-banks.mjs",
+    "prebuild": "npm --prefix .. run sync:banks",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

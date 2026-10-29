@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import SessionNavigation from './SessionNavigation';
 
 export default function LandingView() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function LandingView() {
   return (
     <main className="page sheet">
       <section className="hero">
+        <SessionNavigation />
         <h1>Top 10</h1>
         <p className="tagline">
           Answer a prompt with a secret number while the question master tries to guess the correct order.

@@ -19,7 +19,7 @@ import type { AdminQuestionBankDetail, QuestionBankCatalogItem, UsageStatus } fr
 import PasswordPromptDialog from './PasswordPromptDialog';
 
 type AdminTheme = 'serious' | 'retro';
-type AdminTab = 'edit' | 'create' | 'usage';
+type AdminTab = 'edit' | 'create' | 'usage' | 'settings';
 type EditorMode = 'dynamic' | 'text';
 type DraftKey = 'edit' | 'create';
 type ImportTarget = 'edit' | 'create';
@@ -396,7 +396,7 @@ export default function AdminDashboard() {
     }
     return window.localStorage.getItem('top10-admin-theme') === 'retro' ? 'retro' : 'serious';
   });
-  const [editorMode, setEditorMode] = useState<EditorMode>('dynamic');
+  const [editorMode, setEditorMode] = useState<EditorMode>('text');
   const [editDraft, setEditDraft] = useState<BankDraft>(() => makeDraft());
   const [createDraft, setCreateDraft] = useState<BankDraft>(() => makeDraft());
   const [unsavedDialog, setUnsavedDialog] = useState<UnsavedDialogState | null>(null);
@@ -459,11 +459,15 @@ export default function AdminDashboard() {
       ]);
       setBanks(bankResult.banks);
       setUsage(usageResult);
-      if (!preserveSelection && bankResult.banks.length > 0) {
-        setSelectedBankId(bankResult.banks[0].id);
+      if (!preserveSelection) {
+        setSelectedBankId(null);
+        setSelectedDetail(null);
+        setEditDraft(makeDraft());
       }
       if (preserveSelection && selectedBankId && !bankResult.banks.some((bank) => bank.id === selectedBankId)) {
-        setSelectedBankId(bankResult.banks[0]?.id ?? null);
+        setSelectedBankId(null);
+        setSelectedDetail(null);
+        setEditDraft(makeDraft());
       }
     } catch (cause) {
       if (cause instanceof ApiError && cause.code === 'UNAUTHORIZED') {
@@ -523,7 +527,11 @@ export default function AdminDashboard() {
       return;
     }
     if (action.type === 'select-bank') {
-      setSelectedBankId(action.bankId);
+      setSelectedBankId(action.bankId || null);
+      if (!action.bankId) {
+        setSelectedDetail(null);
+        setEditDraft(makeDraft());
+      }
       return;
     }
     clearAdminToken();
@@ -644,12 +652,13 @@ export default function AdminDashboard() {
           changeSummary: 'Created manually',
           overrideToken,
         });
-        const nextPrompts = result.detail.bank.questions.map((question) => question.prompt);
-        setSelectedDetail(result.detail);
-        setSelectedBankId(result.detail.id);
-        setEditDraft(makeDraft(result.detail.bank.name, result.detail.description, nextPrompts));
+        setSelectedDetail(null);
+        setSelectedBankId(null);
+        setEditDraft(makeDraft());
         setCreateDraft(makeDraft());
         await refreshAll();
+        setPageError(null);
+        setBusyLabel(`Created "${result.detail.bank.name}". Open Edit database and choose it from the list if you want to work on it.`);
         created = true;
       });
       return created;
@@ -690,6 +699,10 @@ export default function AdminDashboard() {
   };
 
   const handleBankSelection = (nextBankId: string) => {
+    if (!nextBankId) {
+      beginGuardedAction({ type: 'select-bank', bankId: '' });
+      return;
+    }
     if (!nextBankId || nextBankId === selectedBankId) {
       return;
     }
@@ -1002,27 +1015,6 @@ export default function AdminDashboard() {
   return (
     <main className={`page sheet admin-shell-page admin-theme-${adminTheme}`}>
       <section className="game-view admin-page">
-        <div className="admin-toolbar">
-          <AdminToggleGroup
-            label="Style"
-            value={adminTheme}
-            onChange={(value) => setAdminTheme(value === 'retro' ? 'retro' : 'serious')}
-            options={[
-              { value: 'serious', label: 'Serious' },
-              { value: 'retro', label: 'Retro' },
-            ]}
-          />
-          <AdminToggleGroup
-            label="Editor"
-            value={editorMode}
-            onChange={(value) => setEditorMode(value === 'text' ? 'text' : 'dynamic')}
-            options={[
-              { value: 'dynamic', label: 'Dynamic' },
-              { value: 'text', label: 'Text' },
-            ]}
-          />
-        </div>
-
         <header className="game-header admin-header">
           <div>
             <p className="eyebrow">Admin</p>
@@ -1039,30 +1031,62 @@ export default function AdminDashboard() {
           </div>
         </header>
 
-        <div className="admin-tabbar">
-          <button type="button" className={`admin-tab ${activeTab === 'edit' ? 'active' : ''}`} onClick={() => handleTabSwitch('edit')}>
-            Edit database
-          </button>
-          <button type="button" className={`admin-tab ${activeTab === 'create' ? 'active' : ''}`} onClick={() => handleTabSwitch('create')}>
-            Create new database
-          </button>
-          <button type="button" className={`admin-tab ${activeTab === 'usage' ? 'active' : ''}`} onClick={() => handleTabSwitch('usage')}>
-            Usage
-          </button>
+        <div className="admin-nav-shell">
+          <div className="admin-tabbar admin-tabbar-main" role="tablist" aria-label="Admin sections">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'edit'}
+              className={`admin-tab ${activeTab === 'edit' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('edit')}
+            >
+              Edit database
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'create'}
+              className={`admin-tab ${activeTab === 'create' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('create')}
+            >
+              Create new database
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'usage'}
+              className={`admin-tab ${activeTab === 'usage' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('usage')}
+            >
+              Usage
+            </button>
+          </div>
+          <div className="admin-tabbar admin-tabbar-utility" role="tablist" aria-label="Admin settings">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === 'settings'}
+              className={`admin-tab admin-tab-settings ${activeTab === 'settings' ? 'active' : ''}`}
+              onClick={() => handleTabSwitch('settings')}
+            >
+              Settings
+            </button>
+          </div>
         </div>
 
         {usage?.warningMessage && <p className="warning-banner">{usage.warningMessage}</p>}
         {pageError && <p className="error">{pageError}</p>}
         {busyLabel && <p className="status">{busyLabel}</p>}
 
-        {activeTab === 'edit' && (
-          <div className="admin-tab-panel">
+        <section className="admin-workspace">
+          {activeTab === 'edit' && (
+            <div className="admin-tab-panel" role="tabpanel">
             <section className="card admin-panel">
               <label className="field">
                 <span>Select bank</span>
                 <select className="input" value={selectedBankId ?? ''} onChange={(event) => handleBankSelection(event.target.value)}>
-                  <option value="" disabled>
-                    Select a bank
+                  <option value="">
+                    Choose a bank to edit
                   </option>
                   {banks.map((bank) => (
                     <option key={bank.id} value={bank.id}>
@@ -1072,6 +1096,13 @@ export default function AdminDashboard() {
                 </select>
               </label>
             </section>
+
+            {!selectedDetail && (
+              <section className="card admin-panel admin-empty-state">
+                <h3>No bank selected</h3>
+                <p className="footnote">Choose a database from the dropdown above to view or edit its questions.</p>
+              </section>
+            )}
 
             {selectedDetail &&
               renderDraftEditor('edit', editDraft, {
@@ -1115,77 +1146,102 @@ export default function AdminDashboard() {
                 </div>
               </section>
             )}
-          </div>
-        )}
+            </div>
+          )}
 
-        {activeTab === 'create' && (
-          <div className="admin-tab-panel">
-            {renderDraftEditor('create', createDraft, {
-              title: 'Create a new database bank',
-              count: createPrompts.length,
-              importEnabled: true,
-              saveLabel: 'Create bank',
-              onSave: async () => {
-                const created = await saveCreateDraft();
-                if (created) {
-                  setActiveTab('edit');
-                }
-              },
-              onNameChange: (value) => setCreateDraft((current) => ({ ...current, name: value })),
-              onDescriptionChange: (value) => setCreateDraft((current) => ({ ...current, description: value })),
-              onTextChange: handleCreateTextChange,
-              onImport: () => openImportDialog('create'),
-              onExport: () => handleExportDraft('create'),
-              footnote: 'Build a bank locally, import into it if you want, then create it once it looks right.',
-            })}
-          </div>
-        )}
+          {activeTab === 'create' && (
+            <div className="admin-tab-panel" role="tabpanel">
+              {renderDraftEditor('create', createDraft, {
+                title: 'Create a new database bank',
+                count: createPrompts.length,
+                importEnabled: true,
+                saveLabel: 'Create bank',
+                onSave: saveCreateDraft,
+                onNameChange: (value) => setCreateDraft((current) => ({ ...current, name: value })),
+                onDescriptionChange: (value) => setCreateDraft((current) => ({ ...current, description: value })),
+                onTextChange: handleCreateTextChange,
+                onImport: () => openImportDialog('create'),
+                onExport: () => handleExportDraft('create'),
+                footnote: 'Build a bank locally, import into it if you want, then create it once it looks right.',
+              })}
+            </div>
+          )}
 
-        {activeTab === 'usage' && (
-          <div className="admin-tab-panel">
-            <section className="card admin-panel">
-              <h3>Usage overview</h3>
-              {usage ? (
-                <div className="admin-usage-grid">
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">Estimated DO duration</span>
-                    <strong>{usage.counters.estimatedDoDurationGbSecondsToday} / 13000 GB-s</strong>
+          {activeTab === 'usage' && (
+            <div className="admin-tab-panel" role="tabpanel">
+              <section className="card admin-panel">
+                <h3>Usage overview</h3>
+                {usage ? (
+                  <div className="admin-usage-grid">
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">Estimated DO duration</span>
+                      <strong>{usage.counters.estimatedDoDurationGbSecondsToday} / 13000 GB-s</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">D1 rows read</span>
+                      <strong>{usage.counters.d1RowsReadToday} / 5000000</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">D1 rows written</span>
+                      <strong>{usage.counters.d1RowsWrittenToday} / 100000</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">Game creates</span>
+                      <strong>{usage.counters.gameCreatesToday}</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">Active lobbies</span>
+                      <strong>{usage.counters.activeLobbies}</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">Active games</span>
+                      <strong>{usage.counters.activeGames}</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">Connected players</span>
+                      <strong>{usage.counters.connectedPlayersNow}</strong>
+                    </div>
+                    <div className="admin-usage-card">
+                      <span className="bank-meta">Admin writes</span>
+                      <strong>{usage.counters.adminWritesToday}</strong>
+                    </div>
                   </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">D1 rows read</span>
-                    <strong>{usage.counters.d1RowsReadToday} / 5000000</strong>
-                  </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">D1 rows written</span>
-                    <strong>{usage.counters.d1RowsWrittenToday} / 100000</strong>
-                  </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">Game creates</span>
-                    <strong>{usage.counters.gameCreatesToday}</strong>
-                  </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">Active lobbies</span>
-                    <strong>{usage.counters.activeLobbies}</strong>
-                  </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">Active games</span>
-                    <strong>{usage.counters.activeGames}</strong>
-                  </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">Connected players</span>
-                    <strong>{usage.counters.connectedPlayersNow}</strong>
-                  </div>
-                  <div className="admin-usage-card">
-                    <span className="bank-meta">Admin writes</span>
-                    <strong>{usage.counters.adminWritesToday}</strong>
-                  </div>
+                ) : (
+                  <p className="footnote">Usage data is loading.</p>
+                )}
+              </section>
+            </div>
+          )}
+
+          {activeTab === 'settings' && (
+            <div className="admin-tab-panel" role="tabpanel">
+              <section className="card admin-panel">
+                <h3>Page settings</h3>
+                <p className="footnote">These settings only affect the admin page in this browser.</p>
+                <div className="admin-settings-grid">
+                  <AdminToggleGroup
+                    label="Style"
+                    value={adminTheme}
+                    onChange={(value) => setAdminTheme(value === 'retro' ? 'retro' : 'serious')}
+                    options={[
+                      { value: 'serious', label: 'Serious' },
+                      { value: 'retro', label: 'Retro' },
+                    ]}
+                  />
+                  <AdminToggleGroup
+                    label="Editor mode"
+                    value={editorMode}
+                    onChange={(value) => setEditorMode(value === 'dynamic' ? 'dynamic' : 'text')}
+                    options={[
+                      { value: 'text', label: 'Text' },
+                      { value: 'dynamic', label: 'Dynamic' },
+                    ]}
+                  />
                 </div>
-              ) : (
-                <p className="footnote">Usage data is loading.</p>
-              )}
-            </section>
-          </div>
-        )}
+              </section>
+            </div>
+          )}
+        </section>
       </section>
 
       {importDialog.open && (

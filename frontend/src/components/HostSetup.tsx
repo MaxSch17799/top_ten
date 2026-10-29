@@ -3,6 +3,7 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { adminReauthorize, ApiError, createGame, fetchPublicUsageStatus } from '../api';
 import PasswordPromptDialog from './PasswordPromptDialog';
+import SessionNavigation from './SessionNavigation';
 import { loadQuestionBankCatalog } from '../lib/questionBank';
 import { clearOverrideToken, loadOverrideToken, saveOverrideToken } from '../lib/adminSession';
 import { saveSession } from '../lib/session';
@@ -175,6 +176,7 @@ export default function HostSetup() {
   return (
     <main className="page sheet">
       <section className="host-form">
+        <SessionNavigation />
         <h1>Host a Top 10 session</h1>
         <p className="tagline">
           Share the general join link or QR or game code.

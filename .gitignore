@@ -6,3 +6,8 @@ backend-do/dist/
 *.log
 temp_*.py
 dev chat.docx
+.wrangler/
+test-results/
+playwright-report/
+/just_one_en_classic_v1_package.zip
+/just_one_de_classic_v1.json

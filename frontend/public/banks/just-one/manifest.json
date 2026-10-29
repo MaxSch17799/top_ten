@@ -1,0 +1,20 @@
+{
+  "banks": [
+    {
+      "id": "just_one_de_classic_v1",
+      "name": "Classic German",
+      "language": "de",
+      "version": 1,
+      "development": false,
+      "cardCount": 110
+    },
+    {
+      "id": "just_one_en_classic_v1",
+      "name": "Classic English",
+      "language": "en",
+      "version": 1,
+      "development": false,
+      "cardCount": 110
+    }
+  ]
+}

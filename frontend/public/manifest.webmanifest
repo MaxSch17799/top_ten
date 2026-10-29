@@ -1,13 +1,13 @@
 {
-  "name": "Top 10 Party",
-  "short_name": "Top10",
+  "name": "Max & Alina’s Game Night",
+  "short_name": "Game Night",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#020205",
   "theme_color": "#39ff14",
   "icons": [
     {
-      "src": "/vite.svg",
+      "src": "/party.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
