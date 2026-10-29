@@ -10,16 +10,37 @@ export default function JustOneSettings({
   running,
   busy,
   onApply,
+  onLiveChange,
 }: {
   settings: Settings;
   banks: BankSummary[];
   running: boolean;
   busy: boolean;
   onApply: (settings: Settings) => Promise<void>;
+  onLiveChange: (patch: Partial<Settings>) => Promise<void>;
 }) {
-  const [draft, setDraft] = useState(settings);
-  const update = <K extends keyof Settings>(key: K, value: Settings[K]) =>
-    setDraft((old) => ({ ...old, [key]: value }));
+  const [local, setLocal] = useState({ base: settings, draft: settings });
+  // Preserve unsaved lobby choices when an immediate control updates the server.
+  if (JSON.stringify(local.base) !== JSON.stringify(settings)) {
+    const next = { ...settings };
+    for (const key of Object.keys(settings) as Array<keyof Settings>) {
+      if (
+        local.draft[key] !== local.base[key] &&
+        settings[key] === local.base[key]
+      )
+        Object.assign(next, { [key]: local.draft[key] });
+    }
+    setLocal({ base: settings, draft: next });
+  }
+  const draft = local.draft;
+  const update = <K extends keyof Settings>(
+    key: K,
+    value: Settings[K],
+    live = false,
+  ) => {
+    setLocal((old) => ({ ...old, draft: { ...old.draft, [key]: value } }));
+    if (live) void onLiveChange({ [key]: value });
+  };
   return (
     <form
       className="stack jo-settings"
@@ -30,8 +51,8 @@ export default function JustOneSettings({
     >
       <p className="footnote">
         {running
-          ? 'Guessing mode and timers apply immediately. Word bank, word selection and clue count apply next round. Timer changes restart the active countdown.'
-          : 'Set up your cooperative game. You can adjust modes and timers as you play.'}
+          ? 'Guessing mode and timer switches apply immediately. Use Apply settings for durations and next-round word bank, selection and clue count changes.'
+          : 'Choose original scoring, a custom round count, or endless play. Guessing mode and timer switches save immediately; use Apply settings for other choices.'}
       </p>
       <div className="settings-grid">
         <label className="field">
@@ -61,7 +82,8 @@ export default function JustOneSettings({
             }
           >
             <option value="original">Original · 13 cards</option>
-            <option value="fixed">Fixed guessing rounds</option>
+            <option value="fixed">Custom rounds · choose a number</option>
+            <option value="infinite">Endless · running score</option>
           </select>
         </label>
         {draft.scoring === 'fixed' && (
@@ -71,7 +93,7 @@ export default function JustOneSettings({
               className="input"
               type="number"
               min={1}
-              max={100}
+              max={1000}
               required
               disabled={running}
               value={draft.length}
@@ -97,8 +119,9 @@ export default function JustOneSettings({
           <select
             className="input"
             value={draft.guessing}
+            disabled={busy}
             onChange={(e) =>
-              update('guessing', e.target.value as Settings['guessing'])
+              update('guessing', e.target.value as Settings['guessing'], true)
             }
           >
             <option value="typed">Typed · automatic checking</option>
@@ -127,7 +150,8 @@ export default function JustOneSettings({
             <input
               type="checkbox"
               checked={draft.clueTimer}
-              onChange={(e) => update('clueTimer', e.target.checked)}
+              disabled={busy}
+              onChange={(e) => update('clueTimer', e.target.checked, true)}
             />{' '}
             Clue timer
           </label>
@@ -149,7 +173,8 @@ export default function JustOneSettings({
             <input
               type="checkbox"
               checked={draft.guessTimer}
-              onChange={(e) => update('guessTimer', e.target.checked)}
+              disabled={busy}
+              onChange={(e) => update('guessTimer', e.target.checked, true)}
             />{' '}
             Guess timer
           </label>
@@ -166,7 +191,33 @@ export default function JustOneSettings({
             />
           </label>
         </div>
+        <label className="check-field">
+          <input
+            type="checkbox"
+            checked={draft.autoSubmitClues}
+            disabled={busy}
+            onChange={(e) => update('autoSubmitClues', e.target.checked, true)}
+          />{' '}
+          Submit saved clues when time runs out
+        </label>
+        <label className="check-field">
+          <input
+            type="checkbox"
+            checked={draft.autoSubmitGuess}
+            disabled={busy}
+            onChange={(e) => update('autoSubmitGuess', e.target.checked, true)}
+          />{' '}
+          Submit saved answer when time runs out
+        </label>
       </div>
+      {draft.scoring !== 'original' && (
+        <p className="footnote">
+          The word bank reshuffles after every card has been used.{' '}
+          {draft.scoring === 'infinite'
+            ? 'Your score keeps growing until the host ends the game.'
+            : 'Play exactly the number of rounds you choose.'}
+        </p>
+      )}
       <button className="secondary" disabled={busy} type="submit">
         Apply settings
       </button>

@@ -4,6 +4,7 @@ import type {
   PotentialDuplicate,
 } from '../../../shared/justOne.js';
 import { justOneBanks } from '../generated/justOneBanks.js';
+import { clueTranslations } from '../generated/justOneTranslations.js';
 
 // Explicit equivalence groups avoid treating synonyms or arbitrary shared stems as identical.
 const groups: Record<Language, string[][]> = {
@@ -209,6 +210,43 @@ export function processClues(
           ids: [clue.id],
           reason: 'Possible mystery-word derivative or spelling variant',
         });
+      const foreignLanguage = language.startsWith('en')
+        ? 'de'
+        : language.startsWith('de')
+          ? 'en'
+          : null;
+      const translations =
+        clueTranslations[language.split('-')[0]]?.[normalizeWord(mystery)] ??
+        [];
+      const matches = foreignLanguage
+        ? translations.map((translation) =>
+            compareWords(word, translation, foreignLanguage),
+          )
+        : [];
+      if (matches.includes('equal')) {
+        clue.eliminated = true;
+        clue.reason = `${foreignLanguage === 'de' ? 'German' : 'English'} translation of the mystery word`;
+      } else if (matches.includes('possible')) {
+        potential.push({
+          ids: [clue.id],
+          reason: 'Possible translation or translated word form',
+        });
+      }
+      const compact = (value: string) =>
+        normalizeWord(value).replace(/[^\p{L}\p{N}]/gu, '');
+      const part = compact(word),
+        whole = compact(mystery);
+      if (
+        !clue.eliminated &&
+        part.length >= 3 &&
+        part.length < whole.length &&
+        whole.includes(part)
+      ) {
+        potential.push({
+          ids: [clue.id],
+          reason: 'Clue is part of the mystery word',
+        });
+      }
     }
   }
   for (let i = 0; i < clues.length; i++)

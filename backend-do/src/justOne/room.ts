@@ -10,6 +10,7 @@ import {
   serializeForPlayer,
   type JustOneState,
   type StoredPlayer,
+  upgradeState,
 } from './engine.js';
 
 // The existing Durable Object namespace remains the registry for both games.
@@ -27,9 +28,11 @@ export class JustOneRoom {
       this.state =
         (await this.ctx.storage.get<JustOneState>('just-one')) ?? null;
       // Connections from a previous isolate are gone; tokens and gameplay survive.
-      if (this.state)
+      if (this.state) {
+        upgradeState(this.state);
         for (const player of Object.values(this.state.players))
           player.connected = false;
+      }
       this.loaded = true;
     }
     return this.state !== null;
@@ -228,7 +231,8 @@ export class JustOneRoom {
       applyAction(next, player.playerId, action);
       this.state = next;
       await this.save();
-      this.broadcast();
+      // Draft text is private and does not need a room-wide update per keystroke.
+      if (!action.type.startsWith('draft-')) this.broadcast();
       if (s.phase !== next.phase)
         this.track(
           next.phase === 'COMPLETED' ? 'GAME_ENDED' : 'GAME_STATE_CHANGED',

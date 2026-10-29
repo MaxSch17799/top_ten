@@ -6,6 +6,7 @@ import {
   expireState,
   reviewerId,
   serializeForPlayer,
+  upgradeState,
   type JustOneState,
   type StoredPlayer,
 } from '../backend-do/src/justOne/engine.js';
@@ -15,6 +16,7 @@ import {
   processClues,
 } from '../backend-do/src/justOne/language.js';
 import { justOneBanks } from '../backend-do/src/generated/justOneBanks.js';
+import { clueTranslations } from '../backend-do/src/generated/justOneTranslations.js';
 import { validateWordBank } from '../shared/wordBank.mjs';
 import type { JustOneAction, JustOneSettings } from '../shared/justOne.js';
 
@@ -435,10 +437,7 @@ test('invalid settings, unknown banks and insufficient decks fail clearly', () =
   const originalCards = bank.cards;
   try {
     bank.cards = originalCards.slice(0, 2);
-    assert.throws(
-      () => start({ scoring: 'fixed', length: 3 }),
-      /word bank has 2 cards/,
-    );
+    assert.throws(() => start(), /word bank has 2 cards/);
   } finally {
     bank.cards = originalCards;
   }
@@ -447,6 +446,204 @@ test('invalid settings, unknown banks and insufficient decks fail clearly', () =
     () => act(s, 'settings', { scoring: 'fixed' }),
     /only change in the lobby/,
   );
+});
+test('unsubmitted drafts are committed by the server deadline, with private role-filtered state', () => {
+  const s = start({
+    clueTimer: true,
+    clueSeconds: 5,
+    guessTimer: true,
+    guessSeconds: 5,
+  });
+  act(s, 'draft-clues', { clues: ['ocean', ''] }, 'p1');
+  act(s, 'draft-clues', { clues: ['window', 'engine'] }, 'p2');
+  assert.deepEqual(serializeForPlayer(s, 'p1').ownClueDraft, ['ocean', '']);
+  assert.equal(serializeForPlayer(s, 'host').ownClueDraft, null);
+  assert(!JSON.stringify(serializeForPlayer(s, 'host')).includes('ocean'));
+  expireState(s, now + 5000);
+  assert.equal(s.phase, 'REVIEW');
+  assert.equal(s.clues.length, 3);
+  act(s, 'reveal', {}, reviewerId(s)!, now + 5000);
+  act(s, 'draft-guess', { guess: s.word }, 'host', now + 6000);
+  assert.equal(serializeForPlayer(s, 'host').ownGuessDraft, s.word);
+  assert.equal(serializeForPlayer(s, 'p1').ownGuessDraft, null);
+  assert.equal(serializeForPlayer(s, 'p1').committedGuess, undefined);
+  expireState(s, now + 10_000);
+  assert.equal(s.result?.outcome, 'correct');
+  assert.equal(s.result?.guess, s.word);
+  const score = s.score;
+  expireState(s, now + 10_001);
+  assert.equal(s.score, score);
+});
+test('deadline auto-submission can be disabled independently for clues and answers', () => {
+  const s = start({ clueTimer: true, autoSubmitClues: false });
+  act(s, 'draft-clues', { clues: ['ocean', 'morning'] }, 'p1');
+  expireState(s, now + 60_000);
+  assert.equal(s.clues.length, 0);
+  const g = start({ guessTimer: true, autoSubmitGuess: false });
+  guessing(g);
+  act(g, 'draft-guess', { guess: g.word });
+  expireState(g, now + 30_000);
+  assert.equal(g.result?.outcome, 'pass');
+  assert.equal(g.result?.guess, null);
+});
+test('a saved blank answer passes; a saved borderline answer gets one review', () => {
+  const blank = start({ guessTimer: true });
+  guessing(blank);
+  act(blank, 'draft-guess', { guess: '  ' });
+  expireState(blank, now + 30_000);
+  assert.equal(blank.result?.outcome, 'pass');
+  const borderline = start({ guessTimer: true });
+  borderline.word = 'Castle';
+  guessing(borderline);
+  act(borderline, 'draft-guess', { guess: 'castel' });
+  expireState(borderline, now + 30_000);
+  assert.equal(borderline.phase, 'ANSWER_REVIEW');
+  assert.equal(borderline.committedGuess, 'castel');
+  assert.throws(
+    () => act(borderline, 'draft-guess', { guess: 'castle' }),
+    /not allowed/,
+  );
+  act(
+    borderline,
+    'adjudicate',
+    { outcome: 'correct' },
+    reviewerId(borderline)!,
+  );
+  assert.equal(borderline.score, 1);
+});
+test('draft permissions, locks and next-round cleanup prevent late edits or leakage', () => {
+  const s = start();
+  assert.throws(
+    () => act(s, 'draft-clues', { clues: ['ocean', 'morning'] }),
+    /Only clue-givers/,
+  );
+  act(s, 'clues', { clues: ['ocean', 'morning'] }, 'p1');
+  assert.throws(
+    () => act(s, 'draft-clues', { clues: ['changed', 'clue'] }, 'p1'),
+    /locked/,
+  );
+  act(s, 'clues', { clues: ['window', 'engine'] }, 'p2');
+  act(s, 'reveal', {}, reviewerId(s)!);
+  assert.throws(
+    () => act(s, 'draft-guess', { guess: s.word }, 'p1'),
+    /Only the typed guesser/,
+  );
+  act(s, 'draft-guess', { guess: s.word });
+  act(s, 'skip-round');
+  act(s, 'next');
+  assert.equal(s.guessDraft, null);
+  assert.deepEqual(s.clueDrafts, {});
+});
+test('live timer and mode switches take effect without resetting unrelated timers or committing an answer', () => {
+  const s = start({ clueTimer: true });
+  const original = s.deadline;
+  act(s, 'settings', { guessSeconds: 90 });
+  assert.equal(s.deadline, original);
+  act(s, 'settings', { clueTimer: false });
+  assert.equal(s.deadline, null);
+  assert.equal(expireState(s, now + 61_000), false);
+  act(s, 'settings', { clueTimer: true }, 'host', now + 70_000);
+  assert.equal(s.deadline, now + 130_000);
+  guessing(s);
+  act(s, 'settings', { guessTimer: true });
+  assert.equal(s.deadline, now + 90_000);
+  act(s, 'draft-guess', { guess: s.word });
+  const word = s.word;
+  act(s, 'settings', { guessing: 'verbal' });
+  assert.equal(s.word, word);
+  assert.equal(s.committedGuess, null);
+  expireState(s, now + 90_000);
+  assert.equal(s.result?.outcome, 'pass');
+});
+test('host can adjudicate verbal answers when not guessing; a guessing host delegates', () => {
+  const s = lobby({ guessing: 'verbal' });
+  act(s, 'next-guesser', { playerId: 'p1' });
+  act(s, 'start');
+  guessing(s);
+  s.players.host.connected = false;
+  assert.equal(reviewerId(s), 'p2');
+  act(s, 'adjudicate', { outcome: 'correct' }, 'host');
+  assert.equal(s.score, 1);
+  const h = start({ guessing: 'verbal' });
+  guessing(h);
+  assert.throws(
+    () => act(h, 'adjudicate', { outcome: 'correct' }),
+    /non-guesser/,
+  );
+});
+test('endless games reshuffle after exhausting the bank and keep score beyond 13 with bounded history', () => {
+  const s = start({ scoring: 'infinite' });
+  const seen = new Set<string>();
+  for (let i = 0; i < 120; i++) {
+    if (i < 110) {
+      assert(!seen.has(s.word!));
+      seen.add(s.word!);
+    }
+    guessing(s);
+    act(s, 'guess', { guess: s.word }, s.guesserId!);
+    act(s, 'next');
+  }
+  assert.equal(s.score, 120);
+  assert.equal(s.round, 121);
+  assert.equal(s.remaining, null);
+  assert.equal(s.history.length, 100);
+  assert(Buffer.byteLength(JSON.stringify(s)) < 128_000);
+  act(s, 'end');
+  assert.equal(s.phase, 'COMPLETED');
+  assert.equal(s.score, 120);
+});
+test('custom rounds accept a chosen count beyond a bank cycle and stop after that many turns', () => {
+  const s = start({ scoring: 'fixed', length: 112 });
+  for (let i = 0; i < 112; i++) {
+    act(s, 'skip-round');
+    act(s, 'next');
+  }
+  assert.equal(s.phase, 'COMPLETED');
+  assert.equal(s.round, 112);
+  assert.equal(s.remaining, 0);
+});
+test('existing deployed room snapshots gain draft settings without losing the active round', () => {
+  const s = start();
+  const word = s.word;
+  const v = s.version;
+  delete (s.settings as Partial<JustOneSettings>).autoSubmitClues;
+  delete (s.settings as Partial<JustOneSettings>).autoSubmitGuess;
+  delete (s as Partial<JustOneState>).clueDrafts;
+  delete (s as Partial<JustOneState>).guessDraft;
+  upgradeState(s);
+  assert.equal(s.word, word);
+  assert.equal(s.version, v);
+  assert(s.settings.autoSubmitGuess);
+  assert.deepEqual(s.clueDrafts, {});
+});
+test('English/German translations are eliminated both ways and short word parts are flagged', () => {
+  const board = (word: string, mystery: string, language: string) => {
+    const clues = [
+      {
+        id: '1',
+        playerId: 'p',
+        text: word,
+        eliminated: false,
+        reason: null as string | null,
+      },
+    ];
+    return { clues, potential: processClues(clues, mystery, language) };
+  };
+  assert(board('Schwester', 'Sister', 'en').clues[0].eliminated);
+  assert(board('Sister', 'Schwester', 'de').clues[0].eliminated);
+  assert(board('Apfel', 'Apple', 'en').clues[0].eliminated);
+  assert(board('Apple', 'Apfel', 'de').clues[0].eliminated);
+  assert(board('Iceland', 'Island', 'de').clues[0].eliminated);
+  assert(!board('Insel', 'Island', 'de').clues[0].eliminated);
+  const part = board('sis', 'Sister', 'en');
+  assert(!part.clues[0].eliminated);
+  assert(part.potential.some((group) => group.reason.includes('part of')));
+  assert(
+    board('bahn', 'Autobahn', 'de').potential.some((group) =>
+      group.reason.includes('part of'),
+    ),
+  );
+  assert(!board('family', 'Sister', 'en').clues[0].eliminated);
 });
 test('English and German normalization handles Unicode, orthography and inflections conservatively', () => {
   assert.equal(normalizeWord('  Ａpple\u200b '), 'apple');
@@ -510,5 +707,23 @@ test('published English and German banks contain 110 cards and 550 unique words 
     assert.equal(bank.cards.length, 110);
     assert.equal(bank.cards.flatMap((card) => card.words).length, 550);
     assert.notEqual(bank.development, true);
+    for (const word of bank.cards.flatMap((card) => card.words)) {
+      const aliases = clueTranslations[language][normalizeWord(word)];
+      assert(aliases?.length, `Missing translation for ${language}:${word}`);
+      const clues = [
+        {
+          id: '1',
+          playerId: 'p',
+          text: aliases[0],
+          eliminated: false,
+          reason: null as string | null,
+        },
+      ];
+      processClues(clues, word, language);
+      assert(
+        clues[0].eliminated,
+        `Translation was accepted for ${language}:${word}`,
+      );
+    }
   }
 });

@@ -32,12 +32,14 @@ export interface JustOneState {
   roundSettings: JustOneSettings | null;
   round: number;
   score: number;
-  remaining: number;
+  remaining: number | null;
   guesserId: string | null;
   nextGuesserId: string | null;
   expected: string[];
   clueCount: number;
   submissions: Record<string, string[]>;
+  clueDrafts: Record<string, string[]>;
+  guessDraft: string | null;
   clues: Clue[];
   potential: PotentialDuplicate[];
   word: string | null;
@@ -81,27 +83,34 @@ export function checkedSettings(
     Object.keys(input).every((key) => key in defaultJustOneSettings),
     'Unknown setting',
   );
-  const s = { ...current, ...input } as JustOneSettings;
+  const s = {
+    ...defaultJustOneSettings,
+    ...current,
+    ...input,
+  } as JustOneSettings;
   requireCondition(
     !!justOneBanks[s.bankId],
     'Selected word bank is unavailable',
   );
   requireCondition(
-    ['original', 'fixed'].includes(s.scoring) &&
+    ['original', 'fixed', 'infinite'].includes(s.scoring) &&
       ['automatic', 'five'].includes(s.selection) &&
       ['typed', 'verbal'].includes(s.guessing),
     'Invalid game mode',
   );
   requireCondition(
-    Number.isInteger(s.length) && s.length >= 1 && s.length <= 100,
-    'Game length must be 1–100',
+    Number.isInteger(s.length) && s.length >= 1 && s.length <= 1000,
+    'Game length must be 1–1000',
   );
   requireCondition(
     [0, 1, 2].includes(s.cluesPerPlayer),
     'Clues per player must be automatic, one or two',
   );
   requireCondition(
-    typeof s.clueTimer === 'boolean' && typeof s.guessTimer === 'boolean',
+    typeof s.clueTimer === 'boolean' &&
+      typeof s.guessTimer === 'boolean' &&
+      typeof s.autoSubmitClues === 'boolean' &&
+      typeof s.autoSubmitGuess === 'boolean',
     'Invalid timer setting',
   );
   for (const seconds of [s.clueSeconds, s.guessSeconds])
@@ -137,6 +146,8 @@ export function createState(
     expected: [],
     clueCount: 1,
     submissions: {},
+    clueDrafts: {},
+    guessDraft: null,
     clues: [],
     potential: [],
     word: null,
@@ -152,6 +163,14 @@ export function createState(
     endedReason: null,
     processed: [],
   };
+}
+// Keep existing deployed rooms playable when settings/state fields are added.
+export function upgradeState(s: JustOneState): void {
+  s.settings = { ...defaultJustOneSettings, ...s.settings };
+  if (s.roundSettings)
+    s.roundSettings = { ...defaultJustOneSettings, ...s.roundSettings };
+  s.clueDrafts ??= {};
+  s.guessDraft ??= null;
 }
 export function reviewerId(s: JustOneState): string | null {
   const candidates = s.expected.filter((id) => !!s.players[id]);
@@ -193,7 +212,7 @@ function finish(s: JustOneState, outcome: Outcome, now: number): void {
   };
   s.result = result;
   applyScore(s, result);
-  s.history.push(result);
+  s.history = [...s.history.slice(-99), result];
   s.phase = 'RESULT';
   s.deadline = null;
   s.pausedRemaining = null;
@@ -201,9 +220,12 @@ function finish(s: JustOneState, outcome: Outcome, now: number): void {
 }
 function applyScore(s: JustOneState, result: RoundResult): void {
   s.score = result.scoreBefore + (result.outcome === 'correct' ? 1 : 0);
-  s.remaining = Math.max(0, result.remainingBefore - 1);
+  s.remaining =
+    result.remainingBefore === null
+      ? null
+      : Math.max(0, result.remainingBefore - 1);
   if (s.settings.scoring === 'original' && result.outcome === 'incorrect') {
-    if (s.remaining > 0) s.remaining--;
+    if (s.remaining !== null && s.remaining > 0) s.remaining--;
     else s.score = Math.max(0, s.score - 1);
   }
 }
@@ -243,9 +265,17 @@ function nextRound(s: JustOneState, now: number): void {
     'At least three participating players are required',
   );
   s.roundSettings = { ...s.settings };
-  const available = bankFor(s).cards.filter((card) =>
+  let available = bankFor(s).cards.filter((card) =>
     card.words.every((word) => !s.usedWords.includes(normalizeWord(word))),
   );
+  if (!available.length && s.settings.scoring !== 'original') {
+    // A new shuffled cycle only begins after the current bank is exhausted.
+    s.usedWords = [];
+    available = bankFor(s).cards.filter(
+      (card) => !card.words.includes(s.word ?? ''),
+    );
+    if (!available.length) available = bankFor(s).cards;
+  }
   requireCondition(
     available.length > 0,
     'No unseen cards remain in this bank. Select another bank or restart.',
@@ -264,6 +294,8 @@ function nextRound(s: JustOneState, now: number): void {
   s.expected = active.filter((id) => id !== s.guesserId);
   s.clueCount = s.settings.cluesPerPlayer || (active.length <= 4 ? 2 : 1);
   s.submissions = {};
+  s.clueDrafts = {};
+  s.guessDraft = null;
   s.clues = [];
   s.potential = [];
   s.result = null;
@@ -279,6 +311,7 @@ function nextRound(s: JustOneState, now: number): void {
   }
 }
 export function expireState(s: JustOneState, now = Date.now()): boolean {
+  upgradeState(s);
   if (['LOBBY', 'COMPLETED'].includes(s.phase)) {
     if (s.phase === 'LOBBY' && now >= s.expiresAt) {
       s.phase = 'COMPLETED';
@@ -294,9 +327,35 @@ export function expireState(s: JustOneState, now = Date.now()): boolean {
     return true;
   }
   if (s.paused || s.deadline === null || now < s.deadline) return false;
-  if (s.phase === 'CLUES') review(s);
-  else if (s.phase === 'GUESSING') finish(s, 'pass', now);
+  if (s.phase === 'CLUES') {
+    if (s.settings.autoSubmitClues) {
+      for (const id of s.expected) {
+        if (s.submissions[id]) continue;
+        const clues = (s.clueDrafts[id] ?? [])
+          .map((clue) => clue.trim())
+          .filter(Boolean);
+        if (clues.length) s.submissions[id] = clues;
+      }
+    }
+    review(s);
+  } else if (s.phase === 'GUESSING') {
+    if (
+      s.settings.guessing === 'typed' &&
+      s.settings.autoSubmitGuess &&
+      s.guessDraft?.trim()
+    )
+      commitGuess(s, s.guessDraft, now);
+    else finish(s, 'pass', now);
+  }
   return true;
+}
+function commitGuess(s: JustOneState, guess: string, now: number): void {
+  s.committedGuess = guess.trim();
+  const match = compareWords(s.committedGuess, s.word!, bankFor(s).language);
+  if (match === 'possible') {
+    s.phase = 'ANSWER_REVIEW';
+    s.deadline = null;
+  } else finish(s, match === 'equal' ? 'correct' : 'incorrect', now);
 }
 export function applyAction(
   s: JustOneState,
@@ -304,6 +363,7 @@ export function applyAction(
   action: JustOneAction,
   now = Date.now(),
 ): void {
+  upgradeState(s);
   const actor = s.players[actorId];
   requireCondition(actor, 'Player not found', 401);
   requireCondition(
@@ -322,7 +382,8 @@ export function applyAction(
   const key = `${actorId}:${action.id}`;
   if (s.processed.includes(key)) return;
   requireCondition(
-    action.round === s.round && action.phase === s.phase,
+    action.round === s.round &&
+      (action.type === 'settings' || action.phase === s.phase),
     'The phase changed. Please try again.',
     409,
   );
@@ -350,6 +411,8 @@ export function applyAction(
         'end',
         'participation',
         'next-guesser',
+        'draft-clues',
+        'draft-guess',
       ].includes(action.type),
       'Game is paused',
       409,
@@ -365,10 +428,12 @@ export function applyAction(
           'Scoring and length can only change in the lobby',
         );
       const timerChanged =
-        updated.clueTimer !== s.settings.clueTimer ||
-        updated.guessTimer !== s.settings.guessTimer ||
-        updated.clueSeconds !== s.settings.clueSeconds ||
-        updated.guessSeconds !== s.settings.guessSeconds;
+        s.phase === 'CLUES'
+          ? updated.clueTimer !== s.settings.clueTimer ||
+            updated.clueSeconds !== s.settings.clueSeconds
+          : s.phase === 'GUESSING' &&
+            (updated.guessTimer !== s.settings.guessTimer ||
+              updated.guessSeconds !== s.settings.guessSeconds);
       s.settings = updated;
       if (timerChanged) resetTimer(s, now);
       break;
@@ -412,10 +477,16 @@ export function applyAction(
     case 'start': {
       host();
       phase('LOBBY');
-      const total = s.settings.scoring === 'original' ? 13 : s.settings.length;
+      const total =
+        s.settings.scoring === 'original'
+          ? 13
+          : s.settings.scoring === 'infinite'
+            ? null
+            : s.settings.length;
       requireCondition(
-        bankFor(s).cards.length >= total,
-        `This word bank has ${bankFor(s).cards.length} cards. Choose at most that many fixed rounds or select a larger bank.`,
+        s.settings.scoring !== 'original' ||
+          (total !== null && bankFor(s).cards.length >= total),
+        `This word bank has ${bankFor(s).cards.length} cards. Original scoring needs 13; choose custom rounds or another bank.`,
       );
       s.remaining = total;
       nextRound(s, now);
@@ -463,6 +534,47 @@ export function applyAction(
         c.normalize('NFKC').trim(),
       );
       if (s.expected.every((id) => s.submissions[id])) review(s);
+      break;
+    }
+    case 'draft-clues': {
+      phase('CLUES');
+      requireCondition(
+        s.expected.includes(actorId),
+        'Only clue-givers can save clue drafts',
+        403,
+      );
+      requireCondition(
+        !s.submissions[actorId],
+        'Your clues are already locked',
+        409,
+      );
+      requireCondition(
+        Array.isArray(p.clues) &&
+          p.clues.length === s.clueCount &&
+          p.clues.every(
+            (clue) => typeof clue === 'string' && clue.length <= 60,
+          ),
+        'Invalid clue draft',
+      );
+      s.clueDrafts[actorId] = (p.clues as string[]).map((clue) =>
+        clue.normalize('NFKC'),
+      );
+      break;
+    }
+    case 'draft-guess': {
+      phase('GUESSING');
+      requireCondition(
+        actorId === s.guesserId && s.settings.guessing === 'typed',
+        'Only the typed guesser can save an answer draft',
+        403,
+      );
+      requireCondition(
+        s.committedGuess === null &&
+          typeof p.guess === 'string' &&
+          p.guess.length <= 100,
+        'Invalid answer draft',
+      );
+      s.guessDraft = p.guess as string;
       break;
     }
     case 'close-clues':
@@ -521,20 +633,17 @@ export function applyAction(
           p.guess.length <= 100,
         'Enter an answer',
       );
-      s.committedGuess = p.guess.trim();
-      const match = compareWords(
-        s.committedGuess,
-        s.word!,
-        bankFor(s).language,
-      );
-      if (match === 'possible') {
-        s.phase = 'ANSWER_REVIEW';
-        s.deadline = null;
-      } else finish(s, match === 'equal' ? 'correct' : 'incorrect', now);
+      commitGuess(s, p.guess, now);
       break;
     }
     case 'adjudicate': {
-      reviewer();
+      requireCondition(
+        actorId !== s.guesserId &&
+          (actorId === reviewerId(s) ||
+            (actor.role === 'HOST' && s.expected.includes(actorId))),
+        'Only the non-guesser reviewer or host can do this',
+        403,
+      );
       phase('GUESSING', 'ANSWER_REVIEW');
       requireCondition(
         s.phase === 'ANSWER_REVIEW' || s.settings.guessing === 'verbal',
@@ -578,14 +687,18 @@ export function applyAction(
       s.result.corrected = true;
       applyScore(s, s.result);
       s.history[s.history.length - 1] = { ...s.result };
-      if (s.phase === 'COMPLETED' && s.remaining > 0 && !s.endedReason)
+      if (
+        s.phase === 'COMPLETED' &&
+        (s.remaining === null || s.remaining > 0) &&
+        !s.endedReason
+      )
         s.phase = 'RESULT';
       break;
     }
     case 'next':
       host();
       phase('RESULT');
-      if (s.remaining <= 0) s.phase = 'COMPLETED';
+      if (s.remaining === 0) s.phase = 'COMPLETED';
       else nextRound(s, now);
       break;
     case 'pause': {
@@ -642,6 +755,8 @@ export function applyAction(
       s.options = [];
       s.usedWords = [];
       s.submissions = {};
+      s.clueDrafts = {};
+      s.guessDraft = null;
       s.expected = [];
       s.clues = [];
       s.potential = [];
@@ -665,6 +780,7 @@ export function serializeForPlayer(
   playerId: string,
   now = Date.now(),
 ): JustOneView {
+  upgradeState(s);
   requireCondition(s.players[playerId], 'Player not found', 401);
   const inRound = s.expected.includes(playerId) || playerId === s.guesserId;
   const revealed = ['RESULT', 'COMPLETED'].includes(s.phase);
@@ -705,6 +821,12 @@ export function serializeForPlayer(
     submitted: Object.keys(s.submissions),
     expected: s.expected,
     ownClues: s.submissions[playerId] ?? null,
+    ownClueDraft:
+      clueGiver && s.phase === 'CLUES'
+        ? (s.clueDrafts[playerId] ?? null)
+        : null,
+    ownGuessDraft:
+      playerId === s.guesserId && s.phase === 'GUESSING' ? s.guessDraft : null,
     result: s.result,
     history: s.history,
     deadline: s.deadline,

@@ -151,7 +151,7 @@ test('three devices play complete Just One, protect secrets, switch modes and re
       (r) =>
         r.url().endsWith('/action') && r.postDataJSON()?.type === 'adjudicate',
     );
-    await p1.getByRole('button', { name: 'correct', exact: true }).click();
+    await p1.getByRole('button', { name: 'Correct guess', exact: true }).click();
     const committed = await adjudication;
     await expect(host.getByText('You got it! +1 point')).toBeVisible();
     const p1Session = await session(p1);

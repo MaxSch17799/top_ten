@@ -38,7 +38,7 @@ export interface BankSummary {
 }
 export interface JustOneSettings {
   bankId: string;
-  scoring: 'original' | 'fixed';
+  scoring: 'original' | 'fixed' | 'infinite';
   length: number;
   selection: 'automatic' | 'five';
   guessing: 'typed' | 'verbal';
@@ -47,6 +47,8 @@ export interface JustOneSettings {
   guessTimer: boolean;
   clueSeconds: number;
   guessSeconds: number;
+  autoSubmitClues: boolean;
+  autoSubmitGuess: boolean;
 }
 export const defaultJustOneSettings: JustOneSettings = {
   bankId: 'just_one_en_classic_v1',
@@ -59,6 +61,8 @@ export const defaultJustOneSettings: JustOneSettings = {
   guessTimer: false,
   clueSeconds: 60,
   guessSeconds: 30,
+  autoSubmitClues: true,
+  autoSubmitGuess: true,
 };
 export interface JustOnePlayer {
   playerId: string;
@@ -85,7 +89,7 @@ export interface RoundResult {
   guess: string | null;
   outcome: Outcome;
   scoreBefore: number;
-  remainingBefore: number;
+  remainingBefore: number | null;
   corrected?: boolean;
 }
 export interface JustOneView {
@@ -104,7 +108,7 @@ export interface JustOneView {
   banks: BankSummary[];
   round: number;
   score: number;
-  remaining: number;
+  remaining: number | null;
   maxPlayers: number;
   guesserId: string | null;
   reviewerId: string | null;
@@ -113,6 +117,8 @@ export interface JustOneView {
   submitted: string[];
   expected: string[];
   ownClues: string[] | null;
+  ownClueDraft: string[] | null;
+  ownGuessDraft: string | null;
   word?: string;
   options?: string[];
   reviewClues?: Clue[];

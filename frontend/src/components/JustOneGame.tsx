@@ -7,6 +7,8 @@ import type {
 } from '../../../shared/justOne';
 import { BACKEND_BASE, joinGame, request } from '../api';
 import { useGameConnection } from '../hooks/useGameConnection';
+import { useDraftSync } from '../hooks/useDraftSync';
+import type { SessionData } from '../lib/types';
 import { loadSessionForGame, saveSession } from '../lib/session';
 import AddPlayerPanel from './AddPlayerPanel';
 import SessionNavigation from './SessionNavigation';
@@ -17,13 +19,18 @@ function ClueForm({
   state,
   busy,
   act,
+  session,
+  receivedAt,
 }: {
   state: JustOneView;
   busy: boolean;
   act: Act;
+  session: SessionData;
+  receivedAt: number;
 }) {
   const key = `jo-draft-${state.gameId}-${state.generation}-${state.round}-${state.yourPlayerId}`;
   const [clues, setClues] = useState<string[]>(() => {
+    if (state.ownClueDraft) return state.ownClueDraft;
     try {
       const saved: unknown = JSON.parse(sessionStorage.getItem(key) ?? 'null');
       if (
@@ -36,6 +43,14 @@ function ClueForm({
       /* draft is optional */
     }
     return Array.from({ length: state.clueCount }, () => '');
+  });
+  const draft = useDraftSync({
+    state,
+    session,
+    type: 'draft-clues',
+    payload: { clues },
+    enabled: !state.ownClues,
+    receivedAt,
   });
   if (state.ownClues)
     return (
@@ -67,8 +82,10 @@ function ClueForm({
             required
             maxLength={60}
             autoComplete="off"
+            onBlur={draft.flush}
             disabled={busy || state.paused}
             onChange={(e) => {
+              draft.markDirty();
               const next = clues.map((c, index) =>
                 index === i ? e.target.value : c,
               );
@@ -78,6 +95,12 @@ function ClueForm({
           />
         </label>
       ))}
+      <p className="footnote" role="status">
+        {draft.status}
+        {state.settings.autoSubmitClues && state.settings.clueTimer
+          ? ' · Your saved clues submit when time runs out.'
+          : ''}
+      </p>
       <button className="primary" disabled={busy || state.paused}>
         Submit clues
       </button>
@@ -88,12 +111,28 @@ function GuessForm({
   busy,
   paused,
   act,
+  state,
+  session,
+  receivedAt,
 }: {
   busy: boolean;
   paused: boolean;
   act: Act;
+  state: JustOneView;
+  session: SessionData;
+  receivedAt: number;
 }) {
-  const [guess, setGuess] = useState('');
+  const key = `jo-answer-${state.gameId}-${state.generation}-${state.round}-${state.yourPlayerId}`;
+  const [guess, setGuess] = useState(
+    () => state.ownGuessDraft ?? sessionStorage.getItem(key) ?? '',
+  );
+  const draft = useDraftSync({
+    state,
+    session,
+    type: 'draft-guess',
+    payload: { guess },
+    receivedAt,
+  });
   return (
     <form
       className="stack"
@@ -111,9 +150,20 @@ function GuessForm({
           maxLength={100}
           value={guess}
           disabled={busy || paused}
-          onChange={(e) => setGuess(e.target.value)}
+          onChange={(e) => {
+            draft.markDirty();
+            setGuess(e.target.value);
+            sessionStorage.setItem(key, e.target.value);
+          }}
+          onBlur={draft.flush}
         />
       </label>
+      <p className="footnote" role="status">
+        {draft.status}
+        {state.settings.autoSubmitGuess && state.settings.guessTimer
+          ? ' · Your saved answer submits when time runs out.'
+          : ''}
+      </p>
       <button className="primary" disabled={busy || paused}>
         Commit answer
       </button>
@@ -141,12 +191,16 @@ function Outcomes({
     <div className="button-row outcome-buttons">
       {(['correct', 'incorrect', 'pass'] as Outcome[]).map((outcome) => (
         <button
-          className={outcome === 'correct' ? 'primary' : 'secondary'}
+          className={`outcome-${outcome} ${outcome === 'correct' ? 'primary' : 'secondary'}`}
           disabled={busy}
           key={outcome}
           onClick={() => void act(type, { outcome })}
         >
-          {outcome}
+          {outcome === 'correct'
+            ? 'Correct guess'
+            : outcome === 'incorrect'
+              ? 'Wrong guess'
+              : 'Pass'}
         </button>
       ))}
     </div>
@@ -293,12 +347,17 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
   const guesser = state.yourPlayerId === state.guesserId;
   const reviewer = state.yourPlayerId === state.reviewerId;
   const clueGiver = state.expected.includes(state.yourPlayerId);
+  const canAdjudicate = reviewer || (host && clueGiver && !guesser);
   const playerName = (id: string | null) =>
     state.players.find((p) => p.playerId === id)?.nickname ?? 'your team';
   const active = !['LOBBY', 'COMPLETED'].includes(state.phase);
   const scoreRatio =
     state.score /
-    (state.settings.scoring === 'original' ? 13 : state.settings.length);
+    (state.settings.scoring === 'original'
+      ? 13
+      : state.settings.scoring === 'infinite'
+        ? Math.max(1, state.round)
+        : state.settings.length);
   const bank = state.banks.find((b) => b.id === state.settings.bankId);
   const joinUrl = `${(import.meta.env.VITE_FRONTEND_URL || window.location.origin).replace(/\/$/, '')}/g/${gameId}`;
   const phases: Record<JustOneView['phase'], string> = {
@@ -331,8 +390,10 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
           <span>
             {state.settings.scoring === 'original'
               ? 'Cards left'
-              : 'Turns left'}{' '}
-            <strong>{state.remaining}</strong>
+              : state.settings.scoring === 'infinite'
+                ? 'Endless mode'
+                : 'Turns left'}{' '}
+            <strong>{state.remaining ?? '∞'}</strong>
           </span>
           <span>
             Round <strong>{state.round || '—'}</strong>
@@ -440,7 +501,14 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
         {state.phase === 'CLUES' && (
           <div className="card">
             {clueGiver ? (
-              <ClueForm key={state.round} state={state} busy={busy} act={act} />
+              <ClueForm
+                key={state.round}
+                state={state}
+                busy={busy}
+                act={act}
+                session={session}
+                receivedAt={receivedAt}
+              />
             ) : (
               <>
                 <h2>
@@ -584,7 +652,7 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
                     ? 'The spelling or word form is borderline. Decide whether this one committed answer counts.'
                     : `${playerName(state.reviewerId)} will check this borderline answer.`}
                 </p>
-                {reviewer && (
+                {canAdjudicate && (
                   <Outcomes
                     act={act}
                     type="adjudicate"
@@ -594,7 +662,14 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
               </>
             ) : state.settings.guessing === 'typed' ? (
               guesser ? (
-                <GuessForm busy={busy} paused={state.paused} act={act} />
+                <GuessForm
+                  busy={busy}
+                  paused={state.paused}
+                  act={act}
+                  state={state}
+                  session={session}
+                  receivedAt={receivedAt}
+                />
               ) : (
                 <p className="footnote">
                   {playerName(state.guesserId)} is writing their one answer.
@@ -606,10 +681,14 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
                   {guesser ? 'Say your answer aloud' : 'Listen for the answer'}
                 </h2>
                 <p className="footnote">
-                  {playerName(state.reviewerId)} records the result. No typing
-                  needed.
+                  {guesser && host
+                    ? `You are guessing, so ${playerName(state.reviewerId)} marks the result.`
+                    : canAdjudicate
+                      ? 'Mark the spoken answer below.'
+                      : `${playerName(state.reviewerId)} records the result.`}{' '}
+                  No typing needed.
                 </p>
-                {reviewer && (
+                {canAdjudicate && (
                   <Outcomes
                     act={act}
                     type="adjudicate"
@@ -647,7 +726,7 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
             {state.settings.scoring === 'original' &&
               state.result.outcome === 'incorrect' && (
                 <p className="footnote">
-                  {state.result.remainingBefore > 1
+                  {(state.result.remainingBefore ?? 0) > 1
                     ? 'Current card and one extra card lost.'
                     : 'Last card: one previously won point is lost if available.'}
                 </p>
@@ -658,7 +737,7 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
                 disabled={busy}
                 onClick={() => void act('next')}
               >
-                {state.remaining > 0 ? 'Next word →' : 'Show final score'}
+                {state.remaining !== 0 ? 'Next word →' : 'Show final score'}
               </button>
             )}
           </div>
@@ -667,10 +746,17 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
           <div className="card final-score">
             <span aria-hidden="true">★</span>
             <h2>
-              {state.score} /{' '}
-              {state.settings.scoring === 'original'
-                ? 13
-                : state.settings.length}
+              {state.score}
+              {state.settings.scoring === 'infinite'
+                ? state.score === 1
+                  ? ' point'
+                  : ' points'
+                : ' / '}
+              {state.settings.scoring === 'infinite'
+                ? ''
+                : state.settings.scoring === 'original'
+                  ? 13
+                  : state.settings.length}
             </h2>
             <p>
               {scoreRatio >= 0.77
@@ -710,12 +796,12 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
           >
             <summary>Host settings & controls</summary>
             <JustOneSettings
-              key={JSON.stringify(state.settings)}
               settings={state.settings}
               banks={state.banks}
               running={state.phase !== 'LOBBY'}
               busy={busy}
               onApply={(settings) => act('settings', { ...settings })}
+              onLiveChange={(patch) => act('settings', patch)}
             />
             {active && (
               <>
@@ -826,7 +912,12 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
         )}
         {state.history.length > 0 && (
           <details className="card">
-            <summary>Words played · {state.history.length}</summary>
+            <summary>
+              {state.round > state.history.length
+                ? 'Recent words'
+                : 'Words played'}{' '}
+              · {state.history.length}
+            </summary>
             <ol className="round-history">
               {state.history.map((r) => (
                 <li key={r.round}>
