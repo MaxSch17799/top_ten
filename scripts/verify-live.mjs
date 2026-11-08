@@ -23,6 +23,17 @@ const getState = (session) =>
     `${backend}/api/game/${session.gameId}/state?token=${session.playerToken}`,
   );
 
+// Supply only in the process environment when production's existing usage guard requires it.
+const overrideToken = process.env.LIVE_ADMIN_PASSWORD
+  ? (
+      await json(`${backend}/api/admin/reauthorize`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: process.env.LIVE_ADMIN_PASSWORD }),
+      })
+    ).token
+  : null;
+
 for (const language of ['en', 'de']) {
   const bank = await json(
     `${frontend}/banks/just-one/${language}_classic_v1.json`,
@@ -45,6 +56,11 @@ try {
   const host = await hostContext.newPage();
   host.on('pageerror', (error) => errors.push(error.message));
   await host.goto(frontend);
+  if (overrideToken)
+    await host.evaluate(
+      (token) => sessionStorage.setItem('top10-admin-override-token', token),
+      overrideToken,
+    );
   await expect(host.getByRole('link', { name: /Top 10/ })).toBeVisible();
   await expect(host.getByRole('link', { name: /Just One/ })).toBeVisible();
 

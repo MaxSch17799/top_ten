@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2021", "webworker"],
+    "lib": ["ES2022", "webworker"],
     "types": ["@cloudflare/workers-types"],
     "strict": true,
     "esModuleInterop": true,

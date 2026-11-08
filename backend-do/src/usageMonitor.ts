@@ -86,8 +86,13 @@ function normalizeThreshold(value: string | undefined, fallback: number): number
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
-function buildStatus(state: UsageMonitorState, env: UsageMonitorEnv, now = Date.now()): UsageStatusSnapshot {
-  const activeValues = Object.values(state.activeGames);
+export function buildStatus(state: UsageMonitorState, env: UsageMonitorEnv, now = Date.now()): UsageStatusSnapshot {
+  // Older rooms can miss their final usage event (for example across a deployment).
+  // Apply the rooms' inactivity bounds to this estimate as well. Otherwise an
+  // abandoned lobby accrues duration indefinitely and blocks all future games.
+  const activeValues = Object.values(state.activeGames).filter((entry) =>
+    now - entry.lastActivityAt < (entry.phase === 'LOBBY' ? 30 : 120) * 60_000
+  );
   const activeLobbies = activeValues.filter((entry) => entry.phase === 'LOBBY').length;
   const activeGames = activeValues.filter((entry) => entry.phase === 'ACTIVE').length;
   const connectedPlayersNow = activeValues.reduce((sum, entry) => sum + entry.connectedPlayers, 0);

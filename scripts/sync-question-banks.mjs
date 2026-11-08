@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { writeIfChanged } from './lib/write-if-changed.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -109,16 +110,16 @@ async function copyBankFiles(banks, dirPath) {
   await ensureDirectory(dirPath);
   await Promise.all(
     banks.map((bank) =>
-      fs.writeFile(path.join(dirPath, `${bank.id}.json`), toPrettyJson(bank), 'utf8')
+      writeIfChanged(path.join(dirPath, `${bank.id}.json`), toPrettyJson(bank), 'utf8')
     )
   );
 }
 
 async function writeManifestFiles(manifest) {
   const manifestJson = toPrettyJson(manifest);
-  await fs.writeFile(path.join(sourceDir, 'manifest.json'), manifestJson, 'utf8');
-  await fs.writeFile(path.join(frontendDir, 'manifest.json'), manifestJson, 'utf8');
-  await fs.writeFile(path.join(backendDir, 'manifest.json'), manifestJson, 'utf8');
+  await writeIfChanged(path.join(sourceDir, 'manifest.json'), manifestJson, 'utf8');
+  await writeIfChanged(path.join(frontendDir, 'manifest.json'), manifestJson, 'utf8');
+  await writeIfChanged(path.join(backendDir, 'manifest.json'), manifestJson, 'utf8');
 }
 
 async function writeBackendGeneratedModule(banks, manifest) {
@@ -153,7 +154,7 @@ export const questionBanks: Record<string, GeneratedQuestionBankDefinition> = ${
 
 export const questionBankSummaries: GeneratedQuestionBankSummary[] = ${JSON.stringify(manifest.banks, null, 2)};
 `;
-  await fs.writeFile(backendGeneratedFile, `${content}\n`, 'utf8');
+  await writeIfChanged(backendGeneratedFile, `${content}\n`, 'utf8');
 }
 
 async function main() {

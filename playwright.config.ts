@@ -15,7 +15,7 @@ export default defineConfig({
     : [
         {
           command:
-            'npm run dev --workspace backend-do -- --local --port 8787 --show-interactive-dev-session false',
+            'npm run dev --workspace backend-do -- --local --port 8787 --persist-to .wrangler/e2e --show-interactive-dev-session false',
           url: 'http://127.0.0.1:8787/api/just-one/banks',
           reuseExistingServer: !process.env.CI,
           timeout: 60_000,

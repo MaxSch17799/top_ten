@@ -6,6 +6,13 @@
     "backend-do"
   ],
   "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm run dev --workspace backend-do",
+    "typecheck": "npm --prefix frontend run typecheck && npm run typecheck --workspace backend-do",
+    "lint": "npm --prefix frontend run lint",
+    "build": "npm --prefix frontend run build && npm run build --workspace backend-do",
+    "check": "npm run sync:banks && npm run typecheck && npm run lint && npm test",
+    "check:all": "npm run check && npm run build && npm run test:e2e",
     "sync:question-banks": "node scripts/sync-question-banks.mjs",
     "sync:just-one-banks": "node scripts/sync-just-one-banks.mjs",
     "sync:banks": "npm run sync:question-banks && npm run sync:just-one-banks",

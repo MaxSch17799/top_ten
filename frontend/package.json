@@ -6,6 +6,7 @@
   "scripts": {
     "predev": "npm --prefix .. run sync:banks",
     "dev": "vite",
+    "typecheck": "tsc -b",
     "prebuild": "npm --prefix .. run sync:banks",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

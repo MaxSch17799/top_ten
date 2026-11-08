@@ -11,3 +11,7 @@ test-results/
 playwright-report/
 /just_one_en_classic_v1_package.zip
 /just_one_de_classic_v1.json
+/sounds-fishy-classic-en.json
+/sounds-fishy-classic-de.json
+/wavelength_en_classic_v1.json
+/wavelength_de_classic_v1.json

@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "prebuild": "npm --prefix .. run sync:banks",
     "build": "wrangler deploy --dry-run --outdir dist",
     "predev": "npm --prefix .. run sync:banks",

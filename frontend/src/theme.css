@@ -1,0 +1,16 @@
+/* Platform defaults. Game scopes can override the existing semantic color names. */
+:root {
+  color-scheme: dark;
+  --bg: #020205;
+  --panel: rgba(11, 7, 20, 0.95);
+  --accent: #39ff14;
+  --accent-strong: #75ffaa;
+  --border: rgba(57, 255, 20, 0.4);
+  --muted: #8b99c1;
+  --text-primary: #f5f6ff;
+  --font-display: 'Press Start 2P', monospace;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius-panel: 18px;
+  --radius-control: 10px;
+  --content-width: 960px;
+}

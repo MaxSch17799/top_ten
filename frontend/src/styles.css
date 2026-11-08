@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-:root {
-  color-scheme: dark;
-  --bg: #020205;
-  --panel: rgba(11, 7, 20, 0.95);
-  --accent: #39ff14;
-  --accent-strong: #75ffaa;
-  --border: rgba(57, 255, 20, 0.4);
-  --muted: #8b99c1;
-}
+@import './theme.css';
 
 * {
   box-sizing: border-box;
@@ -19,8 +10,8 @@ body {
   background: radial-gradient(circle at top, rgba(57, 255, 20, 0.08), transparent 40%),
     var(--bg);
   min-height: 100vh;
-  color: #f5f6ff;
-  font-family: 'Press Start 2P', monospace;
+  color: var(--text-primary);
+  font-family: var(--font-display);
   line-height: 1.6;
 }
 
@@ -38,7 +29,7 @@ body {
 }
 
 .sheet {
-  width: min(960px, 100%);
+  width: min(var(--content-width), 100%);
   margin: 0 auto;
 }
 
@@ -47,7 +38,7 @@ body {
 .game-view {
   background: var(--panel);
   border: 3px solid var(--accent);
-  border-radius: 18px;
+  border-radius: var(--radius-panel);
   padding: 2rem;
   box-shadow: inset 0 0 60px rgba(255, 255, 255, 0.05);
   text-align: center;
@@ -124,7 +115,7 @@ button {
   font-family: inherit;
   font-size: 0.75rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   border: none;
   cursor: pointer;
   outline: none;

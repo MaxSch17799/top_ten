@@ -207,6 +207,7 @@ test('timer and party switches update every screen immediately, with large deleg
     await p1
       .getByRole('button', { name: 'Correct guess', exact: true })
       .click();
+    await expect(p1.getByText('You got it! +1 point')).toBeVisible();
     expect((await view()).score).toBe(1);
     expect((await view()).remaining).toBeNull();
     await host.getByRole('button', { name: 'Next word →' }).click();
@@ -220,6 +221,7 @@ test('timer and party switches update every screen immediately, with large deleg
     await host
       .getByRole('button', { name: 'Wrong guess', exact: true })
       .click();
+    await expect(host.getByText('Not quite this time')).toBeVisible();
     expect((await view()).score).toBe(1);
     expect((await view()).remaining).toBeNull();
     await host.screenshot({
