@@ -1,5 +1,10 @@
 export const games = [
   {
+    id: 'skyjo', title: 'Skyjo', mark: '-2',
+    description: 'A little mystery. A lower score. Flip, swap, and clear your way to victory.',
+    players: '2–8 players · phones or TV', kind: 'Reveal & outsmart', path: '/skyjo',
+  },
+  {
     id: 'flip7', title: 'Flip 7', mark: '7',
     description: 'A little luck. A lot of nerve. Bank your points or risk it all for seven.',
     players: '2–12 players · phones or TV', kind: 'Push your luck', path: '/flip7',

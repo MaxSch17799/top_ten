@@ -5,6 +5,7 @@ import { SoundsFishyRoom } from './soundsFishy/room.js';
 import { WavelengthRoom } from './wavelength/room.js';
 import { UnoRoom } from './uno/room.js';
 import { MonopolyDealRoom } from './monopolyDeal/room.js';
+import { SkyjoRoom } from './skyjo/room.js';
 import { Flip7Room } from './flip7/room.js';
 import type { QuestionBankDefinition } from './questionBankTypes.js';
 import { trackUsageEvent, type UsageMonitorEnv } from './usageMonitor.js';
@@ -157,6 +158,7 @@ export class GameDurableObject {
   private uno: UnoRoom;
   private monopolyDeal: MonopolyDealRoom;
   private flip7: Flip7Room;
+  private skyjo: SkyjoRoom;
   private state: GameState | null = null;
   private clients = new Map<string, Set<WebSocket>>();
   private loadingStatePromise: Promise<void> | null = null;
@@ -168,6 +170,7 @@ export class GameDurableObject {
     this.uno = new UnoRoom(stateController, env);
     this.monopolyDeal = new MonopolyDealRoom(stateController, env);
     this.flip7 = new Flip7Room(stateController, env);
+    this.skyjo = new SkyjoRoom(stateController, env);
   }
 
   private get storage(): DurableObjectStorage {
@@ -283,6 +286,7 @@ export class GameDurableObject {
     const url = new URL(request.url);
     if (url.pathname === '/api/internal/create') {
       const payload = await request.clone().json() as JsonPayload;
+      if (payload.gameType === 'skyjo' || await this.skyjo.exists()) return this.skyjo.fetch(request);
       if (payload.gameType === 'flip7' || await this.flip7.exists()) return this.flip7.fetch(request);
       if (payload.gameType === 'monopoly-deal' || await this.monopolyDeal.exists()) return this.monopolyDeal.fetch(request);
       if (payload.gameType === 'uno' || await this.uno.exists()) return this.uno.fetch(request);
@@ -292,6 +296,7 @@ export class GameDurableObject {
       return this.handleInternalCreate(request, corsHeaders);
     }
 
+    if (await this.skyjo.exists()) return this.skyjo.fetch(request);
     if (await this.flip7.exists()) return this.flip7.fetch(request);
     if (await this.monopolyDeal.exists()) return this.monopolyDeal.fetch(request);
     if (await this.uno.exists()) return this.uno.fetch(request);
@@ -340,6 +345,7 @@ export class GameDurableObject {
   }
 
   public async alarm(): Promise<void> {
+    if (await this.skyjo.exists()) return this.skyjo.alarm();
     if (await this.flip7.exists()) return this.flip7.alarm();
     if (await this.monopolyDeal.exists()) return this.monopolyDeal.alarm();
     if (await this.uno.exists()) return this.uno.alarm();

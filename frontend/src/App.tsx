@@ -9,6 +9,7 @@ import SoundsFishyHome from './components/SoundsFishyHome';
 import WavelengthHome from './components/WavelengthHome';
 import UnoHome from './components/UnoHome';
 const MonopolyDealHome = lazy(() => import('./components/MonopolyDealHome'));
+const SkyjoHome = lazy(() => import('./components/SkyjoHome'));
 const Flip7Home = lazy(() => import('./components/Flip7Home'));
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/sounds-fishy" element={<SoundsFishyHome />} />
         <Route path="/wavelength" element={<WavelengthHome />} />
         <Route path="/uno" element={<UnoHome />} />
+        <Route path="/skyjo" element={<Suspense fallback={<main className="page">Opening your table…</main>}><SkyjoHome /></Suspense>} />
         <Route path="/flip7" element={<Suspense fallback={<main className="page">Opening the table…</main>}><Flip7Home /></Suspense>} />
         <Route path="/monopoly-deal" element={<Suspense fallback={<main className="page">Opening your table…</main>}><MonopolyDealHome /></Suspense>} />
         <Route path="/g/:gameId/display" element={<GameRoute display />} />
