@@ -1,3 +1,16 @@
+import type { GameType } from '../../../shared/games';
+
+interface GameListing {
+  id: GameType;
+  title: string;
+  mark: string;
+  description: string;
+  players: string;
+  kind: string;
+  path: `/${string}`;
+}
+
+/** Homepage order and presentation; identifiers come from the shared contract. */
 export const games = [
   {
     id: 'skyjo', title: 'Skyjo', mark: '-2',
@@ -47,4 +60,4 @@ export const games = [
     description: 'One true answer. A sea of convincing lies. How far will you fish?',
     players: '4–10 players', kind: 'Bluff & fish', path: '/sounds-fishy',
   },
-] as const;
+] as const satisfies readonly GameListing[];

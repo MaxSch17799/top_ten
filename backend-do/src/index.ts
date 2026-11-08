@@ -35,6 +35,7 @@ import { checkedUnoSettings } from '../../shared/uno.js';
 import { checkedDealSettings } from '../../shared/monopolyDeal.js';
 import { checkedSkySettings } from '../../shared/skyjo.js';
 import { checkedFlipSettings } from '../../shared/flip7.js';
+import { isGameType, isStandaloneGameType } from '../../shared/games.js';
 
 type JsonPayload = Record<string, unknown>;
 
@@ -143,7 +144,7 @@ async function requireOverrideIfNeeded(request: Request, env: Env, payload: Json
 
 async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const payload = await parseJson(request);
-  if (payload.gameType !== undefined && !['top10', 'just-one', 'sounds-fishy', 'wavelength', 'uno', 'monopoly-deal', 'flip7', 'skyjo'].includes(String(payload.gameType))) {
+  if (payload.gameType !== undefined && !isGameType(String(payload.gameType))) {
     return errorResponse(request, 400, 'UNKNOWN_GAME', 'Unknown game type');
   }
   if (payload.gameType === 'just-one') {
@@ -180,7 +181,7 @@ async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): 
   }
 
   const requestedBankId = typeof payload.questionBankId === 'string' ? payload.questionBankId : '';
-  const standalone = ['just-one', 'sounds-fishy', 'wavelength', 'uno', 'monopoly-deal', 'flip7', 'skyjo'].includes(String(payload.gameType));
+  const standalone = isStandaloneGameType(String(payload.gameType));
   const resolvedBank = standalone
     ? { bank: null, source: null, usage: null }
     : await getQuestionBankById(env, requestedBankId);

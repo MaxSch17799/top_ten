@@ -1,3 +1,4 @@
+import type { GameType } from '../../shared/games';
 import type {
   AdminQuestionBankDetail,
   QuestionBankCatalogItem,
@@ -55,7 +56,7 @@ function authHeaders(token?: string | null): Record<string, string> {
 }
 
 export interface CreateGamePayload {
-  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal' | 'flip7' | 'skyjo';
+  gameType?: GameType;
   settings?: import('../../shared/justOne').JustOneSettings | import('../../shared/soundsFishy').FishySettings | import('../../shared/wavelength').WaveSettings | import('../../shared/uno').UnoSettings | import('../../shared/monopolyDeal').DealSettings | import('../../shared/flip7').FlipSettings | import('../../shared/skyjo').SkySettings;
   hostNickname: string;
   seed?: string;
@@ -64,7 +65,7 @@ export interface CreateGamePayload {
 }
 
 export interface CreateGameResult {
-  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal' | 'flip7' | 'skyjo';
+  gameType?: GameType;
   gameId: string;
   hostToken: string;
   playerId: string;
@@ -76,7 +77,7 @@ export interface CreateGameResult {
 }
 
 export interface JoinGameResult {
-  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal' | 'flip7' | 'skyjo';
+  gameType?: GameType;
   playerId: string;
   playerToken: string;
   role: 'PLAYER';

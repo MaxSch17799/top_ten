@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# Game Night frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React, TypeScript and Vite client for the multiplayer platform. Start with the [project README](../README.md) or [documentation index](../docs/README.md).
 
-Currently, two official plugins are available:
+## Commands from this directory
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm ci
+npm run dev
+npm run typecheck
+npm run lint
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Install the root workspace as well before using commands with content-generation hooks. Set `VITE_BACKEND_URL=http://127.0.0.1:8787` in the frontend process for local play; otherwise the existing production Worker fallback is used. See [development](../docs/development.md) for PowerShell/POSIX examples and the two-process workflow.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Location | Purpose |
+| --- | --- |
+| `src/App.tsx` | Home, invite, display, admin and legacy routes |
+| `src/components/GameRoute.tsx` | Resolve a room's game and render it |
+| `src/lib/games.ts` | Homepage listings, using the shared `GameType` contract |
+| `src/components/` | Shared UI and game-specific home/game/settings/card components |
+| `src/hooks/useGameConnection.ts` | Realtime states, reconnect, polling fallback and identity isolation |
+| `src/lib/session.ts` | Browser sessions scoped to each lobby |
+| `src/lib/*Profiles.ts` | Local custom rule profiles |
+| `src/theme.css` | Platform colors, font options, radii and width defaults |
+| `src/styles.css`, `party.css`, per-game CSS | Current shared and scoped styling |
+| `public/` | PWA assets and explicitly public generated banks |
+
+Game rules and private state belong in `backend-do/`; public contracts live in `shared/`. Reuse SVG/card renderers through public props. Follow [adding a game](../docs/adding-a-game.md) for API/route integration and [styling](../docs/styling.md) for changing appearance without changing rules.
+
+Build output is `dist/` for the existing Pages project. `predev` and `prebuild` validate canonical content; edit its source folders rather than generated public copies. Frontend bundling must not import secret generated backend banks or room/engine modules.
