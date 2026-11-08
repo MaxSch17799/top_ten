@@ -1,5 +1,10 @@
 export const games = [
   {
+    id: 'flip7', title: 'Flip 7', mark: '7',
+    description: 'A little luck. A lot of nerve. Bank your points or risk it all for seven.',
+    players: '2–12 players · phones or TV', kind: 'Push your luck', path: '/flip7',
+  },
+  {
     id: 'monopoly-deal', title: 'Monopoly Deal', mark: 'M',
     description: 'Build an empire. Make a little trouble. Three colors and one very good deal.',
     players: '2–5 players · together or online', kind: 'Collect & outsmart', path: '/monopoly-deal',

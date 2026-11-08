@@ -7,6 +7,7 @@ import SoundsFishyGame from './SoundsFishyGame';
 import WavelengthGame from './WavelengthGame';
 import UnoGame from './UnoGame';
 const MonopolyDealGame = lazy(() => import('./MonopolyDealGame'));
+const Flip7Game = lazy(() => import('./Flip7Game'));
 
 export default function GameRoute({ display = false }: { display?: boolean }) {
   const { gameId = '' } = useParams();
@@ -61,7 +62,9 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
-  return info.gameType === 'monopoly-deal' ? (
+  return info.gameType === 'flip7' ? (
+    <Suspense fallback={<main className="page">Opening the table…</main>}><Flip7Game key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
+  ) : info.gameType === 'monopoly-deal' ? (
     <Suspense fallback={<main className="page">Opening your table…</main>}><MonopolyDealGame key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
   ) : info.gameType === 'uno' ? (
     <UnoGame key={`${gameId}-${display}`} gameId={gameId} display={display} />

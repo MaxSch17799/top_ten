@@ -7,6 +7,7 @@ import './fishy.css';
 import './wavelength.css';
 import './uno.css';
 import './deal.css';
+import './flip7.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

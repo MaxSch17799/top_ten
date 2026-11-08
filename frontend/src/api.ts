@@ -55,8 +55,8 @@ function authHeaders(token?: string | null): Record<string, string> {
 }
 
 export interface CreateGamePayload {
-  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal';
-  settings?: import('../../shared/justOne').JustOneSettings | import('../../shared/soundsFishy').FishySettings | import('../../shared/wavelength').WaveSettings | import('../../shared/uno').UnoSettings | import('../../shared/monopolyDeal').DealSettings;
+  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal' | 'flip7';
+  settings?: import('../../shared/justOne').JustOneSettings | import('../../shared/soundsFishy').FishySettings | import('../../shared/wavelength').WaveSettings | import('../../shared/uno').UnoSettings | import('../../shared/monopolyDeal').DealSettings | import('../../shared/flip7').FlipSettings;
   hostNickname: string;
   seed?: string;
   questionBankId?: string;
@@ -64,7 +64,7 @@ export interface CreateGamePayload {
 }
 
 export interface CreateGameResult {
-  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal';
+  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal' | 'flip7';
   gameId: string;
   hostToken: string;
   playerId: string;
@@ -76,7 +76,7 @@ export interface CreateGameResult {
 }
 
 export interface JoinGameResult {
-  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal';
+  gameType?: 'top10' | 'just-one' | 'sounds-fishy' | 'wavelength' | 'uno' | 'monopoly-deal' | 'flip7';
   playerId: string;
   playerToken: string;
   role: 'PLAYER';
