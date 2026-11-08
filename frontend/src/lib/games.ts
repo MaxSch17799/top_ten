@@ -1,5 +1,10 @@
 export const games = [
   {
+    id: 'monopoly-deal', title: 'Monopoly Deal', mark: 'M',
+    description: 'Build an empire. Make a little trouble. Three colors and one very good deal.',
+    players: '2–5 players · together or online', kind: 'Collect & outsmart', path: '/monopoly-deal',
+  },
+  {
     id: 'uno', title: 'UNO', mark: '7',
     description: 'One card left. All eyes on you. Classic rules or your favorite chaos.',
     players: '2–10 players · together or online', kind: 'Match & outplay', path: '/uno',

@@ -4,6 +4,7 @@ import { JustOneRoom } from './justOne/room.js';
 import { SoundsFishyRoom } from './soundsFishy/room.js';
 import { WavelengthRoom } from './wavelength/room.js';
 import { UnoRoom } from './uno/room.js';
+import { MonopolyDealRoom } from './monopolyDeal/room.js';
 import type { QuestionBankDefinition } from './questionBankTypes.js';
 import { trackUsageEvent, type UsageMonitorEnv } from './usageMonitor.js';
 import {
@@ -153,6 +154,7 @@ export class GameDurableObject {
   private soundsFishy: SoundsFishyRoom;
   private wavelength: WavelengthRoom;
   private uno: UnoRoom;
+  private monopolyDeal: MonopolyDealRoom;
   private state: GameState | null = null;
   private clients = new Map<string, Set<WebSocket>>();
   private loadingStatePromise: Promise<void> | null = null;
@@ -162,6 +164,7 @@ export class GameDurableObject {
     this.soundsFishy = new SoundsFishyRoom(stateController, env);
     this.wavelength = new WavelengthRoom(stateController, env);
     this.uno = new UnoRoom(stateController, env);
+    this.monopolyDeal = new MonopolyDealRoom(stateController, env);
   }
 
   private get storage(): DurableObjectStorage {
@@ -277,6 +280,7 @@ export class GameDurableObject {
     const url = new URL(request.url);
     if (url.pathname === '/api/internal/create') {
       const payload = await request.clone().json() as JsonPayload;
+      if (payload.gameType === 'monopoly-deal' || await this.monopolyDeal.exists()) return this.monopolyDeal.fetch(request);
       if (payload.gameType === 'uno' || await this.uno.exists()) return this.uno.fetch(request);
       if (payload.gameType === 'wavelength' || await this.wavelength.exists()) return this.wavelength.fetch(request);
       if (payload.gameType === 'sounds-fishy' || await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
@@ -284,6 +288,7 @@ export class GameDurableObject {
       return this.handleInternalCreate(request, corsHeaders);
     }
 
+    if (await this.monopolyDeal.exists()) return this.monopolyDeal.fetch(request);
     if (await this.uno.exists()) return this.uno.fetch(request);
     if (await this.wavelength.exists()) return this.wavelength.fetch(request);
     if (await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
@@ -330,6 +335,7 @@ export class GameDurableObject {
   }
 
   public async alarm(): Promise<void> {
+    if (await this.monopolyDeal.exists()) return this.monopolyDeal.alarm();
     if (await this.uno.exists()) return this.uno.alarm();
     if (await this.wavelength.exists()) return this.wavelength.alarm();
     if (await this.soundsFishy.exists()) return this.soundsFishy.alarm();

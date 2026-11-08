@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BACKEND_BASE, request } from '../api';
 import GameShell from './GameShell';
@@ -6,6 +6,7 @@ import JustOneGame from './JustOneGame';
 import SoundsFishyGame from './SoundsFishyGame';
 import WavelengthGame from './WavelengthGame';
 import UnoGame from './UnoGame';
+const MonopolyDealGame = lazy(() => import('./MonopolyDealGame'));
 
 export default function GameRoute({ display = false }: { display?: boolean }) {
   const { gameId = '' } = useParams();
@@ -60,7 +61,9 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
-  return info.gameType === 'uno' ? (
+  return info.gameType === 'monopoly-deal' ? (
+    <Suspense fallback={<main className="page">Opening your table…</main>}><MonopolyDealGame key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
+  ) : info.gameType === 'uno' ? (
     <UnoGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
   ) : info.gameType === 'wavelength' ? (
     <WavelengthGame key={`${gameId}-${display}`} gameId={gameId} display={display} />

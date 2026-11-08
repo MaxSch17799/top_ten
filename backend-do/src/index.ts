@@ -32,6 +32,7 @@ import { wavePackSummaries } from './generated/wavelengthPacks.js';
 import { checkedSettings as checkedWaveSettings } from './wavelength/engine.js';
 import { defaultWaveSettings } from '../../shared/wavelength.js';
 import { checkedUnoSettings } from '../../shared/uno.js';
+import { checkedDealSettings } from '../../shared/monopolyDeal.js';
 
 type JsonPayload = Record<string, unknown>;
 
@@ -140,7 +141,7 @@ async function requireOverrideIfNeeded(request: Request, env: Env, payload: Json
 
 async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const payload = await parseJson(request);
-  if (payload.gameType !== undefined && !['top10', 'just-one', 'sounds-fishy', 'wavelength', 'uno'].includes(String(payload.gameType))) {
+  if (payload.gameType !== undefined && !['top10', 'just-one', 'sounds-fishy', 'wavelength', 'uno', 'monopoly-deal'].includes(String(payload.gameType))) {
     return errorResponse(request, 400, 'UNKNOWN_GAME', 'Unknown game type');
   }
   if (payload.gameType === 'just-one') {
@@ -159,13 +160,17 @@ async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): 
     try { checkedUnoSettings(payload.settings ?? {}); }
     catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
   }
+  if (payload.gameType === 'monopoly-deal') {
+    try { checkedDealSettings(payload.settings ?? {}); }
+    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
+  }
   const overrideRequired = await requireOverrideIfNeeded(request, env, payload);
   if (overrideRequired) {
     return overrideRequired;
   }
 
   const requestedBankId = typeof payload.questionBankId === 'string' ? payload.questionBankId : '';
-  const standalone = ['just-one', 'sounds-fishy', 'wavelength', 'uno'].includes(String(payload.gameType));
+  const standalone = ['just-one', 'sounds-fishy', 'wavelength', 'uno', 'monopoly-deal'].includes(String(payload.gameType));
   const resolvedBank = standalone
     ? { bank: null, source: null, usage: null }
     : await getQuestionBankById(env, requestedBankId);
