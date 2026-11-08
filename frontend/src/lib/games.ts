@@ -1,5 +1,10 @@
 export const games = [
   {
+    id: 'wavelength', title: 'Wavelength', mark: '◠',
+    description: 'Read the room. Find the frequency.',
+    players: '2–24 players · together or online', kind: 'Discuss & connect', path: '/wavelength',
+  },
+  {
     id: 'top10',
     title: 'Top 10',
     mark: '10',

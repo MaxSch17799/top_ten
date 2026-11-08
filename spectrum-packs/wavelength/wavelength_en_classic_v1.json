@@ -1,0 +1,1609 @@
+{
+  "schemaVersion": 1,
+  "game": "wavelength",
+  "packId": "wavelength-en-classic-v1",
+  "language": "en",
+  "title": "English Classic",
+  "spectrums": [
+    {
+      "id": "en-001",
+      "left": "Better in the morning",
+      "right": "Better after midnight",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-002",
+      "left": "Best eaten with your hands",
+      "right": "Best eaten with cutlery",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-003",
+      "left": "Ruined by rain",
+      "right": "Improved by rain",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-004",
+      "left": "Throw away tomorrow",
+      "right": "Worth keeping forever",
+      "category": "everyday",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-005",
+      "left": "Better fresh",
+      "right": "Better as leftovers",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-006",
+      "left": "Better whispered",
+      "right": "Better shouted",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-007",
+      "left": "A chore",
+      "right": "A treat",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-008",
+      "left": "Always makes a mess",
+      "right": "Surprisingly tidy",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-009",
+      "left": "Home is better without it",
+      "right": "Home feels incomplete without it",
+      "category": "everyday",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-010",
+      "left": "Perfect for a lazy Sunday",
+      "right": "Perfect for a busy Monday",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-011",
+      "left": "Better alone",
+      "right": "Better with a crowd",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-012",
+      "left": "Any day will do",
+      "right": "Needs a special occasion",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-013",
+      "left": "Worth waking up early for",
+      "right": "Worth staying up late for",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-014",
+      "left": "Enjoyable all day",
+      "right": "Enjoyable in small doses",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-015",
+      "left": "Looks better than it tastes",
+      "right": "Tastes better than it looks",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-016",
+      "left": "A dreadful smell",
+      "right": "A wonderful smell",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-017",
+      "left": "Makes time crawl",
+      "right": "Makes time fly",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-018",
+      "left": "Feels like homework",
+      "right": "Feels like a holiday",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-019",
+      "left": "Better indoors",
+      "right": "Better outdoors",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-020",
+      "left": "More fun to own",
+      "right": "More fun to buy",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-021",
+      "left": "Just a snack",
+      "right": "Practically a feast",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-022",
+      "left": "A once-a-year indulgence",
+      "right": "A daily essential",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-023",
+      "left": "Needs a soundtrack",
+      "right": "Better in silence",
+      "category": "everyday",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-024",
+      "left": "For special guests",
+      "right": "For everyday use",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-025",
+      "left": "Strangely stressful",
+      "right": "Strangely relaxing",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-026",
+      "left": "Shameless bragging",
+      "right": "A harmless flex",
+      "category": "social",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-027",
+      "left": "A polite interruption",
+      "right": "A social ambush",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-028",
+      "left": "Painful arrogance",
+      "right": "Charming confidence",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-029",
+      "left": "None of your business",
+      "right": "An innocent question",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-030",
+      "left": "A thoughtful gift",
+      "right": "A social obligation",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-031",
+      "left": "Please don't involve me",
+      "right": "Everyone should join in",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-032",
+      "left": "An insult in disguise",
+      "right": "A compliment",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-033",
+      "left": "A harmless exaggeration",
+      "right": "An outright lie",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-034",
+      "left": "Needlessly blunt",
+      "right": "Admirably direct",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-035",
+      "left": "A conversation killer",
+      "right": "A good icebreaker",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-036",
+      "left": "An unwritten rule",
+      "right": "Totally optional",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-037",
+      "left": "Earns an awkward silence",
+      "right": "Earns a round of applause",
+      "category": "social",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-038",
+      "left": "Good manners",
+      "right": "Trying too hard",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-039",
+      "left": "Too personal for small talk",
+      "right": "Perfect small talk",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-040",
+      "left": "Friendly competition",
+      "right": "A bitter rivalry",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-041",
+      "left": "Thoughtful silence",
+      "right": "Uncomfortable silence",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-042",
+      "left": "A joke for everyone",
+      "right": "An inside joke",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-043",
+      "left": "A dramatic departure",
+      "right": "A graceful exit",
+      "category": "social",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-044",
+      "left": "Best said out loud",
+      "right": "Best kept to yourself",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-045",
+      "left": "An inviting atmosphere",
+      "right": "An intimidating atmosphere",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-046",
+      "left": "Leads by example",
+      "right": "Bosses everyone around",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-047",
+      "left": "Sounds rehearsed",
+      "right": "Sounds sincere",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-048",
+      "left": "The worst possible timing",
+      "right": "Perfect timing",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-049",
+      "left": "An acceptable excuse",
+      "right": "A ridiculous excuse",
+      "category": "social",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-050",
+      "left": "Everyone notices",
+      "right": "Nobody notices",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-051",
+      "left": "A song for the shower",
+      "right": "A song for a stadium",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-052",
+      "left": "A movie to see once",
+      "right": "A movie to rewatch",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-053",
+      "left": "A joke that ages well",
+      "right": "A joke that ages badly",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-054",
+      "left": "An obvious fad",
+      "right": "Timeless fashion",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-055",
+      "left": "A book to devour",
+      "right": "A book to savor",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-056",
+      "left": "A title that reveals everything",
+      "right": "A title that reveals nothing",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-057",
+      "left": "Better with subtitles",
+      "right": "Better dubbed",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-058",
+      "left": "Catchy immediately",
+      "right": "Grows on you slowly",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-059",
+      "left": "Forgotten next year",
+      "right": "A classic in the making",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-060",
+      "left": "Fine on a tiny screen",
+      "right": "Made for the big screen",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-061",
+      "left": "A song to dance to",
+      "right": "A song to sit with",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-062",
+      "left": "A neat ending",
+      "right": "An open ending",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-063",
+      "left": "Trying too hard to be retro",
+      "right": "Authentically retro",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-064",
+      "left": "More style than substance",
+      "right": "More substance than style",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-065",
+      "left": "An annoying slogan",
+      "right": "A catchy slogan",
+      "category": "culture",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-066",
+      "left": "An instantly dated costume",
+      "right": "An iconic costume",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-067",
+      "left": "Art that takes time",
+      "right": "Art you instantly get",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-068",
+      "left": "Demands full attention",
+      "right": "Perfect background TV",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-069",
+      "left": "A great cover version",
+      "right": "Better left untouched",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-070",
+      "left": "A plot twist that fits",
+      "right": "A plot twist from nowhere",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-071",
+      "left": "A story for children",
+      "right": "A story for adults",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-072",
+      "left": "A mainstream phenomenon",
+      "right": "A cult favorite",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-073",
+      "left": "Ahead of its time",
+      "right": "Stuck in the past",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-074",
+      "left": "Delightfully unpredictable",
+      "right": "Beautifully predictable",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-075",
+      "left": "A character you root for",
+      "right": "A character you love to hate",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-076",
+      "left": "Nervous dread",
+      "right": "Calm anticipation",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-077",
+      "left": "Comforting nostalgia",
+      "right": "Painful nostalgia",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-078",
+      "left": "A life-changing triumph",
+      "right": "A tiny victory",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-079",
+      "left": "An unwelcome surprise",
+      "right": "A welcome surprise",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-080",
+      "left": "Idle curiosity",
+      "right": "Burning curiosity",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-081",
+      "left": "Makes you feel small",
+      "right": "Makes you feel brave",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-082",
+      "left": "An overwhelming change",
+      "right": "A refreshing change",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-083",
+      "left": "Worth crying over",
+      "right": "Not worth a tear",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-084",
+      "left": "An exhausting challenge",
+      "right": "A satisfying challenge",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-085",
+      "left": "Laugh it off",
+      "right": "Never live it down",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-086",
+      "left": "An all-day frustration",
+      "right": "A passing annoyance",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-087",
+      "left": "A sense of belonging",
+      "right": "A feeling of alienation",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-088",
+      "left": "Happy to be noticed",
+      "right": "Wish you'd disappear",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-089",
+      "left": "The stressful kind of chaos",
+      "right": "The fun kind of chaos",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-090",
+      "left": "An unsettling mystery",
+      "right": "A pleasant mystery",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-091",
+      "left": "A huge relief",
+      "right": "A small comfort",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-092",
+      "left": "A dreadful risk",
+      "right": "An exciting risk",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-093",
+      "left": "A moment of humility",
+      "right": "A moment of pride",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-094",
+      "left": "Feels like a fresh start",
+      "right": "Feels like the end of an era",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-095",
+      "left": "Painfully embarrassing",
+      "right": "A little awkward",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-096",
+      "left": "A cherished memory",
+      "right": "A memory you'd erase",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-097",
+      "left": "Restful tiredness",
+      "right": "Soul-crushing exhaustion",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-098",
+      "left": "A slow-building smile",
+      "right": "An instant smile",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-099",
+      "left": "A bittersweet goodbye",
+      "right": "A joyful goodbye",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-100",
+      "left": "Thrillingly uncertain",
+      "right": "Comfortably predictable",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-101",
+      "left": "A casual acquaintance",
+      "right": "An honorary family member",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-102",
+      "left": "A huge ask",
+      "right": "A tiny favor",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-103",
+      "left": "A nickname that must stop",
+      "right": "A sweet nickname",
+      "category": "relationships",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-104",
+      "left": "An unsolicited lecture",
+      "right": "Good advice",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-105",
+      "left": "A thoughtful check-in",
+      "right": "An intrusive check-in",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-106",
+      "left": "An apology that takes courage",
+      "right": "An easy apology",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-107",
+      "left": "A trust-breaking secret",
+      "right": "A harmless secret",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-108",
+      "left": "Quality time",
+      "right": "Just sharing a room",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-109",
+      "left": "Over-the-top romance",
+      "right": "Subtle romance",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-110",
+      "left": "Friends for life",
+      "right": "Friends for a season",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-111",
+      "left": "A healthy compromise",
+      "right": "Giving in completely",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-112",
+      "left": "Hard to forgive",
+      "right": "Easy to forgive",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-113",
+      "left": "A fun family tradition",
+      "right": "A family obligation",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-114",
+      "left": "A casual promise",
+      "right": "A meaningful promise",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-115",
+      "left": "A friendly tease",
+      "right": "A joke that crosses the line",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-116",
+      "left": "Perfect for a first date",
+      "right": "Better after ten years",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-117",
+      "left": "Comfortably independent",
+      "right": "Always together",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-118",
+      "left": "An awkward reunion",
+      "right": "A heartwarming reunion",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-119",
+      "left": "Needs a serious conversation",
+      "right": "An unspoken understanding",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-120",
+      "left": "A great plus-one",
+      "right": "A risky plus-one",
+      "category": "relationships",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-121",
+      "left": "An endearing habit",
+      "right": "An infuriating habit",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-122",
+      "left": "Friendship that takes work",
+      "right": "Effortless friendship",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-123",
+      "left": "Growing closer",
+      "right": "Drifting apart",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-124",
+      "left": "A minor boundary",
+      "right": "A relationship dealbreaker",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-125",
+      "left": "A nightmare surprise visit",
+      "right": "A lovely surprise visit",
+      "category": "relationships",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-126",
+      "left": "Dead weight in a suitcase",
+      "right": "Essential on a trip",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-127",
+      "left": "Creates extra work",
+      "right": "Saves time",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-128",
+      "left": "Better replaced",
+      "right": "Worth repairing",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-129",
+      "left": "A disastrous shortcut",
+      "right": "A clever shortcut",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-130",
+      "left": "Comfortable but ugly",
+      "right": "Stylish but uncomfortable",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-131",
+      "left": "A pointless upgrade",
+      "right": "A luxury worth paying for",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-132",
+      "left": "A maintenance nightmare",
+      "right": "Easy to maintain",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-133",
+      "left": "Clutter in disguise",
+      "right": "Worth the storage space",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-134",
+      "left": "A constant nag",
+      "right": "A helpful reminder",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-135",
+      "left": "Works better manually",
+      "right": "Better automated",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-136",
+      "left": "A problem for future you",
+      "right": "Fix it immediately",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-137",
+      "left": "An impressive waste of money",
+      "right": "A smart use of money",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-138",
+      "left": "Made to be replaced",
+      "right": "Built to last",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-139",
+      "left": "A useful button",
+      "right": "A button nobody needs",
+      "category": "practical",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-140",
+      "left": "Only for experts",
+      "right": "Great for beginners",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-141",
+      "left": "Best planned carefully",
+      "right": "Best improvised",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-142",
+      "left": "Needless complexity",
+      "right": "A feature worth learning",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-143",
+      "left": "A day-ruining hassle",
+      "right": "A harmless inconvenience",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-144",
+      "left": "An elegant solution",
+      "right": "A wildly overcomplicated solution",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-145",
+      "left": "A tool for once a decade",
+      "right": "A tool for every day",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-146",
+      "left": "Easy to carry",
+      "right": "A logistical nightmare",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-147",
+      "left": "Better bought one at a time",
+      "right": "Worth buying in bulk",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-148",
+      "left": "A sensible backup",
+      "right": "An unnecessary duplicate",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-149",
+      "left": "Worth every minute",
+      "right": "More effort than it's worth",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-150",
+      "left": "Set it and forget it",
+      "right": "Needs constant attention",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-151",
+      "left": "Fair to individuals",
+      "right": "Fair to the group",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-152",
+      "left": "Freedom through choice",
+      "right": "Freedom from choice",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-153",
+      "left": "An uncomfortable truth",
+      "right": "A comforting illusion",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-154",
+      "left": "An empty ritual",
+      "right": "A meaningful tradition",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-155",
+      "left": "A rule worth defending",
+      "right": "A rule worth breaking",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-156",
+      "left": "An unhealthy obsession",
+      "right": "An admirable ambition",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-157",
+      "left": "A reckless gamble",
+      "right": "A small act of courage",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-158",
+      "left": "Pure luck",
+      "right": "Earned success",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-159",
+      "left": "A needless sacrifice",
+      "right": "A worthwhile sacrifice",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-160",
+      "left": "Loyal to principles",
+      "right": "Loyal to people",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-161",
+      "left": "A deliberate choice",
+      "right": "An honest mistake",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-162",
+      "left": "Wishful thinking",
+      "right": "Hopeful realism",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-163",
+      "left": "A human necessity",
+      "right": "A social invention",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-164",
+      "left": "Change for its own sake",
+      "right": "Genuine progress",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-165",
+      "left": "A personal responsibility",
+      "right": "A shared responsibility",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-166",
+      "left": "A matter of taste",
+      "right": "A matter of principle",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-167",
+      "left": "Wrong regardless of outcome",
+      "right": "Justified by the outcome",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-168",
+      "left": "More honest than kind",
+      "right": "More kind than honest",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-169",
+      "left": "A sign of stubbornness",
+      "right": "A sign of wisdom",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-170",
+      "left": "Worth knowing at any cost",
+      "right": "Better left unknown",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-171",
+      "left": "A sign of destiny",
+      "right": "A coincidence",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-172",
+      "left": "A life of grand ambition",
+      "right": "A simple life",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-173",
+      "left": "Belongs to everyone",
+      "right": "Belongs to nobody",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-174",
+      "left": "A universal truth",
+      "right": "A personal belief",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-175",
+      "left": "Reinventing the future",
+      "right": "Preserving the past",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-176",
+      "left": "Works in a cartoon",
+      "right": "Works in real life",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-177",
+      "left": "An entirely useless superpower",
+      "right": "A world-saving superpower",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-178",
+      "left": "A name for a supervillain",
+      "right": "A perfect pet name",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-179",
+      "left": "Looks like an alien snack",
+      "right": "Looks like human food",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-180",
+      "left": "A terrible place to sit",
+      "right": "An ideal throne",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-181",
+      "left": "Might be haunted",
+      "right": "Definitely just old",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-182",
+      "left": "A disguise that fools nobody",
+      "right": "A disguise that works",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-183",
+      "left": "Would annoy a dragon",
+      "right": "Would impress a dragon",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-184",
+      "left": "Belongs in a junk drawer",
+      "right": "Belongs in a museum",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-185",
+      "left": "A ridiculous royal title",
+      "right": "An intimidating royal title",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-186",
+      "left": "Would befriend a ghost",
+      "right": "Would frighten a ghost",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-187",
+      "left": "A robot trying too hard",
+      "right": "A convincing robot",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-188",
+      "left": "A perfect thing to juggle",
+      "right": "A terrible thing to juggle",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-189",
+      "left": "Couldn't run a lemonade stand",
+      "right": "Could run a tiny country",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-190",
+      "left": "An alarming thing to collect",
+      "right": "A reasonable thing to collect",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-191",
+      "left": "An elegant magic spell",
+      "right": "A laughably clumsy spell",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-192",
+      "left": "An international scandal",
+      "right": "Unlikely to cause a scandal",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-193",
+      "left": "Would ruin a wedding",
+      "right": "Safe to bring to a wedding",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-194",
+      "left": "A name fit for a spaceship",
+      "right": "A name fit for a rowboat",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-195",
+      "left": "Only scary in dreams",
+      "right": "Scary even when awake",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-196",
+      "left": "A plausible end of the world",
+      "right": "An absurd end of the world",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "en-197",
+      "left": "A fairytale curse",
+      "right": "A fairytale blessing",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "en-198",
+      "left": "A creature you'd flee from",
+      "right": "A creature you'd hug",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-199",
+      "left": "Would terrify the audience",
+      "right": "Would make a great mascot",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "en-200",
+      "left": "A useless invention for cats",
+      "right": "A brilliant invention for cats",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    }
+  ]
+}

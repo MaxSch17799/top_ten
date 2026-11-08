@@ -4,6 +4,7 @@ import App from './App';
 import './styles.css';
 import './party.css';
 import './fishy.css';
+import './wavelength.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

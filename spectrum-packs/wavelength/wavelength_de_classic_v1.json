@@ -1,0 +1,1609 @@
+{
+  "schemaVersion": 1,
+  "game": "wavelength",
+  "packId": "wavelength-de-classic-v1",
+  "language": "de",
+  "title": "Deutsch Klassisch",
+  "spectrums": [
+    {
+      "id": "de-001",
+      "left": "Schmeckt nach Kindheit",
+      "right": "Schmeckt nach Urlaub",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-002",
+      "left": "Eher fürs Abendessen",
+      "right": "Eher fürs Frühstück",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-003",
+      "left": "Macht munter",
+      "right": "Macht schläfrig",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-004",
+      "left": "Wirft man sofort weg",
+      "right": "Hebt man jahrelang auf",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-005",
+      "left": "Klappt ganz nebenbei",
+      "right": "Braucht volle Aufmerksamkeit",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-006",
+      "left": "Passt zu einem Montag",
+      "right": "Passt zu einem Sonntag",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-007",
+      "left": "Sieht leckerer aus, als es schmeckt",
+      "right": "Schmeckt besser, als es aussieht",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-008",
+      "left": "Riecht nach Zuhause",
+      "right": "Riecht nach Abenteuer",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-009",
+      "left": "Macht eine Wohnung ungemütlich",
+      "right": "Macht eine Wohnung gemütlich",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-010",
+      "left": "Schön zum Verschenken",
+      "right": "Peinlich zum Verschenken",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-011",
+      "left": "Schmeckt aufgewärmt am besten",
+      "right": "Schmeckt frisch am besten",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-012",
+      "left": "Hat man immer griffbereit",
+      "right": "Liegt nur im Weg",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-013",
+      "left": "Lieber nur zu Hause",
+      "right": "In der Öffentlichkeit völlig okay",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-014",
+      "left": "Macht die Hände schmutzig",
+      "right": "Bleibt eine saubere Sache",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-015",
+      "left": "Etwas für Nachteulen",
+      "right": "Etwas für Frühaufsteher",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-016",
+      "left": "Einmal ausprobieren reicht",
+      "right": "Könnte ich täglich machen",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-017",
+      "left": "Fühlt sich nach Verzicht an",
+      "right": "Fühlt sich nach Luxus an",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-018",
+      "left": "Zu Hause am schönsten",
+      "right": "Unterwegs am schönsten",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-019",
+      "left": "Macht den Tag komplizierter",
+      "right": "Macht den Tag einfacher",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-020",
+      "left": "Hat seinen festen Platz",
+      "right": "Ist ständig verschwunden",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-021",
+      "left": "Isst man mit den Händen",
+      "right": "Isst man mit Besteck",
+      "category": "everyday",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-022",
+      "left": "Macht beim Einkaufen Spaß",
+      "right": "Bereut man an der Kasse",
+      "category": "everyday",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-023",
+      "left": "Kurioses Sammlerstück",
+      "right": "Typischer Alltagsgegenstand",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-024",
+      "left": "Ein Vergnügen bei Sonnenschein",
+      "right": "Ein Vergnügen bei Regen",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-025",
+      "left": "Macht mehr Spaß als erwartet",
+      "right": "Ist langweiliger als gedacht",
+      "category": "everyday",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-026",
+      "left": "Einfach unverschämt",
+      "right": "Charmant frech",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-027",
+      "left": "Angenehmer Smalltalk",
+      "right": "Peinliches Schweigen",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-028",
+      "left": "Passiv-aggressiv gemeint",
+      "right": "Freundlich gemeint",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-029",
+      "left": "Gewinnt Sympathien",
+      "right": "Kostet Sympathien",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-030",
+      "left": "Unangenehm vertraulich",
+      "right": "Höflich distanziert",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-031",
+      "left": "Angenehmer Blickkontakt",
+      "right": "Unangenehmes Anstarren",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-032",
+      "left": "Offensichtliche Schleimerei",
+      "right": "Aufrichtiges Lob",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-033",
+      "left": "Gelungener Scherz",
+      "right": "Unnötiger Kommentar",
+      "category": "social",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-034",
+      "left": "Gesellig",
+      "right": "Aufdringlich",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-035",
+      "left": "Völlig taktlos",
+      "right": "Wohltuend ehrlich",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-036",
+      "left": "Unauffälliger Auftritt",
+      "right": "Großer Auftritt",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-037",
+      "left": "Übertrieben freundlich",
+      "right": "Herzlich",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-038",
+      "left": "Ungefragtes Einmischen",
+      "right": "Hilfreiches Mitdenken",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-039",
+      "left": "Respektvoller Widerspruch",
+      "right": "Belehrender Widerspruch",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-040",
+      "left": "Charmante Macke",
+      "right": "Nervige Angewohnheit",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-041",
+      "left": "Heizt die Stimmung an",
+      "right": "Beruhigt die Runde",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-042",
+      "left": "Geht als Scherz durch",
+      "right": "Geht eindeutig zu weit",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-043",
+      "left": "Wirkt überheblich",
+      "right": "Wirkt selbstbewusst",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-044",
+      "left": "Sagt man ganz direkt",
+      "right": "Deutet man lieber nur an",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-045",
+      "left": "Besser nur zu zweit",
+      "right": "Ideal für die ganze Gruppe",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-046",
+      "left": "Kann man vor Fremden sagen",
+      "right": "Nur unter Freunden okay",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-047",
+      "left": "Redet nur von sich",
+      "right": "Hört aufmerksam zu",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-048",
+      "left": "Will dazugehören",
+      "right": "Will herausstechen",
+      "category": "social",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-049",
+      "left": "Erst nach Jahren okay",
+      "right": "Passt zum ersten Treffen",
+      "category": "social",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-050",
+      "left": "Wirkt einstudiert",
+      "right": "Wirkt spontan",
+      "category": "social",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-051",
+      "left": "Zeitloser Klassiker",
+      "right": "Kurzlebige Mode",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-052",
+      "left": "Musik zum stillen Zuhören",
+      "right": "Musik zum Mitsingen",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-053",
+      "left": "Muss man im Kino sehen",
+      "right": "Auf dem Sofa genauso gut",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-054",
+      "left": "Besser als Verfilmung",
+      "right": "Besser als Buch",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-055",
+      "left": "Für die große Bühne",
+      "right": "Für ein kleines Publikum",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-056",
+      "left": "Erinnert an die Kindheit",
+      "right": "Fühlt sich ganz neu an",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-057",
+      "left": "Mehr Inhalt als Stil",
+      "right": "Mehr Stil als Inhalt",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-058",
+      "left": "Bringt einen zum Nachdenken",
+      "right": "Bringt einen zum Lachen",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-059",
+      "left": "Funktioniert in kurzen Häppchen",
+      "right": "Braucht einen ganzen Abend",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-060",
+      "left": "Für ruhige Kopfhörermomente",
+      "right": "Für die Tanzfläche",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-061",
+      "left": "Liebenswert altmodisch",
+      "right": "Aufgesetzt modern",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-062",
+      "left": "Geheimtipp für wenige",
+      "right": "Großer Publikumserfolg",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-063",
+      "left": "Beim ersten Mal am besten",
+      "right": "Wird bei jedem Mal besser",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-064",
+      "left": "Anspruchsvolles Kulturerlebnis",
+      "right": "Leichte Unterhaltung",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-065",
+      "left": "Frischer Blick auf die Welt",
+      "right": "Immer gleiche Geschichte",
+      "category": "culture",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-066",
+      "left": "Eher Erwachsenenunterhaltung",
+      "right": "Eher Kinderprogramm",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-067",
+      "left": "Herrlich kitschig",
+      "right": "Ernsthaft kunstvoll",
+      "category": "culture",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-068",
+      "left": "Für einen ruhigen Abend",
+      "right": "Für eine lange Autofahrt",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-069",
+      "left": "War früher überzeugender",
+      "right": "Ist heute überzeugender",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-070",
+      "left": "Gerät schnell in Vergessenheit",
+      "right": "Wird ständig zitiert",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-071",
+      "left": "Ist seiner Zeit hinterher",
+      "right": "Ist seiner Zeit voraus",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-072",
+      "left": "Am besten gemeinsam erleben",
+      "right": "Am besten für sich genießen",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-073",
+      "left": "Funktioniert als Aufnahme besser",
+      "right": "Muss man live erleben",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-074",
+      "left": "Könnte ein Museum füllen",
+      "right": "Passt eher auf einen Flohmarkt",
+      "category": "culture",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-075",
+      "left": "Passt zum Straßenfest",
+      "right": "Passt zum Opernabend",
+      "category": "culture",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-076",
+      "left": "Freudiges Kribbeln",
+      "right": "Mulmiges Gefühl",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-077",
+      "left": "Wühlt mich auf",
+      "right": "Entspannt mich",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-078",
+      "left": "Schlechtes Gewissen",
+      "right": "Gutes Gewissen",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-079",
+      "left": "Vorfreude pur",
+      "right": "Sorge vor dem, was kommt",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-080",
+      "left": "Zum Heulen schlimm",
+      "right": "Zum Heulen schön",
+      "category": "emotions",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-081",
+      "left": "Herbe Niederlage",
+      "right": "Kleiner Triumph",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-082",
+      "left": "Fühlt sich vertraut an",
+      "right": "Fühlt sich fremd an",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-083",
+      "left": "Lässt einen völlig kalt",
+      "right": "Rührt zu Tränen",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-084",
+      "left": "Macht nostalgisch",
+      "right": "Macht neugierig auf morgen",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-085",
+      "left": "Weckt Fernweh",
+      "right": "Gibt Geborgenheit",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-086",
+      "left": "Leise Freude",
+      "right": "Riesige Euphorie",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-087",
+      "left": "Zum Mitfreuen",
+      "right": "Zum Fremdschämen",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-088",
+      "left": "Gibt mir Freiheit",
+      "right": "Nimmt mir Freiraum",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-089",
+      "left": "Lässt einen zweifeln",
+      "right": "Macht selbstsicher",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-090",
+      "left": "Angenehme Überraschung",
+      "right": "Böser Schreck",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-091",
+      "left": "Nimmt einem den Mut",
+      "right": "Macht Hoffnung",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-092",
+      "left": "Macht ungeduldig",
+      "right": "Macht geduldig",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-093",
+      "left": "Klingt nach Aufbruch",
+      "right": "Klingt nach Abschied",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-094",
+      "left": "Lachen aus Freude",
+      "right": "Lachen aus Verlegenheit",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-095",
+      "left": "Das ist mir gerade zu viel",
+      "right": "Das brauche ich gerade",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-096",
+      "left": "Macht mich mutiger",
+      "right": "Macht mich vorsichtiger",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-097",
+      "left": "Geht einem nicht aus dem Kopf",
+      "right": "Verfliegt sofort",
+      "category": "emotions",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-098",
+      "left": "Ruhige Zufriedenheit",
+      "right": "Rastlose Sehnsucht",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-099",
+      "left": "Eher Ernüchterung",
+      "right": "Eher Erleichterung",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-100",
+      "left": "Unbegründete Panik",
+      "right": "Berechtigte Vorsicht",
+      "category": "emotions",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-101",
+      "left": "Gefallen mit Hintergedanken",
+      "right": "Freundschaftsdienst",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-102",
+      "left": "Zeigt Zuneigung",
+      "right": "Verlangt Aufmerksamkeit",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-103",
+      "left": "Schafft Abstand",
+      "right": "Schafft Nähe",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-104",
+      "left": "Schönes erstes Date",
+      "right": "Katastrophales erstes Date",
+      "category": "relationships",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-105",
+      "left": "Pflichtgeschenk",
+      "right": "Geschenk von Herzen",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-106",
+      "left": "Gemeinsames Abenteuer",
+      "right": "Gemeinsame Geduldsprobe",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-107",
+      "left": "Als Paar peinlich",
+      "right": "Als Paar süß",
+      "category": "relationships",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-108",
+      "left": "Schafft Vertrauen",
+      "right": "Verspielt Vertrauen",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-109",
+      "left": "Faule Ausrede",
+      "right": "Ehrliche Entschuldigung",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-110",
+      "left": "Liebevolle Neckerei",
+      "right": "Versteckte Gemeinheit",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-111",
+      "left": "Auch unter Freunden zu viel verlangt",
+      "right": "Unter Freunden selbstverständlich",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-112",
+      "left": "Braucht viel Freiraum",
+      "right": "Braucht viel Nähe",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-113",
+      "left": "Trennt Generationen",
+      "right": "Verbindet Generationen",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-114",
+      "left": "Gemeinsam schöner",
+      "right": "Allein schöner",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-115",
+      "left": "Reine Höflichkeit",
+      "right": "Zeichen von Interesse",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-116",
+      "left": "Rettet das Familientreffen",
+      "right": "Ruiniert das Familientreffen",
+      "category": "relationships",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-117",
+      "left": "Ein Anlass zum Ausweichen",
+      "right": "Ein guter Anlass zum Wiedersehen",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-118",
+      "left": "Liebevolles Ritual",
+      "right": "Einengende Routine",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-119",
+      "left": "Schürt neuen Streit",
+      "right": "Hilft beim Versöhnen",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-120",
+      "left": "Stärkt eine Freundschaft",
+      "right": "Belastet eine Freundschaft",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-121",
+      "left": "Praktische Geste",
+      "right": "Romantische Geste",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-122",
+      "left": "Verzeihlicher Fehler",
+      "right": "Schwerer Vertrauensbruch",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-123",
+      "left": "Behält man lieber für sich",
+      "right": "Teilt man gern",
+      "category": "relationships",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-124",
+      "left": "Zählt als gemeinsame Zeit",
+      "right": "Bloß gleichzeitig anwesend",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-125",
+      "left": "Einseitige Freundschaft",
+      "right": "Freundschaft auf Augenhöhe",
+      "category": "relationships",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-126",
+      "left": "Spart Zeit",
+      "right": "Frisst Zeit",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-127",
+      "left": "Neu kaufen lohnt sich",
+      "right": "Reparieren lohnt sich",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-128",
+      "left": "Lieber selbst machen",
+      "right": "Lieber Profis ranlassen",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-129",
+      "left": "Auf Dauer sinnvoll",
+      "right": "Schnell bequem",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-130",
+      "left": "Einfach zu erklären",
+      "right": "Schwer zu vermitteln",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-131",
+      "left": "Geht nach Gefühl",
+      "right": "Braucht einen Plan",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-132",
+      "left": "Gut angelegtes Geld",
+      "right": "Rausgeworfenes Geld",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-133",
+      "left": "Verschwendet Platz",
+      "right": "Spart Platz",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-134",
+      "left": "Geniale Erfindung",
+      "right": "Lösung für kein Problem",
+      "category": "practical",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-135",
+      "left": "Nach kurzer Zeit verschlissen",
+      "right": "Für die Ewigkeit gemacht",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-136",
+      "left": "Fast wartungsfrei",
+      "right": "Ständig reparaturbedürftig",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-137",
+      "left": "Laufend neue Kosten",
+      "right": "Einmalige Anschaffung",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-138",
+      "left": "Unscheinbar, aber nützlich",
+      "right": "Auffällig, aber nutzlos",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-139",
+      "left": "Nur etwas für Könner",
+      "right": "Ideal für Anfänger",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-140",
+      "left": "Vielseitig einsetzbar",
+      "right": "Nur für Sonderfälle",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-141",
+      "left": "Bestraft jeden Fehler",
+      "right": "Verzeiht kleine Fehler",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-142",
+      "left": "Braucht eine Anleitung",
+      "right": "Erklärt sich von selbst",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-143",
+      "left": "Zahlt sich erst später aus",
+      "right": "Bringt schnelle Ergebnisse",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-144",
+      "left": "Hält einiges aus",
+      "right": "Geht leicht kaputt",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-145",
+      "left": "Raffiniert einfach gelöst",
+      "right": "Unnötig viel Aufwand",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-146",
+      "left": "Leicht zu transportieren",
+      "right": "Ein Albtraum beim Tragen",
+      "category": "practical",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-147",
+      "left": "Waghalsiges Experiment",
+      "right": "Kalkulierbares Risiko",
+      "category": "practical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-148",
+      "left": "Die günstige Variante reicht",
+      "right": "Hier muss das Original her",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-149",
+      "left": "Ein Magnet für Dreck",
+      "right": "Leicht zu reinigen",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-150",
+      "left": "Billig in der Anschaffung",
+      "right": "Teuer im Unterhalt",
+      "category": "practical",
+      "tone": "light",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-151",
+      "left": "Unnachgiebig stur",
+      "right": "Prinzipientreu",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-152",
+      "left": "Vernünftiger Kompromiss",
+      "right": "Verrat an den eigenen Werten",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-153",
+      "left": "Schicksal",
+      "right": "Zufall",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-154",
+      "left": "Aus Gewohnheit",
+      "right": "Aus freiem Willen",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-155",
+      "left": "Leichtsinnige Entscheidung",
+      "right": "Mutige Entscheidung",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-156",
+      "left": "Wirklich fair",
+      "right": "Nur nach den Regeln",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-157",
+      "left": "Vergeltung",
+      "right": "Gerechtigkeit",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-158",
+      "left": "Eigenverantwortung",
+      "right": "Verantwortung der Gemeinschaft",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-159",
+      "left": "Neues ausprobieren",
+      "right": "Bewährtes bewahren",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-160",
+      "left": "Reine Privatsache",
+      "right": "Geht alle etwas an",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-161",
+      "left": "Das Richtige tun",
+      "right": "Recht behalten",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-162",
+      "left": "Das Ergebnis zählt",
+      "right": "Der Weg dorthin zählt",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-163",
+      "left": "Mehr Absicherung",
+      "right": "Mehr Freiheit",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-164",
+      "left": "Ehrlicher Irrtum",
+      "right": "Bewusste Täuschung",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-165",
+      "left": "Sollte man verändern",
+      "right": "Muss man akzeptieren",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-166",
+      "left": "Geschmackssache",
+      "right": "Sollte jeder anerkennen",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-167",
+      "left": "Drang zur Perfektion",
+      "right": "Mut zur Unvollkommenheit",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-168",
+      "left": "Aus eigenem Antrieb",
+      "right": "Wegen der Erwartungen anderer",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-169",
+      "left": "Für die Außenwirkung inszeniert",
+      "right": "Aufrichtig",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-170",
+      "left": "Zeichen von Reife",
+      "right": "Zeichen von Resignation",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-171",
+      "left": "Ein erfolgreiches Leben",
+      "right": "Ein erfülltes Leben",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-172",
+      "left": "Lieber etwas besitzen",
+      "right": "Lieber etwas erleben",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-173",
+      "left": "Gesellschaftliche Pflicht",
+      "right": "Freiwillige Großzügigkeit",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-174",
+      "left": "Ein Wert an sich",
+      "right": "Nur Mittel zum Zweck",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-175",
+      "left": "Für sich selbst getan",
+      "right": "Für Applaus getan",
+      "category": "philosophical",
+      "tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-176",
+      "left": "Wirkt wie ein Haustier",
+      "right": "Wirkt wie ein Mitbewohner",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-177",
+      "left": "Gehört in die Abstellkammer",
+      "right": "Gehört auf einen Thron",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-178",
+      "left": "Eher ein Superheld",
+      "right": "Eher ein Superschurke",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-179",
+      "left": "Als Kuscheltier gruselig",
+      "right": "Als Kuscheltier traumhaft",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-180",
+      "left": "Verdient einen eigenen Fanclub",
+      "right": "Sollte heimlich verschwinden",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-181",
+      "left": "Eher für ein Raumschiff",
+      "right": "Eher für eine Zeitmaschine",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-182",
+      "left": "Wäre ein toller Nachbar",
+      "right": "Wäre ein gutes Filmmonster",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-183",
+      "left": "Klingt wie eine Diagnose",
+      "right": "Klingt wie ein Zauberspruch",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-184",
+      "left": "Sieht nach moderner Kunst aus",
+      "right": "Sieht nach Sperrmüll aus",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-185",
+      "left": "Würde im Märchen Ärger machen",
+      "right": "Würde im Märchen helfen",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-186",
+      "left": "Passt zu einer Geheimbasis",
+      "right": "Passt zu einem Gartenfest",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-187",
+      "left": "Gehört auf einen Einkaufszettel",
+      "right": "Gehört auf eine Schatzkarte",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-188",
+      "left": "Wäre ein tolles Maskottchen",
+      "right": "Wäre ein abschreckendes Beispiel",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-189",
+      "left": "Klingt nach Hausverbot",
+      "right": "Klingt nach Nobelpreis",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-190",
+      "left": "Eher Hexenküche",
+      "right": "Eher Sterneküche",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-191",
+      "left": "Passt ins Wellnesshotel",
+      "right": "Passt ins Spukhaus",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-192",
+      "left": "Wirkt wie von einem fremden Planeten",
+      "right": "Wirkt wie aus dem Baumarkt",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-193",
+      "left": "Würde sofort rausfliegen",
+      "right": "Würde eine Talentshow gewinnen",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-194",
+      "left": "Passt zum Weltuntergang",
+      "right": "Passt zur Gartenparty",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-195",
+      "left": "Wäre als Bürgermeister furchtbar",
+      "right": "Wäre als Bürgermeister großartig",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-196",
+      "left": "Verspricht ein Abenteuer",
+      "right": "Verspricht Ärger mit der Versicherung",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-197",
+      "left": "Wie aus einem Fiebertraum",
+      "right": "Wie aus einem schönen Traum",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    },
+    {
+      "id": "de-198",
+      "left": "Würde ein Alien sofort verstehen",
+      "right": "Würde ein Alien völlig verwirren",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "medium"
+    },
+    {
+      "id": "de-199",
+      "left": "Gut als Lautsprecherdurchsage",
+      "right": "Gut als Geheimsprache",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "challenging"
+    },
+    {
+      "id": "de-200",
+      "left": "Könnte eine königliche Speise sein",
+      "right": "Könnte aus der Resteküche kommen",
+      "category": "absurd",
+      "tone": "silly",
+      "difficulty": "easy"
+    }
+  ]
+}

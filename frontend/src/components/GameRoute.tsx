@@ -4,6 +4,7 @@ import { BACKEND_BASE, request } from '../api';
 import GameShell from './GameShell';
 import JustOneGame from './JustOneGame';
 import SoundsFishyGame from './SoundsFishyGame';
+import WavelengthGame from './WavelengthGame';
 
 export default function GameRoute({ display = false }: { display?: boolean }) {
   const { gameId = '' } = useParams();
@@ -58,7 +59,9 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
-  return info.gameType === 'sounds-fishy' ? (
+  return info.gameType === 'wavelength' ? (
+    <WavelengthGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
+  ) : info.gameType === 'sounds-fishy' ? (
     <SoundsFishyGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
   ) : info.gameType === 'just-one' ? (
     <JustOneGame key={gameId} gameId={gameId} />

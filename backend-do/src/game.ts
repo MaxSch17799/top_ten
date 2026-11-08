@@ -2,6 +2,7 @@ import { defaultQuestionBankId, questionBanks as staticQuestionBanks } from './g
 import type { DbEnv } from './questionBanksDb.js';
 import { JustOneRoom } from './justOne/room.js';
 import { SoundsFishyRoom } from './soundsFishy/room.js';
+import { WavelengthRoom } from './wavelength/room.js';
 import type { QuestionBankDefinition } from './questionBankTypes.js';
 import { trackUsageEvent, type UsageMonitorEnv } from './usageMonitor.js';
 import {
@@ -149,6 +150,7 @@ function isQuestionBankDefinition(value: unknown): value is QuestionBankDefiniti
 export class GameDurableObject {
   private justOne: JustOneRoom;
   private soundsFishy: SoundsFishyRoom;
+  private wavelength: WavelengthRoom;
   private state: GameState | null = null;
   private clients = new Map<string, Set<WebSocket>>();
   private loadingStatePromise: Promise<void> | null = null;
@@ -156,6 +158,7 @@ export class GameDurableObject {
   constructor(private readonly stateController: DurableObjectState, private readonly env: Env) {
     this.justOne = new JustOneRoom(stateController, env);
     this.soundsFishy = new SoundsFishyRoom(stateController, env);
+    this.wavelength = new WavelengthRoom(stateController, env);
   }
 
   private get storage(): DurableObjectStorage {
@@ -271,11 +274,13 @@ export class GameDurableObject {
     const url = new URL(request.url);
     if (url.pathname === '/api/internal/create') {
       const payload = await request.clone().json() as JsonPayload;
+      if (payload.gameType === 'wavelength' || await this.wavelength.exists()) return this.wavelength.fetch(request);
       if (payload.gameType === 'sounds-fishy' || await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
       if (payload.gameType === 'just-one' || await this.justOne.exists()) return this.justOne.fetch(request);
       return this.handleInternalCreate(request, corsHeaders);
     }
 
+    if (await this.wavelength.exists()) return this.wavelength.fetch(request);
     if (await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
     if (await this.justOne.exists()) return this.justOne.fetch(request);
     await this.loadState();
@@ -320,6 +325,7 @@ export class GameDurableObject {
   }
 
   public async alarm(): Promise<void> {
+    if (await this.wavelength.exists()) return this.wavelength.alarm();
     if (await this.soundsFishy.exists()) return this.soundsFishy.alarm();
     if (await this.justOne.exists()) return this.justOne.alarm();
     await this.loadState();
