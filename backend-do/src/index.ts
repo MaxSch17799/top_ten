@@ -25,6 +25,9 @@ import { generateNumericCode } from './utils.js';
 import { justOneBankSummaries } from './generated/justOneBanks.js';
 import { checkedSettings } from './justOne/engine.js';
 import { defaultJustOneSettings } from '../../shared/justOne.js';
+import { fishyBankSummaries } from './generated/soundsFishyBanks.js';
+import { checkedSettings as checkedFishySettings } from './soundsFishy/engine.js';
+import { defaultFishySettings } from '../../shared/soundsFishy.js';
 
 type JsonPayload = Record<string, unknown>;
 
@@ -133,11 +136,15 @@ async function requireOverrideIfNeeded(request: Request, env: Env, payload: Json
 
 async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const payload = await parseJson(request);
-  if (payload.gameType !== undefined && !['top10', 'just-one'].includes(String(payload.gameType))) {
+  if (payload.gameType !== undefined && !['top10', 'just-one', 'sounds-fishy'].includes(String(payload.gameType))) {
     return errorResponse(request, 400, 'UNKNOWN_GAME', 'Unknown game type');
   }
   if (payload.gameType === 'just-one') {
     try { checkedSettings(defaultJustOneSettings, payload.settings ?? {}); }
+    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
+  }
+  if (payload.gameType === 'sounds-fishy') {
+    try { checkedFishySettings({ ...defaultFishySettings, bankId: fishyBankSummaries.some(b => b.bankId === defaultFishySettings.bankId) ? defaultFishySettings.bankId : fishyBankSummaries[0]?.bankId ?? '' }, payload.settings ?? {}); }
     catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
   }
   const overrideRequired = await requireOverrideIfNeeded(request, env, payload);
@@ -146,11 +153,12 @@ async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): 
   }
 
   const requestedBankId = typeof payload.questionBankId === 'string' ? payload.questionBankId : '';
-  const resolvedBank = payload.gameType === 'just-one'
+  const standalone = ['just-one', 'sounds-fishy'].includes(String(payload.gameType));
+  const resolvedBank = standalone
     ? { bank: null, source: null, usage: null }
     : await getQuestionBankById(env, requestedBankId);
   trackD1Usage(ctx, env, resolvedBank.usage);
-  if (payload.gameType !== 'just-one' && (!resolvedBank.bank || !resolvedBank.source)) {
+  if (!standalone && (!resolvedBank.bank || !resolvedBank.source)) {
     return errorResponse(request, 400, 'QUESTION_BANK_NOT_FOUND', 'Could not find the selected question bank');
   }
 
@@ -392,6 +400,9 @@ export default {
     }
 
     const url = new URL(request.url);
+    if (url.pathname === '/api/sounds-fishy/banks' && request.method === 'GET') {
+      return jsonResponse(request, 200, { banks: fishyBankSummaries });
+    }
     if (url.pathname === '/api/just-one/banks' && request.method === 'GET') {
       return jsonResponse(request, 200, { banks: justOneBankSummaries });
     }

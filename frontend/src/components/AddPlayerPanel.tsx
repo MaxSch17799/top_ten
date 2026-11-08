@@ -5,9 +5,10 @@ export interface AddPlayerPanelProps {
   joinUrl: string;
   gameCode: string;
   onClose: () => void;
+  translate?: (text: string) => string;
 }
 
-export default function AddPlayerPanel({ joinUrl, gameCode, onClose }: AddPlayerPanelProps) {
+export default function AddPlayerPanel({ joinUrl, gameCode, onClose, translate: t = (text) => text }: AddPlayerPanelProps) {
   const [qr, setQr] = useState<string>('');
   const [copied, setCopied] = useState(false);
 
@@ -31,18 +32,18 @@ export default function AddPlayerPanel({ joinUrl, gameCode, onClose }: AddPlayer
     <div className="overlay" role="dialog" aria-modal="true">
       <div className="invite-card">
         <div className="invite-header">
-          <h3>Invite players</h3>
-          <button type="button" className="ghost" onClick={onClose} aria-label="Close invite panel">
+          <h3>{t('Invite players')}</h3>
+          <button type="button" className="ghost" onClick={onClose} aria-label={t('Close invite panel')}>
             X
           </button>
         </div>
-        {qr && <img src={qr} alt="Join link QR code" className="qr" />}
-        <p className="footnote">Game code: {gameCode}</p>
-        <p className="footnote">Share this link or QR to add players mid-game.</p>
+        {qr && <img src={qr} alt={t('Join link QR code')} className="qr" />}
+        <p className="footnote">{t('Game code')}: {gameCode}</p>
+        <p className="footnote">{t('Share this link or QR to add players mid-game.')}</p>
         <div className="invite-link">
           <input readOnly value={joinUrl} />
           <button type="button" className="secondary" onClick={handleCopy}>
-            {copied ? 'Copied' : 'Copy link'}
+            {t(copied ? 'Copied' : 'Copy link')}
           </button>
         </div>
       </div>

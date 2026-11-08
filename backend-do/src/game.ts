@@ -1,6 +1,7 @@
 import { defaultQuestionBankId, questionBanks as staticQuestionBanks } from './generated/questionBanks.js';
 import type { DbEnv } from './questionBanksDb.js';
 import { JustOneRoom } from './justOne/room.js';
+import { SoundsFishyRoom } from './soundsFishy/room.js';
 import type { QuestionBankDefinition } from './questionBankTypes.js';
 import { trackUsageEvent, type UsageMonitorEnv } from './usageMonitor.js';
 import {
@@ -147,12 +148,14 @@ function isQuestionBankDefinition(value: unknown): value is QuestionBankDefiniti
 
 export class GameDurableObject {
   private justOne: JustOneRoom;
+  private soundsFishy: SoundsFishyRoom;
   private state: GameState | null = null;
   private clients = new Map<string, Set<WebSocket>>();
   private loadingStatePromise: Promise<void> | null = null;
 
   constructor(private readonly stateController: DurableObjectState, private readonly env: Env) {
     this.justOne = new JustOneRoom(stateController, env);
+    this.soundsFishy = new SoundsFishyRoom(stateController, env);
   }
 
   private get storage(): DurableObjectStorage {
@@ -268,10 +271,12 @@ export class GameDurableObject {
     const url = new URL(request.url);
     if (url.pathname === '/api/internal/create') {
       const payload = await request.clone().json() as JsonPayload;
+      if (payload.gameType === 'sounds-fishy' || await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
       if (payload.gameType === 'just-one' || await this.justOne.exists()) return this.justOne.fetch(request);
       return this.handleInternalCreate(request, corsHeaders);
     }
 
+    if (await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
     if (await this.justOne.exists()) return this.justOne.fetch(request);
     await this.loadState();
     if (!this.state) {
@@ -315,6 +320,7 @@ export class GameDurableObject {
   }
 
   public async alarm(): Promise<void> {
+    if (await this.soundsFishy.exists()) return this.soundsFishy.alarm();
     if (await this.justOne.exists()) return this.justOne.alarm();
     await this.loadState();
     await this.checkAutoEndConditions();

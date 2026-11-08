@@ -55,8 +55,8 @@ function authHeaders(token?: string | null): Record<string, string> {
 }
 
 export interface CreateGamePayload {
-  gameType?: 'top10' | 'just-one';
-  settings?: import('../../shared/justOne').JustOneSettings;
+  gameType?: 'top10' | 'just-one' | 'sounds-fishy';
+  settings?: import('../../shared/justOne').JustOneSettings | import('../../shared/soundsFishy').FishySettings;
   hostNickname: string;
   seed?: string;
   questionBankId?: string;
@@ -64,7 +64,7 @@ export interface CreateGamePayload {
 }
 
 export interface CreateGameResult {
-  gameType?: 'top10' | 'just-one';
+  gameType?: 'top10' | 'just-one' | 'sounds-fishy';
   gameId: string;
   hostToken: string;
   playerId: string;
@@ -76,7 +76,7 @@ export interface CreateGameResult {
 }
 
 export interface JoinGameResult {
-  gameType?: 'top10' | 'just-one';
+  gameType?: 'top10' | 'just-one' | 'sounds-fishy';
   playerId: string;
   playerToken: string;
   role: 'PLAYER';

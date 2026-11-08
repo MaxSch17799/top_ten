@@ -3,8 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { BACKEND_BASE, request } from '../api';
 import GameShell from './GameShell';
 import JustOneGame from './JustOneGame';
+import SoundsFishyGame from './SoundsFishyGame';
 
-export default function GameRoute() {
+export default function GameRoute({ display = false }: { display?: boolean }) {
   const { gameId = '' } = useParams();
   const [info, setInfo] = useState<{ gameId: string; gameType: string } | null>(
     null,
@@ -57,7 +58,9 @@ export default function GameRoute() {
         </section>
       </main>
     );
-  return info.gameType === 'just-one' ? (
+  return info.gameType === 'sounds-fishy' ? (
+    <SoundsFishyGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
+  ) : info.gameType === 'just-one' ? (
     <JustOneGame key={gameId} gameId={gameId} />
   ) : (
     <GameShell key={gameId} />

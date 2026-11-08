@@ -1,0 +1,69 @@
+.sounds-fishy { --accent: #5be1d6; --accent-strong: #a0fff2; --border: #5be1d652; }
+.game-tile.game-sounds-fishy { --tile-accent: #5be1d6; }
+.platform-language { align-self: flex-end; background: #111322; color: #f4ffff; border-radius: 8px; padding: .5rem; font-family: system-ui, sans-serif; }
+@media (min-width: 900px) { .game-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.game-sounds-fishy .game-mark { font-family: ui-monospace, monospace; font-size: 2rem; }
+.sf-home { gap: 1rem; }
+.sf-home h1 { line-height: 1.6; font-size: clamp(1.4rem, 5vw, 2.6rem); }
+.sf-emblem { font-family: ui-monospace, monospace; color: var(--accent); font-size: 4rem; letter-spacing: -.4rem; padding: .5rem; }
+.sf-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; margin-bottom: 1.2rem; font-family: system-ui, sans-serif; font-size: .9rem; }
+.sf-top select { background: #111322; color: #f4ffff; padding: .6rem; border: 1px solid var(--border); border-radius: 8px; }
+.sf-top a, .sounds-fishy a { color: var(--accent-strong); }
+.sf-game { padding: clamp(1rem, 3vw, 2rem); }
+.sf-game p, .sf-game label, .sf-game small, .sf-game summary, .sf-game li, .sf-home .tagline, .sf-home .warning-banner, .sf-rules { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; }
+.sf-game h1 { font-size: clamp(1rem, 3vw, 1.6rem); line-height: 1.7; }
+.sf-game h2 { font-size: 1.1rem; line-height: 1.7; }
+.sf-game h3 { font-size: .85rem; line-height: 1.7; }
+.sf-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.sf-game .eyebrow { font-size: .65rem; }
+.sf-strip strong { font-size: clamp(.8rem, 3vw, 1.2rem); overflow-wrap: anywhere; line-height: 1.6; }
+.sf-lobby > .primary { width: 100%; margin-top: 1.5rem; }
+.sf-roster { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.sf-roster li { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding: .8rem 0; border-bottom: 1px solid var(--border); }
+.sf-roster small { display: block; color: var(--muted); font-size: .85rem; }
+.sf-roster .sf-seat-buttons { display: flex; align-items: center; gap: .3rem; }
+.sf-seat-buttons button { min-width: 40px; padding: .7rem; }
+.sf-check { display: flex; align-items: center; gap: .8rem; }
+.sf-check input, .sf-seat-buttons input { width: 22px; height: 22px; accent-color: var(--accent); }
+.sf-settings select, .sf-settings input, .sf-admin select, .sf-admin input { font-family: system-ui, sans-serif; font-size: 1rem; }
+.sf-question { padding: clamp(1.2rem, 4vw, 2.5rem); margin: 1.5rem 0; border-radius: 18px; border: 1px solid var(--border); background: radial-gradient(ellipse at top right, #5be1d618, #0a1120); text-align: center; }
+.sf-question h2 { font-family: system-ui, sans-serif; font-weight: 700; font-size: clamp(1.45rem, 4vw, 2.25rem); line-height: 1.4; margin: .6rem 0; overflow-wrap: anywhere; }
+.sf-private { border: 1px solid var(--fish-color); border-left: 5px solid var(--fish-color); border-radius: 12px; padding: 1.2rem; margin: 1rem 0; background: color-mix(in srgb, var(--fish-color) 7%, #0a0b19); }
+.sf-red { --fish-color: #ff8e90; }
+.sf-blue { --fish-color: #83baff; }
+.sf-private h2 { color: var(--fish-color); }
+.sf-real-answer { display: block; font-family: system-ui, sans-serif; font-size: clamp(1.7rem, 5vw, 2.5rem); line-height: 1.4; overflow-wrap: anywhere; color: #f4ffff; margin: .5rem 0; }
+.sf-speaking { display: flex; flex-wrap: wrap; gap: .5rem 2rem; padding-left: 1.4rem; }
+.sf-preparation > .primary { width: 100%; margin: 1rem 0; }
+.sf-timer { color: var(--accent-strong); background: #5be1d610; border-radius: 8px; padding: .6rem 1rem; }
+.sf-fish-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.sf-fish { --fish-color: #83a8b5; display: flex; flex-direction: column; align-items: stretch; gap: .7rem; padding: 1.2rem; border: 2px solid color-mix(in srgb, var(--fish-color) 45%, transparent); border-radius: 16px; background: color-mix(in srgb, var(--fish-color) 5%, #0b0b17); text-align: center; overflow-wrap: anywhere; }
+.sf-fish.sf-red { --fish-color: #ff8e90; }
+.sf-fish.sf-blue { --fish-color: #83baff; }
+.sf-fish.sf-chosen { border-color: var(--accent); box-shadow: 0 0 0 3px #5be1d619; }
+.sf-fish-art { font-family: ui-monospace, monospace; font-size: 2.5rem; line-height: 1.1; color: var(--fish-color); letter-spacing: -.2rem; }
+.sf-fish > strong { font-family: system-ui, sans-serif; font-size: 1.3rem; }
+.sf-fish small { color: var(--fish-color); }
+.sf-fish button { margin-top: auto; min-height: 48px; }
+.sf-written-answer { margin: .2rem 0; font-size: 1.25rem !important; }
+.sf-decision { position: sticky; bottom: .5rem; z-index: 1; background: #080d1ef5; border: 1px solid var(--border); padding: .9rem; border-radius: 12px; box-shadow: 0 4px 30px #0006; }
+.sf-decision p { margin: 0 0 .7rem; }
+.sf-decision button { width: 100%; min-height: 52px; }
+.sf-result { padding: 1.5rem; border: 1px solid var(--border); border-radius: 14px; margin: 1rem 0; background: #5be1d609; }
+.sf-result > button { width: 100%; margin-top: 1rem; }
+.sf-round-points, .sf-ranking ol { list-style: none; margin: 1rem 0; padding: 0; }
+.sf-round-points li, .sf-ranking li { display: flex; gap: 1rem; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding: .6rem 0; }
+.sf-round-points strong, .sf-ranking strong { color: var(--accent); }
+.sf-ranking, .sf-rules, .sf-admin { margin-top: 1.5rem; width: 100%; text-align: left; border-top: 1px solid var(--border); padding-top: 1rem; }
+.sf-ranking summary, .sf-rules summary, .sf-admin summary, .sf-settings summary { cursor: pointer; padding: .6rem 0; min-height: 44px; }
+.sf-admin > .stack, .sf-advanced { margin-top: 1rem; }
+.sf-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+.sf-winners { text-align: center; padding: 2rem 1rem; }
+.sf-winners strong { font-family: system-ui, sans-serif; font-size: 2rem; color: var(--accent); overflow-wrap: anywhere; }
+.sf-audit { padding-left: 1.2rem; color: var(--muted); }
+.sf-display { max-width: 1280px; }
+.sf-display .sf-question h2 { font-size: clamp(2rem, 5vw, 3rem); }
+.sounds-fishy button:focus-visible, .sounds-fishy a:focus-visible, .sounds-fishy input:focus-visible, .sounds-fishy select:focus-visible, .sounds-fishy summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (min-width: 1000px) { .sf-display .sf-fish-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .sf-header { align-items: start; flex-direction: column; gap: .2rem; } .sf-fish-grid { gap: .65rem; } .sf-fish { padding: .85rem .6rem; } .sf-fish button { font-family: system-ui, sans-serif; font-size: .95rem; padding: .7rem .4rem; } .sf-roster { padding: 0; } }
+@media (prefers-reduced-motion: reduce) { .game-tile, .sounds-fishy * { transition: none !important; animation: none !important; } }

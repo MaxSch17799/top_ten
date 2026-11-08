@@ -17,4 +17,9 @@ export const games = [
     kind: 'Cooperate & guess',
     path: '/just-one',
   },
+  {
+    id: 'sounds-fishy', title: 'Sounds Fishy', mark: '><>',
+    description: 'One true answer. A sea of convincing lies. How far will you fish?',
+    players: '4–10 players', kind: 'Bluff & fish', path: '/sounds-fishy',
+  },
 ] as const;

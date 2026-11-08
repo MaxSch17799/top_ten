@@ -1,0 +1,3080 @@
+{
+  "schemaVersion": 1,
+  "bankId": "sounds-fishy-classic-de",
+  "language": "de",
+  "title": "Classic German",
+  "questions": [
+    {
+      "question": "Welches Tier lockt Beutefische mit einer wurmförmigen Zunge direkt vor sein Maul?",
+      "answer": "Geierschildkröte",
+      "acceptedAnswers": [
+        "Alligator-Schnappschildkröte"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Die Geierschildkröte bewegt einen wurmähnlichen Fortsatz ihrer Zunge als Köder. Nähern sich Fische, schnappt sie zu.",
+      "sources": [
+        {
+          "title": "7 Spooktacular Animal Facts for Halloween",
+          "publisher": "Smithsonian National Zoo",
+          "url": "https://nationalzoo.si.edu/animals/news/7-spooktacular-animal-facts-halloween",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint ist die Alligator-Schnappschildkröte, nicht jede Schildkröte.",
+      "id": "sf-de-0001"
+    },
+    {
+      "question": "Bei welchem Meeressäuger werden die Zähne mit zunehmendem Alter oft fast schwarz?",
+      "answer": "Kalifornischer Seelöwe",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Auf den Zähnen Kalifornischer Seelöwen bildet sich eine dunkle, schützende Bakterienschicht.",
+      "sources": [
+        {
+          "title": "7 Spooktacular Animal Facts for Halloween",
+          "publisher": "Smithsonian National Zoo",
+          "url": "https://nationalzoo.si.edu/animals/news/7-spooktacular-animal-facts-halloween",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Nicht als generelles Zeichen von Karies oder Zahnfäule interpretieren.",
+      "id": "sf-de-0002"
+    },
+    {
+      "question": "Welches Meerestier wirft bei Gefahr Teile seiner inneren Organe aus dem Körper und bildet sie später neu?",
+      "answer": "Seegurke",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Einige Seegurken stoßen zur Ablenkung von Feinden Eingeweide aus und regenerieren sie anschließend.",
+      "sources": [
+        {
+          "title": "Warty sea cucumber",
+          "publisher": "Monterey Bay Aquarium",
+          "url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/warty-sea-cucumber",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Eigenschaft ist für die beschriebene Warzen-Seegurke belegt, nicht pauschal für jedes Exemplar.",
+      "id": "sf-de-0003"
+    },
+    {
+      "question": "Welches Meerestier stülpt zum Fressen seinen Magen über die Beute?",
+      "answer": "Seestern",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Manche Seesterne verdauen Muscheln von außen, indem sie den Magen durch den Mund ausstülpen.",
+      "sources": [
+        {
+          "title": "All About Starfish",
+          "publisher": "Smithsonian Science Education Center",
+          "url": "https://www.smithsonianmag.com/blogs/smithsonian-science-education-center/2017/09/06/all-about-starfish/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Bei bestimmten Seesternarten belegt; nicht jeder Seestern nutzt dieselbe Jagdtechnik.",
+      "id": "sf-de-0004"
+    },
+    {
+      "question": "Welches kleine Meerestier erzeugt ein Knacken, das unter Wasser wie brutzelnder Speck klingt?",
+      "answer": "Knallkrebs",
+      "acceptedAnswers": [
+        "Pistolenkrebs"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Knallkrebse lassen mit ihrer Schere Kavitationsblasen entstehen; ganze Kolonien erzeugen ein lautes Knistergeräusch.",
+      "sources": [
+        {
+          "title": "Sounds of the reef",
+          "publisher": "Natural History Museum London",
+          "url": "https://www.nhm.ac.uk/discover/sounds-of-coral-reef.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Krebsfamilie Alpheidae; das Geräusch stammt von kollabierenden Blasen.",
+      "id": "sf-de-0005"
+    },
+    {
+      "question": "Welcher Krebs kann Beute mit einer Schlagbewegung treffen, bei der sogar Lichtblitze in winzigen Wasserblasen entstehen?",
+      "answer": "Fangschreckenkrebs",
+      "acceptedAnswers": [
+        "Mantisgarnele"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Der Schlag mancher Fangschreckenkrebse erzeugt Kavitationsblasen, deren Zusammenfall kurze Lichtblitze hervorrufen kann.",
+      "sources": [
+        {
+          "title": "Mantis shrimp: The crustacean that packs a punch",
+          "publisher": "Natural History Museum London",
+          "url": "https://www.nhm.ac.uk/discover/mantis-shrimps.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Quelle beschreibt schlagende Fangschreckenkrebse; die Lichtblitze sind Kavitationsfolgen.",
+      "id": "sf-de-0006"
+    },
+    {
+      "question": "Welches eierlegende, im Wasser nach Nahrung suchende Säugetier gibt Milch ohne Zitzen an seine Jungen ab?",
+      "answer": "Schnabeltier",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Schnabeltierjunge lecken Milch auf, die an der Bauchhaut und im Fell der Mutter austritt.",
+      "sources": [
+        {
+          "title": "What is a monotreme?",
+          "publisher": "Australian Museum",
+          "url": "https://australian.museum/learn/species-identification/ask-an-expert/what-is-a-monotreme/",
+          "accessed": "2026-10-29"
+        },
+        {
+          "title": "Platypus",
+          "publisher": "Australian Museum",
+          "url": "https://australian.museum/learn/animals/mammals/platypus/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Das Schnabeltier ist ein im Wasser jagendes Kloakentier; Ameisenigel besitzen ebenfalls keine Zitzen, schwimmen aber nicht als Nahrungssuche im Gewässer.",
+      "id": "sf-de-0007"
+    },
+    {
+      "question": "Welches australische Beuteltier produziert auffällig würfelförmigen Kot?",
+      "answer": "Wombat",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "Unterschiedlich elastische Darmabschnitte formen den Kot des Wombats zu kleinen Würfeln.",
+      "sources": [
+        {
+          "title": "Wombats Poop Cubes, and Scientists Finally Got to the Bottom of It",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/scientists-have-solved-mystery-how-wombats-poop-cubes-180976898/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Besonders am Nacktnasenwombat untersucht; nicht behaupten, die Würfelform entstehe erst am Ausgang.",
+      "id": "sf-de-0008"
+    },
+    {
+      "question": "Welcher Frosch kann den Winter mit angehaltenem Herzschlag und teilweise gefrorenem Körper überleben?",
+      "answer": "Waldfrosch",
+      "acceptedAnswers": [
+        "Nordamerikanischer Waldfrosch"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Der nordamerikanische Waldfrosch lagert schützenden Zucker ein, gefriert und taut im Frühjahr wieder auf.",
+      "sources": [
+        {
+          "title": "Amphibians in Denali",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/dena/learn/nature/amphibians.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Rana sylvatica; Eis bildet sich vorwiegend außerhalb der Körperzellen.",
+      "id": "sf-de-0009"
+    },
+    {
+      "question": "Welche Insekten können mit ihren Füßen schmecken, ob sich eine Pflanze zur Eiablage eignet?",
+      "answer": "Schmetterlinge",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "Geschmacksrezeptoren an den Beinen helfen manchen Schmetterlingsweibchen, Futterpflanzen für ihre Raupen zu erkennen.",
+      "sources": [
+        {
+          "title": "How to make a simple butterfly feeder",
+          "publisher": "Natural History Museum London",
+          "url": "https://www.nhm.ac.uk/discover/how-to-make-simple-butterfly-feeder.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Rezeptoren an den Füßen, nicht Geschmack ausschließlich über die Füße.",
+      "id": "sf-de-0010"
+    },
+    {
+      "question": "Welche rosafarbenen Vögel füttern ihre Küken mit einer besonders nährstoffreichen Kropfmilch?",
+      "answer": "Flamingo",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Flamingoeltern produzieren Kropfmilch, deren Pigmente von ihrer Nahrung stammen; dadurch können die Eltern zeitweise erblassen.",
+      "sources": [
+        {
+          "title": "Practical Tips for Anyone Currently Raising Nine Flamingo Chicks",
+          "publisher": "Smithsonian National Zoo",
+          "url": "https://www.nationalzoo.si.edu/animals/news/practical-tips-anyone-currently-raising-nine-flamingo-chicks-same-time",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Kropfmilch ist kein Milchsäugersekret; die Färbung hängt von den Pigmenten ab.",
+      "id": "sf-de-0011"
+    },
+    {
+      "question": "Welche Wildkatze hat besonders dichtes Fell und lebt in eisigen Steppen Zentralasiens?",
+      "answer": "Manul",
+      "acceptedAnswers": [
+        "Pallaskatze"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Der Manul, auch Pallaskatze genannt, ist mit extrem dichtem Fell an sein kaltes Hochlandhabitat angepasst.",
+      "sources": [
+        {
+          "title": "10 Fascinating Facts About the Pallas’s Cat",
+          "publisher": "Smithsonian National Zoo",
+          "url": "https://nationalzoo.si.edu/animals/news/10-fascinating-facts-about-pallass-cat-small-and-grumpy-wild-cat",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Smithsonian nennt diese Art als besonders dicht behaarte Katze.",
+      "id": "sf-de-0012"
+    },
+    {
+      "question": "Welcher riesige nordamerikanische Salamander wird im Englischen auch „Lasagna Lizard“ genannt?",
+      "answer": "Schlammteufel",
+      "acceptedAnswers": [
+        "Hellbender"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Der Hellbender trägt zahlreiche skurrile regionale Namen, die auf seine faltige, schleimige Haut anspielen.",
+      "sources": [
+        {
+          "title": "11 Fascinating Facts About the Hellbender",
+          "publisher": "Smithsonian National Zoo",
+          "url": "https://nationalzoo.si.edu/animals/news/11-fascinating-facts-about-hellbender-north-americas-largest-amphibian",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint ist Cryptobranchus alleganiensis; der deutsche Name Schlammteufel wird verwendet.",
+      "id": "sf-de-0013"
+    },
+    {
+      "question": "Welche Meerestiere können bei Gefahr leuchtend blaue Spiralen über ihren Körper laufen lassen?",
+      "answer": "Leuchtende Seegurken",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Die Tiefsee-Seegurke Pannychia moseleyi erzeugt bei Bedrohung leuchtende blaue Bänder.",
+      "sources": [
+        {
+          "title": "Glowing sea cucumber",
+          "publisher": "Monterey Bay Aquarium",
+          "url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/glowing-sea-cucumber",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Bezieht sich ausdrücklich auf die leuchtende Art Pannychia moseleyi, nicht auf alle Seegurken.",
+      "id": "sf-de-0014"
+    },
+    {
+      "question": "Welches Tier verbringt fast sein ganzes Leben unter der Erde und erscheint vor allem nach starkem Regen?",
+      "answer": "Mexikanische Grabkröte",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Diese Kröte kommt vorwiegend nach starken Regenfällen zur Paarung an die Oberfläche.",
+      "sources": [
+        {
+          "title": "Eleven elusive creatures of the natural world",
+          "publisher": "Natural History Museum London",
+          "url": "https://www.nhm.ac.uk/discover/elusive-creatures-of-the-natural-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Natural History Museum nennt Rhinophrynus dorsalis; nicht mit anderen grabenden Kröten gleichsetzen.",
+      "id": "sf-de-0015"
+    },
+    {
+      "question": "Aus welchem überraschenden Material bestehen die strahlend weißen Dünen des White-Sands-Nationalparks hauptsächlich?",
+      "answer": "Gips",
+      "acceptedAnswers": [
+        "Gipssand"
+      ],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Die weißen Körner bestehen fast vollständig aus dem wasserlöslichen Mineral Gips statt aus gewöhnlichem Quarzsand.",
+      "sources": [
+        {
+          "title": "Sand",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/whsa/learn/sand.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Im Park ungefähr 98 Prozent Gips; nicht mit gewöhnlichem Strandquarz verwechseln.",
+      "id": "sf-de-0016"
+    },
+    {
+      "question": "Welches Mineral sorgt für die seltene grüne Farbe mancher Strände auf Hawaii?",
+      "answer": "Olivin",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "In Vulkangestein gebildeter Olivin kann sich zu auffällig grünen Sandkörnern anreichern.",
+      "sources": [
+        {
+          "title": "Sand",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/whsa/learn/sand.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint sind ausdrücklich olivinreiche grüne Strände, nicht jede grün wirkende Küste.",
+      "id": "sf-de-0017"
+    },
+    {
+      "question": "Was bewegte die rätselhaften Steine auf dem ausgetrockneten Seeboden im Death Valley?",
+      "answer": "Dünnes Eis und Wind",
+      "acceptedAnswers": [
+        "Eisplatten und Wind"
+      ],
+      "category": "nature",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Unter bestimmten Bedingungen schieben Wind und aufbrechende, dünne Eisplatten Steine langsam über den feuchten Boden.",
+      "sources": [
+        {
+          "title": "Mystery Solved: Sailing Stones of Death Valley",
+          "publisher": "US National Park Service",
+          "url": "https://home.nps.gov/deva/learn/news/racetrack.htm/index.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Beobachteter Mechanismus der Racetrack Playa, keine spekulative Magnetkraft.",
+      "id": "sf-de-0018"
+    },
+    {
+      "question": "Was ließ die einst tiefblaue Morning-Glory-Quelle im Yellowstone-Nationalpark zunehmend gelb-orange erscheinen?",
+      "answer": "Wärmeliebende Mikroorganismen",
+      "acceptedAnswers": [
+        "Thermophile Bakterien"
+      ],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Eingeworfener Müll behinderte die Wasserzirkulation und kühlte die Thermalquelle ab. Dadurch konnten sich gelb-orange Mikroorganismen stärker ausbreiten.",
+      "sources": [
+        {
+          "title": "Morning Glory Pool",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/places/000/morning-glory-pool.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NPS nennt Vandalismus und auch natürliche Kühlung; Mikroorganismen erzeugen die Farben, die Temperaturänderung begünstigte sie.",
+      "id": "sf-de-0019"
+    },
+    {
+      "question": "Was kann bei einem explosiven Vulkanausbruch zusätzlich zur Asche in der Wolke zucken?",
+      "answer": "Blitze",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Aufgeladene Aschepartikel können in der Eruptionswolke elektrische Entladungen hervorrufen.",
+      "sources": [
+        {
+          "title": "Lightning during volcanic eruptions",
+          "publisher": "US Geological Survey",
+          "url": "https://volcanoes.usgs.gov/volcanic_ash/lightning.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Vulkanblitze treten bei bestimmten explosiven Eruptionen auf, nicht bei jedem Ausbruch.",
+      "id": "sf-de-0020"
+    },
+    {
+      "question": "Was fällt im tiefen Ozean als sogenannter Meeresschnee langsam auf den Meeresboden?",
+      "answer": "Absinkende organische Reste",
+      "acceptedAnswers": [
+        "Organische Partikel",
+        "Biologische Überreste"
+      ],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Abgestorbene Planktonreste, Ausscheidungen und andere Teilchen sinken aus den oberen Wasserschichten herab.",
+      "sources": [
+        {
+          "title": "What is marine snow?",
+          "publisher": "National Oceanic and Atmospheric Administration",
+          "url": "https://oceanservice.noaa.gov/facts/marinesnow.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Kein gefrorener Schnee; Mischung biologischen Materials mit weiteren Partikeln.",
+      "id": "sf-de-0021"
+    },
+    {
+      "question": "Welcher natürliche Prozess lässt manche Meereswellen nachts scheinbar blau leuchten?",
+      "answer": "Biolumineszenz",
+      "acceptedAnswers": [
+        "Biologisches Leuchten"
+      ],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Bestimmte Lebewesen können mittels chemischer Reaktionen selbst Licht erzeugen.",
+      "sources": [
+        {
+          "title": "What is bioluminescence?",
+          "publisher": "National Oceanic and Atmospheric Administration",
+          "url": "https://oceanservice.noaa.gov/facts/biolum.html?lv=true",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Quelle erläutert die Lichtproduktion durch Lebewesen; nicht jede leuchtende Welle muss gleich entstehen.",
+      "id": "sf-de-0022"
+    },
+    {
+      "question": "Wie nennt man zarte Eiskristalle, die wie kleine Blumen auf einer Meereisoberfläche wachsen?",
+      "answer": "Frostblumen",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Wasserdampf kann unmittelbar als Eis auf der Meereisoberfläche kristallisieren und blütenartige Strukturen bilden.",
+      "sources": [
+        {
+          "title": "Frost flowers",
+          "publisher": "National Snow and Ice Data Center",
+          "url": "https://nsidc.org/learn/cryosphere-glossary/frost-flowers",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Direkte Ablagerung von Wasserdampf als Eis, nicht echte Pflanzen.",
+      "id": "sf-de-0023"
+    },
+    {
+      "question": "Welche Substanz färbt die sogenannten Blutwasserfälle eines antarktischen Gletschers rot?",
+      "answer": "Eisenoxide",
+      "acceptedAnswers": [
+        "Rost",
+        "Oxidiertes Eisen"
+      ],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Eisenreiche Salzlake tritt aus dem Taylor-Gletscher aus und oxidiert bei Kontakt mit der Luft.",
+      "sources": [
+        {
+          "title": "An englacial hydrologic system of brine within a cold glacier",
+          "publisher": "Journal of Glaciology / Cambridge University Press",
+          "url": "https://www.cambridge.org/core/journals/journal-of-glaciology/article/an-englacial-hydrologic-system-of-brine-within-a-cold-glacier-blood-falls-mcmurdo-dry-valleys-antarctica/B5C197906AD54619AEA26068AD92989A",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die rote Farbe entsteht durch oxidiertes Eisen; es handelt sich nicht um Blut.",
+      "id": "sf-de-0024"
+    },
+    {
+      "question": "Was kann selbst während eines gewaltigen Waldbrands entstehen, obwohl kein normales Gewitter vorbeizieht?",
+      "answer": "Blitze",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Starke Brände können ihre eigene hochreichende Rauchwolke bilden und elektrische Entladungen ermöglichen.",
+      "sources": [
+        {
+          "title": "NOAA Satellites Monitor Wildfires",
+          "publisher": "NOAA National Environmental Satellite, Data, and Information Service",
+          "url": "https://www.nesdis.noaa.gov/news/noaa-satellites-monitor-wildfires",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NOAA dokumentiert, dass intensive Feuer ihre eigenen Gewitterwolken bilden können, aus denen Blitze entstehen. Nicht jedes Feuer tut dies.",
+      "id": "sf-de-0025"
+    },
+    {
+      "question": "Welche Farbe kann die Sonne für einen winzigen Moment direkt am Horizont ungewöhnlicherweise aufblitzen lassen?",
+      "answer": "Grün",
+      "acceptedAnswers": [
+        "Grüner Lichtblitz"
+      ],
+      "category": "nature",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Atmosphärische Lichtbrechung kann kurz vor Sonnenuntergang oder nach Sonnenaufgang einen grünen Blitz sichtbar machen.",
+      "sources": [
+        {
+          "title": "Weather Words: Green Flash",
+          "publisher": "The Weather Channel",
+          "url": "https://weather.com/science/weather-explainers/news/2026-01-28-weather-words-green-flash",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Seltenes optisches Phänomen; keine dauerhaft grüne Sonne.",
+      "id": "sf-de-0026"
+    },
+    {
+      "question": "Auf welchem Planeten dauert eine Drehung um die eigene Achse länger als ein Umlauf um die Sonne?",
+      "answer": "Venus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Die Venus rotiert in rund 243 Erdtagen, braucht für ihren Sonnenumlauf aber nur etwa 225 Erdtage.",
+      "sources": [
+        {
+          "title": "Venus Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/venus/venus-facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Verglichen wird siderische Rotation mit der Umlaufzeit, nicht der Sonnentag.",
+      "id": "sf-de-0027"
+    },
+    {
+      "question": "Auf welchem Planeten können Sonnenuntergänge bläulich statt rötlich aussehen?",
+      "answer": "Mars",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Feiner Staub in der Marsatmosphäre lässt blaues Licht in Richtung der untergehenden Sonne besonders deutlich erscheinen.",
+      "sources": [
+        {
+          "title": "What Do Sunrises and Sunsets Look Like on Mars?",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/solar-system/planets/mars/what-does-a-sunrise-sunset-look-like-on-mars/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA dokumentiert die bläuliche Färbung vor allem nahe der Sonne; nicht der gesamte Himmel ist dabei blau.",
+      "id": "sf-de-0028"
+    },
+    {
+      "question": "Welcher Planet sieht durch Methan in seiner Atmosphäre besonders blaugrün aus?",
+      "answer": "Uranus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Methan absorbiert vor allem rotes Sonnenlicht, weshalb Uranus blaugrün erscheint.",
+      "sources": [
+        {
+          "title": "Uranus Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/uranus/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die charakteristische Färbung wird nicht ausschließlich durch Methan bestimmt.",
+      "id": "sf-de-0029"
+    },
+    {
+      "question": "Auf welchem Saturnmond gibt es Flüsse und Seen aus flüssigem Methan und Ethan?",
+      "answer": "Titan",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Die niedrigen Temperaturen lassen auf Titan Kohlenwasserstoffe einen Kreislauf aus Verdunstung, Wolken und Regen durchlaufen.",
+      "sources": [
+        {
+          "title": "Titan Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/saturn/moons/titan/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Titan ist ein Mond, kein Planet; die Seen enthalten nicht flüssiges Wasser.",
+      "id": "sf-de-0030"
+    },
+    {
+      "question": "Welcher Saturnmond sprüht Eispartikel aus einem unterirdischen Salzwasserozean ins All?",
+      "answer": "Enceladus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Cassini dokumentierte Eis- und Wasserdampfstrahlen an Brüchen seiner Eiskruste.",
+      "sources": [
+        {
+          "title": "Cassini at Enceladus",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/mission/cassini/science/enceladus/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Ausbrüche sind geysirähnlich; die Quelle beschreibt die Verbindung zum unterirdischen Ozean.",
+      "id": "sf-de-0031"
+    },
+    {
+      "question": "Auf welchem Jupitermond färben Schwefelablagerungen die Oberfläche unter anderem gelb und rot?",
+      "answer": "Io",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Vulkane stoßen schwefelhaltiges Material aus, dessen unterschiedliche chemische Formen leuchtende Farben bilden.",
+      "sources": [
+        {
+          "title": "The Role of Sulfur in Io’s Volcanoes",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/photojournal/the-role-of-sulfur-in-ios-volcanoes/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Betroffen sind Vulkanablagerungen auf Io; kein Farbphänomen der Erde.",
+      "id": "sf-de-0032"
+    },
+    {
+      "question": "Wie heißt der rätselhafte, 2017 entdeckte Besucher aus dem Raum zwischen den Sternen?",
+      "answer": "ʻOumuamua",
+      "acceptedAnswers": [
+        "Oumuamua",
+        "1I/2017 U1"
+      ],
+      "category": "science",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Seine extrem schnelle Bahn wies es als interstellaren Besucher aus, der nicht an die Sonne gebunden war.",
+      "sources": [
+        {
+          "title": "10 Things: Mysterious Oumuamua",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/solar-system/comets/oumuamua/10-things-mysterious-oumuamua/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Erster bestätigter Besucher bei Entdeckung 2017; spätere Objekte wurden ebenfalls nachgewiesen.",
+      "id": "sf-de-0033"
+    },
+    {
+      "question": "Welcher Planet besitzt am Nordpol einen riesigen sechseckigen Windwirbel?",
+      "answer": "Saturn",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Der Hexagon-Strom um den Nordpol des Saturn wurde bereits von Voyager fotografiert.",
+      "sources": [
+        {
+          "title": "Saturn Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/saturn/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der sechsseitige Verlauf ist ein atmosphärisches Phänomen, kein Gebirge.",
+      "id": "sf-de-0034"
+    },
+    {
+      "question": "Welcher Planet hat eine Magnetfeldachse, die gegenüber seiner Rotationsachse um fast 60 Grad geneigt ist?",
+      "answer": "Uranus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Der Eisriese hat ein stark geneigtes, vom Planetenzentrum verschobenes Magnetfeld.",
+      "sources": [
+        {
+          "title": "Uranus Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/uranus/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Ungefähre Achsneigung laut NASA; keine Aussage über seine Bahnebene.",
+      "id": "sf-de-0035"
+    },
+    {
+      "question": "Auf welchem Planeten sind die Wolken so dicht, dass seine Oberfläche in sichtbarem Licht kaum direkt zu sehen ist?",
+      "answer": "Venus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 1,
+      "explanation": "Dichte Wolken aus Schwefelsäuretröpfchen verdecken die Oberfläche der Venus.",
+      "sources": [
+        {
+          "title": "Venus Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/venus/venus-facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gilt für optische Beobachtung; Radar kann die Oberfläche kartieren.",
+      "id": "sf-de-0036"
+    },
+    {
+      "question": "Auf welchem Planeten wurden Winde mit Geschwindigkeiten von mehr als 2.000 Kilometern pro Stunde gemessen?",
+      "answer": "Neptun",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Neptuns Atmosphäre weist extrem starke Winde auf, obwohl die Sonne dort nur schwach scheint.",
+      "sources": [
+        {
+          "title": "Neptune Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/neptune/neptune-facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA beschreibt Neptun als windigsten Planeten mit Wolkengeschwindigkeiten über 2.000 km/h; nicht jede Wolke erreicht diesen Wert.",
+      "id": "sf-de-0037"
+    },
+    {
+      "question": "Aus welchem Lebensmittel bestand die früheste Form der Soße, aus der sich Ketchup entwickelte?",
+      "answer": "Fermentierter Fisch",
+      "acceptedAnswers": [
+        "Fischsoße"
+      ],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Vor der verbreiteten Tomatenvariante wurde eine würzige, fermentierte Fischsoße aus Ostasien als Vorläufer bekannt.",
+      "sources": [
+        {
+          "title": "How Ketchup Revolutionized How Food Is Grown, Processed and Regulated",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/how-ketchup-revolutionized-how-food-is-grown-processed-regulated-180969230/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historische Entwicklungslinie der Soßenbezeichnung; nicht heutiger Tomatenketchup.",
+      "id": "sf-de-0038"
+    },
+    {
+      "question": "Welche Frucht ersetzt auf den Philippinen in einer bekannten Ketchup-Variante die Tomate?",
+      "answer": "Banane",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Bananenketchup wurde dort während des Zweiten Weltkriegs als Alternative zu Tomatenketchup populär.",
+      "sources": [
+        {
+          "title": "A Brief (But Global) History of Ketchup",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/arts-culture/brief-but-global-history-ketchup-180969725/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es handelt sich um eine eigene regionale Variante, nicht um den Inhalt jedes Ketchups.",
+      "id": "sf-de-0039"
+    },
+    {
+      "question": "Aus welchem Land stammen die Vorläufer der Glückskekse nach historischer Forschung wahrscheinlich?",
+      "answer": "Japan",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Japanische Bäckereien kannten bereits verwandte Kekse mit Papierbotschaften, bevor die moderne US-Variante entstand.",
+      "sources": [
+        {
+          "title": "Cracking Open the History of Fortune Cookies",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/arts-culture/cracking-open-the-history-of-fortune-cookies-28538557/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Ursprung moderner amerikanischer Glückskekse ist komplex; die Quelle spricht von wahrscheinlich japanischen Vorläufern.",
+      "id": "sf-de-0040"
+    },
+    {
+      "question": "Welche Pflanzengruppe liefert die Schoten für echte Vanille?",
+      "answer": "Orchideen",
+      "acceptedAnswers": [
+        "Orchidee"
+      ],
+      "category": "food",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Die Vanilleschote ist die Frucht einer kletternden Orchideenart.",
+      "sources": [
+        {
+          "title": "Vanilla - Vanilla planifolia",
+          "publisher": "Royal Botanic Gardens Kew",
+          "url": "https://www.kew.org/plants/vanilla",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint ist natürliche Vanille, nicht chemisch hergestelltes Vanillin.",
+      "id": "sf-de-0041"
+    },
+    {
+      "question": "Welches Tier liefert den roten Farbstoff Karmin, der auch in Lebensmitteln vorkommen kann?",
+      "answer": "Schildlaus",
+      "acceptedAnswers": [
+        "Cochenilleschildlaus"
+      ],
+      "category": "food",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "Karmin und Cochenilleextrakt sind Farbstoffe, die aus bestimmten Insekten gewonnen werden.",
+      "sources": [
+        {
+          "title": "Color Additives in Foods",
+          "publisher": "US Food and Drug Administration",
+          "url": "https://www.fda.gov/food/color-additives-information-consumers/color-additives-foods",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Insbesondere Cochenilleschildlaus; nicht jedes rote Produkt enthält diesen Stoff.",
+      "id": "sf-de-0042"
+    },
+    {
+      "question": "Welches Lebensmittel wächst unter der Erde, obwohl seine Blüten oberirdisch entstehen?",
+      "answer": "Erdnuss",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Nach der Bestäubung wächst der Fruchtträger der Erdnuss in den Boden, wo die Schote reift.",
+      "sources": [
+        {
+          "title": "Peanuts: Culture and Uses",
+          "publisher": "USDA National Agricultural Library",
+          "url": "https://www.nal.usda.gov/exhibits/ipd/carver/items/show/41",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Erdnuss ist botanisch eine Hülsenfrucht, keine Baumnuss.",
+      "id": "sf-de-0043"
+    },
+    {
+      "question": "Welches historische römische Würzmittel bestand aus fermentiertem Fisch?",
+      "answer": "Garum",
+      "acceptedAnswers": [
+        "Römische Fischsoße"
+      ],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Garum war eine verbreitete römische Fischsoße; das British Museum bewahrt eigens dafür bestimmte Gefäße.",
+      "sources": [
+        {
+          "title": "Unguentarium: Vessel for garum",
+          "publisher": "British Museum",
+          "url": "https://www.britishmuseum.org/collection/object/G_1856-1226-337",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Keine moderne Fischsoße als spezifische Bezeichnung des römischen Produktes.",
+      "id": "sf-de-0044"
+    },
+    {
+      "question": "Welcher unscheinbare Stoff kann zur Bildung typischer Löcher im Emmentaler beitragen?",
+      "answer": "Heustaub",
+      "acceptedAnswers": [
+        "Heupartikel"
+      ],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Agroscope zeigte experimentell, wie winzige Heupartikel die Anzahl und Entstehung von Käselöchern beeinflussen.",
+      "sources": [
+        {
+          "title": "Käse Typ Emmentaler",
+          "publisher": "Agroscope",
+          "url": "https://www.agroscope.admin.ch/agroscope/de/home/publikationen/suchen/agroscope-science/_jcr_content/par/externalcontent.bitexternalcontent.exturl.pdf/aHR0cHM6Ly9pcmEuYWdyb3Njb3BlLmNoL2ZyLUNIL0FqYXgvRW/luemVscHVibGlrYXRpb24vRG93bmxvYWQ_ZWluemVscHVibGlr/YXRpb25JZD01MjQ4OA%3D%3D.pdf",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gasbildung durch Bakterien bleibt wichtig; Heupartikel wirken als Keime für die Lochbildung.",
+      "id": "sf-de-0045"
+    },
+    {
+      "question": "Welche Süßspeise sollte nach einer Erfindung aus Mannheim wie ein Teller Pasta aussehen?",
+      "answer": "Spaghettieis",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Dario Fontanella formte Eis zu Nudeln und verwendete Fruchtsoße und weiße Schokolade als optische Pastasoße.",
+      "sources": [
+        {
+          "title": "How Germany’s Spaghetti Ice Cream Came to Be",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/travel/how-germanys-spaghetti-ice-cream-came-to-be-180982461/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Erfindung für Spaghettieis im beschriebenen deutschen Kontext, nicht für Eiscreme allgemein.",
+      "id": "sf-de-0046"
+    },
+    {
+      "question": "Welchen Jahrmarkt-Klassiker erfand ein amerikanischer Zahnarzt gemeinsam mit einem Süßwarenhersteller?",
+      "answer": "Zuckerwatte",
+      "acceptedAnswers": [
+        "Cotton Candy",
+        "Fairy Floss"
+      ],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "William Morrison und John Wharton entwickelten eine Maschine, die Zucker zu hauchdünnen Fäden schleuderte, und verkauften ihr Produkt 1904 auf der Weltausstellung.",
+      "sources": [
+        {
+          "title": "People at the 1904 World’s Fair Paid Half the Price of Admission for a Box of Cotton Candy",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/people-worlds-fair-paid-half-admission-box-cotton-candy-180961332/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint ist die maschinell hergestellte moderne Zuckerwatte der beiden Erfinder; von Hand gesponnener Zucker war deutlich älter.",
+      "id": "sf-de-0047"
+    },
+    {
+      "question": "Welches Gewürz stammt von einer tropischen Frucht, deren Schoten häufig von Hand bestäubt werden müssen?",
+      "answer": "Vanille",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Außerhalb ihres Herkunftsgebiets muss die Vanilleorchidee bei Anbau oft von Hand bestäubt werden.",
+      "sources": [
+        {
+          "title": "Vanilla - Vanilla planifolia",
+          "publisher": "Royal Botanic Gardens Kew",
+          "url": "https://www.kew.org/plants/vanilla",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Nicht jede Orchidee; speziell die kommerziell genutzte Vanille.",
+      "id": "sf-de-0048"
+    },
+    {
+      "question": "Welches Lebensmittel diente früher als Einwegteller bei mittelalterlichen Festmahlen?",
+      "answer": "Brot",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Dicke Brotstücke, sogenannte Trencher, dienten als Teller und wurden später teils verschenkt.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historisch belegter Gebrauch in Europa; nicht jedes Brot und nicht überall.",
+      "id": "sf-de-0049"
+    },
+    {
+      "question": "Was wurde im antiken Griechenland manchmal benutzt, um nach dem Essen fettige Finger zu reinigen?",
+      "answer": "Teig",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Kleine Teigklumpen konnten Fett aufnehmen und anschließend weggeworfen werden.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historischer Vorläufer einer Serviette, speziell bei den beschriebenen Spartanern.",
+      "id": "sf-de-0050"
+    },
+    {
+      "question": "Welcher Alltagsgegenstand galt bei manchen Geistlichen in Europa zeitweise als teuflisch?",
+      "answer": "Essgabel",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Die Übernahme der Gabel beim Essen stieß in Teilen des mittelalterlichen Europas auf religiöse und gesellschaftliche Vorbehalte.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historische Anekdote betrifft bestimmte zeitgenössische Kritiker, nicht ganz Europa.",
+      "id": "sf-de-0051"
+    },
+    {
+      "question": "Welcher Gegenstand zum Verschließen von Türen wurde einst so groß gefertigt, dass man ihn über der Schulter trug?",
+      "answer": "Schlüssel",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Antike Schlüssel für große Holzschlösser konnten außergewöhnlich lang und schwer sein.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Quelle spricht von frühen großen Schlüsseln, nicht sämtlichen historischen Schlüsseln.",
+      "id": "sf-de-0052"
+    },
+    {
+      "question": "Woraus bestanden manche Kopfstützen im alten Ägypten statt aus weichem Stoff?",
+      "answer": "Holz",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Frühe ägyptische Kopfstützen waren starre, möbelartige Konstruktionen statt weicher Kopfkissen.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Belegte hölzerne Exemplare; auch andere harte Materialien wurden verwendet.",
+      "id": "sf-de-0053"
+    },
+    {
+      "question": "Aus welchem Land stammen die frühesten bekannten Spielkarten?",
+      "answer": "China",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Frühe Spielkarten entstanden in China und gelangten über Handelswege in andere Regionen.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Artikel nennt frühe Karten aus dem 9. Jahrhundert, nicht die modernen französischen Karten.",
+      "id": "sf-de-0054"
+    },
+    {
+      "question": "Welche ungewöhnliche Aufgabe übernahmen Tischdecken bei mittelalterlichen Festmählern neben dem Abdecken der Tafel?",
+      "answer": "Zugluft abhalten",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Lange Tischdecken hingen teils auf der Sitzseite bis zum Boden und hielten Luftzug und Tiere von den Füßen fern.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Dokumentierter historischer Brauch, nicht jede mittelalterliche Tischdecke.",
+      "id": "sf-de-0055"
+    },
+    {
+      "question": "Wie nannten die Römer ihren meist spärlich möblierten Schlafraum?",
+      "answer": "Cubiculum",
+      "acceptedAnswers": [
+        "Schlafkammer"
+      ],
+      "category": "everyday_life",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Ein Cubiculum war im antiken Rom oft ein kleiner, dunkler Schlafraum mit wenig weiterer Ausstattung.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Beschreibung gilt für die im Artikel erläuterte historische Wohnpraxis.",
+      "id": "sf-de-0056"
+    },
+    {
+      "question": "Welcher Gegenstand wurde in Japan schon im 18. Jahrhundert als Wegwerfvariante in Restaurants verwendet?",
+      "answer": "Essstäbchen",
+      "acceptedAnswers": [
+        "Wegwerf-Essstäbchen"
+      ],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Wegwerf-Essstäbchen waren bereits in frühen japanischen Restaurants üblich.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint sind waribashi, nicht die Erfindung aller Essstäbchen.",
+      "id": "sf-de-0057"
+    },
+    {
+      "question": "Womit wurden in manchen europäischen Haushalten über Generationen hinweg täglich Feuer und Wärme erhalten?",
+      "answer": "Herdfeuer",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Das Feuer in offenen Feuerstellen wurde aus praktischen Gründen oftmals über lange Zeit am Brennen gehalten.",
+      "sources": [
+        {
+          "title": "Ten Surprising Facts About Everyday Household Objects",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/ten-surprising-facts-about-everyday-household-objects-180974566/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Keine ununterbrochene Flamme für jedes Haus; beschreibt eine verbreitete Praxis.",
+      "id": "sf-de-0058"
+    },
+    {
+      "question": "Für welchen ursprünglichen Einsatzzweck wurde der Schaumstoff entwickelt, der heute in vielen Matratzen steckt?",
+      "answer": "Polsterung von Flugzeugsitzen",
+      "acceptedAnswers": [
+        "Flugzeugsitze"
+      ],
+      "category": "technology",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "NASA-finanzierte Forschung entwickelte druckabsorbierenden Memory-Schaum zunächst zur besseren Sitzpolsterung und Sicherheit.",
+      "sources": [
+        {
+          "title": "Memory Foam",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/image-article/memory-foam/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Nicht als Material für Raumanzüge erfunden.",
+      "id": "sf-de-0059"
+    },
+    {
+      "question": "Welche heutige Sehhilfe profitierte von einer kratzfesten Beschichtung aus der Raumfahrttechnik?",
+      "answer": "Brillengläser",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Für Raumfahrt-Ausrüstung entwickelte Oberflächentechnik wurde bei kratzfesten Linsen eingesetzt.",
+      "sources": [
+        {
+          "title": "FAQ",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA beschreibt die Übertragung einer Beschichtung, nicht die Erfindung des Brillenglases.",
+      "id": "sf-de-0060"
+    },
+    {
+      "question": "Welches zahnmedizinische Hilfsmittel nutzt eine ursprünglich für die NASA entwickelte transparente Keramik?",
+      "answer": "Durchsichtige Zahnspangen",
+      "acceptedAnswers": [
+        "Unsichtbare Zahnspangen"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Bestimmte fast unsichtbare Zahnspangen beruhen auf einem transparenten Keramikwerkstoff aus der NASA-Forschung.",
+      "sources": [
+        {
+          "title": "FAQ",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Nicht alle transparenten Korrektursysteme bestehen aus diesem Material.",
+      "id": "sf-de-0061"
+    },
+    {
+      "question": "Welcher silbrige Gegenstand aus Erste-Hilfe-Sets nutzt eine Technik, die auch aus der Raumfahrt stammt?",
+      "answer": "Rettungsdecke",
+      "acceptedAnswers": [
+        "Isolierdecke"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Reflektierende Kunststofffolien wurden für Raumfahrtanwendungen entwickelt und später als Notfalldecken eingesetzt.",
+      "sources": [
+        {
+          "title": "FAQ",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA nennt reflektierende Raumfahrtfolien als Vorläufer, nicht notwendigerweise jede heute verkaufte Decke.",
+      "id": "sf-de-0062"
+    },
+    {
+      "question": "Welche Technik aus der Raumfahrtforschung steckt heute in vielen Smartphonekameras?",
+      "answer": "Miniaturisierte Bildsensoren",
+      "acceptedAnswers": [
+        "CMOS-Bildsensoren"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Raumfahrtbedingte Entwicklungen kompakter, energieeffizienter Bildaufnehmer prägten moderne Digitalkameras.",
+      "sources": [
+        {
+          "title": "NASA Technology Brings Golden Age of Exploration to Earth",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/news-release/nasa-technology-brings-golden-age-of-exploration-to-earth/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA leistete Beiträge zur Entwicklung; nicht behaupten, alle Smartphonekameras seien direkt bei NASA erfunden worden.",
+      "id": "sf-de-0063"
+    },
+    {
+      "question": "Welche Art von Geräten verwendete ein deutscher Verschlüsselungshilfsapparat aus den 1950ern, um Pseudozufallszahlen auszuwählen?",
+      "answer": "Verschiebbare Stäbe",
+      "acceptedAnswers": [
+        "Vierkantstäbe"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Der Reihenschieber bestand aus austauschbaren bzw. verschiebbaren Vierkantstäben zur Schlüsselerzeugung.",
+      "sources": [
+        {
+          "title": "Geschichte, die der Zufall schrieb",
+          "publisher": "Deutsches Museum",
+          "url": "https://blog.deutsches-museum.de/2025/01/09/default-a2fa673acfb1fe45286897ce90f3d257",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es entstand kein echter physikalischer Zufall; Entwurf eines manuellen Hilfsmittels.",
+      "id": "sf-de-0064"
+    },
+    {
+      "question": "Welches heute verbreitete Küchengerät entstand aus Experimenten mit Radar-Magnetrons?",
+      "answer": "Mikrowellenherd",
+      "acceptedAnswers": [
+        "Mikrowelle"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Percy Spencer bemerkte 1945 Erwärmung durch Mikrowellen in der Radartechnik und entwickelte daraus eine Garmethode.",
+      "sources": [
+        {
+          "title": "Microwave Oven",
+          "publisher": "Smithsonian Institution",
+          "url": "https://www.si.edu/collections/snapshot/microwave-oven",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Quelle belegt Spencer und Radarexperimente, nicht das populäre Detail mit einer bestimmten Schokoladentafel.",
+      "id": "sf-de-0065"
+    },
+    {
+      "question": "Wie groß waren frühe Mikrowellenöfen ungefähr: eher wie ein Toaster oder wie ein großer Schrank?",
+      "answer": "Wie ein großer Schrank",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "phrase",
+      "difficulty": 1,
+      "explanation": "Frühe Mikrowellenherde waren rund 1,8 Meter hoch und wogen Hunderte Kilogramm.",
+      "sources": [
+        {
+          "title": "Microwave Oven",
+          "publisher": "Smithsonian Institution",
+          "url": "https://www.si.edu/collections/snapshot/microwave-oven",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Originalquelle: etwa sechs Fuß Höhe, über 750 Pfund Gewicht.",
+      "id": "sf-de-0066"
+    },
+    {
+      "question": "Welche Technik half zunächst bei der sicheren Versorgung von Apollo-Astronauten und später auch der Lebensmittelindustrie?",
+      "answer": "Lebensmittel-Sicherheitsverfahren",
+      "acceptedAnswers": [
+        "HACCP-Verfahren"
+      ],
+      "category": "technology",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Für Apollo wurden systematische Verfahren zur Vermeidung von Gefahren bei Lebensmitteln erarbeitet, die breiter übernommen wurden.",
+      "sources": [
+        {
+          "title": "NASA Technology Brings Golden Age of Exploration to Earth",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/news-release/nasa-technology-brings-golden-age-of-exploration-to-earth/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Verwandt mit HACCP, nicht behaupten, NASA habe die Lebensmittelkontrolle allein erfunden.",
+      "id": "sf-de-0067"
+    },
+    {
+      "question": "Welches heute als Verpackung bekannte Material sollte zuerst als ausgefallene Tapete dienen?",
+      "answer": "Luftpolsterfolie",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Alfred Fielding und Marc Chavannes entwickelten 1957 eine Folie mit eingeschlossenen Luftblasen für strukturierte Wände.",
+      "sources": [
+        {
+          "title": "The Accidental Invention of Bubble Wrap",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/accidental-invention-bubble-wrap-180971325/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Als Neuheit sollte das ursprünglich als Wandbelag gedachte Blasenmaterial verkauft werden; der Einsatz als Verpackungsmaterial folgte später.",
+      "id": "sf-de-0068"
+    },
+    {
+      "question": "Welches medizinische Mittel wollte ein Chemiker herstellen, als er versehentlich den Farbstoff Mauvein entdeckte?",
+      "answer": "Chinin",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "William Henry Perkin experimentierte mit dem Ziel, Chinin zu synthetisieren, und stieß 1856 auf einen violetten Farbstoff.",
+      "sources": [
+        {
+          "title": "William Henry Perkin",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/education/scientific-biographies/william-henry-perkin/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Chinin ist die gesuchte Ausgangsabsicht, nicht eine therapeutische Wirkung des Farbstoffs.",
+      "id": "sf-de-0069"
+    },
+    {
+      "question": "Welche Farbe hatte der erste kommerziell erfolgreiche synthetische Anilinfarbstoff?",
+      "answer": "Violett",
+      "acceptedAnswers": [
+        "Lila",
+        "Mauve"
+      ],
+      "category": "inventions",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Perkins Mauvein revolutionierte im 19. Jahrhundert die Farbstoffchemie.",
+      "sources": [
+        {
+          "title": "William Henry Perkin",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/education/scientific-biographies/william-henry-perkin/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Konkreter Farbstoff Mauvein; frühere Färbemittel existierten selbstverständlich.",
+      "id": "sf-de-0070"
+    },
+    {
+      "question": "Welche unkonventionelle Uhr aus dem 18. Jahrhundert maß die Zeit mithilfe einer schiefen Ebene?",
+      "answer": "Rolluhr",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Eine historische Rolluhr bewegt sich auf einer geneigten Unterlage; das Deutsche Museum dokumentiert ein Exemplar von 1779.",
+      "sources": [
+        {
+          "title": "Zeitmessung mit schiefer Ebene",
+          "publisher": "Deutsches Museum",
+          "url": "https://blog.deutsches-museum.de/2014/04/14/zeitmessung-mit-schiefer-ebene",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Spezifischer historischer Uhrtyp, nicht moderne Rollanzeige-Uhren.",
+      "id": "sf-de-0071"
+    },
+    {
+      "question": "Auf welcher spanischen Insel kann man sich auf große Entfernung in einer Pfeifsprache verständigen?",
+      "answer": "La Gomera",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Silbo Gomero bildet die spanische Sprache mit charakteristischen Pfeiftönen nach und wird bis heute unterrichtet.",
+      "sources": [
+        {
+          "title": "Whistled language of the island of La Gomera",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/whistled-language-of-the-island-of-la-gomera-canary-islands-the-silbo-gomero-00172",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO belegt Insel, Übermittlung von Silben und traditionelle Sprachpraxis.",
+      "id": "sf-de-0072"
+    },
+    {
+      "question": "Was bauen Menschen bei katalanischen Volksfesten mehrere Stockwerke hoch – ganz ohne Baumaterial?",
+      "answer": "Menschentürme",
+      "acceptedAnswers": [
+        "Castells"
+      ],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Bei den Castells klettern Menschen auf die Schultern anderer und bilden mehrstöckige Türme.",
+      "sources": [
+        {
+          "title": "Human towers",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/human-towers-00364",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es handelt sich um die katalanische Tradition der Castells, nicht um Akrobatik allgemein.",
+      "id": "sf-de-0073"
+    },
+    {
+      "question": "Was schmücken Anwohner in Córdoba für ein öffentliches Fest besonders aufwendig mit Blumen?",
+      "answer": "Innenhöfe",
+      "acceptedAnswers": [
+        "Patios"
+      ],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Beim Fest der Patios öffnen Bewohner ihre reich bepflanzten Hausinnenhöfe für Besucher.",
+      "sources": [
+        {
+          "title": "Fiesta of the patios in Cordova",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/fiesta-of-the-patios-in-cordova-00846",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die UNESCO beschreibt die jährliche Feier im Mai in Córdoba.",
+      "id": "sf-de-0074"
+    },
+    {
+      "question": "Was tragen Teilnehmer mancher Sonnenwendfeste in den Pyrenäen nachts bergab in ihre Dörfer?",
+      "answer": "Brennende Fackeln",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Menschen ziehen mit entzündeten Fackeln von den Berghängen hinab und entzünden gemeinsame Feuer.",
+      "sources": [
+        {
+          "title": "Summer solstice fire festivals in the Pyrenees",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/summer-solstice-fire-festivals-in-the-pyrenees-01073",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gilt für die von UNESCO dokumentierten regionalen Pyrenäenfeste.",
+      "id": "sf-de-0075"
+    },
+    {
+      "question": "Welchen Sport übten Menschen ursprünglich aus, um mit trainierten Greifvögeln Nahrung zu beschaffen?",
+      "answer": "Falknerei",
+      "acceptedAnswers": [
+        "Beizjagd"
+      ],
+      "category": "culture",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Die Falknerei diente jahrtausendelang der Beizjagd und wird heute auch als Kulturerbe gepflegt.",
+      "sources": [
+        {
+          "title": "Falconry, a living human heritage",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/falconry-a-living-human-heritage-01708",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Frage bezieht sich auf ursprünglichen Ernährungszweck; kein moderner Mannschaftssport.",
+      "id": "sf-de-0076"
+    },
+    {
+      "question": "Welcher Tanz entstand in den Arbeitervierteln von Buenos Aires und Montevideo?",
+      "answer": "Tango",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Tango entwickelte sich im Río-de-la-Plata-Raum aus einer Mischung verschiedener Einwanderungs- und Stadtkulturen.",
+      "sources": [
+        {
+          "title": "Tango",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/tango-00258",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO nennt ausdrücklich beide Städte und die urbane Entstehung.",
+      "id": "sf-de-0077"
+    },
+    {
+      "question": "Welche Gestalt „überfällt“ bei einem bulgarischen Neujahrsbrauchtum die Menschen symbolisch für ihre Gesundheit?",
+      "answer": "Ein verkleideter Bär",
+      "acceptedAnswers": [
+        "Bärenfigur",
+        "Ein als Bär kostümierter Mensch"
+      ],
+      "category": "culture",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Beim Surova-Fest in der bulgarischen Region Pernik berührt oder bedrängt eine Bärenfigur im Maskenumzug die Menschen rituell als Glückszeichen.",
+      "sources": [
+        {
+          "title": "Surova folk feast in Pernik region",
+          "publisher": "UNESCO",
+          "url": "https://ich.unesco.org/en/RL/surova-folk-feast-in-pernik-region-00968",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO beschreibt rituelles „Mauling“ durch die als Bär verkleidete Figur. Kein wirklicher Bär und kein aggressiver Angriff.",
+      "id": "sf-de-0078"
+    },
+    {
+      "question": "Welche ungewöhnliche Beschäftigung ist in mehreren Alpenländern sogar als Kulturerbe anerkannt?",
+      "answer": "Almauftrieb mit Vieh",
+      "acceptedAnswers": [
+        "Transhumanz",
+        "Alpaufzug"
+      ],
+      "category": "culture",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Bei der Transhumanz werden Herden jahreszeitlich zwischen Weidegebieten getrieben.",
+      "sources": [
+        {
+          "title": "Transhumance, the seasonal droving of livestock",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/transhumance-the-seasonal-droving-of-livestock-01964",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO beschreibt die saisonale Viehwanderung in mehreren Ländern.",
+      "id": "sf-de-0079"
+    },
+    {
+      "question": "Was wird in Japan beim Neujahrsfest traditionell gestampft, um Festtagskuchen zu machen?",
+      "answer": "Reis",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Zum Washoku-Brauchtum gehören gestampfte Reiskuchen und besondere Speisen für das neue Jahr.",
+      "sources": [
+        {
+          "title": "Washoku, traditional dietary cultures of the Japanese",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/washoku-traditional-dietary-cultures-of-the-japanese-notably-for-the-celebration-of-new-year-00869",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO beschreibt das Reisstampfen und die Festtagsspeisen; Reiskuchen heißen Mochi.",
+      "id": "sf-de-0080"
+    },
+    {
+      "question": "Welches Getränk gehört in Belgien ausdrücklich zum immateriellen UNESCO-Kulturerbe?",
+      "answer": "Bier",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Die Kultur des Brauens und Genießens von Bier ist als lebendiges Kulturerbe anerkannt.",
+      "sources": [
+        {
+          "title": "Beer culture in Belgium",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/beer-culture-in-belgium-01062",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es ist die Bierkultur, nicht eine einzelne Biermarke oder Sorte.",
+      "id": "sf-de-0081"
+    },
+    {
+      "question": "Welche heiße Alltagseinrichtung galt in Finnland traditionell als eine Art „Kirche der Natur“?",
+      "answer": "Sauna",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Saunen waren nicht nur Orte der Reinigung, sondern hatten auch eine besondere soziale und symbolische Bedeutung.",
+      "sources": [
+        {
+          "title": "Sauna culture in Finland",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/sauna-culture-in-finland-01596",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO zitiert diese traditionelle Betrachtung; keine allgemeine religiöse Pflicht.",
+      "id": "sf-de-0082"
+    },
+    {
+      "question": "Was sammeln Menschen am Morgen nach den sommerlichen Feuerfesten in den Pyrenäen zum Schutz ihrer Häuser?",
+      "answer": "Asche",
+      "acceptedAnswers": [
+        "Glutreste",
+        "Glut"
+      ],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Traditionell werden Asche oder Glutreste der Festfeuer eingesammelt und als Schutzsymbol aufbewahrt.",
+      "sources": [
+        {
+          "title": "Summer solstice fire festivals in the Pyrenees",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/summer-solstice-fire-festivals-in-the-pyrenees-01073",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO erwähnt Asche und Glut; beide gelten als akzeptierte Antworten.",
+      "id": "sf-de-0083"
+    },
+    {
+      "question": "In welchem italienischen Ort stehen traditionelle Häuser mit kegelförmigen Dächern aus Stein?",
+      "answer": "Alberobello",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Die weißen Trulli-Häuser in Alberobello haben markante kegelförmige Trockensteindächer.",
+      "sources": [
+        {
+          "title": "The Trulli of Alberobello",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/787",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO schützt die dortige Trulli-Siedlung, nicht alle Gebäude des Ortes.",
+      "id": "sf-de-0084"
+    },
+    {
+      "question": "Auf welcher Inselgruppe wachsen Bäume, die wegen ihres roten Harzes „Drachenblutbäume“ heißen?",
+      "answer": "Sokotra",
+      "acceptedAnswers": [
+        "Socotra"
+      ],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Der Sokotra-Archipel ist für seine endemische Pflanzenwelt mit den auffälligen Drachenblutbäumen bekannt.",
+      "sources": [
+        {
+          "title": "Socotra Archipelago",
+          "publisher": "UNESCO Man and Biosphere Programme",
+          "url": "https://www.unesco.org/en/mab/socotra-archipelago?hub=66369",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Baum ist auch anderorts eingeführt; gefragt ist der endemische Ursprungsraum.",
+      "id": "sf-de-0085"
+    },
+    {
+      "question": "In welcher türkischen Region wurden historische Wohnungen und Kirchen direkt aus weichem Vulkangestein gehauen?",
+      "answer": "Kappadokien",
+      "acceptedAnswers": [
+        "Göreme"
+      ],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Die UNESCO-Stätte Göreme umfasst in Tuff gehauene Wohnungen, Kirchen und Höhlenkomplexe.",
+      "sources": [
+        {
+          "title": "Göreme National Park and the Rock Sites of Cappadocia",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/357",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Frage betrifft die historische Felsarchitektur Kappadokiens.",
+      "id": "sf-de-0086"
+    },
+    {
+      "question": "In welchem Land steht die aus Lehm gebaute befestigte Siedlung Aït-Ben-Haddou?",
+      "answer": "Marokko",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Der Ksar Aït-Ben-Haddou ist ein traditionelles Beispiel südmarokkanischer Lehmarchitektur.",
+      "sources": [
+        {
+          "title": "Ksar of Ait-Ben-Haddou",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/444/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO verortet den Ksar im Süden Marokkos.",
+      "id": "sf-de-0087"
+    },
+    {
+      "question": "Wie heißt die griechische Felslandschaft, auf deren hohen Sandsteinsäulen Klöster errichtet wurden?",
+      "answer": "Meteora",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Seit dem Mittelalter errichteten Mönche Klöster auf schwer zugänglichen Felsnadeln.",
+      "sources": [
+        {
+          "title": "Meteora",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/455",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es geht um den UNESCO-Ort Meteora, nicht um beliebige Felsenklöster.",
+      "id": "sf-de-0088"
+    },
+    {
+      "question": "Aus welchem Material bestehen die unterirdischen Kapellen und Skulpturen der Bergwerke von Wieliczka?",
+      "answer": "Steinsalz",
+      "acceptedAnswers": [
+        "Salz"
+      ],
+      "category": "geography",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "In den polnischen Salzbergwerken schufen Bergleute Kapellen und Kunstwerke direkt im Salz.",
+      "sources": [
+        {
+          "title": "Wieliczka and Bochnia Royal Salt Mines",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/32",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO bestätigt Kunstwerke und Kapellen im Steinsalz.",
+      "id": "sf-de-0089"
+    },
+    {
+      "question": "Welchen Spitznamen trägt die türkische Landschaft Pamukkale wegen ihrer schneeweißen Kalkterrassen?",
+      "answer": "Baumwollschloss",
+      "acceptedAnswers": [
+        "Baumwollburg"
+      ],
+      "category": "geography",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Der Name Pamukkale bedeutet „Baumwollschloss“ und spielt auf die weißen Sinterterrassen an.",
+      "sources": [
+        {
+          "title": "Hierapolis-Pamukkale",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/485",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es handelt sich um die Bedeutung des türkischen Ortsnamens.",
+      "id": "sf-de-0090"
+    },
+    {
+      "question": "Was ist in China das Besondere an den Seen des Jiuzhaigou-Tals?",
+      "answer": "Ihre ungewöhnlich bunten Farben",
+      "acceptedAnswers": [
+        "Bunte Seen",
+        "Türkisfarbene Seen"
+      ],
+      "category": "geography",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Kalkablagerungen und klares Wasser prägen türkisfarbene, grüne und teils violett wirkende Gewässer.",
+      "sources": [
+        {
+          "title": "Jiuzhaigou Valley Scenic and Historic Interest Area",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/637",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO belegt farbige Seen und Karstlandschaften; keine einzige feste Farbe.",
+      "id": "sf-de-0091"
+    },
+    {
+      "question": "Wodurch erhält der Crater Lake in Oregon sein Wasser, obwohl kein Fluss hineinfließt?",
+      "answer": "Regen und Schnee",
+      "acceptedAnswers": [
+        "Niederschlag",
+        "Schneeschmelze und Regen"
+      ],
+      "category": "geography",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Der Kratersee wird allein durch Niederschlag gespeist; er hat keine einmündenden Flüsse oder Bäche.",
+      "sources": [
+        {
+          "title": "Frequently Asked Questions: Crater Lake",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/crla/faqs.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es geht ausdrücklich um den Crater Lake im US-Bundesstaat Oregon.",
+      "id": "sf-de-0092"
+    },
+    {
+      "question": "Welche Felsformation in Wyoming besteht aus riesigen, fast wie Bleistifte angeordneten Steinsäulen?",
+      "answer": "Devils Tower",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Der vulkanische Gesteinskörper bildete beim Abkühlen gewaltige polygonale Säulen aus.",
+      "sources": [
+        {
+          "title": "Frequently Asked Questions: Devils Tower",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/deto/faqs.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Nationalparkverwaltung beschreibt den Vergleich mit Bleistiften und den magmatischen Ursprung.",
+      "id": "sf-de-0093"
+    },
+    {
+      "question": "Welche einzigartige Küstenlandschaft in Deutschland, Dänemark und den Niederlanden liegt bei Ebbe stellenweise als Meeresboden frei?",
+      "answer": "Wattenmeer",
+      "acceptedAnswers": [
+        "Das Wattenmeer",
+        "Wadden Sea"
+      ],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Das Wattenmeer ist ein weltweit außergewöhnliches zusammenhängendes Gezeitengebiet, dessen Sand- und Schlickflächen bei Ebbe zum Teil trockenfallen.",
+      "sources": [
+        {
+          "title": "Wadden Sea",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/1314/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "UNESCO beschreibt das grenzüberschreitende Wattenmeer; nicht jede Stelle fällt bei jeder Ebbe trocken, und Wattwanderungen erfordern Ortskenntnis.",
+      "id": "sf-de-0094"
+    },
+    {
+      "question": "Welcher See ist der tiefste der Vereinigten Staaten und liegt zugleich in einem ehemaligen Vulkan?",
+      "answer": "Crater Lake",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 1,
+      "explanation": "Ein gewaltiger Vulkaneinbruch hinterließ das Becken, das sich mit Regen- und Schneewasser füllte.",
+      "sources": [
+        {
+          "title": "Frequently Asked Questions: Crater Lake",
+          "publisher": "US National Park Service",
+          "url": "https://www.nps.gov/crla/faqs.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Tiefster See der USA nach maximaler Wassertiefe; nicht Volumen.",
+      "id": "sf-de-0095"
+    },
+    {
+      "question": "Aus welchem Material bestand der erste erhaltene Prototyp einer Computermaus von 1964?",
+      "answer": "Holz",
+      "acceptedAnswers": [
+        "Rotholz"
+      ],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Der frühe Maus-Prototyp von Bill English entstand aus Rotholz in der Werkstatt des Stanford Research Institute.",
+      "sources": [
+        {
+          "title": "CHM Acquires Original SRI Mouse",
+          "publisher": "Computer History Museum",
+          "url": "https://computerhistory.org/sri-mouse-mn052024/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Beleg gilt für das konkrete SRI-Original; spätere Mäuse verwendeten andere Gehäusematerialien.",
+      "id": "sf-de-0096"
+    },
+    {
+      "question": "Wer programmierte den frühen Computer ENIAC, während in der Presse vor allem die Erfinder der Maschine gefeiert wurden?",
+      "answer": "Sechs Frauen",
+      "acceptedAnswers": [
+        "Mathematikerinnen",
+        "Programmiererinnen"
+      ],
+      "category": "history",
+      "answerType": "person",
+      "difficulty": 2,
+      "explanation": "Ein Team von sechs Mathematikerinnen entwickelte 1946 Programmabläufe für ENIAC, erhielt aber lange wenig öffentliche Anerkennung.",
+      "sources": [
+        {
+          "title": "When Computer Coding Was a Woman’s Job",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/coding-used-to-be-a-womans-job-so-it-was-paid-less-and-undervalued",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint sind die historischen ENIAC-Programmiererinnen, nicht alle früheren Computerarbeitenden.",
+      "id": "sf-de-0097"
+    },
+    {
+      "question": "Welche beiden Lebensmittel ließ man im Alten Ägypten in einer gemeinsamen Modellwerkstatt darstellen?",
+      "answer": "Brot und Bier",
+      "acceptedAnswers": [
+        "Bier und Brot"
+      ],
+      "category": "history",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Ein Grabmodell aus dem Mittleren Reich zeigt Bäckerei und Brauerei nebeneinander.",
+      "sources": [
+        {
+          "title": "Model Bakery and Brewery from the Tomb of Meketre",
+          "publisher": "The Metropolitan Museum of Art",
+          "url": "https://www.metmuseum.org/art/collection/search/544258",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Frage bezieht sich auf das Museumsobjekt aus dem Grab des Meketre.",
+      "id": "sf-de-0098"
+    },
+    {
+      "question": "Welches ungewöhnliche Behältermaterial wurde historisch für eine kunstvoll verzierte Reiseflasche verwendet?",
+      "answer": "Straußenei",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Das Metropolitan Museum dokumentiert eine Schraubflasche aus einem echten Straußenei.",
+      "sources": [
+        {
+          "title": "Ostrich egg screw-top flask",
+          "publisher": "The Metropolitan Museum of Art",
+          "url": "https://www.metmuseum.org/art/collection/search/910442",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Konkretes Museumsobjekt; nicht allgemeine Aussage über alle historischen Flaschen.",
+      "id": "sf-de-0099"
+    },
+    {
+      "question": "Welche überraschende Prothese trug ein Turner, der 1904 sechs olympische Medaillen gewann?",
+      "answer": "Ein Holzbein",
+      "acceptedAnswers": [
+        "Beinprothese",
+        "Prothese"
+      ],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "George Eyser trat bei den Olympischen Spielen mit einer Beinprothese aus Holz an.",
+      "sources": [
+        {
+          "title": "8 Unusual Facts About the 1904 St. Louis Olympics",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/8-unusual-facts-about-the-1904-st-louis-olympics",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historisch belegte Prothese; kein allgemeiner Rekord der Paralympics.",
+      "id": "sf-de-0100"
+    },
+    {
+      "question": "Welchen kuriosen Schreibfehler machte ein österreichischer Geldfälscher auf amerikanischen Ein-Dollar-Scheinen?",
+      "answer": "Wahsington",
+      "acceptedAnswers": [
+        "Wahsington statt Washington"
+      ],
+      "category": "history",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Emerich Juettner, der als „Mister 880“ bekannt wurde, druckte den Namen George Washingtons zeitweise mit vertauschten Buchstaben unter dessen Bildnis.",
+      "sources": [
+        {
+          "title": "Selbstgemacht",
+          "publisher": "Deutsches Museum",
+          "url": "https://blog.deutsches-museum.de/2023/03/31/selbstgemacht",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Das Deutsche Museum beschreibt den konkreten Fehler im Namen Washington. Die falsche Schreibweise ist wörtlich aus dem Museumsbeitrag übernommen.",
+      "id": "sf-de-0101"
+    },
+    {
+      "question": "Welches scheinbar wertlose Material wurde im antiken Rom für wertvolle Fischsauce vergoren?",
+      "answer": "Fischinnereien",
+      "acceptedAnswers": [
+        "Fischreste"
+      ],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Aus Fischresten wurde fermentierte Würzsauce hergestellt, die als Garum bekannt war.",
+      "sources": [
+        {
+          "title": "Unguentarium: Vessel for garum",
+          "publisher": "British Museum",
+          "url": "https://www.britishmuseum.org/collection/object/G_1856-1226-337",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Beleg ist ein römisches Museumsobjekt für Garum; Rezeptvarianten verwendeten verschiedene Fischteile.",
+      "id": "sf-de-0102"
+    },
+    {
+      "question": "Wofür standen im Alten Ägypten manchmal winzige Figuren von Bäckern und Brauern in Gräbern?",
+      "answer": "Versorgung im Jenseits",
+      "acceptedAnswers": [
+        "Essen im Jenseits"
+      ],
+      "category": "history",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Grabmodelle sollten dem Verstorbenen symbolisch Lebensmittel und Arbeitskräfte für das Jenseits bereitstellen.",
+      "sources": [
+        {
+          "title": "Model of Brewers, Bakers, and Butchers",
+          "publisher": "The Metropolitan Museum of Art",
+          "url": "https://www.metmuseum.org/art/collection/search/555953",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Das Museum erklärt ausdrücklich die symbolische Verpflegung des Grabinhabers.",
+      "id": "sf-de-0103"
+    },
+    {
+      "question": "Welches Tier konnte im Alten Ägypten als unzerlegtes Grabgeschenk aus einem Korb ragen?",
+      "answer": "Gans",
+      "acceptedAnswers": [
+        "Ente"
+      ],
+      "category": "history",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Ein Figurenmodell aus dem Grab des Meketre zeigt Opferträgerinnen mit Körben und Vögeln in den Händen.",
+      "sources": [
+        {
+          "title": "Model of Brewers, Bakers, and Butchers",
+          "publisher": "The Metropolitan Museum of Art",
+          "url": "https://www.metmuseum.org/art/collection/search/555953",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Metropolitan Museum nennt Gänse oder Enten; deshalb als Spielrundeneintrag nicht verwenden.",
+      "id": "sf-de-0104"
+    },
+    {
+      "question": "Welche damals neue Kunststoffart trug den Namen ihres belgischen Erfinders Baekeland?",
+      "answer": "Bakelit",
+      "acceptedAnswers": [
+        "Bakelite"
+      ],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Leo Baekeland entwickelte 1907 den ersten vollsynthetischen Kunststoff Bakelit.",
+      "sources": [
+        {
+          "title": "Leo Hendrik Baekeland",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/education/scientific-biographies/leo-hendrik-baekeland/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint ist sein Handelsname; frühe teilsynthetische Kunststoffe existierten.",
+      "id": "sf-de-0105"
+    },
+    {
+      "question": "Welche klebrige Flüssigkeit überflutete 1919 nach einem Tankbruch die Straßen von Boston?",
+      "answer": "Melasse",
+      "acceptedAnswers": [
+        "Zuckersirup"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Ein riesiger Tank riss auf und schickte eine Flut von über zwei Millionen Gallonen Melasse durch die Stadt.",
+      "sources": [
+        {
+          "title": "The Great Molasses Flood",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/the-great-molasses-flood-of-1919",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Unfall ist als Great Molasses Flood historisch dokumentiert.",
+      "id": "sf-de-0106"
+    },
+    {
+      "question": "Welches Getränk überschwemmte 1814 nach einem Brauereiunfall ein Viertel von London?",
+      "answer": "Bier",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Ein riesiger Porter-Bottich zerbarst und löste eine tödliche Flut durch die Straßen von St Giles aus.",
+      "sources": [
+        {
+          "title": "The London Beer Flood",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/london-beer-flood",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gesichert ist die London Beer Flood von 1814; kein Trinkgelage.",
+      "id": "sf-de-0107"
+    },
+    {
+      "question": "Mit welchem Transportmittel ließ sich ein Läufer beim Olympia-Marathon 1904 ein Stück weit fahren?",
+      "answer": "Auto",
+      "acceptedAnswers": [
+        "Automobil"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Fred Lorz fuhr rund zehn Meilen des Rennens im Auto und wurde nach dem Zieleinlauf disqualifiziert.",
+      "sources": [
+        {
+          "title": "The Olympic Marathon’s Outlandish Early History",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/the-olympic-marathons-outlandish-early-history",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es war Täuschung; er gewann nicht offiziell den Marathon.",
+      "id": "sf-de-0108"
+    },
+    {
+      "question": "Welche giftige Substanz gaben Helfer dem Sieger des olympischen Marathons von 1904?",
+      "answer": "Strychnin",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Thomas Hicks erhielt beim Rennen unter anderem Strychnin und Brandy – damals als Leistungsanregung gedacht.",
+      "sources": [
+        {
+          "title": "8 Unusual Facts About the 1904 St. Louis Olympics",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/8-unusual-facts-about-the-1904-st-louis-olympics",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Damals eingesetztes Gift; nicht als heutige Empfehlung oder erlaubtes Doping einordnen.",
+      "id": "sf-de-0109"
+    },
+    {
+      "question": "Mit welchem Möbelstück flog ein Amerikaner 1982 an Wetterballons mehrere Kilometer hoch?",
+      "answer": "Gartenstuhl",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Larry Walters befestigte Dutzende Heliumballons an einen Gartenstuhl und erreichte unerwartet große Höhe.",
+      "sources": [
+        {
+          "title": "How the Balloon-Borne “Flying Lawn Chair” Got Into the Smithsonian",
+          "publisher": "Smithsonian Air & Space",
+          "url": "https://www.smithsonianmag.com/air-space-magazine/flying-lawn-chair-180972974/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Smithsonian dokumentiert den Originalstuhl und den Flug; kein Flugzeug.",
+      "id": "sf-de-0110"
+    },
+    {
+      "question": "Welche Badewannenspielzeuge halfen Forschern nach einem Containerverlust 1992, Meeresströmungen zu verfolgen?",
+      "answer": "Quietscheenten",
+      "acceptedAnswers": [
+        "Gummienten",
+        "Badeenten"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Tausende Badespielzeuge trieben über Jahre im Pazifik und ihre Fundorte halfen beim Nachvollziehen von Strömungen.",
+      "sources": [
+        {
+          "title": "Mapping Friendly Floatees",
+          "publisher": "NOAA National Marine Sanctuaries",
+          "url": "https://sanctuaries.noaa.gov/education/teachers/ocean-mysteries/mapping-floatees.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es waren Enten und weitere Badespielzeuge; nicht alle 29.000 waren Enten.",
+      "id": "sf-de-0111"
+    },
+    {
+      "question": "Welches unbemannte Fluggerät benutzte Japan im Zweiten Weltkrieg, um Sprengkörper über den Pazifik zu schicken?",
+      "answer": "Ballons",
+      "acceptedAnswers": [
+        "Ballonbomben",
+        "Wetterballons"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Japan setzte Bomben tragende Höhenballons ein, die mit Höhenwinden bis nach Nordamerika treiben sollten.",
+      "sources": [
+        {
+          "title": "Japanese World War II Balloon Bombs Collection",
+          "publisher": "Smithsonian National Air and Space Museum",
+          "url": "https://airandspace.si.edu/collection-archive/japanese-world-war-ii-balloon-bombs-collection/sova-nasm-xxxx-0558",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Smithsonian-Archiv belegt die japanischen Ballonbomben, nicht bemannte Zeppeline.",
+      "id": "sf-de-0112"
+    },
+    {
+      "question": "Womit sorgten Menschen 1374 in Aachen für eine außergewöhnliche Massenerscheinung, deren Ursache bis heute unklar ist?",
+      "answer": "Unaufhörlichem Tanzen",
+      "acceptedAnswers": [
+        "Tanzwut",
+        "Tanzepidemie"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Beim historisch dokumentierten Tanzwut-Ausbruch bewegten sich Betroffene stundenlang, teilweise bis zur Erschöpfung.",
+      "sources": [
+        {
+          "title": "Worst outbreak of dancing mania",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/69603-worst-outbreak-of-dancing-mania",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Keine gesicherte medizinische Ursache und keine präzise Sterbezahl behauptet.",
+      "id": "sf-de-0113"
+    },
+    {
+      "question": "Welche bizarre Tätigkeit wollten die Behörden in Straßburg 1518 zunächst mit Musik begleiten, um Betroffenen zu helfen?",
+      "answer": "Unkontrolliertes Tanzen",
+      "acceptedAnswers": [
+        "Tanzwut",
+        "Tanzen"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Bei einem Ausbruch der Tanzwut ließen Verantwortliche Musik spielen; die Maßnahmen halfen nicht.",
+      "sources": [
+        {
+          "title": "The unsolved mystery of the medieval dancing plague",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/news/2022/12/the-unsolved-mystery-of-the-medieval-dancing-plague-728701",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Eine 1518 dokumentierte Praxis; keine Behauptung über ungeprüfte Todeszahlen.",
+      "id": "sf-de-0114"
+    },
+    {
+      "question": "Welchen künstlichen Körperteil können Menschen bei einem Experiment plötzlich für ihren eigenen halten?",
+      "answer": "Eine Gummihand",
+      "acceptedAnswers": [
+        "Kunsthand"
+      ],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Werden eine sichtbare Gummihand und die versteckte echte Hand synchron berührt, kann ein Eigentumsgefühl entstehen.",
+      "sources": [
+        {
+          "title": "Multisensory Perception and Bodily Self-Consciousness",
+          "publisher": "National Center for Biotechnology Information",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK92870/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Experimentelle Körperillusion, nicht alle Probanden erleben sie.",
+      "id": "sf-de-0115"
+    },
+    {
+      "question": "Welche harmlose Kombination kann auf der Haut unerwartet brennende Schmerzen vortäuschen?",
+      "answer": "Abwechselnd warme und kalte Reize",
+      "acceptedAnswers": [
+        "Warm und kalt zugleich"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Bei der Thermal-Grill-Illusion können sich schmerzlose warme und kalte Kontakte zusammen schmerzhaft anfühlen.",
+      "sources": [
+        {
+          "title": "Thermal illusions for thermal displays: a review",
+          "publisher": "PubMed Central",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10728301/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Reize müssen räumlich und zeitlich passend kombiniert werden.",
+      "id": "sf-de-0116"
+    },
+    {
+      "question": "Welche vertrauten Dinge können Menschen mit Gesichtsblindheit manchmal nicht mehr sicher erkennen?",
+      "answer": "Gesichter",
+      "acceptedAnswers": [
+        "Bekannte Gesichter"
+      ],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Prosopagnosie beeinträchtigt das Wiedererkennen von Gesichtern trotz intakter allgemeiner Sehfähigkeit.",
+      "sources": [
+        {
+          "title": "Prosopagnosia - StatPearls",
+          "publisher": "National Center for Biotechnology Information",
+          "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK559324/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gesichtsblindheit ist kein Verlust der gesamten Sehkraft.",
+      "id": "sf-de-0117"
+    },
+    {
+      "question": "Mit welcher Form verbinden viele Menschen das Fantasiewort „Bouba“ spontan?",
+      "answer": "Mit einer runden Form",
+      "acceptedAnswers": [
+        "Rund",
+        "Abgerundet"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Studien über viele Sprachen hinweg zeigen, dass Bouba eher runden und Kiki eher spitzen Formen zugeordnet wird.",
+      "sources": [
+        {
+          "title": "The bouba/kiki effect is robust across cultures and writing systems",
+          "publisher": "Royal Society / PubMed Central",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8591387/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gruppentendenz, keine ausnahmslose Reaktion jeder Person.",
+      "id": "sf-de-0118"
+    },
+    {
+      "question": "Was glauben Menschen manchmal zwischen zwei rasch aufeinanderfolgenden Berührungen zu spüren?",
+      "answer": "Weitere Berührungen",
+      "acceptedAnswers": [
+        "Phantomberührungen"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Bei der „Haut-Kaninchen“-Illusion werden scheinbare Zwischenkontakte wahrgenommen, obwohl sie nicht stattfanden.",
+      "sources": [
+        {
+          "title": "The Cutaneous Rabbit Hopping out of the Body",
+          "publisher": "Journal of Neuroscience / PubMed Central",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6633980/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Versuche verwenden passend getaktete taktile Impulse.",
+      "id": "sf-de-0119"
+    },
+    {
+      "question": "Wie nennt man den Zustand, wenn man ein Wort fast weiß, aber es einfach nicht aussprechen kann?",
+      "answer": "Es liegt auf der Zunge",
+      "acceptedAnswers": [
+        "Zungenspitzenphänomen"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 1,
+      "explanation": "Der Spitze-der-Zunge-Zustand ist eine experimentell untersuchte, vorübergehende Abrufblockade.",
+      "sources": [
+        {
+          "title": "A review of the tip-of-the-tongue experience",
+          "publisher": "Psychological Bulletin / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/2034750/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Beschreibt ein Gedächtnisphänomen und keine medizinische Sprachstörung.",
+      "id": "sf-de-0120"
+    },
+    {
+      "question": "Was kann das Gehirn bei einer bestimmten Hörillusion allein durch falsch passende Lippenbewegungen verändern?",
+      "answer": "Den gehörten Laut",
+      "acceptedAnswers": [
+        "Sprachlaut",
+        "Silbe"
+      ],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Beim McGurk-Effekt berichten Zuhörer einen anderen Sprachlaut, als die Tonspur tatsächlich enthält.",
+      "sources": [
+        {
+          "title": "Hearing lips and seeing voices",
+          "publisher": "Nature",
+          "url": "https://www.nature.com/articles/264746a0",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Effekt hängt von Stimulus und Person ab; keine universelle Reaktion.",
+      "id": "sf-de-0121"
+    },
+    {
+      "question": "Welchen Bereich des Sichtfelds füllt das Gehirn meist unbemerkt mit benachbarten Mustern auf?",
+      "answer": "Den blinden Fleck",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Am Austritt des Sehnervs fehlen Fotorezeptoren; dennoch wirkt dort die Wahrnehmung oft durchgehend.",
+      "sources": [
+        {
+          "title": "On the filling in of the visual blind spot",
+          "publisher": "Perception / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8710443/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Nicht mit blinden Stellen durch Augenerkrankungen gleichsetzen.",
+      "id": "sf-de-0122"
+    },
+    {
+      "question": "Welcher einfache Alltagsgegenstand kann in einer Therapie die Bewegung eines amputierten Körperteils vortäuschen?",
+      "answer": "Ein Spiegel",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Eine Spiegelung der intakten Gliedmaße kann visuelle Bewegungssignale liefern und manchen Betroffenen mit Phantomschmerzen helfen.",
+      "sources": [
+        {
+          "title": "Mirror Therapy for Phantom Limb Pain",
+          "publisher": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMc071927",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Evidenz für Wirksamkeit ist gemischt; belegt ist der Einsatz des Spiegels als Methode.",
+      "id": "sf-de-0123"
+    },
+    {
+      "question": "Was kann man in Experimenten mit einer täuschend echt wirkenden Gummihand sogar durch einen Lichtstrahl fühlen?",
+      "answer": "Eine Berührung",
+      "acceptedAnswers": [
+        "Tastgefühl"
+      ],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Manche Versuchspersonen berichten ein Tastgefühl, wenn ein Lichtpunkt über die als eigene empfundene Gummihand fährt.",
+      "sources": [
+        {
+          "title": "Rubber hands feel the touch of light",
+          "publisher": "Psychological Science / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17425536/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "In kontrollierten Studien berichtete ein Teil der Teilnehmer Empfindungen; keine allgemeine Fähigkeit.",
+      "id": "sf-de-0124"
+    },
+    {
+      "question": "Welches beliebte Wasserspielzeug entstand, als ein Raumfahrtingenieur mit einer undichten Wärmepumpe experimentierte?",
+      "answer": "Super Soaker",
+      "acceptedAnswers": [
+        "Super-Soaker-Wasserpistole",
+        "Wasserpistole Super Soaker"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Der Ingenieur Lonnie Johnson bemerkte einen Wasserstrahl, der aus seinem Versuchssystem schoss, und entwickelte daraus eine besonders kräftige Wasserpistole.",
+      "sources": [
+        {
+          "title": "The Accidental Invention of the Super Soaker",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/accidental-invention-super-soaker-180972428/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Zufall inspirierte Johnsons Spielzeugentwicklung; das Produkt wurde danach gezielt konstruiert und patentiert.",
+      "id": "sf-de-0125"
+    },
+    {
+      "question": "Welchen Alltagsgegenstand ermöglichte ein schlecht haftender Kleber aus einem 3M-Labor?",
+      "answer": "Haftnotizzettel",
+      "acceptedAnswers": [
+        "Post-its",
+        "Haftnotizen"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Art Fry nutzte die ablösbare Klebetechnologie, um wiederverwendbare Papiermarkierungen herzustellen.",
+      "sources": [
+        {
+          "title": "One scientist, good. Many scientists, even better.",
+          "publisher": "3M",
+          "url": "https://www.3m.com/3M/en_US/consumer-us/stories/full-story/?storyid=e9f444d3-a5c5-46f1-a34b-082ff275aa7d",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Kommerzieller Einsatz als Post-it; überschneidet sich mit dem ursprünglichen Entwicklungsirrtum.",
+      "id": "sf-de-0126"
+    },
+    {
+      "question": "Was entdeckte der Chemiker Roy Plunkett in einem Gaszylinder, aus dem plötzlich kein Gas mehr herauskam?",
+      "answer": "Weißes Pulver",
+      "acceptedAnswers": [
+        "Pulver"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Bei einem Kühlmittel-Experiment polymerisierte das Gas und bildete den später als Teflon bekannten Kunststoff.",
+      "sources": [
+        {
+          "title": "Roy J. Plunkett",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/education/scientific-biographies/roy-j-plunkett/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gesucht ist die unmittelbare Beobachtung, nicht der Markenname.",
+      "id": "sf-de-0127"
+    },
+    {
+      "question": "Welches Antihaftmaterial entstand bei Experimenten zur Entwicklung eines Kältemittels?",
+      "answer": "Teflon",
+      "acceptedAnswers": [
+        "PTFE",
+        "Polytetrafluorethylen"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Roy Plunkett fand 1938 zufällig Polytetrafluorethylen, während er mit fluorhaltigen Gasen arbeitete.",
+      "sources": [
+        {
+          "title": "Roy J. Plunkett",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/education/scientific-biographies/roy-j-plunkett/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "PTFE entstand zufällig; heutige beschichtete Pfannen waren kein ursprüngliches Forschungsziel.",
+      "id": "sf-de-0128"
+    },
+    {
+      "question": "Welchen Haushaltshelfer erfand Josephine Cochrane, weil ihr feines Porzellan beim Spülen beschädigt wurde?",
+      "answer": "Geschirrspülmaschine",
+      "acceptedAnswers": [
+        "Spülmaschine",
+        "Geschirrspüler"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Cochrane entwickelte einen kommerziell erfolgreichen Geschirrspüler mit Wasserstrahlen und Geschirrhalterungen.",
+      "sources": [
+        {
+          "title": "Josephine Cochrane",
+          "publisher": "MIT Lemelson Program",
+          "url": "https://lemelson.mit.edu/resources/josephine-cochrane",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Sie war nicht die erste mit jeder Art von Spülmaschinenidee, aber ihre war kommerziell erfolgreich.",
+      "id": "sf-de-0129"
+    },
+    {
+      "question": "Welches gefrorene Produkt soll ein elfjähriger Junge durch ein draußen vergessenes Getränk erfunden haben?",
+      "answer": "Eis am Stiel",
+      "acceptedAnswers": [
+        "Wassereis am Stiel",
+        "Popsicle"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Frank Epperson ließ nach historischem Bericht 1905 ein süßes Getränk mit Rührstab über Nacht im Kalten stehen.",
+      "sources": [
+        {
+          "title": "Frozen History: The Story of the Popsicle",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/frozen-history-the-story-of-the-popsicle",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die dokumentierte Erfindungsgeschichte bezieht sich auf Eppersons später patentiertes Popsicle.",
+      "id": "sf-de-0130"
+    },
+    {
+      "question": "Welcher Verschluss wurde nach dem Vorbild von Kletten entwickelt, die am Hundefell haften blieben?",
+      "answer": "Klettverschluss",
+      "acceptedAnswers": [
+        "Klettband"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "George de Mestral beobachtete haftende Kletten und übertrug das Prinzip auf Haken und Schlaufen.",
+      "sources": [
+        {
+          "title": "Before Velcro’s Patent Expired, It Was a Niche Product",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/velcros-patent-expired-it-was-niche-product-most-people-hadnt-heard-180962701/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Bezug auf die dokumentierte Entwicklung des Haken-Schlaufen-Verschlusses.",
+      "id": "sf-de-0131"
+    },
+    {
+      "question": "Für welche Tätigkeit wurde das erste Abdeckklebeband von 3M ursprünglich entwickelt?",
+      "answer": "Zweifarbige Autolackierungen",
+      "acceptedAnswers": [
+        "Autos lackieren",
+        "Autolackierung"
+      ],
+      "category": "inventions",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Das frühe Maskierband sollte bei zweifarbigen Autolackierungen saubere Trennlinien ermöglichen.",
+      "sources": [
+        {
+          "title": "Electrical Tape History",
+          "publisher": "3M",
+          "url": "https://eaa.3m.com/3M/en_US/electrical-construction-maintenance-us/products/electrical-tapes/vinyl-electrical-tape/electrical-tape-history/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "3M nennt 1925 als Einführung des Maskierbandes.",
+      "id": "sf-de-0132"
+    },
+    {
+      "question": "Welchen Süßstoff entdeckte ein Chemiker, nachdem er nach Laborarbeit etwas Süßes an seinen Händen bemerkte?",
+      "answer": "Saccharin",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Constantin Fahlberg bemerkte die Süße von Laborrückständen und untersuchte mit Ira Remsen die Verbindung.",
+      "sources": [
+        {
+          "title": "The Pursuit of Sweet",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/stories/magazine/the-pursuit-of-sweet/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historische Darstellung erwähnt die Geschmacksentdeckung; kein Rat, Chemikalien zu probieren.",
+      "id": "sf-de-0133"
+    },
+    {
+      "question": "Welche digitale Erfindung wurde am CERN ursprünglich für den Informationsaustausch zwischen Forschenden entwickelt?",
+      "answer": "World Wide Web",
+      "acceptedAnswers": [
+        "WWW",
+        "Web"
+      ],
+      "category": "inventions",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Tim Berners-Lee entwickelte das WWW, um wissenschaftliche Dokumente leichter zu teilen und zu verknüpfen.",
+      "sources": [
+        {
+          "title": "The birth of the Web",
+          "publisher": "CERN",
+          "url": "https://cds.cern.ch/record/1998446",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Das WWW ist nicht identisch mit dem schon zuvor bestehenden Internet.",
+      "id": "sf-de-0134"
+    },
+    {
+      "question": "Welche Art von Arbeitsplatzrechner benutzte das CERN für den allerersten Webserver?",
+      "answer": "NeXT-Computer",
+      "acceptedAnswers": [
+        "NeXT"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Der erste Webserver von Tim Berners-Lee lief auf einer NeXT-Workstation am CERN.",
+      "sources": [
+        {
+          "title": "The birth of the Web",
+          "publisher": "CERN",
+          "url": "https://cds.cern.ch/record/1998446",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gefragt ist die Rechner-Marke, nicht die Internet-Adresse oder ein Browser.",
+      "id": "sf-de-0135"
+    },
+    {
+      "question": "Welchen Einrichtungsgegenstand versuchte Thomas Edison erfolglos aus Zement zu verkaufen?",
+      "answer": "Möbel",
+      "acceptedAnswers": [
+        "Zementmöbel"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Edison experimentierte auch mit vorgefertigten Zementhäusern und Zementmöbeln, doch diese Produkte setzten sich nicht durch.",
+      "sources": [
+        {
+          "title": "Thomas Edisons Inventive Life",
+          "publisher": "Smithsonian Lemelson Center",
+          "url": "https://invention.si.edu/invention-stories/thomas-edisons-inventive-life",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Smithsonian dokumentiert den wenig erfolgreichen Vermarktungsversuch.",
+      "id": "sf-de-0136"
+    },
+    {
+      "question": "Welches Gerät glauben manche Menschen in ihrer Tasche vibrieren zu fühlen, obwohl es still ist?",
+      "answer": "Ihr Handy",
+      "acceptedAnswers": [
+        "Smartphone",
+        "Mobiltelefon"
+      ],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Das Phantomvibrationssyndrom ist in Befragungen von Mobiltelefon- und Pager-Nutzern nachgewiesen.",
+      "sources": [
+        {
+          "title": "Phantom vibration syndrome among medical staff",
+          "publisher": "British Medical Journal / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/21159761/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Die Studie dokumentiert subjektiv empfundene Fehlalarme; keine echte Vibration.",
+      "id": "sf-de-0137"
+    },
+    {
+      "question": "Was wiederholt das Gehirn beim sogenannten Ohrwurm oft ganz ohne bewusstes Nachdenken?",
+      "answer": "Ein Stück Musik",
+      "acceptedAnswers": [
+        "Melodie",
+        "Lied"
+      ],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Unwillkürliche musikalische Vorstellungen lassen einzelne Melodienabschnitte wieder und wieder auftreten.",
+      "sources": [
+        {
+          "title": "Involuntary musical imagery as a component of ordinary music cognition",
+          "publisher": "Psychonomic Bulletin & Review / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32583211/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Wissenschaftlich dokumentiertes normales Gedächtnisphänomen, nicht notwendigerweise eine Erkrankung.",
+      "id": "sf-de-0138"
+    },
+    {
+      "question": "In welche Richtung scheinen stillstehende Felsen nach längerem Blick auf einen Wasserfall manchmal zu wandern?",
+      "answer": "Nach oben",
+      "acceptedAnswers": [
+        "Aufwärts"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Der Bewegungsnacheffekt täuscht nach Beobachtung abwärtsströmenden Wassers eine Bewegung in Gegenrichtung vor.",
+      "sources": [
+        {
+          "title": "The motion aftereffect",
+          "publisher": "Trends in Cognitive Sciences / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/21227087/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Klassische Wasserfallillusion, die bei entsprechender Betrachtungsdauer auftreten kann.",
+      "id": "sf-de-0139"
+    },
+    {
+      "question": "Welcher alltägliche Kleiderverschluss wurde nicht von der NASA erfunden, kam aber bei den Apollo-Missionen oft zum Einsatz?",
+      "answer": "Klettverschluss",
+      "acceptedAnswers": [
+        "Klettband"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Klettverschlüsse waren vor dem Apollo-Programm erfunden und halfen in Raumfahrzeugen beim Fixieren von Ausrüstung.",
+      "sources": [
+        {
+          "title": "FAQ: NASA spinoffs and popular misconceptions",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA stellt ausdrücklich klar, dass sie Klettband nicht erfand; andere Frage zum Erfindungsvorbild bleibt eigenständiger Zusammenhang.",
+      "id": "sf-de-0140"
+    },
+    {
+      "question": "Welches Getränkepulver wurde durch John Glenn im All berühmt, obwohl es nicht von der NASA erfunden wurde?",
+      "answer": "Tang",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "John Glenn trank 1962 das bereits 1957 entwickelte Getränkepulver im Orbit.",
+      "sources": [
+        {
+          "title": "FAQ: NASA spinoffs and popular misconceptions",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "NASA korrigiert die verbreitete Behauptung, Tang sei für Raumfahrer erfunden worden.",
+      "id": "sf-de-0141"
+    },
+    {
+      "question": "Welche Werkzeugart gab es schon vor der NASA, obwohl ihre Raumfahrtversion später besonders bekannt wurde?",
+      "answer": "Akkubetriebene Elektrowerkzeuge",
+      "acceptedAnswers": [
+        "Akkuschrauber",
+        "Kabellose Elektrowerkzeuge"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Black & Decker bot schon 1961 kabellose Elektrowerkzeuge an, bevor die Firma für NASA-Projekte spezielle Varianten entwickelte.",
+      "sources": [
+        {
+          "title": "FAQ: NASA spinoffs and popular misconceptions",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es geht um batteriebetriebene Werkzeuge, nicht um NASA-Patentansprüche.",
+      "id": "sf-de-0142"
+    },
+    {
+      "question": "Welche Art von Rauchmelder entwickelte die NASA für die Raumstation Skylab als Spezialvariante?",
+      "answer": "Rauchmelder mit einstellbarer Empfindlichkeit",
+      "acceptedAnswers": [
+        "Einstellbarer Rauchmelder"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Für Skylab wurde ein Detektor gebaut, dessen Ansprechschwelle angepasst werden konnte.",
+      "sources": [
+        {
+          "title": "FAQ: NASA spinoffs and popular misconceptions",
+          "publisher": "NASA Spinoff",
+          "url": "https://spinoff.nasa.gov/node/2303",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Rauchmelder selbst wurden nicht von NASA erfunden.",
+      "id": "sf-de-0143"
+    },
+    {
+      "question": "Welches Meerestier hat gleich drei Herzen und blaues Blut?",
+      "answer": "Krake",
+      "acceptedAnswers": [
+        "Oktopus",
+        "Oktopoden",
+        "Kraken"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "Bei Kraken pumpen zwei Herzen Blut durch die Kiemen und ein drittes durch den Körper. Kupferhaltiges Hämocyanin färbt das Blut blau.",
+      "sources": [
+        {
+          "title": "Octopuses keep surprising us – here are eight examples how",
+          "publisher": "Natural History Museum London",
+          "url": "https://www.nhm.ac.uk/discover/octopuses-keep-surprising-us-here-are-eight-examples-how.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Der Befund gilt für Kraken beziehungsweise Oktopusse; die Färbung betrifft sauerstoffreiches Hämolymph und ist nicht mit menschlichem Blut zu verwechseln.",
+      "id": "sf-de-0144"
+    },
+    {
+      "question": "Welches Meerestier trägt aufgesammelte Kokosnussschalen mit sich herum, um sich später darin zu verstecken?",
+      "answer": "Kokosnusskrake",
+      "acceptedAnswers": [
+        "Kokosnuss-Oktopus",
+        "Amphioctopus marginatus"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Beobachtete Kokosnusskraken transportieren passende Schalen über den Meeresboden und setzen sie später zu einem Unterschlupf zusammen.",
+      "sources": [
+        {
+          "title": "Octopuses keep surprising us – here are eight examples how",
+          "publisher": "Natural History Museum London",
+          "url": "https://www.nhm.ac.uk/discover/octopuses-keep-surprising-us-here-are-eight-examples-how.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gemeint ist Amphioctopus marginatus, nicht jede Krake; das Verhalten wurde bei einzelnen Tieren dokumentiert.",
+      "id": "sf-de-0145"
+    },
+    {
+      "question": "Auf welchem der Sonne besonders nahen Planeten gibt es trotzdem Wassereis in immer dunklen Kratern?",
+      "answer": "Merkur",
+      "acceptedAnswers": [
+        "Mercury"
+      ],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "NASA-Messungen weisen Wassereis in Kratern nach, deren Böden wegen des Sonnenstandes dauerhaft im Schatten liegen.",
+      "sources": [
+        {
+          "title": "Icy View of Prokofiev",
+          "publisher": "NASA / Johns Hopkins University Applied Physics Laboratory",
+          "url": "https://science.nasa.gov/photojournal/icy-view-of-prokofiev/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Wassereis wurde anhand mehrerer MESSENGER-Messmethoden erschlossen; die Aussage bezieht sich auf dauerhaft beschattete Polkregionen, nicht auf die sonnigen Flächen.",
+      "id": "sf-de-0146"
+    },
+    {
+      "question": "Welchen Gegenstand filmte eine der ersten Webcams, damit Forschende sich unnötige Wege ersparen konnten?",
+      "answer": "Kaffeekanne",
+      "acceptedAnswers": [
+        "Kaffeekanne in Cambridge",
+        "Kaffeekanne in der Teeküche"
+      ],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Am Computerlabor der Universität Cambridge zeigte eine Kamera, ob noch Kaffee in der Gemeinschaftskanne war. Später war das Bild im Internet zu sehen.",
+      "sources": [
+        {
+          "title": "The Antiques Code Show",
+          "publisher": "University of Cambridge, Department of Computer Science and Technology",
+          "url": "https://www.cl.cam.ac.uk/news/2021/09-29-antiques-code-show/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Cambridge ordnet die Kamera im Jahr 1991 ein und erläutert den Unterschied zwischen lokaler Kameranutzung und späterem Internetzugriff.",
+      "id": "sf-de-0147"
+    },
+    {
+      "question": "Aus welchem ungewöhnlichen Material wurden viele amerikanische Ein-Cent-Münzen im Kriegsjahr 1943 hergestellt?",
+      "answer": "Stahl",
+      "acceptedAnswers": [
+        "Verzinkter Stahl",
+        "Zinkbeschichteter Stahl"
+      ],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Die US-Münzprägestätte fertigte die meisten Pennys 1943 aus verzinktem Stahl, um kriegswichtiges Kupfer einzusparen.",
+      "sources": [
+        {
+          "title": "Historic Coin Production",
+          "publisher": "United States Mint",
+          "url": "https://www.usmint.gov/learn/history/historic-coin-production",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Es gab wenige irrtümlich geprägte Kupfermünzen dieses Jahrgangs. Gemeint ist das verwendete Standardmaterial.",
+      "id": "sf-de-0148"
+    },
+    {
+      "question": "Welchen schweren Gegenstand tragen manche Tänzer beim Schemenlaufen im österreichischen Imst am Körper?",
+      "answer": "Glocken",
+      "acceptedAnswers": [
+        "Große Glocken",
+        "Kuhglocken"
+      ],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Bei dem Tiroler Fasnachtsumzug tragen Maskierte große Glocken mit bis zu 35 Kilogramm Gewicht und bringen sie durch Sprünge zum Klingen.",
+      "sources": [
+        {
+          "title": "Schemenlaufen, the carnival of Imst, Austria",
+          "publisher": "UNESCO",
+          "url": "https://ich.unesco.org/en/RL/schemenlaufen-the-carnival-of-imst-austria-00726",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Bezieht sich auf die Glockenträger beim Imster Schemenlaufen, nicht auf jeden Teilnehmer.",
+      "id": "sf-de-0149"
+    },
+    {
+      "question": "Welche riesige Blume duftet nach Verwesung und lebt als Parasit ohne eigene Blätter und Wurzeln?",
+      "answer": "Rafflesia",
+      "acceptedAnswers": [
+        "Rafflesia arnoldii",
+        "Riesenrafflesie"
+      ],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Die Rafflesia bezieht Nährstoffe aus einer Wirtspflanze und verbreitet Aasgeruch, der bestäubende Insekten anlockt.",
+      "sources": [
+        {
+          "title": "Indonesia: 5 hidden treasures worth protecting",
+          "publisher": "Royal Botanic Gardens, Kew",
+          "url": "https://www.kew.org/read-and-watch/indonesia-hidden-treasures",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Insbesondere Rafflesia arnoldii aus Südostasien; die Gattung ist parasitisch und verfügt nicht über normale Wurzeln und Laubblätter.",
+      "id": "sf-de-0150"
+    }
+  ]
+}

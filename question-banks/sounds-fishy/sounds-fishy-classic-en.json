@@ -1,0 +1,2935 @@
+{
+  "schemaVersion": 1,
+  "bankId": "sounds-fishy-classic-en",
+  "language": "en",
+  "title": "Classic English",
+  "questions": [
+    {
+      "id": "sf-en-0001",
+      "question": "Which Australian mammal leaves behind droppings shaped like little cubes?",
+      "answer": "Wombat",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "Wombats produce roughly cube-shaped feces, formed by the unusual mechanical properties of their intestines.",
+      "sources": [
+        {
+          "title": "Why Wombats Make Cube-Shaped Poos",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/why-wombats-make-cube-shaped-poos-180970847/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The cubes form in the gut, not from a square-shaped exit."
+    },
+    {
+      "id": "sf-en-0002",
+      "question": "What disgusting problem became so severe in London in 1858 that it helped drive the construction of modern sewers?",
+      "answer": "The stink of sewage",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "During the Great Stink, the reeking sewage-filled Thames made the need for new sewers politically urgent.",
+      "sources": [
+        {
+          "title": "The Great Stink - How the Victorians Transformed London to Solve the Problem of Waste",
+          "publisher": "Historic England",
+          "url": "https://historicengland.org.uk/images-books/archive/collections/photographs/the-great-stink/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The smell was a symptom of an existing sanitation crisis, not the only cause of sewer reform."
+    },
+    {
+      "id": "sf-en-0003",
+      "question": "What was ketchup originally made from in some early Asian versions, long before tomatoes took over?",
+      "answer": "Fermented fish",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Ketchup’s culinary ancestors included fermented fish sauces from Southeast Asia.",
+      "sources": [
+        {
+          "title": "There’s Something Fishy About the Ketchup You Put On Your Burgers",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/ketchup-fishy-origins-180963511/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "An origin for the word and sauce tradition, not a claim that all modern ketchup contains fish."
+    },
+    {
+      "id": "sf-en-0004",
+      "question": "Which planet has sunrises in the west because it spins in the opposite direction to most planets?",
+      "answer": "Venus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 1,
+      "explanation": "Venus rotates retrograde, so the Sun would rise in the west and set in the east.",
+      "sources": [
+        {
+          "title": "Venus: Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/venus/venus-facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Compared with the usual prograde spin of planets; Uranus also has unusual spin."
+    },
+    {
+      "id": "sf-en-0005",
+      "question": "What spice might Danish friends pour over someone who is still single on their twenty-fifth birthday?",
+      "answer": "Cinnamon",
+      "acceptedAnswers": [
+        "Ground cinnamon"
+      ],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "A Danish birthday custom involves covering single twenty-five-year-olds with cinnamon.",
+      "sources": [
+        {
+          "title": "11 weird Danish cultural traditions that only make sense to Danes",
+          "publisher": "VisitDenmark",
+          "url": "https://www.visitdenmark.com/denmark/things-do/traditions-lifestyle/danish-traditions",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A documented custom, not an obligation for every Danish person."
+    },
+    {
+      "id": "sf-en-0006",
+      "question": "Which sea has no coastline and is instead defined by ocean currents?",
+      "answer": "Sargasso Sea",
+      "acceptedAnswers": [
+        "The Sargasso Sea"
+      ],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "The Sargasso Sea in the Atlantic is bounded by circulating currents rather than land.",
+      "sources": [
+        {
+          "title": "What is the Sargasso Sea?",
+          "publisher": "NOAA",
+          "url": "https://www.noaa.gov/gc-international-section/marine-protected-areas-mpas-sargasso-sea",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "It is a sea in a gyre, not a conventional coastal inlet."
+    },
+    {
+      "id": "sf-en-0007",
+      "question": "What everyday behavior can spread from person to person just by seeing or thinking about it?",
+      "answer": "Yawning",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Contagious yawning can be triggered by seeing, hearing, or thinking about another person yawning.",
+      "sources": [
+        {
+          "title": "Contagious yawning and the brain",
+          "publisher": "PubMed / National Library of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15820652/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Not every person catches a yawn; susceptibility varies."
+    },
+    {
+      "id": "sf-en-0008",
+      "question": "What famous springy toy grew out of an engineer’s attempt to make equipment stable on ships?",
+      "answer": "Slinky",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Richard James developed the Slinky after experimenting with springs intended to steady instruments on ships.",
+      "sources": [
+        {
+          "title": "Richard James",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/richard-james",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The toy arose from spring experiments, not an intentionally designed children’s game."
+    },
+    {
+      "id": "sf-en-0009",
+      "question": "What star-shaped flower smells like rotting meat to attract flies?",
+      "answer": "Carrion flower",
+      "acceptedAnswers": [
+        "Carrion plant",
+        "Stapelia gigantea",
+        "Toad flower"
+      ],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "The carrion plant (Stapelia gigantea) has striking star-shaped blooms that emit an odor like decaying flesh to lure fly pollinators.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Specifically carrion-flower species, rather than all flowers in deserts."
+    },
+    {
+      "id": "sf-en-0010",
+      "question": "What did people in Strasbourg reportedly keep doing uncontrollably during the strange outbreak of 1518?",
+      "answer": "Dancing",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Historical reports describe a dancing mania in Strasbourg, with people moving for extended periods.",
+      "sources": [
+        {
+          "title": "What Was the Dancing Plague of 1518?",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/what-was-the-dancing-plague-of-1518",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The cause and number of deaths are debated; only the documented dancing is asserted."
+    },
+    {
+      "id": "sf-en-0011",
+      "question": "What actually dries out frozen food and gives it so-called freezer burn?",
+      "answer": "Loss of moisture",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Poorly wrapped frozen food can lose water through sublimation, leaving dehydrated, discolored areas.",
+      "sources": [
+        {
+          "title": "What is freezer burn?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/food-and-nutrition/item/what-is-freezer-burn/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Freezer burn is dehydration and surface change, not combustion or bacteria."
+    },
+    {
+      "id": "sf-en-0012",
+      "question": "Which historical king gave his nickname to the wireless technology used by headphones and phones?",
+      "answer": "Harald Bluetooth",
+      "acceptedAnswers": [
+        "Harald I of Denmark",
+        "Harald Bluetooth Gormsson"
+      ],
+      "category": "technology",
+      "answerType": "person",
+      "difficulty": 1,
+      "explanation": "Bluetooth was named for the Viking-age King Harald Bluetooth, associated with unifying Scandinavian groups.",
+      "sources": [
+        {
+          "title": "Bluetooth Origin",
+          "publisher": "Bluetooth Special Interest Group",
+          "url": "https://www.bluetooth.com/about-us/bluetooth-origin/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The industry name began as a temporary codename and remained."
+    },
+    {
+      "id": "sf-en-0013",
+      "question": "What sea creature makes a protective sleeping bag out of its own mucus?",
+      "answer": "Parrotfish",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Some parrotfish secrete a transparent mucus cocoon around themselves at night, which may help protect them from parasites.",
+      "sources": [
+        {
+          "title": "Parrotfish in Mucus Cocoon",
+          "publisher": "Smithsonian Ocean",
+          "url": "https://ocean.si.edu/ocean-life/fish/parrotfish-mucus-cocoon",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Applies to certain parrotfish species, not every fish."
+    },
+    {
+      "id": "sf-en-0014",
+      "question": "Why did Victorian towns install tall metal pipes that rose above their streets and houses?",
+      "answer": "To vent sewer gases",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Historic England describes Victorian stink pipes installed to release sewer gases safely above street level.",
+      "sources": [
+        {
+          "title": "Victorian 'Stink' Pipe Listed",
+          "publisher": "Historic England",
+          "url": "https://historicengland.org.uk/whats-new/in-your-area/midlands/shropshire-stink-pipe/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "They were ventilation structures, not chimneys for heating homes."
+    },
+    {
+      "id": "sf-en-0015",
+      "question": "Which vegetable-like ingredient was commonly used to make British ketchup before tomatoes dominated?",
+      "answer": "Mushrooms",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Historic British ketchup recipes included savory mushroom-based sauces and other non-tomato ingredients.",
+      "sources": [
+        {
+          "title": "A Brief (But Global) History of Ketchup",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/arts-culture/brief-but-global-history-ketchup-180969725/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Some historical ketchups used walnuts as well; the question specifies a common example, not an exclusive ingredient."
+    },
+    {
+      "id": "sf-en-0016",
+      "question": "On which planet can the Sun briefly seem to rise, set, and then rise again?",
+      "answer": "Mercury",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Mercury’s slow rotation combined with its changing orbital speed can make the apparent solar motion reverse at certain locations.",
+      "sources": [
+        {
+          "title": "Mercury: Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/mercury/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This effect occurs near specific longitudes, not everywhere on the planet."
+    },
+    {
+      "id": "sf-en-0017",
+      "question": "What piece of furniture do some Danes jump off at midnight on New Year’s Eve?",
+      "answer": "Chair",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "A Danish New Year custom is to stand on a chair and jump down as the new year begins.",
+      "sources": [
+        {
+          "title": "11 weird Danish cultural traditions that only make sense to Danes",
+          "publisher": "VisitDenmark",
+          "url": "https://www.visitdenmark.com/denmark/things-do/traditions-lifestyle/danish-traditions",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Traditional symbolism about jumping into the new year, not universal behavior."
+    },
+    {
+      "id": "sf-en-0018",
+      "question": "What is the nickname for the point in the ocean farther from land than anywhere else?",
+      "answer": "Point Nemo",
+      "acceptedAnswers": [
+        "Oceanic pole of inaccessibility"
+      ],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Point Nemo is the oceanic pole of inaccessibility, in the remote South Pacific.",
+      "sources": [
+        {
+          "title": "Where is Point Nemo?",
+          "publisher": "NOAA",
+          "url": "https://oceanservice.noaa.gov/facts/nemo.html?hidemenu=true",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This refers to a specific geographical location rather than a fictional submarine captain."
+    },
+    {
+      "id": "sf-en-0019",
+      "question": "What natural urge can feel stronger if someone specifically tells you not to do it?",
+      "answer": "The urge to yawn",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Experiments found that instructions to resist yawning could increase people’s reported urge to yawn.",
+      "sources": [
+        {
+          "title": "A Neural Basis for Contagious Yawning",
+          "publisher": "PubMed / National Library of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28867202/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This concerns the urge to yawn, not necessarily the number of completed yawns."
+    },
+    {
+      "id": "sf-en-0020",
+      "question": "What unusual role did American soldiers find for the Slinky during the Vietnam War?",
+      "answer": "Radio antenna",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Metal Slinkys were sometimes stretched out as improvised radio antennas during the Vietnam War.",
+      "sources": [
+        {
+          "title": "Richard James",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/richard-james",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "An improvised field use, not the toy’s original purpose."
+    },
+    {
+      "id": "sf-en-0021",
+      "question": "What kind of plant can find a host using chemical smells instead of relying on green leaves?",
+      "answer": "Dodder",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Dodder is a parasitic vine with little chlorophyll; seedlings detect host-plant chemical cues as they grow.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The smell refers to plant volatile chemicals rather than a human-like sense of smell."
+    },
+    {
+      "id": "sf-en-0022",
+      "question": "What contagious-sounding behavior disrupted schools around Lake Victoria in 1962?",
+      "answer": "Laughter",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "A widely reported outbreak of prolonged laughing episodes affected students in Tanganyika, now Tanzania.",
+      "sources": [
+        {
+          "title": "7 Mysterious Mass Illnesses That Defied Explanation",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/mysterious-illnesses-mass-hysteria",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Usually interpreted as a mass psychogenic event; mechanism not established as infectious."
+    },
+    {
+      "id": "sf-en-0023",
+      "question": "What is released when you cut an onion that makes your eyes water?",
+      "answer": "An irritating sulfur compound",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Cutting onion cells releases chemicals that form a volatile tear-producing irritant.",
+      "sources": [
+        {
+          "title": "Why does chopping an onion make you cry?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/food-and-nutrition/item/why-does-chopping-an-onion-make-you-cry/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The specific irritant is syn-propanethial-S-oxide; cutting releases its precursors."
+    },
+    {
+      "id": "sf-en-0024",
+      "question": "What old alphabet inspired the shape of the Bluetooth wireless logo?",
+      "answer": "Norse runes",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "The logo combines runes representing the initials H and B of Harald Bluetooth.",
+      "sources": [
+        {
+          "title": "Bluetooth Origin",
+          "publisher": "Bluetooth Special Interest Group",
+          "url": "https://www.bluetooth.com/about-us/bluetooth-origin/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Two Younger Futhark runes form a bind rune, not arbitrary zigzags."
+    },
+    {
+      "id": "sf-en-0025",
+      "question": "Which animal has three hearts and blue blood?",
+      "answer": "Octopus",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Octopuses have two hearts pumping blood to the gills and one for the rest of the body; copper-based hemocyanin makes their blood blue.",
+      "sources": [
+        {
+          "title": "Ten Wild Facts About Octopuses: They Have Three Hearts, Big Brains and Blue Blood",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/science-nature/ten-wild-facts-about-octopuses-they-have-three-hearts-big-brains-and-blue-blood-7625828/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Question asks for a familiar example, not a claim of uniqueness."
+    },
+    {
+      "id": "sf-en-0026",
+      "question": "During wartime clothing rationing, what decoration on jeans did Levi’s sometimes paint on instead of sewing?",
+      "answer": "Back-pocket stitching",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Levi’s painted its curved arcuate pocket decoration on some wartime jeans to save thread.",
+      "sources": [
+        {
+          "title": "Levi’s Vintage Clothing 1944 501 Jeans",
+          "publisher": "Levi Strauss & Co.",
+          "url": "https://www.levi.com/DE/en/clothing/men/jeans/straight/levis-vintage-clothing-1944-501-jeans/p/445010088",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The painted lines mimicked the familiar stitched pattern; wartime restrictions motivated the change."
+    },
+    {
+      "id": "sf-en-0027",
+      "question": "What animal was once the source of a natural flavoring occasionally used in vanilla-like foods?",
+      "answer": "Beaver",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Castoreum, a secretion from beavers, has a history of use in perfumery and some food flavorings.",
+      "sources": [
+        {
+          "title": "9 Fascinating Facts About North America’s Master Builder, the Beaver",
+          "publisher": "Smithsonian National Zoo",
+          "url": "https://nationalzoo.si.edu/animals/news/9-fascinating-facts-about-north-americas-master-builder-beaver",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Rare in modern foods; avoid claiming vanilla ice cream routinely contains castoreum."
+    },
+    {
+      "id": "sf-en-0028",
+      "question": "Which planet rolls around the Sun almost on its side?",
+      "answer": "Uranus",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "place",
+      "difficulty": 1,
+      "explanation": "Uranus has an axial tilt of about 98 degrees, making its rotation axis point roughly along its orbital plane.",
+      "sources": [
+        {
+          "title": "Uranus Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/uranus/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Sideways refers to axial tilt, not a literal wheel rolling on a surface."
+    },
+    {
+      "id": "sf-en-0029",
+      "question": "What do children hit at Denmark’s Fastelavn festival instead of hitting a piñata?",
+      "answer": "A barrel",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Costumed children strike a barrel with sticks until it breaks and releases sweets.",
+      "sources": [
+        {
+          "title": "11 weird Danish cultural traditions that only make sense to Danes",
+          "publisher": "VisitDenmark",
+          "url": "https://www.visitdenmark.com/denmark/things-do/traditions-lifestyle/danish-traditions",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historically live cats were sometimes involved; the modern version uses candy."
+    },
+    {
+      "id": "sf-en-0030",
+      "question": "What single letter is also the complete name of a village in France?",
+      "answer": "Y",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "The commune of Y in northern France is famous for its one-letter name.",
+      "sources": [
+        {
+          "title": "Shortest place names",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/67267-shortest-place-names",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "French commune name, not an abbreviation for a longer city name."
+    },
+    {
+      "id": "sf-en-0031",
+      "question": "What costumed animal did many viewers miss while concentrating on counting basketball passes?",
+      "answer": "Gorilla",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "The classic inattentional-blindness demonstration included a gorilla-suited person passing through a basketball scene.",
+      "sources": [
+        {
+          "title": "Researching the Extremes of Visual Perception",
+          "publisher": "Association for Psychological Science",
+          "url": "https://www.psychologicalscience.org/observer/researching-the-extremes-of-visual-perception",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Participants were concentrating on counting passes; many but not all missed it."
+    },
+    {
+      "id": "sf-en-0032",
+      "question": "What annoying thing that stuck to a dog helped inspire the invention of Velcro?",
+      "answer": "Plant burrs",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "George de Mestral studied hooked burrs caught in fur and clothing, inspiring hook-and-loop fasteners.",
+      "sources": [
+        {
+          "title": "George De Mestral",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/george-de-mestral",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The natural hooks, not an actual dog hair material, inspired the design."
+    },
+    {
+      "id": "sf-en-0033",
+      "question": "What does a ghost plant take nourishment from instead of making its own food in sunlight?",
+      "answer": "Fungi",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Ghost plants lack chlorophyll and acquire carbon via networks of fungi associated with other plants.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The plant is mycoheterotrophic; fungi are the immediate nutritional connection."
+    },
+    {
+      "id": "sf-en-0034",
+      "question": "Which mysterious creature did frightened Delhi residents report seeing during a 2001 panic?",
+      "answer": "Monkey-man",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "A wave of reports about a supposed monkey-like attacker caused panic in Delhi.",
+      "sources": [
+        {
+          "title": "7 Mysterious Mass Illnesses That Defied Explanation",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/mysterious-illnesses-mass-hysteria",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Reports and panic were real; existence of an actual attacker was unverified."
+    },
+    {
+      "id": "sf-en-0035",
+      "question": "What living creature can act as a makeshift thermometer if you count its chirps?",
+      "answer": "Cricket",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "For some crickets, the frequency of chirping changes with air temperature and can be used as a rough estimate.",
+      "sources": [
+        {
+          "title": "Can you tell the temperature by listening to the chirping of a cricket?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/meteorology-climatology/item/can-you-tell-the-temperature-by-listening-to-the-chirping-of-a-cricket/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The approximation is species- and temperature-dependent, not a calibrated universal rule."
+    },
+    {
+      "id": "sf-en-0036",
+      "question": "What comedy group inspired the name of the Python programming language?",
+      "answer": "Monty Python",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Guido van Rossum named Python after Monty Python, not after the snake.",
+      "sources": [
+        {
+          "title": "General Python FAQ",
+          "publisher": "Python Software Foundation",
+          "url": "https://docs.python.org/3.14/faq/general.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A naming inspiration explicitly stated by the official Python documentation."
+    },
+    {
+      "id": "sf-en-0037",
+      "question": "What animal can deliver venom through spurs on its back legs?",
+      "answer": "Male platypus",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Adult male platypuses have venom-producing glands connected to spurs on their hind legs.",
+      "sources": [
+        {
+          "title": "The platypus puzzle",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/the-platypus-puzzle.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The venomous spurs are a characteristic of males; females do not normally have functional adult spurs."
+    },
+    {
+      "id": "sf-en-0038",
+      "question": "What surprisingly ordinary object was the tiny extra pocket on early blue jeans meant to hold?",
+      "answer": "Pocket watch",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "The small fifth pocket of jeans originally served as a handy watch pocket.",
+      "sources": [
+        {
+          "title": "1947 501 Original Selvedge Men’s Jeans",
+          "publisher": "Levi Strauss & Co.",
+          "url": "https://www.levi.com/US/en_US/levis-vintage-clothing/levis-vintage-clothing-for-men/1947-501-original-selvedge-mens-jeans/p/475010224",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The historical purpose differs from its many modern uses."
+    },
+    {
+      "id": "sf-en-0039",
+      "question": "What plant originally supplied the gooey ingredient that gave marshmallow sweets their name?",
+      "answer": "Marsh mallow",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Older marshmallow treats used gummy extracts from the root of the marsh mallow plant.",
+      "sources": [
+        {
+          "title": "It's a Marshmallow World",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/arts-culture/its-a-marshmallow-world-27466036/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Most modern marshmallows use gelatin rather than mallow-root extract."
+    },
+    {
+      "id": "sf-en-0040",
+      "question": "What color can a sunset appear on Mars, near the setting Sun?",
+      "answer": "Blue",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Fine dust in the Martian atmosphere can make the sky near sunset appear bluish, unlike common Earth sunsets.",
+      "sources": [
+        {
+          "title": "Mars Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/mars/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Color is especially near the Sun, not uniformly blue across every sunset."
+    },
+    {
+      "id": "sf-en-0041",
+      "question": "What prize is given to the winners of Finland’s famous wife-carrying competition?",
+      "answer": "Beer equal to the carried person’s weight",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "The well-known wife-carrying championship awards beer equivalent to the carried wife’s weight.",
+      "sources": [
+        {
+          "title": "Quirky summer events in Finland",
+          "publisher": "Visit Finland",
+          "url": "https://www.visitfinland.com/en/articles/quirky-summer-events-in-finland/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Prize description belongs to the organized competition; event rules may evolve."
+    },
+    {
+      "id": "sf-en-0042",
+      "question": "On which Indonesian island can visitors find a volcano famous for eerie blue sulfur flames?",
+      "answer": "Java",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "The Ijen volcanic area on Java is known for vivid blue burning sulfur gas at night.",
+      "sources": [
+        {
+          "title": "Ijen UNESCO Global Geopark",
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/iggp/ijen-unesco-global-geopark?hub=67817",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Java is the island; Indonesia is the country, and Kawah Ijen is the volcano."
+    },
+    {
+      "id": "sf-en-0043",
+      "question": "What detail made volunteers rate the very same wine as tasting better in a brain-scanning study?",
+      "answer": "A higher stated price",
+      "acceptedAnswers": [
+        "A higher price tag",
+        "A more expensive price label"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Volunteers rated identical wines as more pleasant when told they cost more; researchers also observed changes in activity in a brain region associated with pleasure.",
+      "sources": [
+        {
+          "title": "Marketing actions can modulate neural representations of experienced pleasantness",
+          "publisher": "Proceedings of the National Academy of Sciences / PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18195362/",
+          "accessed": "2026-10-29"
+        },
+        {
+          "title": "Wine Study Shows Price Influences Perception",
+          "publisher": "California Institute of Technology",
+          "url": "https://www.caltech.edu/about/news/wine-study-shows-price-influences-perception-1374",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The price was experimentally manipulated, and the reported effect pertains to participants in this study; it does not prove all wine drinkers are affected."
+    },
+    {
+      "id": "sf-en-0044",
+      "question": "The name Velcro combines French words for velvet and what other thing?",
+      "answer": "Hook",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Velcro derives from velours and crochet, French for velvet and hook.",
+      "sources": [
+        {
+          "title": "George De Mestral",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/george-de-mestral",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Crochet here refers to a hook, not the English name for needlework alone."
+    },
+    {
+      "id": "sf-en-0045",
+      "question": "What animal’s droppings are an important source of nutrients for some tropical pitcher plants?",
+      "answer": "Tree shrews",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Some Nepenthes pitcher plants reward tree shrews with nectar and collect their feces as nutrients.",
+      "sources": [
+        {
+          "title": "Carnivorous plants: the meat-eaters of the plant world",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/carnivorous-plants-meat-eaters-of-the-plant-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Describes a particular pitcher-plant adaptation, not all carnivorous plants."
+    },
+    {
+      "id": "sf-en-0046",
+      "question": "What happened over Siberia in 1908 that flattened a vast forest without leaving a typical impact crater?",
+      "answer": "An asteroid exploded in the atmosphere",
+      "acceptedAnswers": [
+        "Airburst",
+        "An asteroid airburst"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "The Tunguska blast is understood as an atmospheric explosion from a cosmic body, flattening forest without a clear impact crater.",
+      "sources": [
+        {
+          "title": "115 Years Ago: The Tunguska Asteroid Impact Event",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/history/115-years-ago-the-tunguska-asteroid-impact-event/",
+          "accessed": "2026-10-29"
+        },
+        {
+          "title": "A Cosmic Explosion Over Siberia",
+          "publisher": "NASA Earth Observatory",
+          "url": "https://science.nasa.gov/earth/earth-observatory/a-cosmic-explosion-over-siberia-154488/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Best explanation is an airburst; the exact nature of the object remains studied."
+    },
+    {
+      "id": "sf-en-0047",
+      "question": "What oily substance helps planes write smoky messages high in the sky?",
+      "answer": "Paraffin oil",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Traditional skywriting systems inject paraffin oil into hot exhaust to make visible white smoke.",
+      "sources": [
+        {
+          "title": "How do skywriting and skytyping work?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/motor-vehicles-aeronautics-astronautics/item/how-do-skywriting-and-skytyping-work/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Applies to smoke skywriting, not laser or searchlight projection."
+    },
+    {
+      "id": "sf-en-0048",
+      "question": "What two-word holiday greeting was sent in the first SMS text message in 1992?",
+      "answer": "Merry Christmas",
+      "acceptedAnswers": [
+        "Merry Xmas"
+      ],
+      "category": "technology",
+      "answerType": "phrase",
+      "difficulty": 1,
+      "explanation": "The first widely cited SMS message in 1992 read Merry Christmas.",
+      "sources": [
+        {
+          "title": "25 years since the world’s first text message",
+          "publisher": "Vodafone",
+          "url": "https://www.vodafone.com/news/newsroom/technology/25-anniversary-text-message",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Sent from a computer to a mobile phone, not a normal phone-to-phone exchange."
+    },
+    {
+      "id": "sf-en-0049",
+      "question": "Which tiny creature wears its old heads stacked on top of its new one?",
+      "answer": "Gum-leaf skeletoniser caterpillar",
+      "acceptedAnswers": [
+        "Gum-leaf skeletoniser",
+        "Uraba lugens"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "The gum-leaf skeletoniser caterpillar retains its cast-off head capsules as a strange tower or hat.",
+      "sources": [
+        {
+          "title": "Curious collectors and hoarders of the animal world",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/collectors-and-hoarders-of-the-animal-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Refers to the caterpillar stage, not an adult moth."
+    },
+    {
+      "id": "sf-en-0050",
+      "question": "What food-related substance set off a deadly industrial explosion at a Minneapolis mill in 1878?",
+      "answer": "Flour dust",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Fine airborne flour dust ignited at the Washburn A Mill, causing a devastating explosion.",
+      "sources": [
+        {
+          "title": "Four Deadly Disasters Caused by Food",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/arts-culture/four-deadly-disasters-caused-by-food-65498495/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Dust suspended in air is explosive under the right conditions; sacks of flour do not ordinarily explode."
+    },
+    {
+      "id": "sf-en-0051",
+      "question": "What was candy corn marketed as under a farm-themed name in the nineteenth century?",
+      "answer": "Chicken Feed",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "The Goelitz company sold candy corn under the label Chicken Feed in the late 1800s.",
+      "sources": [
+        {
+          "title": "Candy Corn Hasn’t Changed Since the 19th Century",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/candy-corn-hasnt-changed-19th-century-180957107/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A historical brand label, not actual chicken food."
+    },
+    {
+      "id": "sf-en-0052",
+      "question": "What liquid fills the lakes and seas on Saturn’s moon Titan?",
+      "answer": "Methane and ethane",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Titan has stable surface bodies of liquid methane and ethane in its very cold climate.",
+      "sources": [
+        {
+          "title": "Moons: Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/solar-system/moons/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Not lakes of liquid water; both hydrocarbons may be present."
+    },
+    {
+      "id": "sf-en-0053",
+      "question": "At a Finnish festival, what imaginary instrument do competitors pretend to perform with?",
+      "answer": "Air guitar",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "The Air Guitar World Championships in Oulu feature performances with no real instrument.",
+      "sources": [
+        {
+          "title": "Quirky summer events in Finland",
+          "publisher": "Visit Finland",
+          "url": "https://www.visitfinland.com/en/articles/quirky-summer-events-in-finland/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The competition explicitly embraces imaginary playing and performance."
+    },
+    {
+      "id": "sf-en-0054",
+      "question": "Which Pacific island country is famous for hundreds of limestone islands shaped like mushrooms?",
+      "answer": "Palau",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Palau’s Rock Islands are a UNESCO-listed group of limestone islands with distinctive mushroom-like outlines.",
+      "sources": [
+        {
+          "title": "Rock Islands Southern Lagoon",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/1386",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Refers to the Rock Islands Southern Lagoon, not every island in Palau."
+    },
+    {
+      "id": "sf-en-0055",
+      "question": "What color did participants in one study tend to associate with calming rather than stimulating pills?",
+      "answer": "Blue",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "In a placebo-color study, blue pills were more often classified with sedating effects than warm-colored pills.",
+      "sources": [
+        {
+          "title": "Classification of placebo drugs: effect of color",
+          "publisher": "PubMed / National Library of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/514753/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Concerns expectations and color associations, not real effects of a medicinal ingredient."
+    },
+    {
+      "id": "sf-en-0056",
+      "question": "What kitchen coating was discovered by accident during a search for a new refrigerant?",
+      "answer": "Teflon",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Roy Plunkett unexpectedly found polytetrafluoroethylene while studying tetrafluoroethylene for refrigerants.",
+      "sources": [
+        {
+          "title": "Roy J. Plunkett",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/education/scientific-biographies/roy-j-plunkett/?trk=article-ssr-frontend-pulse_little-text-block",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Teflon is the trade name for PTFE; discovery preceded its nonstick cookware use."
+    },
+    {
+      "id": "sf-en-0057",
+      "question": "Which flying mammal is invited to sleep inside some pitcher plants in exchange for fertilizer?",
+      "answer": "Bat",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Certain pitcher plants provide roosting space for small bats, benefiting from nutrients in bat droppings.",
+      "sources": [
+        {
+          "title": "Carnivorous plants: the meat-eaters of the plant world",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/carnivorous-plants-meat-eaters-of-the-plant-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The plant is adapted for small roosting bats, not capturing them as prey."
+    },
+    {
+      "id": "sf-en-0058",
+      "question": "What food was reported falling from the sky over Marksville, Louisiana, in 1947?",
+      "answer": "Fish",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "A documented 1947 local report described fish falling from the sky near Marksville, Louisiana.",
+      "sources": [
+        {
+          "title": "Can it rain frogs, fish, and other objects?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/browse-all-questions/item/can-it-rain-frogs-fish-and-other-objects/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The rainfall report is witnessed; the exact atmospheric transport mechanism is not directly established."
+    },
+    {
+      "id": "sf-en-0059",
+      "question": "What can briefly happen to tiny gas pockets in your joints when you crack your knuckles?",
+      "answer": "They form or change rapidly",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Joint popping is linked in part to rapid changes involving gas-filled cavities in joint fluid.",
+      "sources": [
+        {
+          "title": "What causes the noise when you crack a joint?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/browse-all-questions/item/what-causes-the-noise-when-you-crack-a-joint/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Several mechanisms explain different joint sounds; no one mechanism explains all clicks."
+    },
+    {
+      "id": "sf-en-0060",
+      "question": "What industrial products were QR codes originally designed to help track?",
+      "answer": "Car parts",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "DENSO Wave developed QR codes for efficient tracking of automotive components in manufacturing.",
+      "sources": [
+        {
+          "title": "QR Code 30th anniversary",
+          "publisher": "DENSO Wave",
+          "url": "https://www.denso-wave.com/en/system/qr/qr30th/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Original use case, not the later smartphone link-sharing use."
+    },
+    {
+      "id": "sf-en-0061",
+      "question": "Which bird is notorious for decorating its courtship display with blue objects?",
+      "answer": "Satin bowerbird",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Male satin bowerbirds arrange blue items around their bowers to attract mates.",
+      "sources": [
+        {
+          "title": "Curious collectors and hoarders of the animal world",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/collectors-and-hoarders-of-the-animal-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The blue objects decorate a bower; they are not used to build a nest for eggs."
+    },
+    {
+      "id": "sf-en-0062",
+      "question": "What alcoholic drink flooded part of London after a huge vat collapsed in 1814?",
+      "answer": "Beer",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "A porter vat collapsed at the Horse Shoe Brewery, sending a destructive torrent of beer through a London neighborhood.",
+      "sources": [
+        {
+          "title": "This 1814 Beer Flood Killed Eight People",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/smart-news/1814-beer-flood-killed-eight-people-180964256/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The incident involved porter beer rather than a river or water main."
+    },
+    {
+      "id": "sf-en-0063",
+      "question": "What root is often used as the main ingredient in imitation wasabi served with sushi?",
+      "answer": "Horseradish",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Much commercially sold imitation wasabi is based on horseradish with mustard and coloring.",
+      "sources": [
+        {
+          "title": "Can Wasabi Save Lives?",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/arts-culture/can-wasabi-save-lives-78146248/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Real wasabi is a different though related plant; products vary."
+    },
+    {
+      "id": "sf-en-0064",
+      "question": "What substance makes the hills on Pluto able to float like icebergs on a frozen plain?",
+      "answer": "Water ice",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Rigid water-ice blocks on Pluto can float in a softer frozen-nitrogen matrix, creating hill-like features.",
+      "sources": [
+        {
+          "title": "Pluto's Mysterious, Floating Hills",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/photojournal/plutos-mysterious-floating-hills/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The floating is through denser frozen nitrogen, not a lake of liquid nitrogen."
+    },
+    {
+      "id": "sf-en-0065",
+      "question": "What unexpected soup is traditionally served on birthdays in South Korea?",
+      "answer": "Seaweed soup",
+      "acceptedAnswers": [
+        "Miyeokguk",
+        "Miyeok-guk"
+      ],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Miyeokguk, a seaweed soup, is traditionally eaten on Korean birthdays, reflecting its association with mothers and childbirth.",
+      "sources": [
+        {
+          "title": "Korean recipe: Miyeokguk seaweed soup",
+          "publisher": "Korea.net, Republic of Korea",
+          "url": "https://www.korea.net/NewsFocus/Culture/view?articleId=144337",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "An established cultural tradition, not a claim that every person follows it for every birthday."
+    },
+    {
+      "id": "sf-en-0066",
+      "question": "Which Philippine volcano sits inside a lake and has a crater lake of its own?",
+      "answer": "Taal Volcano",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Taal Volcano occupies an island within Taal Lake, and volcanic craters have hosted lakes on the island.",
+      "sources": [
+        {
+          "title": "The Historic Towns and Landscape of Taal Volcano and its Caldera Lake",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/tentativelists/6714/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The nested lake arrangement has changed during eruptions; wording describes established geography."
+    },
+    {
+      "id": "sf-en-0067",
+      "question": "What sense can change the syllable someone thinks they hear, even when the recorded sound stays the same?",
+      "answer": "Sight",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "The McGurk effect shows that incongruent lip movements can alter auditory speech perception.",
+      "sources": [
+        {
+          "title": "The McGurk effect",
+          "publisher": "PubMed / National Library of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31264593/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A demonstrable audio-visual illusion, not a universal effect for all speakers or sounds."
+    },
+    {
+      "id": "sf-en-0068",
+      "question": "What office product became possible because an adhesive proved surprisingly weak?",
+      "answer": "Post-it Notes",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "A 3M researcher developed a low-tack repositionable adhesive that later became useful on Post-it Notes.",
+      "sources": [
+        {
+          "title": "One scientist, good. Many scientists, even better.",
+          "publisher": "3M",
+          "url": "https://www.3m.com/3M/en_US/consumer-us/stories/full-story/?storyid=e9f444d3-a5c5-46f1-a34b-082ff275aa7d",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The adhesive did not stick permanently, which made the product useful."
+    },
+    {
+      "id": "sf-en-0069",
+      "question": "What is the glowing blue “lava” seen at Indonesia’s Ijen volcano actually made by?",
+      "answer": "Burning sulfur gas",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Ijen’s striking blue flames come from burning sulfurous gases, rather than molten blue rock.",
+      "sources": [
+        {
+          "title": "Ijen UNESCO Global Geopark",
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/iggp/ijen-unesco-global-geopark?hub=67817",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The flames can be blue; the actual lava or molten rock is not blue."
+    },
+    {
+      "id": "sf-en-0070",
+      "question": "What amphibians were reported raining on a Serbian town in 2005?",
+      "answer": "Frogs",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Reports from Serbia in 2005 described frogs falling during unusual weather.",
+      "sources": [
+        {
+          "title": "Can it rain frogs, fish, and other objects?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/browse-all-questions/item/can-it-rain-frogs-fish-and-other-objects/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Historical eyewitness reporting, not laboratory proof of exactly how the animals were lifted."
+    },
+    {
+      "id": "sf-en-0071",
+      "question": "Which part of the body may fail to wrinkle normally in water when its nerves are damaged?",
+      "answer": "Fingertips",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Water-immersion wrinkling of fingers involves nerve-controlled blood vessel changes, and nerve damage can reduce it.",
+      "sources": [
+        {
+          "title": "Why do fingers and toes wrinkle in the bathtub?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/biology-and-human-anatomy/item/why-do-fingers-and-toes-wrinkle-in-the-bathtub/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Wrinkling has multiple contributing mechanisms; nerve response is important."
+    },
+    {
+      "id": "sf-en-0072",
+      "question": "Which surprisingly delicate packaged product was an early general-commercial use of QR codes?",
+      "answer": "Contact lenses",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "DENSO reports that contact lens packaging was QR codes’ first general commercial product application.",
+      "sources": [
+        {
+          "title": "QR Code 30th anniversary",
+          "publisher": "DENSO Wave",
+          "url": "https://www.denso-wave.com/en/system/qr/qr30th/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Manufacturer’s documented historical example; production tracking predates it."
+    },
+    {
+      "id": "sf-en-0073",
+      "question": "Which insect uses dead ants to seal up its babies’ chambers?",
+      "answer": "Bone-house wasp",
+      "acceptedAnswers": [
+        "Deuteragenia ossarium"
+      ],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "The bone-house wasp was reported using dead ant bodies in a protective vestibule around its brood cells.",
+      "sources": [
+        {
+          "title": "Curious collectors and hoarders of the animal world",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/collectors-and-hoarders-of-the-animal-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Behavior is species-specific, not typical of wasps generally."
+    },
+    {
+      "id": "sf-en-0074",
+      "question": "What sticky food ingredient flooded a Boston neighborhood in 1919?",
+      "answer": "Molasses",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "A large storage tank failed and unleashed a deadly wave of molasses through Boston’s North End.",
+      "sources": [
+        {
+          "title": "Without Warning, Molasses Surged Over Boston 100 Years Ago",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/history/without-warning-molasses-january-surged-over-boston-180971251/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The event was a real industrial disaster, not a joke about slow-moving liquid."
+    },
+    {
+      "id": "sf-en-0075",
+      "question": "Which way of growing is one possible reason the grapefruit got its name?",
+      "answer": "They grow in clusters",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Grapefruits often grow in clusters on trees, somewhat like bunches of grapes; this is a commonly proposed explanation for the name.",
+      "sources": [
+        {
+          "title": "How did the grapefruit get its name? It doesn’t look like a grape.",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/agriculture/item/how-did-grapefruit-get-its-name-it-doesnt-look-like-a-grape/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The Library of Congress gives this as a believed etymology and notes another theory based on immature fruit; it is not a settled origin."
+    },
+    {
+      "id": "sf-en-0076",
+      "question": "Which playwright inspired the names of several moons orbiting Uranus?",
+      "answer": "William Shakespeare",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "person",
+      "difficulty": 2,
+      "explanation": "Uranian moons include characters from plays by William Shakespeare, with others named from Alexander Pope.",
+      "sources": [
+        {
+          "title": "Uranus Facts",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/uranus/facts/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This describes the naming theme, not a specific count of moons."
+    },
+    {
+      "id": "sf-en-0077",
+      "question": "What craft do competitors perform while headbanging at Finland’s heavy-metal championship?",
+      "answer": "Knitting",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "The Heavy Metal Knitting World Championships combine knitting with energetic heavy-metal performance.",
+      "sources": [
+        {
+          "title": "Weirdly wonderful competitions and events: 12 quirky reasons to visit Finland",
+          "publisher": "Visit Finland",
+          "url": "https://media.visitfinland.com/en/media-press-releases/weirdly-wonderful-competitions-and-events-travel-finland-2023/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The craft is performed as part of a specific novelty competition."
+    },
+    {
+      "id": "sf-en-0078",
+      "question": "Which Australian island gives its name to a giant stick insect once thought extinct?",
+      "answer": "Lord Howe Island",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "The Lord Howe Island stick insect survived on the nearby rocky islet of Ball’s Pyramid and was rediscovered after being thought extinct.",
+      "sources": [
+        {
+          "title": "Lord Howe Island Group",
+          "publisher": "UNESCO World Heritage Centre",
+          "url": "https://whc.unesco.org/en/list/186/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The species takes its common name from Lord Howe Island; the rediscovered wild insects lived on Ball’s Pyramid, not necessarily on the main island."
+    },
+    {
+      "id": "sf-en-0079",
+      "question": "What object can people briefly feel is part of their own body when it is stroked in sync with a hidden hand?",
+      "answer": "Rubber hand",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Matching touches to a fake hand and a hidden real hand can create an illusion of owning the fake hand.",
+      "sources": [
+        {
+          "title": "Body Representation Differs in Children and Adults",
+          "publisher": "Association for Psychological Science",
+          "url": "https://www.psychologicalscience.org/news/releases/body-representation-differs-in-children-and-adults.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The feeling is temporary and depends on experimental conditions."
+    },
+    {
+      "id": "sf-en-0080",
+      "question": "What snack reportedly popped during early tests that led to microwave cooking?",
+      "answer": "Popcorn",
+      "acceptedAnswers": [
+        "Popped corn"
+      ],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Early microwave experiments included popping corn kernels using radar-related magnetron energy.",
+      "sources": [
+        {
+          "title": "Cook Today . . . Tomorrow’s Way",
+          "publisher": "Smithsonian National Museum of American History",
+          "url": "https://americanhistory.si.edu/explore/exhibitions/food/online/new-and-improved/help-home-cook/cook-today-tomorrows-way",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Popcorn was a test observation, not the sole origin of microwave cooking."
+    },
+    {
+      "id": "sf-en-0081",
+      "question": "What everyday loose material can make an eerie musical hum as it slides down a dune?",
+      "answer": "Sand",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Sand avalanches in the dunes can generate a deep booming or humming sound when grains move together.",
+      "sources": [
+        {
+          "title": "Geology - Great Sand Dunes National Park & Preserve",
+          "publisher": "National Park Service",
+          "url": "https://www.nps.gov/grsa/learn/nature/geology.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The sound depends on suitable dry sand and motion; not every step makes music."
+    },
+    {
+      "id": "sf-en-0082",
+      "question": "What gas burst from Cameroon’s Lake Nyos in 1986 and suffocated people in nearby villages?",
+      "answer": "Carbon dioxide",
+      "acceptedAnswers": [
+        "CO2"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Lake Nyos released a dense cloud of carbon dioxide which displaced breathable air.",
+      "sources": [
+        {
+          "title": "Exploding Lakes in Cameroon",
+          "publisher": "U.S. Geological Survey",
+          "url": "https://www.usgs.gov/media/images/exploding-lakes-cameroon-0",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This was a limnic gas-release disaster, not ordinary toxic volcanic ash."
+    },
+    {
+      "id": "sf-en-0083",
+      "question": "What supposedly stops during a sneeze, according to a widespread myth, but actually does not?",
+      "answer": "The heart",
+      "acceptedAnswers": [
+        "Heart"
+      ],
+      "category": "everyday_life",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Sneezing can briefly change chest pressure and heart rhythm, but the heart does not stop beating.",
+      "sources": [
+        {
+          "title": "Does your heart stop when you sneeze?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/biology-and-human-anatomy/item/does-your-heart-stop-when-you-sneeze/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Corrects the myth; the heart continues functioning during a sneeze."
+    },
+    {
+      "id": "sf-en-0084",
+      "question": "What did the world’s first website primarily explain to visitors?",
+      "answer": "The World Wide Web itself",
+      "acceptedAnswers": [
+        "The World Wide Web project",
+        "The Web"
+      ],
+      "category": "technology",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "CERN says the first website described the World Wide Web project and how to use it.",
+      "sources": [
+        {
+          "title": "Where the web was born",
+          "publisher": "CERN",
+          "url": "https://home.cern/science/computing/the-birth-of-the-web/where-web-was-born/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The first website was project documentation, not a news service or shop."
+    },
+    {
+      "id": "sf-en-0085",
+      "question": "What small insect-like hunter has venomous pincers but no stinging tail?",
+      "answer": "Pseudoscorpion",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "Pseudoscorpions are tiny arachnids that use venom glands associated with their pincers to capture small prey.",
+      "sources": [
+        {
+          "title": "Cool bug facts: Scary-looking minibeasts",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/scary-looking-minibeasts.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Unlike true scorpions, pseudoscorpions have no scorpion tail."
+    },
+    {
+      "id": "sf-en-0086",
+      "question": "What early frozen dessert container was shaped using a metal tool called a mandrel?",
+      "answer": "Ice cream cone",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "A Smithsonian collection item preserves a mandrel used for shaping cone-like wafer containers.",
+      "sources": [
+        {
+          "title": "Doumar Ice Cream Cone Mandrel, 1920s",
+          "publisher": "Smithsonian National Museum of American History",
+          "url": "https://americanhistory.si.edu/ne/collections/object/nmah_687281",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The tool shows cone-making technology, not a claim about a single undisputed inventor."
+    },
+    {
+      "id": "sf-en-0087",
+      "question": "What flavor could an eighteenth-century ice cream shaped like an artichoke use to make it look green?",
+      "answer": "Pistachio",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Historical molded ice creams were sometimes flavored and colored to resemble vegetables; pistachio could make an artichoke shape green.",
+      "sources": [
+        {
+          "title": "The Lost Art of Molding Ice Cream Into Eagles, Tugboats and Pineapples",
+          "publisher": "Smithsonian Magazine",
+          "url": "https://www.smithsonianmag.com/innovation/lost-art-molding-ice-cream-into-eagles-tugboats-pineapples-180978463/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "An attested historical example rather than a universal artichoke-ice-cream recipe."
+    },
+    {
+      "id": "sf-en-0088",
+      "question": "What chemical makes ordinary black pepper particularly irritating to your nose?",
+      "answer": "Piperine",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "Piperine in black pepper irritates nasal membranes, which can trigger a sneeze.",
+      "sources": [
+        {
+          "title": "Why does pepper make you sneeze?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/food-and-nutrition/item/why-does-pepper-make-you-sneeze/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The question refers to pepper spice, not hot chili peppers and capsaicin."
+    },
+    {
+      "id": "sf-en-0089",
+      "question": "What fruit is thrown by the truckload during a summer festival in Buñol, Spain?",
+      "answer": "Tomatoes",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "La Tomatina in Buñol is a mass tomato-throwing celebration.",
+      "sources": [
+        {
+          "title": "La Tomatina tomato festival",
+          "publisher": "Turespaña",
+          "url": "https://www.spain.info/en/calendar/la-tomatina/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A regulated festival event, not a general annual custom throughout Spain."
+    },
+    {
+      "id": "sf-en-0090",
+      "question": "In Yellowstone, what unusually hot feature once flowed straight into the Gardner River?",
+      "answer": "Boiling River",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "The Boiling River was a naturally heated stream flowing into the Gardner River; its area was reshaped in the 2022 flood.",
+      "sources": [
+        {
+          "title": "How the 2022 Yellowstone flood affected a monitoring site on the Gardner River",
+          "publisher": "U.S. Geological Survey",
+          "url": "https://www.usgs.gov/observatories/yvo/news/how-2022-yellowstone-flood-affected-a-monitoring-site-gardner-river",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A historical Yellowstone feature; public access and the streambed changed after 2022."
+    },
+    {
+      "id": "sf-en-0091",
+      "question": "What unpleasant thing did some participants choose to give themselves instead of sitting alone doing nothing?",
+      "answer": "Electric shocks",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "In laboratory experiments, some people administered mild electric shocks to themselves rather than simply think quietly.",
+      "sources": [
+        {
+          "title": "We dislike being alone with our thoughts",
+          "publisher": "Association for Psychological Science",
+          "url": "https://www.psychologicalscience.org/news/we-dislike-being-alone-with-our-thoughts.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Voluntary mild experimental shocks; do not generalize to all participants."
+    },
+    {
+      "id": "sf-en-0092",
+      "question": "What small clothing fastener did Walter Hunt devise while trying to pay off a debt?",
+      "answer": "Safety pin",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Walter Hunt worked out a spring-clasp pin design in 1849 while trying to clear a personal debt.",
+      "sources": [
+        {
+          "title": "Walter Hunt",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/walter-hunt",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "His design improved earlier pin concepts; it was not the first pin ever made."
+    },
+    {
+      "id": "sf-en-0093",
+      "question": "What surprising shape do the ripe white berries of the doll’s-eye plant resemble?",
+      "answer": "Eyeballs",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "The white fruit has a dark central spot and resembles tiny eyeballs on red stalks.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The plant is poisonous to people; this is its appearance, not its function."
+    },
+    {
+      "id": "sf-en-0094",
+      "question": "What natural phenomenon did a 2017 flash stretch across roughly 829 kilometers of the United States?",
+      "answer": "Lightning",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Meteorological analysis identified an enormous 2017 lightning megaflash stretching about 829 kilometers.",
+      "sources": [
+        {
+          "title": "Longest lightning flash",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/77431-longest-lightning-flash",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Fixed historical measurement, not a claim it will forever remain a record."
+    },
+    {
+      "id": "sf-en-0095",
+      "question": "What property of your finger allows a modern capacitive touchscreen to sense a tap?",
+      "answer": "Electrical conductivity",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Many modern touchscreens detect changes in an electrical field caused by a conductive finger.",
+      "sources": [
+        {
+          "title": "How does a touch screen work?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/technology/item/how-does-a-touch-screen-work/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Applies to capacitive touchscreens, not all resistive or pressure-based screens."
+    },
+    {
+      "id": "sf-en-0096",
+      "question": "What communal kitchen item did an early webcam at Cambridge University continuously monitor?",
+      "answer": "Coffee pot",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Researchers created a camera feed so they could check whether a shared coffee pot had coffee before walking to it.",
+      "sources": [
+        {
+          "title": "The Antiques Code Show",
+          "publisher": "University of Cambridge Department of Computer Science and Technology",
+          "url": "https://www.cl.cam.ac.uk/news/2021/09-29-antiques-code-show/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Initially local network monitoring in 1991; subsequently connected to the web."
+    },
+    {
+      "id": "sf-en-0097",
+      "question": "Which lizard turns its ribs into something resembling wings to glide between trees?",
+      "answer": "Flying dragon lizard",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Draco lizards extend elongated ribs to stretch skin into gliding surfaces.",
+      "sources": [
+        {
+          "title": "Fantastic flyers: 10 animals that fly in surprising ways",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/fantastic-flyers-animals-that-fly-in-surprising-ways.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "They glide rather than fly by flapping wings; flying dragon is a common name for Draco."
+    },
+    {
+      "id": "sf-en-0098",
+      "question": "What edible accident allegedly alerted a nineteenth-century chemist to the sweetness of saccharin?",
+      "answer": "His bread",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Historical accounts say Constantin Fahlberg noticed an unusually sweet taste while eating after lab work, leading to saccharin research.",
+      "sources": [
+        {
+          "title": "The Pursuit of Sweet",
+          "publisher": "Science History Institute",
+          "url": "https://www.sciencehistory.org/stories/magazine/the-pursuit-of-sweet/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The bread detail comes from the documented discovery anecdote, not proof of a controlled experiment."
+    },
+    {
+      "id": "sf-en-0099",
+      "question": "What shape are fortune cookies when first removed from the oven, before the slip goes inside?",
+      "answer": "Flat circles",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Fortune cookies start as flat baked rounds and are folded around the paper while still warm and pliable.",
+      "sources": [
+        {
+          "title": "How do fortunes get inside of fortune cookies?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/browse-all-questions/item/how-do-fortunes-get-inside-fortune-cookies/?loclr=fbloc",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This is the process before the familiar crescent hardens."
+    },
+    {
+      "id": "sf-en-0100",
+      "question": "What is the main reason a bright-colored shirt can fade after too much exposure to sunlight?",
+      "answer": "Light breaks down dye molecules",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Ultraviolet and visible light can alter chemical bonds in dyes, leading to photodegradation and color loss.",
+      "sources": [
+        {
+          "title": "Why does ultraviolet light cause color to fade?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/physics/item/why-does-ultraviolet-light-cause-color-to-fade/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The cause is chemical change, not simply dye physically leaking out of fabric."
+    },
+    {
+      "id": "sf-en-0101",
+      "question": "What root vegetable is carved into elaborate Christmas displays in Oaxaca, Mexico?",
+      "answer": "Radishes",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Oaxaca’s Night of the Radishes features elaborate carvings using oversized radishes.",
+      "sources": [
+        {
+          "title": "Noche de Rábanos Oaxaca",
+          "publisher": "Visit Mexico",
+          "url": "https://visitmexico.com/en/actividad/645/noche-de-rabanos-oaxaca-2025",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The specialty radishes are grown for the festival; they are not tiny salad garnishes."
+    },
+    {
+      "id": "sf-en-0102",
+      "question": "Which famous Wyoming rock formation was traditionally called Bear Lodge by many Indigenous peoples?",
+      "answer": "Devils Tower",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "The rock now officially called Devils Tower has Indigenous names often translated as Bear Lodge.",
+      "sources": [
+        {
+          "title": "About the Name - Devils Tower National Monument",
+          "publisher": "National Park Service",
+          "url": "https://home.nps.gov/deto/learn/historyculture/aboutthename.htm",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The origins of the newer Devil name are contested; Bear Lodge is well documented."
+    },
+    {
+      "id": "sf-en-0103",
+      "question": "What can start playing repeatedly in your mind after music before bed, sometimes disturbing sleep?",
+      "answer": "An earworm",
+      "acceptedAnswers": [
+        "Earworm",
+        "Involuntary musical imagery"
+      ],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Studies linked involuntary musical imagery after bedtime listening with disturbed sleep.",
+      "sources": [
+        {
+          "title": "Bedtime Music, Involuntary Musical Imagery, and Sleep",
+          "publisher": "PubMed / National Library of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34105416/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The effect depends on music and individuals; it does not mean all music harms sleep."
+    },
+    {
+      "id": "sf-en-0104",
+      "question": "What bathroom item did Marion Donovan cut up while developing an early waterproof diaper cover?",
+      "answer": "Shower curtain",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Donovan experimented with waterproof diaper covers using material from shower curtains.",
+      "sources": [
+        {
+          "title": "Marion Donovan",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/marion-donovan",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Her later commercial design used more suitable fabric rather than permanently using shower curtains."
+    },
+    {
+      "id": "sf-en-0105",
+      "question": "What kind of animal can be fooled by the false “windows” inside a cobra lily plant?",
+      "answer": "Insects",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Cobra lilies have translucent areas that confuse prey insects after they enter a trap.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The false windows are part of a carnivorous plant trap, not a true building-like window."
+    },
+    {
+      "id": "sf-en-0106",
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?",
+      "answer": "A lightning flash",
+      "acceptedAnswers": [
+        "Lightning",
+        "Megaflash"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "A 2020 lightning megaflash over South America lasted around 17.1 seconds.",
+      "sources": [
+        {
+          "title": "Longest lasting lightning flash",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/453773-longest-lasting-lightning-flash",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A recorded atmospheric flash, not continuous thunder or an electrical grid outage."
+    },
+    {
+      "id": "sf-en-0107",
+      "question": "What causes a tiny electric shock after you walk across a carpet and touch a metal handle?",
+      "answer": "Static electricity",
+      "acceptedAnswers": [
+        "Electrostatic discharge",
+        "A buildup of electric charge"
+      ],
+      "category": "everyday_life",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Friction and contact can transfer charge to your body, releasing it abruptly when you touch a conductor.",
+      "sources": [
+        {
+          "title": "How does static electricity work?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/physics/item/how-does-static-electricity-work/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The spark is an electrostatic discharge, not a continuous mains current."
+    },
+    {
+      "id": "sf-en-0108",
+      "question": "Which punctuation symbol did an early email pioneer select to separate usernames from computers?",
+      "answer": "@ sign",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "Ray Tomlinson chose the at sign in early network email addresses to distinguish the user from the host.",
+      "sources": [
+        {
+          "title": "Internet History: 1970s",
+          "publisher": "Computer History Museum",
+          "url": "https://www.computerhistory.org/internethistory/1970s/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Specifically the user@host convention, not the original invention of the @ symbol."
+    },
+    {
+      "id": "sf-en-0109",
+      "question": "Which snake can flatten its body and glide from one tree to another?",
+      "answer": "Paradise tree snake",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "The paradise tree snake can launch from trees and flatten its body to control a glide.",
+      "sources": [
+        {
+          "title": "Fantastic flyers: 10 animals that fly in surprising ways",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/fantastic-flyers-animals-that-fly-in-surprising-ways.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Gliding is controlled aerial motion, not powered flight."
+    },
+    {
+      "id": "sf-en-0110",
+      "question": "Whose centuries-old skeleton was discovered beneath a car park in Leicester in 2012?",
+      "answer": "King Richard III",
+      "acceptedAnswers": [
+        "Richard III",
+        "Richard the Third"
+      ],
+      "category": "history",
+      "answerType": "person",
+      "difficulty": 1,
+      "explanation": "University of Leicester archaeologists found a skeleton under the former Greyfriars car park and confirmed by scientific tests that it belonged to the English king Richard III.",
+      "sources": [
+        {
+          "title": "Discovery of King Richard III’s remains named as one of the decade’s extraordinary discoveries",
+          "publisher": "University of Leicester",
+          "url": "https://le.ac.uk/news/2019/december/king-richard-iii-remains-named-extraordinary-discoveries",
+          "accessed": "2026-10-29"
+        },
+        {
+          "title": "Richard III: Discovery and identification",
+          "publisher": "University of Leicester",
+          "url": "https://le.ac.uk/richard-iii/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Discovered in 2012; identification confirmed by the university in February 2013. The archaeological context was a former friary."
+    },
+    {
+      "id": "sf-en-0111",
+      "question": "Despite their name, what type of legume are black-eyed peas usually classified as?",
+      "answer": "Beans",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Black-eyed peas are cowpeas, usually described as beans within the legume family.",
+      "sources": [
+        {
+          "title": "Are black-eyed peas really peas?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/agriculture/item/are-black-eyed-peas-really-peas/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Bean and pea are both common legume labels; the source explicitly describes them as beans."
+    },
+    {
+      "id": "sf-en-0112",
+      "question": "In an ordinary sink, what matters more to the water’s swirl than which hemisphere you live in?",
+      "answer": "How the water enters and the drain’s shape",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Small drain vortices depend on initial flow and sink geometry; Earth’s rotation is too weak to determine a typical sink’s swirl.",
+      "sources": [
+        {
+          "title": "Does water go down the drain counterclockwise in the northern hemisphere and clockwise in the southern hemisphere?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/physics/item/does-water-go-down-the-drain-counterclockwise-in-the-northern-hemisphere-and-clockwise-in-the-southern-hemisphere/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Refutes the common hemispheric bathtub myth, not the Coriolis effect in large weather systems."
+    },
+    {
+      "id": "sf-en-0113",
+      "question": "What do masked visitors representing deities scold children for in a traditional Japanese New Year ritual?",
+      "answer": "Being lazy or misbehaving",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "Raiho-shin performers visit homes in frightening masks to encourage good behavior and admonish laziness.",
+      "sources": [
+        {
+          "title": "Raiho-shin, ritual visits of deities in masks and costumes",
+          "publisher": "UNESCO Intangible Cultural Heritage",
+          "url": "https://ich.unesco.org/en/RL/door-to-door-rounds-of-kurenti-01271",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "These are regional rituals, not a practice of every family across Japan."
+    },
+    {
+      "id": "sf-en-0114",
+      "question": "What seaweed keeps itself afloat using tiny gas-filled structures that look a little like berries?",
+      "answer": "Sargassum",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "Floating Sargassum has gas-filled bladders that provide buoyancy on the sea surface.",
+      "sources": [
+        {
+          "title": "Sargassum",
+          "publisher": "NOAA Ocean Exploration",
+          "url": "https://oceanexplorer.noaa.gov/ocean-fact/sargassum/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The berry-like spheres are floats, not edible berries."
+    },
+    {
+      "id": "sf-en-0115",
+      "question": "What makes an odd-colored item easier to remember than similar items in a list?",
+      "answer": "Standing out from the others",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "phrase",
+      "difficulty": 1,
+      "explanation": "The distinctiveness effect describes improved recall for an item that differs sharply from surrounding items.",
+      "sources": [
+        {
+          "title": "APA Dictionary: distinctiveness effect",
+          "publisher": "American Psychological Association",
+          "url": "https://dictionary.apa.org/distinctiveness-effect",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The exact mechanism depends on context; distinctiveness is relative to the comparison set."
+    },
+    {
+      "id": "sf-en-0116",
+      "question": "What mode of public transport inspired an early windshield wiper after the inventor watched its driver struggle?",
+      "answer": "Trolley car",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Mary Anderson saw a trolley driver trying to clear snow and rain from the front window and developed a wiper idea.",
+      "sources": [
+        {
+          "title": "Mary Anderson",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/mary-anderson",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Refers to Anderson’s patented wiper design, not every previous cleaning device."
+    },
+    {
+      "id": "sf-en-0117",
+      "question": "What underwater plant snaps shut a trap much like a Venus flytrap?",
+      "answer": "Waterwheel plant",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 3,
+      "explanation": "The aquatic waterwheel plant, Aldrovanda, has small snap traps that close on underwater prey.",
+      "sources": [
+        {
+          "title": "Carnivorous plants: the meat-eaters of the plant world",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/carnivorous-plants-meat-eaters-of-the-plant-world.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "It is a different plant from the terrestrial Venus flytrap."
+    },
+    {
+      "id": "sf-en-0118",
+      "question": "What terrifying type of whirlwind appeared during California’s 2018 Carr Fire?",
+      "answer": "A fire-generated tornado-strength vortex",
+      "acceptedAnswers": [
+        "Fire tornado",
+        "Fire vortex",
+        "Fire whirl"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "phrase",
+      "difficulty": 3,
+      "explanation": "The Carr Fire generated a fire vortex with winds estimated at tornado strength, documented by weather scientists.",
+      "sources": [
+        {
+          "title": "Ask the scientist: How can the weather spark and spread wildfires?",
+          "publisher": "NOAA",
+          "url": "https://www.noaa.gov/stories/ask-scientist-how-can-weather-spark-and-spread-wildfires",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The source describes a fire-generated vortex, distinct from common small fire whirls."
+    },
+    {
+      "id": "sf-en-0119",
+      "question": "What breakfast food is often said to cook on hot pavement, though ordinary pavement rarely gets hot enough?",
+      "answer": "Fried egg",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "The popular sidewalk-frying demonstration usually fails because pavement does not supply enough sustained heat.",
+      "sources": [
+        {
+          "title": "Is it possible to fry an egg on the sidewalk if it’s hot enough?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/physics/item/is-it-possible-to-fry-an-egg-on-the-sidewalk-if-its-hot-enough/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The source says theoretically possible but normally impractical on real sidewalks."
+    },
+    {
+      "id": "sf-en-0120",
+      "question": "Which home communications technology was patented in the 1840s, long before the telephone became common?",
+      "answer": "Fax machine",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "The basic facsimile idea received an early patent in 1843, long before modern office fax machines.",
+      "sources": [
+        {
+          "title": "Faxed: the rise and fall of the fax machine",
+          "publisher": "Smithsonian Libraries and Archives",
+          "url": "https://www.si.edu/object/faxed-rise-and-fall-fax-machine-jonathan-coopersmith%3Asiris_sil_1054226",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The historical patent was for an early fax concept, not a late twentieth-century office device."
+    },
+    {
+      "id": "sf-en-0121",
+      "question": "Which animal has eyes so large that each is comparable in size to its brain?",
+      "answer": "Tarsier",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "A tarsier’s enormous eyes are each about as large as its brain and help it see in dim light.",
+      "sources": [
+        {
+          "title": "Amazing eyes: 17 vision champions",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/amazing-eyes-vision-champions.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Comparison is by size/volume, not a precise weight equality."
+    },
+    {
+      "id": "sf-en-0122",
+      "question": "What did Clarence Birdseye observe freezing rapidly in the Arctic that inspired his commercial food-freezing work?",
+      "answer": "Fish",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Birdseye watched fish freeze quickly in the cold Labrador climate and learned that fast freezing preserved quality.",
+      "sources": [
+        {
+          "title": "Who invented frozen food?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/food-and-nutrition/item/who-invented-frozen-food/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "He did not invent the basic practice of freezing food, only key commercial techniques."
+    },
+    {
+      "id": "sf-en-0123",
+      "question": "What makes turkey legs darker than turkey breast meat?",
+      "answer": "More oxygen-storing muscle pigment",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Turkey leg muscles are used more and contain more myoglobin, giving them a darker appearance.",
+      "sources": [
+        {
+          "title": "Why do turkeys have dark and white meat?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/agriculture/item/why-do-turkeys-have-dark-and-white-meat/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Activity and muscle pigment, not the bird being cooked longer."
+    },
+    {
+      "id": "sf-en-0124",
+      "question": "What tiny objects inside fireworks are deliberately arranged to draw shapes in the sky?",
+      "answer": "Stars",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Fireworks contain burning pellets called stars; arranging them makes patterns when shells burst.",
+      "sources": [
+        {
+          "title": "How do fireworks work?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/chemistry/item/how-do-fireworks-work/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Uses conventional pyrotechnic meaning of stars, not astronomical stars."
+    },
+    {
+      "id": "sf-en-0125",
+      "question": "What do guests clang at some Danish weddings to demand the couple kiss while standing on chairs?",
+      "answer": "Cutlery on plates",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "In a described Danish wedding custom, clanging utensils prompts newlyweds to stand on chairs and kiss.",
+      "sources": [
+        {
+          "title": "11 weird Danish cultural traditions that only make sense to Danes",
+          "publisher": "VisitDenmark",
+          "url": "https://www.visitdenmark.com/denmark/things-do/traditions-lifestyle/danish-traditions",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Stomping feet instead prompts a kiss under the table, a different signal."
+    },
+    {
+      "id": "sf-en-0126",
+      "question": "Which continent contains enormous areas classified as a desert despite being covered in ice?",
+      "answer": "Antarctica",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 1,
+      "explanation": "Much of Antarctica is a polar desert because precipitation is extremely low.",
+      "sources": [
+        {
+          "title": "Snow",
+          "publisher": "National Snow and Ice Data Center",
+          "url": "https://nsidc.org/learn/parts-cryosphere/snow",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Desert classification depends on precipitation, not whether a place is hot."
+    },
+    {
+      "id": "sf-en-0127",
+      "question": "What warm object made participants in a psychology experiment report feeling socially closer to others?",
+      "answer": "A warm drink",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "In reported experiments, holding warm rather than cold drinks affected ratings of social closeness.",
+      "sources": [
+        {
+          "title": "The Thermometer of Social Relations",
+          "publisher": "Association for Psychological Science",
+          "url": "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2009.02434.x/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A context-specific experimental finding, not a guarantee a hot drink makes people kinder."
+    },
+    {
+      "id": "sf-en-0128",
+      "question": "What accidental electronics mistake helped inspire a wearable heart-regulating device?",
+      "answer": "Wrong resistor",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Wilson Greatbatch fitted the wrong resistor in a circuit and noticed pulses useful for an implantable pacemaker.",
+      "sources": [
+        {
+          "title": "Wilson Greatbatch",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/wilson-greatbatch",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "It was one step in engineering the later clinically successful device."
+    },
+    {
+      "id": "sf-en-0129",
+      "question": "What material replaces the original wood when a tree becomes petrified?",
+      "answer": "Minerals",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "During petrification, minerals occupy or replace organic wood tissues, leaving a stone-like fossil.",
+      "sources": [
+        {
+          "title": "What is Petrified Wood?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/earth-sciences/item/petrfied-wood/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Petrified is a geological fossilization process; wood was originally organic."
+    },
+    {
+      "id": "sf-en-0130",
+      "question": "What mode of transport did a runner secretly use during part of the 1904 Olympic marathon?",
+      "answer": "Car",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Fred Lorz rode part of the St. Louis marathon course in an automobile before returning to run.",
+      "sources": [
+        {
+          "title": "Shortcuts to Gold: 9 Cheaters in Olympic History",
+          "publisher": "HISTORY",
+          "url": "https://www.history.com/articles/shortcuts-to-the-gold-9-cheaters-in-olympic-history",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "He was disqualified after the deception was discovered."
+    },
+    {
+      "id": "sf-en-0131",
+      "question": "What specialized optical object lets lighthouse lamps send a concentrated beam many miles out to sea?",
+      "answer": "Fresnel lens",
+      "acceptedAnswers": [
+        "A Fresnel lens"
+      ],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Lighthouses use special lens systems to focus light into powerful, narrow beams.",
+      "sources": [
+        {
+          "title": "How is the light of a lighthouse magnified so that it can be seen many miles out at sea?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/technology/item/how-is-lighthouse-light-magnified/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Fresnel lenses are a classic lighthouse solution; modern lights vary."
+    },
+    {
+      "id": "sf-en-0132",
+      "question": "What gave the original computer mouse its animal-like nickname?",
+      "answer": "Its trailing cable",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "The mouse was named for its rodent-like shape and a cable resembling a tail.",
+      "sources": [
+        {
+          "title": "The Mouse",
+          "publisher": "Computer History Museum",
+          "url": "https://www.computerhistory.org/revolution/story/350",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Nickname refers to early cabled designs, not later wireless mice."
+    },
+    {
+      "id": "sf-en-0133",
+      "question": "Which animal may sleep buried in sand rather than in a nest or bed?",
+      "answer": "Pacific sand lance",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 3,
+      "explanation": "NOAA describes Pacific sand lances burying themselves in sand to rest.",
+      "sources": [
+        {
+          "title": "Do fish sleep?",
+          "publisher": "NOAA",
+          "url": "https://oceanservice.noaa.gov/facts/fish-sleep.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A specific fish example; fish do not all sleep the same way."
+    },
+    {
+      "id": "sf-en-0134",
+      "question": "What was the first practical computer mouse prototype made from instead of today’s plastic?",
+      "answer": "Wood",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "The Computer History Museum preserves Douglas Engelbart’s early SRI mouse prototype made with a wooden body.",
+      "sources": [
+        {
+          "title": "CHM Acquires Original SRI Mouse",
+          "publisher": "Computer History Museum",
+          "url": "https://computerhistory.org/sri-mouse-mn052024/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "This refers to a surviving early prototype, not all later mice."
+    },
+    {
+      "id": "sf-en-0135",
+      "question": "What food is actually a fibrous fruit, although its name makes it sound like a nut?",
+      "answer": "Coconut",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Botanically a coconut is a fibrous one-seeded drupe, though it is commonly called a nut.",
+      "sources": [
+        {
+          "title": "Is a coconut a fruit, nut or seed?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/agriculture/item/is-a-coconut-a-fruit-nut-or-seed/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The precise botanical classification is a drupe, not a true nut."
+    },
+    {
+      "id": "sf-en-0136",
+      "question": "What surprising material can a beautiful white cloud contain in the hundreds of tons?",
+      "answer": "Water",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "Even small individual cloud droplets can add up to enormous quantities of water when spread through a large cloud.",
+      "sources": [
+        {
+          "title": "Meteorology, Climatology",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/meteorology-climatology/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Cloud water can be liquid droplets or ice; question is about bulk material, not a single droplet."
+    },
+    {
+      "id": "sf-en-0137",
+      "question": "At a quirky annual Finnish celebration, where is the official Sleepy Head of the Year thrown to wake them up?",
+      "answer": "Into the sea",
+      "acceptedAnswers": [],
+      "category": "culture",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "Naantali’s Sleepy Head Day features an honorary sleepy head being thrown into the Baltic Sea early in the morning.",
+      "sources": [
+        {
+          "title": "Quirky summer events in Finland",
+          "publisher": "Visit Finland",
+          "url": "https://www.visitfinland.com/en/articles/quirky-summer-events-in-finland/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A staged local festival ritual, not involuntary punishment for everyday lateness."
+    },
+    {
+      "id": "sf-en-0138",
+      "question": "Which country has a volcanic lake called Segara Anak, a name meaning “Child of the Sea”?",
+      "answer": "Indonesia",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 3,
+      "explanation": "Segara Anak is the crater lake within the Rinjani volcanic complex on Lombok, Indonesia.",
+      "sources": [
+        {
+          "title": "Rinjani-Lombok UNESCO Global Geopark",
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/iggp/rinjani-lombok-unesco-global-geopark",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The named lake is within a volcanic caldera on Lombok."
+    },
+    {
+      "id": "sf-en-0139",
+      "question": "What architectural feature can make you forget why you went into another room?",
+      "answer": "Doorway",
+      "acceptedAnswers": [],
+      "category": "human_behavior",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "A series of memory experiments found that passing through a doorway can function as an event boundary and impair immediate recall.",
+      "sources": [
+        {
+          "title": "Walking through doorways causes forgetting, new research shows",
+          "publisher": "University of Notre Dame",
+          "url": "https://news.nd.edu/news/walking-through-doorways-causes-forgetting-new-research-shows/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Other studies find the effect varies; this refers to particular task conditions."
+    },
+    {
+      "id": "sf-en-0140",
+      "question": "What awkward part of a nineteenth-century boot was the early zipper intended to replace?",
+      "answer": "Shoelaces",
+      "acceptedAnswers": [],
+      "category": "inventions",
+      "answerType": "object",
+      "difficulty": 3,
+      "explanation": "Whitcomb Judson designed an early clasp-locker to replace time-consuming boot laces.",
+      "sources": [
+        {
+          "title": "Whitcomb Judson",
+          "publisher": "MIT Lemelson",
+          "url": "https://lemelson.mit.edu/resources/whitcomb-judson",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The product evolved substantially before modern reliable zippers."
+    },
+    {
+      "id": "sf-en-0141",
+      "question": "Which plant can produce a single flower-like structure taller than many people?",
+      "answer": "Corpse flower",
+      "acceptedAnswers": [
+        "Titan arum",
+        "Amorphophallus titanum"
+      ],
+      "category": "nature",
+      "answerType": "other",
+      "difficulty": 1,
+      "explanation": "The titan arum, often called the corpse flower, produces one of the largest unbranched flower clusters in the world, reaching heights of about three metres.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The giant display is an inflorescence (a cluster of flowers), not one single botanical flower; its size is the point of this question."
+    },
+    {
+      "id": "sf-en-0142",
+      "question": "What type of pollution covered London so densely in December 1952 that people could barely see down streets?",
+      "answer": "Coal smoke smog",
+      "acceptedAnswers": [],
+      "category": "extraordinary_events",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "A temperature inversion trapped coal smoke and other pollutants in the deadly Great Smog of 1952.",
+      "sources": [
+        {
+          "title": "The Great Smog of 1952",
+          "publisher": "UK Met Office",
+          "url": "https://weather.metoffice.gov.uk/learn-about/weather/case-studies/great-smog",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The disaster included fog plus air pollution; not simply harmless natural fog."
+    },
+    {
+      "id": "sf-en-0143",
+      "question": "What agricultural leftover can be tightly baled and used to build the walls of a real home?",
+      "answer": "Straw",
+      "acceptedAnswers": [],
+      "category": "everyday_life",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Properly compacted, protected straw bales have been used to make durable building walls.",
+      "sources": [
+        {
+          "title": "Can you really build a house with straw?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/technology/item/can-you-really-build-a-house-with-straw/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Dry, detailed straw-bale construction, not loosely piled straw."
+    },
+    {
+      "id": "sf-en-0144",
+      "question": "What kind of expensive 1950s kitchen appliance was originally sold using radar-derived heating?",
+      "answer": "Microwave oven",
+      "acceptedAnswers": [],
+      "category": "technology",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "The early Tappan household microwave was an expensive mid-1950s appliance that used magnetron microwave heating.",
+      "sources": [
+        {
+          "title": "Tappan Model RL-1 Microwave Oven",
+          "publisher": "Smithsonian National Museum of American History",
+          "url": "https://americanhistory.si.edu/collections/object/nmah_1088040",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The historical appliance is distinct from today’s low-cost compact microwaves."
+    },
+    {
+      "id": "sf-en-0145",
+      "question": "Which ocean animal can use its own jet propulsion to briefly glide above the sea?",
+      "answer": "Flying squid",
+      "acceptedAnswers": [],
+      "category": "animals",
+      "answerType": "animal",
+      "difficulty": 2,
+      "explanation": "Some squid expel water in a jet, launch above the surface and spread fins and arms to glide.",
+      "sources": [
+        {
+          "title": "Fantastic flyers: 10 animals that fly in surprising ways",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/fantastic-flyers-animals-that-fly-in-surprising-ways.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A gliding escape maneuver, not flight powered by wings."
+    },
+    {
+      "id": "sf-en-0146",
+      "question": "What real insect was found in a computer relay and taped into a 1947 engineering logbook?",
+      "answer": "Moth",
+      "acceptedAnswers": [],
+      "category": "history",
+      "answerType": "animal",
+      "difficulty": 1,
+      "explanation": "Engineers documented an actual moth lodged in a Harvard Mark II relay and attached it to the log.",
+      "sources": [
+        {
+          "title": "September 9: First Instance of Actual Computer Bug Being Found",
+          "publisher": "Computer History Museum",
+          "url": "https://www.computerhistory.org/tdih/september/9/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The word computer bug was already in use; the moth did not coin the term."
+    },
+    {
+      "id": "sf-en-0147",
+      "question": "What food is often mistakenly labeled a “yam” in American supermarkets?",
+      "answer": "Sweet potato",
+      "acceptedAnswers": [],
+      "category": "food",
+      "answerType": "object",
+      "difficulty": 1,
+      "explanation": "North American groceries sometimes call varieties of sweet potato yams, despite true yams belonging to a different plant family.",
+      "sources": [
+        {
+          "title": "What is the difference between sweet potatoes and yams?",
+          "publisher": "Library of Congress",
+          "url": "https://www.loc.gov/everyday-mysteries/categories/agriculture/item/what-is-the-difference-between-sweet-potatoes-and-yams/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "Regional retail naming differs from botanical identification."
+    },
+    {
+      "id": "sf-en-0148",
+      "question": "What item have astronauts said smells like gunpowder or hot metal after a spacewalk?",
+      "answer": "Their spacesuits",
+      "acceptedAnswers": [],
+      "category": "science",
+      "answerType": "object",
+      "difficulty": 2,
+      "explanation": "Astronauts have described a distinctive metallic or gunpowder-like odor on their suits and tools once they return to the spacecraft.",
+      "sources": [
+        {
+          "title": "Interesting Fact of the Month 2021",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/space-science-and-astrobiology-at-ames/interesting-fact-of-the-month-current/interesting-fact-of-the-month-2021/",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The smell is noticed after re-entering the cabin; vacuum itself cannot be sniffed. Other exposed equipment may carry the odor."
+    },
+    {
+      "id": "sf-en-0149",
+      "question": "Which European country shares the Caribbean island of Saint Martin with the Netherlands?",
+      "answer": "France",
+      "acceptedAnswers": [],
+      "category": "geography",
+      "answerType": "place",
+      "difficulty": 2,
+      "explanation": "The island of Saint Martin is split between a French part and a Dutch part.",
+      "sources": [
+        {
+          "title": "Smallest shared island (inhabited)",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/683161-smallest-shared-island-inhabited",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The French portion is Saint-Martin, and the Dutch portion is Sint Maarten; the whole island is shared."
+    },
+    {
+      "id": "sf-en-0150",
+      "question": "What do Venus flytraps detect to decide when to snap their traps shut?",
+      "answer": "Touch to trigger hairs",
+      "acceptedAnswers": [],
+      "category": "nature",
+      "answerType": "phrase",
+      "difficulty": 2,
+      "explanation": "Sensitive trigger hairs inside a Venus flytrap register movements of a potential insect meal.",
+      "sources": [
+        {
+          "title": "16 weird plants that seem more supernatural than natural",
+          "publisher": "Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/weird-plants.html",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "The trap does not snap merely from the plant smelling an insect."
+    }
+  ]
+}
