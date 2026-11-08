@@ -5,6 +5,7 @@ import GameShell from './GameShell';
 import JustOneGame from './JustOneGame';
 import SoundsFishyGame from './SoundsFishyGame';
 import WavelengthGame from './WavelengthGame';
+import UnoGame from './UnoGame';
 
 export default function GameRoute({ display = false }: { display?: boolean }) {
   const { gameId = '' } = useParams();
@@ -59,7 +60,9 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
-  return info.gameType === 'wavelength' ? (
+  return info.gameType === 'uno' ? (
+    <UnoGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
+  ) : info.gameType === 'wavelength' ? (
     <WavelengthGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
   ) : info.gameType === 'sounds-fishy' ? (
     <SoundsFishyGame key={`${gameId}-${display}`} gameId={gameId} display={display} />

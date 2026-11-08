@@ -1,5 +1,10 @@
 export const games = [
   {
+    id: 'uno', title: 'UNO', mark: '7',
+    description: 'One card left. All eyes on you. Classic rules or your favorite chaos.',
+    players: '2–10 players · together or online', kind: 'Match & outplay', path: '/uno',
+  },
+  {
     id: 'wavelength', title: 'Wavelength', mark: '◠',
     description: 'Read the room. Find the frequency.',
     players: '2–24 players · together or online', kind: 'Discuss & connect', path: '/wavelength',

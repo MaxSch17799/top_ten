@@ -5,6 +5,7 @@ import './styles.css';
 import './party.css';
 import './fishy.css';
 import './wavelength.css';
+import './uno.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
