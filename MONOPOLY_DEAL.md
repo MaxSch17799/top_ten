@@ -14,6 +14,16 @@ Debtors choose their own tabled assets; nothing is automatically selected in nor
 
 Attacks are resolved one opponent at a time in seating order. Each affected opponent has an independent Just Say No chain; only the original attacker and that opponent can counter within that chain. One No cancels the entire demand including simultaneous rent multipliers, rather than reducing the multiplier. Other players' obligations remain independent. No unrelated move or turn-ending command can interrupt a pending action.
 
+## Usability update (2026-11-08)
+
+Property choices now show their assigned color in text and a color marker, with explicit dual-wild/rainbow labels. Native select options include color names and symbols so phone menus remain understandable even when the operating system does not render custom swatches. Public property slots show the alternative color along the bottom of dual wildcards, and a rainbow stripe on any-color wildcards. Utility is teal with a water symbol; railroad is lavender with a train symbol.
+
+Property placement defaults to the first open matching group, including when receiving a stolen or paid property. Starting a new group remains an explicit choice. A selector with one legal opponent, group or property defaults to that option; multiple strategic choices remain explicit. Ordinary property cards go directly to placement, with no action/bank mode selector. Five idle seconds after exhausting card plays shows a prominent end-turn reminder; pointer/keyboard activity resets the delay, and free rearrangement remains available.
+
+Payment assets distinguish cash, property transfers and buildings with category labels and color markers. **Classic stays the default**, and permits choosing properties even when bank money remains, per [Hasbro's payment FAQ](https://hasbro-new.custhelp.com/app/answers/detail/a_id/944). Optional **Bank-first payments** in Advanced rules locks property/building payments while the bank contains cards. If bank funds fall short, the player pays the bank first, then chooses assets for the remaining debt; the server persists that outstanding balance and rejects forged property payments. Automatic payment and deadline fallbacks honor the same rule. Older rooms and saved profiles receive `bankFirstPayments: false` without changing existing settings.
+
+Steal/swap attempts pulse the affected table and animate the action toward it; the response panel identifies both properties and their colors. Resolved transfers retain their card animations. Wins add short, nonblocking confetti. Reduced-motion preferences disable these effects and the reminder pulse.
+
 ## Official editions and research
 
 [MONOPOLY_DEAL_RESEARCH.md](MONOPOLY_DEAL_RESEARCH.md) records the primary Hasbro instructions/FAQ links, deck inventory, edition differences and all three upstream reviews. The older Hasbro FAQ says all No responses are free; the newer G0351 printed edition charges a play for a No during the active player's turn. The lobby exposes this distinction explicitly. Both editions use G0351's clear building-payment and broken-group instructions. Victory is detected when the resolved action gives any player the required different complete colors, including an off-turn Forced Deal recipient.
@@ -66,7 +76,13 @@ npm run test:e2e
 
 `tests/e2e/monopoly-deal.spec.ts` covers profile CRUD/persistence, mobile controls and previews, invites/QR, three live device contexts plus safe display, public/private views, pending-response reconnect, manual payment/placement interfaces, complete multiplayer matches, simultaneous rooms, lobby cap, retries, tablet/desktop sizing and no page/React key errors. It saves local screenshots in ignored `test-results/` for visual review.
 
+`tests/e2e/monopoly-deal-usability.spec.ts` adds 11 deterministic browser scenarios backed by the real rules engine through browser-only HTTP/WebSocket fixtures. These cover phone/desktop color cues and wild stripes, explicit versus default group choices, single legal targets, cash/property distinction, bank-first debt stages, reminder activity/reset/click behavior, confetti and reduced motion. No test-state endpoints are added to the application. Engine regressions cover bank-first validation, overpayment/insolvency, partial-payment replay and reconnect, automatic payments, timers, independent multiplayer debt amounts and migration of older rooms/profiles.
+
 ## Deployment and limits
+
+For the 2026-11-08 usability release, `npm run check` passes **256 automated tests** (52 Monopoly Deal tests), both type-checks and frontend ESLint. `npm run build` passes the production frontend build and Worker dry run. All **14 Monopoly Deal browser scenarios** pass locally and against the production frontend: 11 use browser-only rules-engine fixtures, and three exercise the live Worker, including a complete three-device multi-game match. The wider site run passed 47/48 on its first attempt; the existing Flip 7 final-results test hit an HTTP 409 during its cleanup command and passed on an isolated rerun. No Flip 7 code or tests were changed.
+
+Released to the existing Worker (`04ee5ee9-e7b7-4cd3-bb44-8e5ed549c5d1`) and Pages deployment [`186762ac`](https://186762ac.top-ten.pages.dev). Classic remains the default, with bank-first payments opt-in under Advanced rules. Existing bindings and hosting configuration are unchanged.
 
 Deploy the existing Worker first, then the existing Pages project, as in README. No new provider, audience setting, dependency subscription, database or resource migration is introduced. Deployment verification is recorded in the completion report.
 

@@ -1,5 +1,6 @@
 ﻿import type { DealAction } from "../../../shared/monopolyDeal.js";
 import type { Env } from "../game.js";
+import { checkedDealSettings } from "../../../shared/monopolyDeal.js";
 import { generateShortId, generateToken, normalizeNickname } from "../utils.js";
 import { trackUsageEvent } from "../usageMonitor.js";
 import {
@@ -26,11 +27,14 @@ export class MonopolyDealRoom {
     if (!this.loaded) {
       this.state =
         (await this.ctx.storage.get<DealState>("monopoly-deal")) ?? null;
-      if (this.state)
+      if (this.state) {
+        // Add new defaults without changing existing rooms' configured rules.
+        this.state.settings = checkedDealSettings(this.state.settings);
         for (const p of Object.values(this.state.players)) {
           p.connected = false;
           p.disconnectedAt ??= Date.now();
         }
+      }
       this.loaded = true;
     }
     return this.state !== null;

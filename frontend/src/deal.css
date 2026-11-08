@@ -550,6 +550,8 @@
   margin: 0.5rem 0;
 }
 .deal-property-slots i {
+  position: relative;
+  overflow: hidden;
   width: 21px;
   height: 24px;
   border: 1px dashed #758879;
@@ -706,7 +708,7 @@
   color: #e2ead8;
   border-radius: 8px;
 }
-.deal-asset span {
+.deal-asset > .deal-asset-kind {
   grid-column: 1/-1;
   font-size: 0.58rem;
   letter-spacing: 0.15em;
@@ -718,6 +720,224 @@
 }
 .deal-asset b {
   color: #e6cd8b;
+}
+.deal-color-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  font-size: 0.77rem;
+  line-height: 1.45;
+  color: #e0e7db;
+}
+.deal-color-mark > i {
+  display: grid;
+  place-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 23px;
+  height: 25px;
+  border-radius: 5px;
+  background: var(--property-color);
+  color: #13251d;
+  font-size: 0.8rem;
+  font-style: normal;
+  flex-shrink: 0;
+  border: 1px solid #f5ecd666;
+}
+.deal-property-slots i.is-wild::after,
+.deal-color-mark > i.is-wild::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: var(--wild-stripe);
+  border-top: 1px solid #172d25;
+}
+.deal-property-slots i.is-wild {
+  padding-bottom: 5px;
+}
+.deal-chip > strong,
+.deal-chip .deal-color-mark {
+  display: flex;
+}
+.deal-chip .deal-color-mark {
+  margin-top: 0.4rem;
+}
+.deal-proposed-property {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.8rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+.deal-asset.is-property {
+  border-color: var(--property-color);
+  border-top-width: 5px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--property-color) 15%, #152b23),
+    #152b23
+  );
+}
+.deal-asset.is-building {
+  border-top: 5px solid #e4c181;
+}
+.deal-asset.is-bank {
+  border-left: 4px solid #80c39a;
+}
+.deal-asset > small,
+.deal-asset > .deal-color-mark {
+  grid-column: 1 / -1;
+}
+.deal-asset > small {
+  font-size: 0.69rem;
+  color: #bed0b8;
+}
+.deal-asset > .deal-color-mark {
+  margin: 0.3rem 0;
+}
+.deal-asset:disabled {
+  filter: grayscale(0.85);
+  opacity: 0.4;
+}
+.deal-payment-rule {
+  border-left: 3px solid #ebcf89;
+  padding: 0.65rem 0.8rem;
+  background: #182a22;
+  font-size: 0.82rem;
+}
+.deal-no-plays {
+  display: block;
+  margin: 0.65rem 0 0;
+  max-width: 340px;
+  color: #e4ce99;
+}
+.deal-turn-nudge {
+  position: fixed;
+  z-index: 35;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  right: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.2rem;
+  align-items: center;
+  width: min(440px, calc(100vw - 32px));
+  padding: 1rem;
+  border: 2px solid #f1ce83;
+  border-radius: 16px;
+  color: #fff2c9;
+  background: #253c2afa;
+  box-shadow: 0 12px 50px #0009;
+  animation: deal-remind 1.7s ease-in-out infinite;
+}
+.deal-turn-nudge small {
+  display: block;
+  color: #d4dec4;
+}
+.deal-turn-nudge .primary {
+  flex: 1;
+  margin: 0;
+}
+.deal-end-reminding {
+  outline: 2px solid #efd493;
+  outline-offset: 3px;
+}
+@keyframes deal-remind {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 35px #0008,
+      0 0 0 0 #ebce8130;
+  }
+  50% {
+    box-shadow:
+      0 8px 35px #0008,
+      0 0 0 7px #ebce8110;
+  }
+}
+.deal-player-table.under-attack {
+  border-color: #f7bd86;
+  box-shadow: 0 0 0 2px #f7bd8633;
+  animation: deal-attack-pulse 0.7s ease-in-out 3;
+}
+.deal-attack-badge {
+  color: #ffdca6;
+  background: #5b362d;
+  border: 1px solid #c98b65;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.76rem;
+}
+@keyframes deal-attack-pulse {
+  50% {
+    box-shadow:
+      0 0 0 5px #f7bd8640,
+      inset 0 0 30px #f7bd8610;
+  }
+}
+.deal-flight.is-attack {
+  filter: drop-shadow(0 0 13px #fbc18c);
+}
+.deal-effect-notice {
+  position: fixed;
+  z-index: 45;
+  top: 115px;
+  left: 50%;
+  width: max-content;
+  max-width: min(560px, calc(100vw - 28px));
+  padding: 0.8rem 1rem;
+  background: #51352ff0;
+  color: #ffe6c6;
+  border: 1px solid #e8b28a;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px #0006;
+  font:
+    650 0.9rem/1.5 system-ui,
+    sans-serif;
+  pointer-events: none;
+}
+.deal-confetti {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 60;
+}
+.deal-confetti > i {
+  position: absolute;
+  top: -20px;
+  left: var(--confetti-x);
+  width: 9px;
+  height: 17px;
+  border-radius: 2px;
+  animation: deal-confetti-fall 2.8s cubic-bezier(0.15, 0.6, 0.6, 1)
+    var(--confetti-delay) both;
+}
+.deal-confetti > i:nth-child(3n) {
+  width: 12px;
+  height: 8px;
+  border-radius: 50%;
+}
+@keyframes deal-confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--confetti-drift), 105vh)
+      rotate(var(--confetti-spin));
+    opacity: 0;
+  }
 }
 .deal .selected {
   border-color: #ebcf89;
@@ -1157,6 +1377,10 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .deal-confetti,
+  .deal-effect-notice {
+    display: none;
+  }
   .deal *,
   .deal *::before,
   .deal *::after {

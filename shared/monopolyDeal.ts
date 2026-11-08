@@ -56,14 +56,14 @@ export const DEAL_GROUPS: Record<
   },
   railroad: {
     name: "Railroad",
-    color: "#c0cadb",
+    color: "#c9b8eb",
     size: 4,
     value: 2,
     rent: [1, 2, 3, 4],
   },
   utility: {
     name: "Utility",
-    color: "#a7b1ba",
+    color: "#54d5c6",
     size: 2,
     value: 2,
     rent: [1, 2],
@@ -208,6 +208,7 @@ export interface DealRules {
   responseSeconds: number;
   turnSeconds: number;
   autoPay: boolean;
+  bankFirstPayments: boolean;
 }
 export const CLASSIC_DEAL_RULES: DealRules = {
   setsToWin: 3,
@@ -221,6 +222,7 @@ export const CLASSIC_DEAL_RULES: DealRules = {
   responseSeconds: 0,
   turnSeconds: 0,
   autoPay: false,
+  bankFirstPayments: false,
 };
 export interface DealProfile {
   id: string;
@@ -330,6 +332,11 @@ export const DEAL_RULE_INFO: {
     label: "Automatic payments",
     text: "Convenience house rule: bank first, then lowest-value properties and buildings. May surrender strategic properties.",
   },
+  {
+    key: "bankFirstPayments",
+    label: "Bank-first payments",
+    text: "House rule: use bank cards before properties or buildings. If the bank cannot cover a debt, pay it first, then choose property payments. Classic lets you choose either.",
+  },
 ];
 export interface DealSettings {
   profileId: string;
@@ -352,7 +359,7 @@ export function checkedDealSettings(
   if (!raw || typeof raw !== "object" || Array.isArray(raw))
     throw new Error("Invalid Deal settings");
   const p = raw as Partial<DealSettings>,
-    rules = { ...base.rules };
+    rules = { ...CLASSIC_DEAL_RULES, ...base.rules };
   if (p.rules !== undefined) {
     if (!p.rules || typeof p.rules !== "object" || Array.isArray(p.rules))
       throw new Error("Invalid house rules");
@@ -411,6 +418,7 @@ export interface DealPending {
   actor: string;
   kind: DealEffect;
   amount: number;
+  amountPerTarget?: number;
   targets: string[];
   index: number;
   target: string;

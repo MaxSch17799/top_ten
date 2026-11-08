@@ -478,6 +478,7 @@ function attack(
     deadline: responseDeadline(s, now),
     ...extra,
   };
+  s.pending.amountPerTarget = s.pending.amount;
 }
 function advanceAttack(s: DealState, now: number) {
   checkWin(s);
@@ -490,6 +491,7 @@ function advanceAttack(s: DealState, now: number) {
     return;
   }
   p.target = p.targets[p.index];
+  p.amount = p.amountPerTarget ?? p.amount;
   p.responder = p.target;
   p.cancelled = false;
   p.depth = 0;
@@ -533,7 +535,16 @@ function resolveAttack(s: DealState, now: number) {
       );
       advanceAttack(s, now);
     } else if (s.settings.rules.autoPay)
-      pay(s, p.target, automaticPayment(s.tables[p.target], p.amount), now);
+      pay(
+        s,
+        p.target,
+        automaticPayment(
+          s.tables[p.target],
+          p.amount,
+          s.settings.rules.bankFirstPayments,
+        ),
+        now,
+      );
     return;
   }
   if (p.kind === "dealBreaker") {
@@ -572,11 +583,15 @@ function resolveAttack(s: DealState, now: number) {
   placementsOrAdvance(s, now);
 }
 /** Opt-in deterministic convenience, also the documented payment deadline fallback. */
-export function automaticPayment(t: DealTable, amount: number): string[] {
+export function automaticPayment(
+  t: DealTable,
+  amount: number,
+  bankFirst = false,
+): string[] {
   const cards = [...t.bank]
     .sort((a, b) => a.value - b.value)
     .concat(
-      dealAssets(t)
+      (bankFirst && t.bank.length ? [] : dealAssets(t))
         .filter((c) => !t.bank.some((b) => b.id === c.id))
         .sort((a, b) => a.value - b.value),
     );
@@ -610,9 +625,20 @@ function pay(s: DealState, id: string, raw: unknown, now: number) {
   const cards = selected as DealCard[],
     total = cards.reduce((n, c) => n + c.value, 0),
     available = assets.reduce((n, c) => n + c.value, 0);
+  const bankOnly =
+    s.settings.rules.bankFirstPayments && s.tables[id].bank.length > 0;
+  if (bankOnly)
+    requireRule(
+      cards.every((c) => s.tables[id].bank.some((b) => b.id === c.id)),
+      "Bank-first house rule: pay from your bank before properties or buildings",
+    );
+  const bankExhausted = bankOnly && cards.length === s.tables[id].bank.length;
+  const partialBankPayment =
+    bankExhausted && total < p.amount && cards.length < assets.length;
   requireRule(
     total >= p.amount ||
-      (total === available && cards.length === assets.length),
+      (total === available && cards.length === assets.length) ||
+      partialBankPayment,
     "Cover the debt, or surrender every payable asset if you cannot",
   );
   // Remove all selected assets before discarding buildings on any broken sets.
@@ -649,6 +675,21 @@ function pay(s: DealState, id: string, raw: unknown, now: number) {
       s.discard.push(set.hotel);
       set.hotel = null;
     }
+  if (partialBankPayment) {
+    p.amountPerTarget ??= p.amount;
+    p.amount -= total;
+    p.deadline = responseDeadline(s, now);
+    event(
+      s,
+      "payment",
+      id,
+      `${name(s, id)} paid ${total}M from the bank to ${name(s, p.actor)}; ${p.amount}M remains. Now choose property or building payments.`,
+      { target: p.actor },
+    );
+    if (s.settings.rules.autoPay)
+      pay(s, id, automaticPayment(table, p.amount, true), now);
+    return;
+  }
   event(
     s,
     "payment",
@@ -1141,7 +1182,11 @@ export function expireState(s: DealState, now = Date.now()): boolean {
       pay(
         s,
         s.pending.responder,
-        automaticPayment(s.tables[s.pending.responder], s.pending.amount),
+        automaticPayment(
+          s.tables[s.pending.responder],
+          s.pending.amount,
+          s.settings.rules.bankFirstPayments,
+        ),
         now,
       );
     else if (s.pending.stage === "placement") {

@@ -29,6 +29,14 @@ import type { SessionData } from "../lib/types";
 import AddPlayerPanel from "./AddPlayerPanel";
 import DealCard from "./DealCard";
 import DealSettings, { DealRulesSummary } from "./DealSettings";
+import DealColorMark from "./DealColorMark";
+import {
+  dealCardColorText,
+  dealColorLabel,
+  dealWildStripe,
+  onlyDealChoice,
+  preferredDealColor,
+} from "../lib/dealChoices";
 
 type Act = (
   type: string,
@@ -95,8 +103,10 @@ function Placement({
   exclude?: string;
   label?: string;
 }) {
-  const [color, setColor] = useState<DealColor>(card.colors[0]),
-    [setId, setSetId] = useState("");
+  const [color, setColor] = useState<DealColor>(() =>
+      preferredDealColor(player.table, card, exclude),
+    ),
+    [setChoice, setSetChoice] = useState<string | null>(null);
   const eligible = player.table.sets.filter(
     (s) =>
       s.color === color &&
@@ -104,6 +114,12 @@ function Placement({
       s.id !== exclude,
   );
   const from = player.table.sets.find((s) => s.id === exclude);
+  const setId =
+    setChoice === ""
+      ? ""
+      : eligible.some((s) => s.id === setChoice)
+        ? setChoice!
+        : (eligible[0]?.id ?? "");
   return (
     <div className="deal-placement">
       <label className="field">
@@ -113,27 +129,28 @@ function Placement({
           value={color}
           onChange={(e) => {
             setColor(e.target.value as DealColor);
-            setSetId("");
+            setSetChoice(null);
           }}
         >
           {card.colors.map((c) => (
             <option key={c} value={c}>
-              {DEAL_GROUPS[c].name}
+              {dealColorLabel(c)}
             </option>
           ))}
         </select>
+        <DealColorMark card={card} color={color} />
       </label>
       <label className="field">
         <span>Destination group</span>
         <select
           className="input"
           value={setId}
-          onChange={(e) => setSetId(e.target.value)}
+          onChange={(e) => setSetChoice(e.target.value)}
         >
-          <option value="">Start a new {DEAL_GROUPS[color].name} group</option>
+          <option value="">Start a new {dealColorLabel(color)} group</option>
           {eligible.map((s, i) => (
             <option key={s.id} value={s.id}>
-              {DEAL_GROUPS[color].name} group {i + 1} · {s.cards.length}/
+              {dealColorLabel(color)} group {i + 1} · {s.cards.length}/
               {DEAL_GROUPS[color].size}
             </option>
           ))}
@@ -177,14 +194,29 @@ function CardComposer({
         ? "property"
         : "action",
   );
-  const [setId, setSetId] = useState(""),
-    [target, setTarget] = useState(""),
-    [targetCard, setTargetCard] = useState(""),
-    [giveCard, setGiveCard] = useState(""),
-    [targetSet, setTargetSet] = useState(""),
+  const [setChoice, setSetId] = useState(""),
+    [targetChoice, setTarget] = useState(""),
+    [targetCardChoice, setTargetCard] = useState(""),
+    [giveCardChoice, setGiveCard] = useState(""),
+    [targetSetChoice, setTargetSet] = useState(""),
     [doubles, setDoubles] = useState<string[]>([]);
-  const effect = card.effect,
-    other = s.players.find((p) => p.playerId === target);
+  const effect = card.effect;
+  const opponents = s.players.filter(
+    (p) =>
+      p.playerId !== s.yourPlayerId &&
+      (effect === "dealBreaker"
+        ? p.table.sets.some(completeDealSet)
+        : ["slyDeal", "forcedDeal"].includes(effect ?? "")
+          ? p.table.sets.some(
+              (set) => !completeDealSet(set) && set.cards.length > 0,
+            )
+          : true),
+  );
+  const target = onlyDealChoice(
+    targetChoice,
+    opponents.map((p) => p.playerId),
+  );
+  const other = opponents.find((p) => p.playerId === target);
   const rent = effect === "rent" || effect === "wildRent",
     building = effect === "house" || effect === "hotel";
   const sets = own.table.sets.filter((set) =>
@@ -208,6 +240,27 @@ function CardComposer({
     other?.table.sets
       .filter((set) => !completeDealSet(set))
       .flatMap((set) => set.cards) ?? [];
+  const setId = onlyDealChoice(
+    setChoice,
+    sets.map((set) => set.id),
+  );
+  const targetCard = onlyDealChoice(
+    targetCardChoice,
+    targetProps.map((c) => c.id),
+  );
+  const ownProps = own.table.sets.flatMap((set) => set.cards);
+  const giveCard = onlyDealChoice(
+    giveCardChoice,
+    ownProps.map((c) => c.id),
+  );
+  const stealSets = other?.table.sets.filter(completeDealSet) ?? [];
+  const targetSet = onlyDealChoice(
+    targetSetChoice,
+    stealSets.map((set) => set.id),
+  );
+  const offered = own.table.sets.find((set) =>
+    set.cards.some((c) => c.id === giveCard),
+  );
   const canAct =
     s.turn === s.yourPlayerId &&
     s.phase === "PLAY" &&
@@ -244,26 +297,28 @@ function CardComposer({
                 ? `Add ${card.value}M to your bank. Banked cards stay on the table.`
                 : "Build property groups. A complete set needs at least one valued property; rainbow wilds have no monetary value."}
           </p>
-          <div className="deal-tabs">
-            {(card.kind === "property" || card.kind === "wild"
-              ? ["property"]
-              : card.kind === "money"
-                ? ["bank"]
-                : ["action", "bank"]
-            ).map((m) => (
-              <button
-                key={m}
-                className={mode === m ? "primary" : "secondary"}
-                onClick={() => setMode(m)}
-              >
-                {m === "property"
-                  ? "As property"
-                  : m === "bank"
-                    ? `Bank ${card.value}M`
-                    : "Use action"}
-              </button>
-            ))}
-          </div>
+          {card.kind === "action" && (
+            <div className="deal-tabs">
+              {["action", "bank"].map((m) => (
+                <button
+                  key={m}
+                  className={mode === m ? "primary" : "secondary"}
+                  onClick={() => setMode(m)}
+                >
+                  {m === "property"
+                    ? "As property"
+                    : m === "bank"
+                      ? `Bank ${card.value}M`
+                      : "Use action"}
+                </button>
+              ))}
+            </div>
+          )}
+          {(card.kind === "property" || card.kind === "wild") && (
+            <p className="deal-help">
+              Property · place in your collection. Never banked as cash.
+            </p>
+          )}
           {!canAct && (
             <p className="deal-gold">
               {s.pending
@@ -311,11 +366,16 @@ function CardComposer({
                     <option value="">Choose an eligible group</option>
                     {sets.map((set, i) => (
                       <option key={set.id} value={set.id}>
-                        {DEAL_GROUPS[set.color].name} · group {i + 1} ·{" "}
+                        {dealColorLabel(set.color)} · group {i + 1} ·{" "}
                         {rent ? `${dealRent(set)}M rent` : "complete"}
                       </option>
                     ))}
                   </select>
+                  {sets.find((set) => set.id === setId) && (
+                    <DealColorMark
+                      color={sets.find((set) => set.id === setId)!.color}
+                    />
+                  )}
                   {!sets.length && (
                     <small>
                       No eligible property group yet. You can bank this card
@@ -337,13 +397,11 @@ function CardComposer({
                     }}
                   >
                     <option value="">Choose an opponent</option>
-                    {s.players
-                      .filter((p) => p.playerId !== s.yourPlayerId)
-                      .map((p) => (
-                        <option key={p.playerId} value={p.playerId}>
-                          {p.nickname}
-                        </option>
-                      ))}
+                    {opponents.map((p) => (
+                      <option key={p.playerId} value={p.playerId}>
+                        {p.nickname}
+                      </option>
+                    ))}
                   </select>
                 </label>
               )}
@@ -357,9 +415,20 @@ function CardComposer({
                     <button
                       className={`deal-chip ${targetCard === c.id ? "selected" : ""}`}
                       key={c.id}
+                      aria-pressed={targetCard === c.id}
                       onClick={() => setTargetCard(c.id)}
                     >
-                      {c.title} · {c.value}M
+                      <strong>
+                        {c.title} · {c.value}M
+                      </strong>
+                      <DealColorMark
+                        card={c}
+                        color={
+                          other!.table.sets.find((set) =>
+                            set.cards.some((v) => v.id === c.id),
+                          )!.color
+                        }
+                      />
                     </button>
                   ))}
                 </div>
@@ -376,7 +445,12 @@ function CardComposer({
                     {own.table.sets.flatMap((set) =>
                       set.cards.map((c) => (
                         <option key={c.id} value={c.id}>
-                          {c.title} · {DEAL_GROUPS[set.color].name}
+                          {dealColorLabel(set.color)} · {c.title}
+                          {c.kind === "wild"
+                            ? c.colors.length > 2
+                              ? " · rainbow wild"
+                              : " · two-color wild"
+                            : ""}
                           {completeDealSet(set)
                             ? " (breaks complete group)"
                             : ""}
@@ -384,6 +458,12 @@ function CardComposer({
                       )),
                     )}
                   </select>
+                  {offered && (
+                    <DealColorMark
+                      card={offered.cards.find((c) => c.id === giveCard)}
+                      color={offered.color}
+                    />
+                  )}
                 </label>
               )}
               {effect === "dealBreaker" && (
@@ -395,14 +475,21 @@ function CardComposer({
                     onChange={(e) => setTargetSet(e.target.value)}
                   >
                     <option value="">Choose a complete group</option>
-                    {other?.table.sets.filter(completeDealSet).map((set, i) => (
+                    {stealSets.map((set, i) => (
                       <option key={set.id} value={set.id}>
-                        {DEAL_GROUPS[set.color].name} · group {i + 1}
+                        {dealColorLabel(set.color)} · group {i + 1}
                         {set.house ? " + House" : ""}
                         {set.hotel ? " + Hotel" : ""}
                       </option>
                     ))}
                   </select>
+                  {stealSets.find((set) => set.id === targetSet) && (
+                    <DealColorMark
+                      color={
+                        stealSets.find((set) => set.id === targetSet)!.color
+                      }
+                    />
+                  )}
                   {!s.settings.rules.dealBreaker && (
                     <small>
                       Deal Breaker is disabled; this card can be banked.
@@ -498,8 +585,15 @@ function ResponsePanel({
   const [selected, setSelected] = useState<string[]>([]);
   const own = s.players.find((v) => v.playerId === s.yourPlayerId),
     assets = own ? dealAssets(own.table) : [];
+  const bankOnly = !!(
+    s.settings.rules.bankFirstPayments &&
+    own &&
+    own.table.bank.length
+  );
+  const payable = bankOnly ? own!.table.bank : assets;
+  const selectedPayable = payable.filter((c) => selected.includes(c.id));
   const total = assets
-      .filter((c) => selected.includes(c.id))
+      .filter((c) => selectedPayable.some((p) => p.id === c.id))
       .reduce((n, c) => n + c.value, 0),
     available = assets.reduce((n, c) => n + c.value, 0);
   const no = s.hand.find((c) => c.effect === "justSayNo"),
@@ -513,6 +607,12 @@ function ResponsePanel({
       ?.flatMap((set) => set.cards)
       .find((c) => c.id === p.targetCardId),
     takenSet = targeted?.find((set) => set.id === p.targetSetId);
+  const takenGroup = targeted?.find((set) =>
+    set.cards.some((c) => c.id === p.targetCardId),
+  );
+  const offeredGroup = s.players
+    .find((player) => player.playerId === p.actor)
+    ?.table.sets.find((set) => set.cards.some((c) => c.id === p.giveCardId));
   return (
     <section
       ref={panel}
@@ -540,6 +640,24 @@ function ResponsePanel({
               ? ` · complete ${DEAL_GROUPS[takenSet.color].name} group${takenSet.house ? " with buildings" : ""}`
               : ""}
       </p>
+      {taken && takenGroup && (
+        <div className="deal-proposed-property">
+          <strong>Taking: {taken.title}</strong>
+          <DealColorMark card={taken} color={takenGroup.color} />
+        </div>
+      )}
+      {p.kind === "forcedDeal" && offeredGroup && (
+        <div className="deal-proposed-property">
+          <strong>
+            Giving:{" "}
+            {offeredGroup.cards.find((c) => c.id === p.giveCardId)!.title}
+          </strong>
+          <DealColorMark
+            card={offeredGroup.cards.find((c) => c.id === p.giveCardId)}
+            color={offeredGroup.color}
+          />
+        </div>
+      )}
       {p.stage === "response" && (
         <>
           <p>
@@ -597,13 +715,43 @@ function ResponsePanel({
               property collection; banked actions stay money. Zero-value wilds
               cannot pay.
             </p>
+            {bankOnly && (
+              <p className="deal-payment-rule">
+                <strong>Bank-first house rule</strong> · Pay from your bank
+                first. Properties and buildings unlock after the bank is empty.
+                If the bank is short, pay all its cards now and choose assets
+                for the remainder next.
+              </p>
+            )}
             <div className="deal-payment-assets">
               {assets.map((c) => {
                 const bank = own!.table.bank.some((b) => b.id === c.id);
+                const property =
+                  !bank && (c.kind === "property" || c.kind === "wild");
+                const set = property
+                  ? own!.table.sets.find((set) =>
+                      set.cards.some((v) => v.id === c.id),
+                    )
+                  : undefined;
+                const locked = bankOnly && !bank;
                 return (
                   <button
                     key={c.id}
-                    className={`deal-asset ${selected.includes(c.id) ? "selected" : ""}`}
+                    className={`deal-asset ${bank ? "is-bank" : property ? "is-property" : "is-building"} ${selected.includes(c.id) && !locked ? "selected" : ""}`}
+                    data-asset-kind={
+                      bank ? "bank" : property ? "property" : "building"
+                    }
+                    style={
+                      set
+                        ? ({
+                            "--property-color": DEAL_GROUPS[set.color].color,
+                          } as CSSProperties)
+                        : undefined
+                    }
+                    disabled={busy || locked}
+                    title={
+                      locked ? "Use your bank first (house rule)" : undefined
+                    }
                     aria-pressed={selected.includes(c.id)}
                     onClick={() =>
                       setSelected(
@@ -613,26 +761,38 @@ function ResponsePanel({
                       )
                     }
                   >
-                    <span>
+                    <span className="deal-asset-kind">
                       {bank
                         ? "BANK"
                         : c.kind === "property" || c.kind === "wild"
-                          ? "PROPERTY"
+                          ? "◆ PROPERTY TRANSFER"
                           : "BUILDING"}
                     </span>
                     <strong>{c.title}</strong>
                     <b>{c.value}M</b>
+                    {set && <DealColorMark card={c} color={set.color} />}
+                    <small>
+                      {bank
+                        ? "Pays as cash"
+                        : property
+                          ? "Transfers to their property collection"
+                          : "Transfers to their bank as money"}
+                      {locked ? " · Locked: use bank first" : ""}
+                    </small>
                   </button>
                 );
               })}
             </div>
             <div className="deal-buttons">
-              {available < p.amount && (
+              {(available < p.amount ||
+                (bankOnly && dealBankTotal(own!.table) < p.amount)) && (
                 <button
                   className="secondary"
-                  onClick={() => setSelected(assets.map((c) => c.id))}
+                  onClick={() => setSelected(payable.map((c) => c.id))}
                 >
-                  Select all · insufficient assets
+                  {bankOnly
+                    ? "Select all bank cards"
+                    : "Select all · insufficient assets"}
                 </button>
               )}
               <strong>
@@ -642,11 +802,21 @@ function ResponsePanel({
                 className="primary"
                 disabled={
                   busy ||
-                  !(total >= p.amount || selected.length === assets.length)
+                  !(
+                    total >= p.amount ||
+                    selectedPayable.length === payable.length
+                  )
                 }
-                onClick={() => void act("pay", { cardIds: selected })}
+                onClick={() =>
+                  void act("pay", { cardIds: selectedPayable.map((c) => c.id) })
+                }
               >
                 Confirm payment · {total}M
+                {bankOnly &&
+                total < p.amount &&
+                selectedPayable.length === payable.length
+                  ? ` · ${p.amount - total}M remains`
+                  : ""}
               </button>
             </div>
             {total > p.amount && (
@@ -712,15 +882,42 @@ function Group({ group, open }: { group: DealSet; open: () => void }) {
       aria-label={`${meta.name} group, ${group.cards.length} of ${meta.size} properties${complete ? ", complete" : ""}`}
     >
       <span className="deal-group-top">
-        <strong>{meta.name}</strong>
+        <strong>
+          {group.color === "railroad"
+            ? "🚆 "
+            : group.color === "utility"
+              ? "💧 "
+              : ""}
+          {meta.name}
+        </strong>
         <b>{complete ? "✓" : `${group.cards.length}/${meta.size}`}</b>
       </span>
       <span className="deal-property-slots">
-        {Array.from({ length: meta.size }, (_, i) => (
-          <i key={i} className={group.cards[i] ? "filled" : ""}>
-            {group.cards[i]?.kind === "wild" ? "✦" : group.cards[i] ? "◆" : "·"}
-          </i>
-        ))}
+        {Array.from({ length: meta.size }, (_, i) => {
+          const card = group.cards[i];
+          const wild = card?.kind === "wild";
+          const description = card
+            ? `${card.title} · ${dealCardColorText(card, group.color)}`
+            : "Empty property slot";
+          return (
+            <i
+              key={i}
+              className={`${card ? "filled" : ""} ${wild ? "is-wild" : ""} ${wild && card.colors.length > 2 ? "is-rainbow" : ""}`}
+              style={
+                card
+                  ? ({
+                      "--wild-stripe": dealWildStripe(card, group.color),
+                    } as CSSProperties)
+                  : undefined
+              }
+              role="img"
+              title={description}
+              aria-label={description}
+            >
+              {wild ? "✦" : card ? "◆" : "·"}
+            </i>
+          );
+        })}
       </span>
       <span className="deal-group-rent">
         {dealRent(group)}M rent{" "}
@@ -744,9 +941,12 @@ function PlayerTable({
   inspectGroup: (owner: string, setId: string) => void;
 }) {
   const mine = p.playerId === s.yourPlayerId;
+  const underAttack =
+    s.pending?.target === p.playerId &&
+    ["slyDeal", "forcedDeal", "dealBreaker"].includes(s.pending.kind);
   return (
     <section
-      className={`deal-player-table ${mine ? "is-mine" : ""} ${s.turn === p.playerId ? "is-turn" : ""}`}
+      className={`deal-player-table ${mine ? "is-mine" : ""} ${s.turn === p.playerId ? "is-turn" : ""} ${underAttack ? "under-attack" : ""}`}
       data-player={p.playerId}
     >
       <header>
@@ -772,6 +972,14 @@ function PlayerTable({
           <small>colors</small>
         </span>
       </header>
+      {underAttack && (
+        <p className="deal-attack-badge">
+          {s.pending!.kind === "forcedDeal"
+            ? "⇄ Swap proposed"
+            : "↗ Steal attempt"}{" "}
+          · {playerName(s, s.pending!.actor)}
+        </p>
+      )}
       <div className="deal-groups">
         {p.table.sets.map((group) => (
           <Group
@@ -824,7 +1032,7 @@ function GroupDetails({
   close: () => void;
 }) {
   const [chosen, setChosen] = useState(""),
-    [destination, setDestination] = useState("");
+    [destinationChoice, setDestination] = useState("");
   const player = s.players.find((p) => p.playerId === owner)!,
     group = player.table.sets.find((set) => set.id === setId);
   if (!group)
@@ -846,7 +1054,27 @@ function GroupDetails({
       ...(group.house ? [group.house] : []),
       ...(group.hotel ? [group.hotel] : []),
     ],
-    card = cards.find((c) => c.id === chosen);
+    card = cards.find(
+      (c) =>
+        c.id ===
+        onlyDealChoice(
+          chosen,
+          cards.map((c) => c.id),
+        ),
+    );
+  const destinations = player.table.sets.filter(
+    (set) =>
+      set.id !== group.id &&
+      completeDealSet(set) &&
+      buildableDealColor(set.color) &&
+      (card?.effect === "house"
+        ? !set.house && !group.hotel
+        : set.house && !set.hotel),
+  );
+  const destination = onlyDealChoice(
+    destinationChoice,
+    destinations.map((set) => set.id),
+  );
   return (
     <Modal
       title={`${DEAL_GROUPS[group.color].name} · ${group.cards.length}/${DEAL_GROUPS[group.color].size}`}
@@ -896,22 +1124,20 @@ function GroupDetails({
                     onChange={(e) => setDestination(e.target.value)}
                   >
                     <option value="">Choose an eligible group</option>
-                    {player.table.sets
-                      .filter(
-                        (set) =>
-                          set.id !== group.id &&
-                          completeDealSet(set) &&
-                          buildableDealColor(set.color) &&
-                          (card.effect === "house"
-                            ? !set.house && !group.hotel
-                            : set.house && !set.hotel),
-                      )
-                      .map((set) => (
-                        <option key={set.id} value={set.id}>
-                          {DEAL_GROUPS[set.color].name}
-                        </option>
-                      ))}
+                    {destinations.map((set) => (
+                      <option key={set.id} value={set.id}>
+                        {dealColorLabel(set.color)}
+                      </option>
+                    ))}
                   </select>
+                  {destinations.find((set) => set.id === destination) && (
+                    <DealColorMark
+                      color={
+                        destinations.find((set) => set.id === destination)!
+                          .color
+                      }
+                    />
+                  )}
                 </label>
                 <button
                   className="primary"
@@ -1009,6 +1235,75 @@ function Hand({
     </section>
   );
 }
+function EndTurnControl({
+  s,
+  act,
+  busy,
+}: {
+  s: DealView;
+  act: Act;
+  busy: boolean;
+}) {
+  const [reminder, setReminder] = useState("");
+  const epoch = `${s.generation}-${s.round}-${s.turn}-${s.revision}`;
+  const outOfPlays = s.playsLeft === 0 && !busy;
+  const remind = outOfPlays && reminder === epoch;
+  useEffect(() => {
+    if (!outOfPlays) return;
+    let timer: number;
+    const arm = (event: Event) => {
+      // Keep the reminder's own button mounted between pointer-down and click.
+      if (!(
+        event.target instanceof Element &&
+        event.target.closest(".deal-turn-nudge")
+      ))
+        setReminder("");
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => setReminder(epoch), 5000);
+    };
+    timer = window.setTimeout(() => setReminder(epoch), 5000);
+    window.addEventListener("pointerdown", arm);
+    window.addEventListener("keydown", arm);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("pointerdown", arm);
+      window.removeEventListener("keydown", arm);
+    };
+  }, [outOfPlays, epoch]);
+  return (
+    <>
+      <button
+        className={`primary ${remind ? "deal-end-reminding" : ""}`}
+        disabled={busy}
+        onClick={() => void act("end-turn")}
+      >
+        End turn
+        {s.hand.length > s.settings.rules.handLimit ? " · discard next" : ""}
+      </button>
+      {outOfPlays && (
+        <small className="deal-no-plays">
+          No card plays left. You can still rearrange properties, then end your
+          turn.
+        </small>
+      )}
+      {remind && (
+        <aside className="deal-turn-nudge" role="status">
+          <div>
+            <strong>Your turn is still open</strong>
+            <small>Ready? Pass play to the next person.</small>
+          </div>
+          <button
+            className="primary"
+            disabled={busy}
+            onClick={() => void act("end-turn")}
+          >
+            End your turn →
+          </button>
+        </aside>
+      )}
+    </>
+  );
+}
 function Motion({ s }: { s: DealView }) {
   const previous = useRef<number | null>(null);
   useEffect(() => {
@@ -1033,9 +1328,47 @@ function Motion({ s }: { s: DealView }) {
             "steal",
             "no",
             "set",
+            "win",
           ].includes(e.type),
       )
       .slice(-5)) {
+      if (e.type === "win") {
+        const node = document.createElement("div");
+        node.className = "deal-confetti";
+        node.setAttribute("aria-hidden", "true");
+        for (let i = 0; i < 48; i++) {
+          const bit = document.createElement("i");
+          bit.style.setProperty(
+            "--confetti-x",
+            `${(i * 37 + e.id * 7) % 100}%`,
+          );
+          bit.style.setProperty("--confetti-delay", `${(i % 8) * 0.09}s`);
+          bit.style.setProperty(
+            "--confetti-drift",
+            `${(i % 2 ? 1 : -1) * (25 + (i % 75))}px`,
+          );
+          bit.style.setProperty("--confetti-spin", `${180 + i * 47}deg`);
+          bit.style.background = [
+            "#f4ce7f",
+            "#6ee7a0",
+            "#f29bc7",
+            "#7dd3fc",
+            "#c9b8eb",
+          ][i % 5];
+          node.append(bit);
+        }
+        document.body.append(node);
+        const animation = node.animate(
+          [{ opacity: 1 }, { opacity: 1, offset: 0.82 }, { opacity: 0 }],
+          { duration: 3900 },
+        );
+        animation.onfinish = () => node.remove();
+        effects.push({ node, animation });
+        continue;
+      }
+      const attack =
+        e.type === "action" &&
+        ["slyDeal", "forcedDeal", "dealBreaker"].includes(e.card?.effect ?? "");
       const seat = document.querySelector(
           `[data-player="${CSS.escape(e.actor ?? "")}"]`,
         ),
@@ -1066,12 +1399,14 @@ function Motion({ s }: { s: DealView }) {
                 ? seat?.querySelector(".deal-bank")
                 : e.type === "property"
                   ? seat?.querySelector(".deal-groups")
-                  : center;
+                  : attack
+                    ? other
+                    : center;
       if (!source || !dest) continue;
       const a = source.getBoundingClientRect(),
         b = dest.getBoundingClientRect();
       const node = document.createElement("div");
-      node.className = `deal-flight ${e.type === "no" ? "is-no" : ""}`;
+      node.className = `deal-flight ${e.type === "no" ? "is-no" : ""} ${attack ? "is-attack" : ""}`;
       node.setAttribute("aria-hidden", "true");
       const graphic = e.card
         ? Array.from(document.querySelectorAll(".deal-card-svg")).find((el) =>
@@ -1101,6 +1436,28 @@ function Motion({ s }: { s: DealView }) {
       );
       animation.onfinish = () => node.remove();
       effects.push({ node, animation });
+      if (attack || e.type === "steal") {
+        const notice = document.createElement("div");
+        notice.className = "deal-effect-notice";
+        notice.setAttribute("aria-hidden", "true");
+        notice.textContent = `${attack ? "↗ " : "⇄ "}${e.message}`;
+        document.body.append(notice);
+        const animation = notice.animate(
+          [
+            { opacity: 0, transform: "translate(-50%, -12px) scale(.94)" },
+            {
+              opacity: 1,
+              transform: "translate(-50%, 0) scale(1)",
+              offset: 0.12,
+            },
+            { opacity: 1, offset: 0.8 },
+            { opacity: 0, transform: "translate(-50%, -8px)" },
+          ],
+          { duration: 2100 },
+        );
+        animation.onfinish = () => notice.remove();
+        effects.push({ node: notice, animation });
+      }
     }
     return () => {
       for (const e of effects) {
@@ -1449,16 +1806,7 @@ export default function MonopolyDealGame({
               )}
               <Deadline s={s} receivedAt={receivedAt} />
               {myTurn && s.phase === "PLAY" && !s.pending && (
-                <button
-                  className="primary"
-                  disabled={busy}
-                  onClick={() => void act("end-turn")}
-                >
-                  End turn
-                  {s.hand.length > s.settings.rules.handLimit
-                    ? " · discard next"
-                    : ""}
-                </button>
+                <EndTurnControl s={s} act={act} busy={busy} />
               )}
               {s.phase === "DISCARD" && (
                 <p className="deal-gold">
@@ -1509,7 +1857,7 @@ export default function MonopolyDealGame({
           )}
           {s.pending && (
             <ResponsePanel
-              key={`${s.pending.index}-${s.pending.stage}-${s.pending.depth}-${s.pending.responder}`}
+              key={`${s.pending.index}-${s.pending.stage}-${s.pending.depth}-${s.pending.responder}-${s.pending.amount}`}
               s={s}
               busy={busy}
               act={act}

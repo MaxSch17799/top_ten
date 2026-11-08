@@ -543,6 +543,154 @@ test("debts only accept table assets; overpayment gives no change, banked action
   assert.equal(s.tables.p1.bank.length, 0);
   assert.equal(s.pending, null);
 });
+
+test("Classic allows choosing a property while keeping money in the bank", () => {
+  const s = room();
+  const g = group(s, "p1", "green", 1),
+    cash = money(5);
+  s.tables.p1.bank.push(cash);
+  play(s, "p0", actionCard("birthday"));
+  accept(s);
+  act(s, "p1", "pay", { cardIds: [g.cards[0].id] });
+  assert.equal(s.tables.p1.bank[0].id, cash.id);
+  assert.equal(s.pending?.stage, "placement");
+  placeReceived(s, "green");
+  assert.equal(s.pending, null);
+});
+
+test("bank-first house rule rejects property/mixed payments, persists partial debt and deduplicates bank payment", () => {
+  const s = room(2, { bankFirstPayments: true });
+  const g = group(s, "p1", "green", 1),
+    cash = money(2);
+  s.tables.p1.bank.push(cash);
+  play(s, "p0", actionCard("debtCollector"), { target: "p1" });
+  accept(s);
+  unchanged(
+    s,
+    () => act(s, "p1", "pay", { cardIds: [g.cards[0].id] }),
+    /Bank-first/,
+  );
+  unchanged(
+    s,
+    () => act(s, "p1", "pay", { cardIds: [cash.id, g.cards[0].id] }),
+    /Bank-first/,
+  );
+  const command = act(s, "p1", "pay", { cardIds: [cash.id] });
+  assert.equal(s.pending?.stage, "payment");
+  assert.equal(s.pending?.amount, 3);
+  assert.equal(s.tables.p1.bank.length, 0);
+  assert.equal(s.tables.p0.bank.length, 1);
+  const resumed = JSON.parse(JSON.stringify(s)) as DealState;
+  applyAction(resumed, "p1", command);
+  assert.equal(resumed.pending?.amount, 3);
+  assert.equal(resumed.tables.p0.bank.length, 1);
+  act(resumed, "p1", "pay", { cardIds: [g.cards[0].id] });
+  placeReceived(resumed, "green");
+  assert.equal(resumed.pending, null);
+  assert.equal(resumed.tables.p1.bank.length, 0);
+});
+
+test("bank-first sufficient funds permits chosen bank cards and overpayment without forcing the entire bank", () => {
+  const s = room(2, { bankFirstPayments: true });
+  group(s, "p1", "red", 1);
+  const large = money(10),
+    small = money(1);
+  s.tables.p1.bank.push(large, small);
+  play(s, "p0", actionCard("debtCollector"), { target: "p1" });
+  accept(s);
+  unchanged(
+    s,
+    () => act(s, "p1", "pay", { cardIds: [small.id] }),
+    /Cover the debt/,
+  );
+  act(s, "p1", "pay", { cardIds: [large.id] });
+  assert.equal(s.pending, null);
+  assert.equal(s.tables.p1.bank[0].id, small.id);
+  assert.equal(s.tables.p1.sets.length, 1);
+});
+
+test("a partial bank payment does not reduce the next opponent's Birthday debt", () => {
+  const s = room(3, { bankFirstPayments: true });
+  const property = group(s, "p1", "brown", 1),
+    firstBank = money(1),
+    secondBank = money(2);
+  s.tables.p1.bank.push(firstBank);
+  s.tables.p2.bank.push(secondBank);
+  play(s, "p0", actionCard("birthday"));
+  accept(s);
+  act(s, "p1", "pay", { cardIds: [firstBank.id] });
+  assert.equal(s.pending?.amount, 1);
+  act(s, "p1", "pay", { cardIds: [property.cards[0].id] });
+  placeReceived(s, "brown");
+  assert.equal(s.pending?.target, "p2");
+  assert.equal(s.pending?.amount, 2);
+  accept(s);
+  act(s, "p2", "pay", { cardIds: [secondBank.id] });
+  assert.equal(s.pending, null);
+  assert.equal(
+    s.tables.p0.bank.reduce((n, c) => n + c.value, 0),
+    3,
+  );
+});
+
+test("bank-first insolvency clears debt after bank and all eligible properties, retaining zero-value wilds", () => {
+  const s = room(2, { bankFirstPayments: true });
+  const g = group(s, "p1", "brown", 1),
+    zero = wild();
+  g.cards.push(zero);
+  const cash = money(1);
+  s.tables.p1.bank.push(cash);
+  play(s, "p0", actionCard("debtCollector"), { target: "p1" });
+  accept(s);
+  act(s, "p1", "pay", { cardIds: [cash.id] });
+  assert.equal(s.pending?.amount, 4);
+  act(s, "p1", "pay", { cardIds: [g.cards[0].id] });
+  placeReceived(s, "brown");
+  assert.equal(s.pending, null);
+  assert.equal(s.tables.p1.sets[0].cards[0].id, zero.id);
+});
+
+test("bank-first integrates with automatic payments and both payment timeout stages", () => {
+  for (const autoPay of [true, false]) {
+    const s = room(2, {
+      bankFirstPayments: true,
+      autoPay,
+      responseSeconds: 15,
+    });
+    const g = group(s, "p1", "red", 1);
+    s.tables.p1.bank.push(money(2));
+    assert.deepEqual(
+      automaticPayment(s.tables.p1, 5, true),
+      s.tables.p1.bank.map((c) => c.id),
+    );
+    play(s, "p0", actionCard("debtCollector"), { target: "p1" });
+    accept(s);
+    if (!autoPay) {
+      expireState(s, 17_000);
+      assert.equal(s.pending?.amount, 3);
+      assert.equal(s.pending?.stage, "payment");
+      expireState(s, 32_000);
+    }
+    assert.equal(s.pending?.stage, "placement");
+    assert.equal(s.pending?.placements[0].card.id, g.cards[0].id);
+    placeReceived(s, "red");
+    assert.equal(s.pending, null);
+  }
+});
+
+test("older saved rules gain the official payment default; bank-first only accepts booleans", () => {
+  const rules = { ...CLASSIC_DEAL_RULES } as Partial<DealRules>;
+  delete rules.bankFirstPayments;
+  assert.equal(checkedDealSettings({ rules }).rules.bankFirstPayments, false);
+  assert.equal(
+    checkedDealSettings({ rules: { bankFirstPayments: true } }).rules
+      .bankFirstPayments,
+    true,
+  );
+  assert.throws(() =>
+    checkedDealSettings({ rules: { bankFirstPayments: "yes" } }),
+  );
+});
 test("insolvency requires all valued assets; zero wilds cannot pay and stay with debtor", () => {
   const s = room();
   const g = group(s, "p1", "brown", 1);
@@ -1046,6 +1194,7 @@ test("real room adapter authenticates, persists, deduplicates concurrent command
     active = snapshot.turn!;
   const demand = actionCard("debtCollector");
   snapshot.hands[active] = [demand];
+  delete (snapshot.settings.rules as Partial<DealRules>).bankFirstPayments;
   snapshot.tables[host.playerId].bank.push(money(5));
   store.set("monopoly-deal", snapshot);
   room = new MonopolyDealRoom(ctx, {} as Env);
@@ -1072,6 +1221,7 @@ test("real room adapter authenticates, persists, deduplicates concurrent command
   ).json()) as DealView;
   assert.deepEqual(v.pending, pending);
   assert.equal(v.hand.length, snapshot.hands[host.playerId].length);
+  assert.equal(v.settings.rules.bankFirstPayments, false);
   assert.ok(!JSON.stringify(v).includes(joined.playerToken));
   assert.equal(
     (
