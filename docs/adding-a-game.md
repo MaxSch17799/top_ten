@@ -25,6 +25,8 @@ Pure public calculations can be shared. Private card values and hidden answers c
 
 Create `backend-do/src/<game>/room.ts`. Reuse the closest existing adapter's contract, not its game-specific behavior. Preserve serialized mutation/persistence and per-viewer broadcasts.
 
+Existing adapters do not yet share a verified command-commit mechanism. Read the [failure-recovery findings](roadmap.md#2-define-and-repair-command-failure-recovery) before copying save/alarm/error ordering. Specify how an uncertain write is recovered and retried; do not assume a returned error means no durable change occurred.
+
 The current integration points are intentionally explicit:
 
 | File | Change |
@@ -70,6 +72,8 @@ On phones, prioritize the current decision and comfortable targets. Use public e
 ## 6. Verify and document the integration
 
 Run `npm run check`, `npm run build`, and relevant browser scenarios. Add engine/adapter tests for the new game and integration tests for create/join/play, authentication, privacy, display permissions, refresh/reconnection, duplicate/stale actions, simultaneous lobbies, and game completion. Include minimum/maximum players and small-phone/TV layouts when relevant.
+
+Extend the [frozen compatibility set](compatibility.md) and the actual dispatcher collision matrix for the new game. Choose a provenance/rollback revision that supports that game while retaining older fixtures for existing games. Include a meaningful pending decision and authenticated read/save/reload coverage; a freshly constructed current-engine state alone is not a historical fixture.
 
 Add a game guide and link it from `docs/README.md` and the root game table. Record sources, house policies, modes, profile storage, timer behavior, tests and limitations. Keep canonical content instructions beside its schema/source folder.
 

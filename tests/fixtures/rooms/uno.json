@@ -1,0 +1,1218 @@
+{
+  "source": {
+    "commit": "a68d476f57ec2ef8ed05ec32d7d5a3011c51ec59",
+    "captureTool": "scripts/capture-compatibility-fixtures.ts",
+    "synthetic": true,
+    "scenario": "Private playable drawn card awaiting play/pass; deck order is frozen."
+  },
+  "now": 1790000000000,
+  "gameType": "uno",
+  "key": "uno",
+  "state": {
+    "gameId": "1234",
+    "players": {
+      "3363rev2": {
+        "playerId": "3363rev2",
+        "nickname": "Fixture Host",
+        "role": "HOST",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "token": "fixture-uno-3363rev2"
+      },
+      "evcknyh8": {
+        "playerId": "evcknyh8",
+        "nickname": "Fixture Guest 1",
+        "role": "PLAYER",
+        "token": "fixture-uno-evcknyh8",
+        "connected": false,
+        "disconnectedAt": 1790000000000
+      },
+      "9570ezu2": {
+        "playerId": "9570ezu2",
+        "nickname": "Fixture Guest 2",
+        "role": "PLAYER",
+        "token": "fixture-uno-9570ezu2",
+        "connected": false,
+        "disconnectedAt": 1790000000000
+      }
+    },
+    "order": [
+      "3363rev2",
+      "evcknyh8",
+      "9570ezu2"
+    ],
+    "hostToken": "fixture-uno-3363rev2",
+    "displayToken": "fixture-uno-display-capability",
+    "settings": {
+      "rules": {
+        "stack2": false,
+        "stack4": false,
+        "mixedStack": false,
+        "jumpIn": false,
+        "sevenZero": false,
+        "drawUntil": false,
+        "multiples": false,
+        "forcedPlay": false
+      },
+      "mode": "single",
+      "rounds": 3,
+      "targetScore": 500,
+      "profileId": "classic",
+      "profileName": "Classic UNO"
+    },
+    "phase": "PLAY",
+    "version": 5,
+    "revision": 4,
+    "generation": 1,
+    "round": 1,
+    "dealer": 1,
+    "turn": "9570ezu2",
+    "direction": 1,
+    "color": "red",
+    "hands": {
+      "3363rev2": [
+        {
+          "id": "7abc1964-0a16-4cc6-8617-7cb17ef826e1",
+          "color": "yellow",
+          "value": "8"
+        },
+        {
+          "id": "c9cbf4c8-2d5c-4aeb-8805-faca286fe24d",
+          "color": "green",
+          "value": "3"
+        },
+        {
+          "id": "ad9f2453-816e-478a-be4f-c8d59937df74",
+          "color": "red",
+          "value": "4"
+        },
+        {
+          "id": "3d33abb5-da4e-478f-9416-e00b185b282d",
+          "color": "red",
+          "value": "3"
+        },
+        {
+          "id": "fa974f79-0a0a-43bf-a881-1e4a0580868e",
+          "color": null,
+          "value": "wild"
+        },
+        {
+          "id": "9e4000a6-1edc-4fbf-b597-643f8b048044",
+          "color": "blue",
+          "value": "skip"
+        },
+        {
+          "id": "5a376b6b-3d4b-4ecf-afc3-4f90aa310d52",
+          "color": "green",
+          "value": "reverse"
+        }
+      ],
+      "evcknyh8": [
+        {
+          "id": "8425d2a1-3bf4-4054-957d-cd97a6362b36",
+          "color": "blue",
+          "value": "6"
+        },
+        {
+          "id": "e5c03b44-f827-440f-95e4-9f39fb95e078",
+          "color": "red",
+          "value": "7"
+        },
+        {
+          "id": "b9cacecc-0774-4ed7-bd1d-4b9582c295d4",
+          "color": "green",
+          "value": "0"
+        },
+        {
+          "id": "92611d6b-5ca9-48da-a51d-d4516cbdff83",
+          "color": "red",
+          "value": "2"
+        },
+        {
+          "id": "288a1336-64b0-4696-bb5c-697ec169e75d",
+          "color": "yellow",
+          "value": "skip"
+        },
+        {
+          "id": "816747f3-169d-4515-a987-2b052bff9ac3",
+          "color": "red",
+          "value": "1"
+        },
+        {
+          "id": "35e88e65-daac-444a-b9a5-3e0913b82368",
+          "color": "red",
+          "value": "7"
+        }
+      ],
+      "9570ezu2": [
+        {
+          "id": "e9e692bd-22f2-468d-bb4f-ab61de152168",
+          "color": "green",
+          "value": "2"
+        },
+        {
+          "id": "e8e9814d-000e-4ade-90c9-e24b00a6720c",
+          "color": "red",
+          "value": "9"
+        },
+        {
+          "id": "a898e956-7fb2-4af5-98c5-87e2ea421e4f",
+          "color": "green",
+          "value": "skip"
+        },
+        {
+          "id": "0b6ae233-4a1c-4cab-8db9-9261eccf076a",
+          "color": "blue",
+          "value": "draw2"
+        },
+        {
+          "id": "d1a07b70-2de6-4774-943c-8f8c51bad4f9",
+          "color": "green",
+          "value": "5"
+        },
+        {
+          "id": "43ee879e-5422-44bf-929c-8bd03f6ccd00",
+          "color": "yellow",
+          "value": "2"
+        },
+        {
+          "id": "c50231d6-2d48-4f27-9043-a330f9040390",
+          "color": "blue",
+          "value": "0"
+        },
+        {
+          "id": "b71fe3fa-62f8-4790-b55c-aca9ef360166",
+          "color": "red",
+          "value": "8"
+        }
+      ]
+    },
+    "deck": [
+      {
+        "id": "60bd4499-5c66-4b89-9bce-d30d9f708ea4",
+        "color": "yellow",
+        "value": "7"
+      },
+      {
+        "id": "38510751-323f-4f9f-ae1b-4803200022a1",
+        "color": "yellow",
+        "value": "6"
+      },
+      {
+        "id": "1f5e601d-d6a6-4b56-bbda-bee2d7197dd6",
+        "color": null,
+        "value": "draw4"
+      },
+      {
+        "id": "c03863a2-2287-47ba-bec3-127159615fc6",
+        "color": "green",
+        "value": "8"
+      },
+      {
+        "id": "2a0fc3fd-898a-48da-81fd-e153f34e0f16",
+        "color": "yellow",
+        "value": "5"
+      },
+      {
+        "id": "29d5da9d-ecc6-4ecb-a582-9397fd72f55d",
+        "color": "green",
+        "value": "7"
+      },
+      {
+        "id": "efcab7d8-c6b1-4f30-8195-456b648cbcc2",
+        "color": "green",
+        "value": "4"
+      },
+      {
+        "id": "6d926ea0-a4e7-4f65-99f8-7b8034af1bf2",
+        "color": "blue",
+        "value": "3"
+      },
+      {
+        "id": "3ac669b5-cf52-4501-9812-998e8b6c87a9",
+        "color": "yellow",
+        "value": "4"
+      },
+      {
+        "id": "1ba3d721-b8b8-41a2-b06c-5abe4d5e51bb",
+        "color": "red",
+        "value": "5"
+      },
+      {
+        "id": "31527bb1-624e-4126-b167-238437c28025",
+        "color": "blue",
+        "value": "4"
+      },
+      {
+        "id": "b594e1ac-54b9-43aa-8424-62758aae031b",
+        "color": "red",
+        "value": "8"
+      },
+      {
+        "id": "a7236e77-c75c-4da4-b176-1afb6b288f0f",
+        "color": null,
+        "value": "wild"
+      },
+      {
+        "id": "5bf666ef-209e-4e24-b3b4-fcdaa65011a0",
+        "color": "red",
+        "value": "draw2"
+      },
+      {
+        "id": "c4a5ef09-ac32-466d-b6f2-31830c84a81e",
+        "color": "blue",
+        "value": "2"
+      },
+      {
+        "id": "81585d97-5c03-4006-a3db-ecca349e05aa",
+        "color": "yellow",
+        "value": "draw2"
+      },
+      {
+        "id": "bfa26880-8776-4ddf-aa07-d2e77fb64e9b",
+        "color": "yellow",
+        "value": "6"
+      },
+      {
+        "id": "27dae00b-9ddb-4b31-8b88-e86083ca6421",
+        "color": "green",
+        "value": "5"
+      },
+      {
+        "id": "d4168acd-fa19-4b6d-86da-c079ef829a5c",
+        "color": "blue",
+        "value": "9"
+      },
+      {
+        "id": "ccd69bc3-2d1e-41f4-815f-d229175dba38",
+        "color": "green",
+        "value": "2"
+      },
+      {
+        "id": "3f0bae70-48df-4f95-91a1-dfff025bb62a",
+        "color": "red",
+        "value": "skip"
+      },
+      {
+        "id": "4bd847b0-1106-4fdc-b606-a93d2e5e264e",
+        "color": "red",
+        "value": "6"
+      },
+      {
+        "id": "61355350-a42e-453b-9410-1d3860d5edc4",
+        "color": "red",
+        "value": "reverse"
+      },
+      {
+        "id": "9a419142-faa7-4e3e-b7b6-ce38fe03fabb",
+        "color": null,
+        "value": "draw4"
+      },
+      {
+        "id": "204d5d0b-9e8c-4a16-bf2b-a5ba5fc68ad0",
+        "color": "yellow",
+        "value": "2"
+      },
+      {
+        "id": "8213d641-696a-4863-b743-a1df3b84ea8a",
+        "color": "blue",
+        "value": "7"
+      },
+      {
+        "id": "dd7dee0f-8663-4666-a5c3-d1f27de78f3b",
+        "color": null,
+        "value": "wild"
+      },
+      {
+        "id": "b81f0d2d-7ed7-4fb1-bb03-7aa5e2424828",
+        "color": "blue",
+        "value": "1"
+      },
+      {
+        "id": "bfdfd767-be5a-4871-9c98-703a7046bf63",
+        "color": "red",
+        "value": "draw2"
+      },
+      {
+        "id": "65c932ab-bae4-4b92-bcc3-ec14f3edcc66",
+        "color": "red",
+        "value": "6"
+      },
+      {
+        "id": "4bd2ef21-6a92-4b3c-959a-515496de9063",
+        "color": "red",
+        "value": "reverse"
+      },
+      {
+        "id": "64acddd3-8443-4f5e-abb2-2e9df3dab1a0",
+        "color": null,
+        "value": "wild"
+      },
+      {
+        "id": "94b32813-55fd-4546-ac0e-71c30f58281e",
+        "color": "yellow",
+        "value": "0"
+      },
+      {
+        "id": "229a7ee2-1488-4ba7-b31c-7ed9fb628426",
+        "color": "blue",
+        "value": "1"
+      },
+      {
+        "id": "1a2b7cd1-73d4-435a-bcd9-dfaad2eaf2cc",
+        "color": "green",
+        "value": "draw2"
+      },
+      {
+        "id": "6a03a88b-cbfa-40bd-9a79-a67c17551337",
+        "color": "blue",
+        "value": "reverse"
+      },
+      {
+        "id": "0c01ed99-727e-4c30-bb76-30be411e454b",
+        "color": "yellow",
+        "value": "3"
+      },
+      {
+        "id": "69a6eebb-3092-49b9-82f2-d5349015bc08",
+        "color": "red",
+        "value": "2"
+      },
+      {
+        "id": "48451a97-d421-43db-b4f1-f16d1bad0456",
+        "color": "green",
+        "value": "1"
+      },
+      {
+        "id": "1e2ba33d-4695-4bf8-b5ef-c5bf48ac7b02",
+        "color": "green",
+        "value": "8"
+      },
+      {
+        "id": "3daa2b57-02e2-4d1b-a5d7-f31d61988aee",
+        "color": "green",
+        "value": "9"
+      },
+      {
+        "id": "d27c60a1-c43e-4fee-b1b3-2fa1938348db",
+        "color": "red",
+        "value": "4"
+      },
+      {
+        "id": "54adbcec-7e6e-47b6-b2c5-df8aefa7fedf",
+        "color": "blue",
+        "value": "reverse"
+      },
+      {
+        "id": "e884b624-f489-4f99-9059-549cb6a17cec",
+        "color": "green",
+        "value": "9"
+      },
+      {
+        "id": "fda81fd2-8e15-4419-b459-e5c72c9323b9",
+        "color": "red",
+        "value": "3"
+      },
+      {
+        "id": "61e3d13d-2caa-4f16-85c2-38bc214fc517",
+        "color": "blue",
+        "value": "3"
+      },
+      {
+        "id": "88ca051d-b745-408f-9ab2-9e8290e3601f",
+        "color": "yellow",
+        "value": "reverse"
+      },
+      {
+        "id": "61cd6162-86a6-4aab-b1ce-901be2d981ab",
+        "color": "green",
+        "value": "1"
+      },
+      {
+        "id": "ec05842f-97dc-46d7-a42e-d43a99e7a46c",
+        "color": "blue",
+        "value": "9"
+      },
+      {
+        "id": "55dfe344-e89c-4fad-b2aa-a56b245eba21",
+        "color": "blue",
+        "value": "5"
+      },
+      {
+        "id": "04ec0242-33a3-41ee-bb50-f2083c67dadd",
+        "color": "blue",
+        "value": "skip"
+      },
+      {
+        "id": "45e87d66-010a-497d-9b2e-b780e2ac375e",
+        "color": "blue",
+        "value": "8"
+      },
+      {
+        "id": "3dd1b728-1489-47d6-81d4-7c41f912d498",
+        "color": "yellow",
+        "value": "skip"
+      },
+      {
+        "id": "2e01465b-65bf-4e79-8c50-7add87ee1b95",
+        "color": "blue",
+        "value": "8"
+      },
+      {
+        "id": "57af4a83-2ce6-47c3-9f13-5593f02b1609",
+        "color": "yellow",
+        "value": "1"
+      },
+      {
+        "id": "8b1b5154-da75-4277-b645-5244d249dfea",
+        "color": "yellow",
+        "value": "8"
+      },
+      {
+        "id": "de9a6320-14c0-49a3-bfcd-5be52dbe40ae",
+        "color": "blue",
+        "value": "2"
+      },
+      {
+        "id": "eab3702e-a3ec-46be-b249-be9e60c4dc18",
+        "color": "green",
+        "value": "7"
+      },
+      {
+        "id": "1c7be879-3e69-4e02-8661-8859aa772597",
+        "color": "yellow",
+        "value": "7"
+      },
+      {
+        "id": "1b0b9ed8-3d17-454f-8677-7d4be8333338",
+        "color": "red",
+        "value": "9"
+      },
+      {
+        "id": "b6e114c3-3a96-4ba4-836d-23f89e18a0f2",
+        "color": "green",
+        "value": "4"
+      },
+      {
+        "id": "027d5102-1162-4db8-aca4-78ed949023d4",
+        "color": "blue",
+        "value": "6"
+      },
+      {
+        "id": "cbaa5339-b67b-4b71-836a-630aa3e37ebf",
+        "color": "red",
+        "value": "0"
+      },
+      {
+        "id": "6c9cc6c4-152d-406e-8a97-878b57093c62",
+        "color": "blue",
+        "value": "5"
+      },
+      {
+        "id": "dbfbd679-758e-4fa7-b65c-4edf50857d5c",
+        "color": null,
+        "value": "draw4"
+      },
+      {
+        "id": "a61a87ac-7911-44b1-b064-3d2e14486cc2",
+        "color": "yellow",
+        "value": "4"
+      },
+      {
+        "id": "c9857191-73b9-46de-ba43-706f160af462",
+        "color": "yellow",
+        "value": "reverse"
+      },
+      {
+        "id": "93afd602-5687-481c-9604-44fcef68802e",
+        "color": "yellow",
+        "value": "9"
+      },
+      {
+        "id": "507d9e63-a9f6-44ce-a5b3-a99b6d68c099",
+        "color": "yellow",
+        "value": "1"
+      },
+      {
+        "id": "d4412f0e-db7a-418d-ab17-309e2b728530",
+        "color": "yellow",
+        "value": "9"
+      },
+      {
+        "id": "f97442e8-7487-4bb4-a253-a3d9d12cafaf",
+        "color": "green",
+        "value": "draw2"
+      },
+      {
+        "id": "f679e0d4-65af-4c4c-b283-3994d981e47b",
+        "color": "blue",
+        "value": "4"
+      },
+      {
+        "id": "0ae3b035-2fb2-4c21-9020-2cc3ac7f890c",
+        "color": "green",
+        "value": "skip"
+      },
+      {
+        "id": "a3aa6168-1037-468a-a33d-a9998c13ba96",
+        "color": "green",
+        "value": "reverse"
+      },
+      {
+        "id": "d80434ef-bfa1-4c59-8198-9a85fb37faee",
+        "color": "green",
+        "value": "3"
+      },
+      {
+        "id": "9182999f-3693-4a58-aa5b-5e32353c5ea2",
+        "color": "yellow",
+        "value": "draw2"
+      },
+      {
+        "id": "dbb40c73-d6a5-4a59-b440-af3b35890df6",
+        "color": "yellow",
+        "value": "3"
+      },
+      {
+        "id": "3b476684-9a81-4518-95c9-4b26c17f3628",
+        "color": "blue",
+        "value": "7"
+      },
+      {
+        "id": "cc5f0e15-2604-46a1-a24d-3c1a2f9538a8",
+        "color": "green",
+        "value": "6"
+      },
+      {
+        "id": "fdb88aa0-5c3b-4bde-8c9e-2d7159a44d49",
+        "color": null,
+        "value": "draw4"
+      },
+      {
+        "id": "0f7e3f68-b85e-436d-bbd6-ee481f7a1923",
+        "color": "yellow",
+        "value": "5"
+      },
+      {
+        "id": "6abbfd79-ff2f-4742-8e52-65bd6762bbd7",
+        "color": "red",
+        "value": "5"
+      },
+      {
+        "id": "6d6bf386-1947-4c08-9985-4686a618f5bc",
+        "color": "blue",
+        "value": "draw2"
+      },
+      {
+        "id": "0262f947-61d0-44fe-a58d-50f1687b1cc4",
+        "color": "red",
+        "value": "skip"
+      },
+      {
+        "id": "e5eee197-8a86-4d0b-9847-fd3dc5ac0229",
+        "color": "green",
+        "value": "6"
+      }
+    ],
+    "discard": [
+      {
+        "id": "b2a7e5f0-11a8-4e7a-8db5-16c343a604e7",
+        "color": "red",
+        "value": "1"
+      }
+    ],
+    "scores": {
+      "3363rev2": 0,
+      "evcknyh8": 0,
+      "9570ezu2": 0
+    },
+    "wins": {
+      "3363rev2": 0,
+      "evcknyh8": 0,
+      "9570ezu2": 0
+    },
+    "drawnCardId": "b71fe3fa-62f8-4790-b55c-aca9ef360166",
+    "pending": null,
+    "outCandidate": null,
+    "unoVulnerable": null,
+    "declared": [],
+    "passes": 0,
+    "events": [
+      {
+        "id": 1,
+        "type": "round",
+        "actor": null,
+        "message": "Round 1. Seven cards each."
+      },
+      {
+        "count": 1,
+        "target": "9570ezu2",
+        "id": 2,
+        "type": "draw",
+        "actor": "9570ezu2",
+        "message": "Fixture Guest 2 drew 1 card."
+      }
+    ],
+    "eventSequence": 2,
+    "result": null,
+    "history": [],
+    "winners": [],
+    "nextRoundAt": null,
+    "expiresAt": 1790007200000,
+    "processed": [
+      {
+        "id": "fixture-action-1",
+        "actor": "3363rev2"
+      },
+      {
+        "id": "fixture-action-2",
+        "actor": "9570ezu2"
+      }
+    ],
+    "proof": null
+  },
+  "views": {
+    "3363rev2": {
+      "gameType": "uno",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "3363rev2",
+      "yourRole": "HOST",
+      "order": [
+        "3363rev2",
+        "evcknyh8",
+        "9570ezu2"
+      ],
+      "settings": {
+        "rules": {
+          "stack2": false,
+          "stack4": false,
+          "mixedStack": false,
+          "jumpIn": false,
+          "sevenZero": false,
+          "drawUntil": false,
+          "multiples": false,
+          "forcedPlay": false
+        },
+        "mode": "single",
+        "rounds": 3,
+        "targetScore": 500,
+        "profileId": "classic",
+        "profileName": "Classic UNO"
+      },
+      "players": [
+        {
+          "playerId": "3363rev2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "evcknyh8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "9570ezu2",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 8,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        }
+      ],
+      "round": 1,
+      "turn": "9570ezu2",
+      "direction": 1,
+      "color": "red",
+      "top": {
+        "id": "b2a7e5f0-11a8-4e7a-8db5-16c343a604e7",
+        "color": "red",
+        "value": "1"
+      },
+      "deckCount": 85,
+      "hand": [
+        {
+          "id": "7abc1964-0a16-4cc6-8617-7cb17ef826e1",
+          "color": "yellow",
+          "value": "8"
+        },
+        {
+          "id": "c9cbf4c8-2d5c-4aeb-8805-faca286fe24d",
+          "color": "green",
+          "value": "3"
+        },
+        {
+          "id": "ad9f2453-816e-478a-be4f-c8d59937df74",
+          "color": "red",
+          "value": "4"
+        },
+        {
+          "id": "3d33abb5-da4e-478f-9416-e00b185b282d",
+          "color": "red",
+          "value": "3"
+        },
+        {
+          "id": "fa974f79-0a0a-43bf-a881-1e4a0580868e",
+          "color": null,
+          "value": "wild"
+        },
+        {
+          "id": "9e4000a6-1edc-4fbf-b597-643f8b048044",
+          "color": "blue",
+          "value": "skip"
+        },
+        {
+          "id": "5a376b6b-3d4b-4ecf-afc3-4f90aa310d52",
+          "color": "green",
+          "value": "reverse"
+        }
+      ],
+      "legalCardIds": [],
+      "bluffCardIds": [],
+      "canDraw": false,
+      "canPass": false,
+      "drawnCardId": null,
+      "pending": null,
+      "unoVulnerable": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "round",
+          "actor": null,
+          "message": "Round 1. Seven cards each."
+        },
+        {
+          "count": 1,
+          "target": "9570ezu2",
+          "id": 2,
+          "type": "draw",
+          "actor": "9570ezu2",
+          "message": "Fixture Guest 2 drew 1 card."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "nextRoundAt": null,
+      "serverNow": 1790000000000,
+      "displayToken": "fixture-uno-display-capability"
+    },
+    "evcknyh8": {
+      "gameType": "uno",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "evcknyh8",
+      "yourRole": "PLAYER",
+      "order": [
+        "3363rev2",
+        "evcknyh8",
+        "9570ezu2"
+      ],
+      "settings": {
+        "rules": {
+          "stack2": false,
+          "stack4": false,
+          "mixedStack": false,
+          "jumpIn": false,
+          "sevenZero": false,
+          "drawUntil": false,
+          "multiples": false,
+          "forcedPlay": false
+        },
+        "mode": "single",
+        "rounds": 3,
+        "targetScore": 500,
+        "profileId": "classic",
+        "profileName": "Classic UNO"
+      },
+      "players": [
+        {
+          "playerId": "3363rev2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "evcknyh8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "9570ezu2",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 8,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        }
+      ],
+      "round": 1,
+      "turn": "9570ezu2",
+      "direction": 1,
+      "color": "red",
+      "top": {
+        "id": "b2a7e5f0-11a8-4e7a-8db5-16c343a604e7",
+        "color": "red",
+        "value": "1"
+      },
+      "deckCount": 85,
+      "hand": [
+        {
+          "id": "8425d2a1-3bf4-4054-957d-cd97a6362b36",
+          "color": "blue",
+          "value": "6"
+        },
+        {
+          "id": "e5c03b44-f827-440f-95e4-9f39fb95e078",
+          "color": "red",
+          "value": "7"
+        },
+        {
+          "id": "b9cacecc-0774-4ed7-bd1d-4b9582c295d4",
+          "color": "green",
+          "value": "0"
+        },
+        {
+          "id": "92611d6b-5ca9-48da-a51d-d4516cbdff83",
+          "color": "red",
+          "value": "2"
+        },
+        {
+          "id": "288a1336-64b0-4696-bb5c-697ec169e75d",
+          "color": "yellow",
+          "value": "skip"
+        },
+        {
+          "id": "816747f3-169d-4515-a987-2b052bff9ac3",
+          "color": "red",
+          "value": "1"
+        },
+        {
+          "id": "35e88e65-daac-444a-b9a5-3e0913b82368",
+          "color": "red",
+          "value": "7"
+        }
+      ],
+      "legalCardIds": [],
+      "bluffCardIds": [],
+      "canDraw": false,
+      "canPass": false,
+      "drawnCardId": null,
+      "pending": null,
+      "unoVulnerable": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "round",
+          "actor": null,
+          "message": "Round 1. Seven cards each."
+        },
+        {
+          "count": 1,
+          "target": "9570ezu2",
+          "id": 2,
+          "type": "draw",
+          "actor": "9570ezu2",
+          "message": "Fixture Guest 2 drew 1 card."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "nextRoundAt": null,
+      "serverNow": 1790000000000
+    },
+    "9570ezu2": {
+      "gameType": "uno",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "9570ezu2",
+      "yourRole": "PLAYER",
+      "order": [
+        "3363rev2",
+        "evcknyh8",
+        "9570ezu2"
+      ],
+      "settings": {
+        "rules": {
+          "stack2": false,
+          "stack4": false,
+          "mixedStack": false,
+          "jumpIn": false,
+          "sevenZero": false,
+          "drawUntil": false,
+          "multiples": false,
+          "forcedPlay": false
+        },
+        "mode": "single",
+        "rounds": 3,
+        "targetScore": 500,
+        "profileId": "classic",
+        "profileName": "Classic UNO"
+      },
+      "players": [
+        {
+          "playerId": "3363rev2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "evcknyh8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "9570ezu2",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 8,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        }
+      ],
+      "round": 1,
+      "turn": "9570ezu2",
+      "direction": 1,
+      "color": "red",
+      "top": {
+        "id": "b2a7e5f0-11a8-4e7a-8db5-16c343a604e7",
+        "color": "red",
+        "value": "1"
+      },
+      "deckCount": 85,
+      "hand": [
+        {
+          "id": "e9e692bd-22f2-468d-bb4f-ab61de152168",
+          "color": "green",
+          "value": "2"
+        },
+        {
+          "id": "e8e9814d-000e-4ade-90c9-e24b00a6720c",
+          "color": "red",
+          "value": "9"
+        },
+        {
+          "id": "a898e956-7fb2-4af5-98c5-87e2ea421e4f",
+          "color": "green",
+          "value": "skip"
+        },
+        {
+          "id": "0b6ae233-4a1c-4cab-8db9-9261eccf076a",
+          "color": "blue",
+          "value": "draw2"
+        },
+        {
+          "id": "d1a07b70-2de6-4774-943c-8f8c51bad4f9",
+          "color": "green",
+          "value": "5"
+        },
+        {
+          "id": "43ee879e-5422-44bf-929c-8bd03f6ccd00",
+          "color": "yellow",
+          "value": "2"
+        },
+        {
+          "id": "c50231d6-2d48-4f27-9043-a330f9040390",
+          "color": "blue",
+          "value": "0"
+        },
+        {
+          "id": "b71fe3fa-62f8-4790-b55c-aca9ef360166",
+          "color": "red",
+          "value": "8"
+        }
+      ],
+      "legalCardIds": [
+        "b71fe3fa-62f8-4790-b55c-aca9ef360166"
+      ],
+      "bluffCardIds": [],
+      "canDraw": false,
+      "canPass": true,
+      "drawnCardId": "b71fe3fa-62f8-4790-b55c-aca9ef360166",
+      "pending": null,
+      "unoVulnerable": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "round",
+          "actor": null,
+          "message": "Round 1. Seven cards each."
+        },
+        {
+          "count": 1,
+          "target": "9570ezu2",
+          "id": 2,
+          "type": "draw",
+          "actor": "9570ezu2",
+          "message": "Fixture Guest 2 drew 1 card."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "nextRoundAt": null,
+      "serverNow": 1790000000000
+    },
+    "$display": {
+      "gameType": "uno",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "$display",
+      "yourRole": "DISPLAY",
+      "order": [
+        "3363rev2",
+        "evcknyh8",
+        "9570ezu2"
+      ],
+      "settings": {
+        "rules": {
+          "stack2": false,
+          "stack4": false,
+          "mixedStack": false,
+          "jumpIn": false,
+          "sevenZero": false,
+          "drawUntil": false,
+          "multiples": false,
+          "forcedPlay": false
+        },
+        "mode": "single",
+        "rounds": 3,
+        "targetScore": 500,
+        "profileId": "classic",
+        "profileName": "Classic UNO"
+      },
+      "players": [
+        {
+          "playerId": "3363rev2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "evcknyh8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 7,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        },
+        {
+          "playerId": "9570ezu2",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 8,
+          "score": 0,
+          "wins": 0,
+          "saidUno": false
+        }
+      ],
+      "round": 1,
+      "turn": "9570ezu2",
+      "direction": 1,
+      "color": "red",
+      "top": {
+        "id": "b2a7e5f0-11a8-4e7a-8db5-16c343a604e7",
+        "color": "red",
+        "value": "1"
+      },
+      "deckCount": 85,
+      "hand": [],
+      "legalCardIds": [],
+      "bluffCardIds": [],
+      "canDraw": false,
+      "canPass": false,
+      "drawnCardId": null,
+      "pending": null,
+      "unoVulnerable": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "round",
+          "actor": null,
+          "message": "Round 1. Seven cards each."
+        },
+        {
+          "count": 1,
+          "target": "9570ezu2",
+          "id": 2,
+          "type": "draw",
+          "actor": "9570ezu2",
+          "message": "Fixture Guest 2 drew 1 card."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "nextRoundAt": null,
+      "serverNow": 1790000000000
+    }
+  },
+  "actor": "9570ezu2",
+  "token": "fixture-uno-9570ezu2",
+  "command": {
+    "route": "action",
+    "body": {
+      "id": "fixture-action-3",
+      "type": "pass",
+      "payload": {},
+      "generation": 1,
+      "revision": 4,
+      "round": 1,
+      "phase": "PLAY"
+    }
+  }
+}

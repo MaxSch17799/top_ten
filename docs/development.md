@@ -86,3 +86,9 @@ npm run test:e2e -- --trace off
 Do not increase a test timeout to hide a failed gameplay assertion. Check the error context first; multi-device games and screenshot/trace cleanup have different failure modes. Screenshots/traces and local diagnostic snapshots belong in ignored `test-results/`, not in application source.
 
 `PLAYWRIGHT_BASE_URL` disables local web-server startup. Individual suites use different backend override variables, and some older tests assume localhost. See the suite before targeting a remote deployment. `npm run test:live` intentionally exercises production and is **not** part of normal `check`/`build`; see [deployment](deployment.md).
+
+## Continuous integration and compatibility
+
+The GitHub [verification workflow](../.github/workflows/verify.yml) runs locked installs at both existing package boundaries, `check`, both builds and the local browser suite on Node 24. It needs no production credentials and performs no deployment. Failure artifacts are retained for seven days.
+
+Node tests also restore frozen synthetic rooms and execute the pinned rollback Git revision. A shallow/source-only checkout must fetch the required history first; missing baseline objects fail explicitly. See [compatibility protection](compatibility.md) for fixture provenance, maintenance commands, browser-storage contracts and the limits of the storage double.

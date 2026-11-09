@@ -1,0 +1,774 @@
+{
+  "source": {
+    "commit": "a68d476f57ec2ef8ed05ec32d7d5a3011c51ec59",
+    "captureTool": "scripts/capture-compatibility-fixtures.ts",
+    "synthetic": true,
+    "scenario": "Paused preparation with hidden fish roles and answer."
+  },
+  "now": 1790000000000,
+  "gameType": "sounds-fishy",
+  "key": "sounds-fishy",
+  "state": {
+    "gameType": "sounds-fishy",
+    "gameId": "1234",
+    "hostToken": "fixture-sounds-fishy-host-capability",
+    "displayToken": "fixture-sounds-fishy-display-capability",
+    "version": 6,
+    "generation": 1,
+    "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+    "phase": "PREPARATION",
+    "players": {
+      "fap3zjn2": {
+        "playerId": "fap3zjn2",
+        "nickname": "Fixture Host",
+        "role": "HOST",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-sounds-fishy-fap3zjn2"
+      },
+      "tfbfcnfx": {
+        "playerId": "tfbfcnfx",
+        "nickname": "Fixture Guest 1",
+        "role": "PLAYER",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-sounds-fishy-tfbfcnfx"
+      },
+      "zrkqbwod": {
+        "playerId": "zrkqbwod",
+        "nickname": "Fixture Guest 2",
+        "role": "PLAYER",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-sounds-fishy-zrkqbwod"
+      },
+      "cf08nfe4": {
+        "playerId": "cf08nfe4",
+        "nickname": "Fixture Guest 3",
+        "role": "PLAYER",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-sounds-fishy-cf08nfe4"
+      }
+    },
+    "order": [
+      "fap3zjn2",
+      "tfbfcnfx",
+      "zrkqbwod",
+      "cf08nfe4"
+    ],
+    "settings": {
+      "bankId": "sounds-fishy-classic-en",
+      "mode": "party",
+      "lengthMode": "official",
+      "rotations": 2,
+      "rounds": 8,
+      "preparationSeconds": 45,
+      "decisionSeconds": 0,
+      "autoNext": false,
+      "facilitator": true
+    },
+    "roundSettings": {
+      "bankId": "sounds-fishy-classic-en",
+      "mode": "party",
+      "lengthMode": "official",
+      "rotations": 2,
+      "rounds": 8,
+      "preparationSeconds": 45,
+      "decisionSeconds": 0,
+      "autoNext": false,
+      "facilitator": true
+    },
+    "round": 1,
+    "totalRounds": 8,
+    "guesserId": "fap3zjn2",
+    "nextGuesserId": null,
+    "fish": [
+      "tfbfcnfx",
+      "zrkqbwod",
+      "cf08nfe4"
+    ],
+    "roles": {
+      "tfbfcnfx": "blue",
+      "zrkqbwod": "red",
+      "cf08nfe4": "red"
+    },
+    "submissions": {},
+    "question": {
+      "id": "sf-en-0106",
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?",
+      "answer": "A lightning flash",
+      "acceptedAnswers": [
+        "Lightning",
+        "Megaflash"
+      ],
+      "category": "extraordinary_events",
+      "answerType": "other",
+      "difficulty": 2,
+      "explanation": "A 2020 lightning megaflash over South America lasted around 17.1 seconds.",
+      "sources": [
+        {
+          "title": "Longest lasting lightning flash",
+          "publisher": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/453773-longest-lasting-lightning-flash",
+          "accessed": "2026-10-29"
+        }
+      ],
+      "verificationNotes": "A recorded atmospheric flash, not continuous thunder or an electrical grid outage."
+    },
+    "used": {
+      "sounds-fishy-classic-en": [
+        "sf-en-0106"
+      ]
+    },
+    "cycle": {
+      "sounds-fishy-classic-en": 1
+    },
+    "eliminated": [],
+    "scores": {
+      "fap3zjn2": 0,
+      "tfbfcnfx": 0,
+      "zrkqbwod": 0,
+      "cf08nfe4": 0
+    },
+    "result": null,
+    "scoreBeforeResult": null,
+    "deadline": null,
+    "paused": true,
+    "pausedRemaining": 45000,
+    "expiresAt": 1790007200000,
+    "endedReason": null,
+    "notice": null,
+    "processed": [
+      "fap3zjn2:fixture-action-1",
+      "fap3zjn2:fixture-action-2"
+    ],
+    "audit": []
+  },
+  "views": {
+    "fap3zjn2": {
+      "gameType": "sounds-fishy",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+      "serverNow": 1790000000000,
+      "phase": "PREPARATION",
+      "yourPlayerId": "fap3zjn2",
+      "yourRole": "HOST",
+      "players": [
+        {
+          "playerId": "fap3zjn2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "tfbfcnfx",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "zrkqbwod",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "cf08nfe4",
+          "nickname": "Fixture Guest 3",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "fap3zjn2",
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "settings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "roundSettings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "banks": [
+        {
+          "bankId": "sounds-fishy-classic-de",
+          "title": "Classic German",
+          "language": "de",
+          "development": false,
+          "questionCount": 150
+        },
+        {
+          "bankId": "sounds-fishy-classic-en",
+          "title": "Classic English",
+          "language": "en",
+          "development": false,
+          "questionCount": 150
+        }
+      ],
+      "round": 1,
+      "totalRounds": 8,
+      "guesserId": "fap3zjn2",
+      "nextGuesserId": null,
+      "fish": [
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "scores": {
+        "fap3zjn2": 0,
+        "tfbfcnfx": 0,
+        "zrkqbwod": 0,
+        "cf08nfe4": 0
+      },
+      "submitted": [],
+      "roles": {},
+      "eliminated": [],
+      "provisional": 0,
+      "result": null,
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 45000,
+      "notice": null,
+      "endedReason": null,
+      "winners": [],
+      "audit": [],
+      "poolRemaining": 149,
+      "poolCycle": 1,
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?",
+      "displayToken": "fixture-sounds-fishy-display-capability"
+    },
+    "tfbfcnfx": {
+      "gameType": "sounds-fishy",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+      "serverNow": 1790000000000,
+      "phase": "PREPARATION",
+      "yourPlayerId": "tfbfcnfx",
+      "yourRole": "PLAYER",
+      "players": [
+        {
+          "playerId": "fap3zjn2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "tfbfcnfx",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "zrkqbwod",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "cf08nfe4",
+          "nickname": "Fixture Guest 3",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "fap3zjn2",
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "settings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "roundSettings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "banks": [
+        {
+          "bankId": "sounds-fishy-classic-de",
+          "title": "Classic German",
+          "language": "de",
+          "development": false,
+          "questionCount": 150
+        },
+        {
+          "bankId": "sounds-fishy-classic-en",
+          "title": "Classic English",
+          "language": "en",
+          "development": false,
+          "questionCount": 150
+        }
+      ],
+      "round": 1,
+      "totalRounds": 8,
+      "guesserId": "fap3zjn2",
+      "nextGuesserId": null,
+      "fish": [
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "scores": {
+        "fap3zjn2": 0,
+        "tfbfcnfx": 0,
+        "zrkqbwod": 0,
+        "cf08nfe4": 0
+      },
+      "submitted": [],
+      "roles": {},
+      "eliminated": [],
+      "provisional": 0,
+      "result": null,
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 45000,
+      "notice": null,
+      "endedReason": null,
+      "winners": [],
+      "audit": [],
+      "poolRemaining": 149,
+      "poolCycle": 1,
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?",
+      "answer": "A lightning flash",
+      "ownRole": "blue"
+    },
+    "zrkqbwod": {
+      "gameType": "sounds-fishy",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+      "serverNow": 1790000000000,
+      "phase": "PREPARATION",
+      "yourPlayerId": "zrkqbwod",
+      "yourRole": "PLAYER",
+      "players": [
+        {
+          "playerId": "fap3zjn2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "tfbfcnfx",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "zrkqbwod",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "cf08nfe4",
+          "nickname": "Fixture Guest 3",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "fap3zjn2",
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "settings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "roundSettings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "banks": [
+        {
+          "bankId": "sounds-fishy-classic-de",
+          "title": "Classic German",
+          "language": "de",
+          "development": false,
+          "questionCount": 150
+        },
+        {
+          "bankId": "sounds-fishy-classic-en",
+          "title": "Classic English",
+          "language": "en",
+          "development": false,
+          "questionCount": 150
+        }
+      ],
+      "round": 1,
+      "totalRounds": 8,
+      "guesserId": "fap3zjn2",
+      "nextGuesserId": null,
+      "fish": [
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "scores": {
+        "fap3zjn2": 0,
+        "tfbfcnfx": 0,
+        "zrkqbwod": 0,
+        "cf08nfe4": 0
+      },
+      "submitted": [],
+      "roles": {},
+      "eliminated": [],
+      "provisional": 0,
+      "result": null,
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 45000,
+      "notice": null,
+      "endedReason": null,
+      "winners": [],
+      "audit": [],
+      "poolRemaining": 149,
+      "poolCycle": 1,
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?",
+      "answer": "A lightning flash",
+      "ownRole": "red"
+    },
+    "cf08nfe4": {
+      "gameType": "sounds-fishy",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+      "serverNow": 1790000000000,
+      "phase": "PREPARATION",
+      "yourPlayerId": "cf08nfe4",
+      "yourRole": "PLAYER",
+      "players": [
+        {
+          "playerId": "fap3zjn2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "tfbfcnfx",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "zrkqbwod",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "cf08nfe4",
+          "nickname": "Fixture Guest 3",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "fap3zjn2",
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "settings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "roundSettings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "banks": [
+        {
+          "bankId": "sounds-fishy-classic-de",
+          "title": "Classic German",
+          "language": "de",
+          "development": false,
+          "questionCount": 150
+        },
+        {
+          "bankId": "sounds-fishy-classic-en",
+          "title": "Classic English",
+          "language": "en",
+          "development": false,
+          "questionCount": 150
+        }
+      ],
+      "round": 1,
+      "totalRounds": 8,
+      "guesserId": "fap3zjn2",
+      "nextGuesserId": null,
+      "fish": [
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "scores": {
+        "fap3zjn2": 0,
+        "tfbfcnfx": 0,
+        "zrkqbwod": 0,
+        "cf08nfe4": 0
+      },
+      "submitted": [],
+      "roles": {},
+      "eliminated": [],
+      "provisional": 0,
+      "result": null,
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 45000,
+      "notice": null,
+      "endedReason": null,
+      "winners": [],
+      "audit": [],
+      "poolRemaining": 149,
+      "poolCycle": 1,
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?",
+      "answer": "A lightning flash",
+      "ownRole": "red"
+    },
+    "$display": {
+      "gameType": "sounds-fishy",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+      "serverNow": 1790000000000,
+      "phase": "PREPARATION",
+      "yourPlayerId": "",
+      "yourRole": "DISPLAY",
+      "players": [
+        {
+          "playerId": "fap3zjn2",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "tfbfcnfx",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "zrkqbwod",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "cf08nfe4",
+          "nickname": "Fixture Guest 3",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "fap3zjn2",
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "settings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "roundSettings": {
+        "bankId": "sounds-fishy-classic-en",
+        "mode": "party",
+        "lengthMode": "official",
+        "rotations": 2,
+        "rounds": 8,
+        "preparationSeconds": 45,
+        "decisionSeconds": 0,
+        "autoNext": false,
+        "facilitator": true
+      },
+      "banks": [
+        {
+          "bankId": "sounds-fishy-classic-de",
+          "title": "Classic German",
+          "language": "de",
+          "development": false,
+          "questionCount": 150
+        },
+        {
+          "bankId": "sounds-fishy-classic-en",
+          "title": "Classic English",
+          "language": "en",
+          "development": false,
+          "questionCount": 150
+        }
+      ],
+      "round": 1,
+      "totalRounds": 8,
+      "guesserId": "fap3zjn2",
+      "nextGuesserId": null,
+      "fish": [
+        "tfbfcnfx",
+        "zrkqbwod",
+        "cf08nfe4"
+      ],
+      "scores": {
+        "fap3zjn2": 0,
+        "tfbfcnfx": 0,
+        "zrkqbwod": 0,
+        "cf08nfe4": 0
+      },
+      "submitted": [],
+      "roles": {},
+      "eliminated": [],
+      "provisional": 0,
+      "result": null,
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 45000,
+      "notice": null,
+      "endedReason": null,
+      "winners": [],
+      "audit": [],
+      "poolRemaining": 149,
+      "poolCycle": 1,
+      "question": "What weather phenomenon over South America lasted more than seventeen seconds during a 2020 event?"
+    }
+  },
+  "actor": "fap3zjn2",
+  "token": "fixture-sounds-fishy-fap3zjn2",
+  "command": {
+    "route": "action",
+    "body": {
+      "id": "fixture-action-3",
+      "type": "resume",
+      "payload": {},
+      "generation": 1,
+      "round": 1,
+      "roundId": "1024b770-01da-48dd-bf85-abf6fb665c7e",
+      "phase": "PREPARATION"
+    }
+  }
+}

@@ -1,0 +1,2092 @@
+{
+  "source": {
+    "commit": "a68d476f57ec2ef8ed05ec32d7d5a3011c51ec59",
+    "captureTool": "scripts/capture-compatibility-fixtures.ts",
+    "synthetic": true,
+    "scenario": "Checkpoint debt-collector response with legacy missing bankFirstPayments setting."
+  },
+  "now": 1790000000000,
+  "gameType": "monopoly-deal",
+  "key": "monopoly-deal",
+  "state": {
+    "gameId": "1234",
+    "players": {
+      "sampmkpb": {
+        "playerId": "sampmkpb",
+        "nickname": "Fixture Host",
+        "role": "HOST",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "token": "fixture-monopoly-deal-sampmkpb"
+      },
+      "ttabobwi": {
+        "playerId": "ttabobwi",
+        "nickname": "Fixture Guest 1",
+        "role": "PLAYER",
+        "token": "fixture-monopoly-deal-ttabobwi",
+        "connected": false,
+        "disconnectedAt": 1790000000000
+      },
+      "gjv27frs": {
+        "playerId": "gjv27frs",
+        "nickname": "Fixture Guest 2",
+        "role": "PLAYER",
+        "token": "fixture-monopoly-deal-gjv27frs",
+        "connected": false,
+        "disconnectedAt": 1790000000000
+      }
+    },
+    "order": [
+      "sampmkpb",
+      "ttabobwi",
+      "gjv27frs"
+    ],
+    "displayToken": "fixture-monopoly-deal-display-capability",
+    "settings": {
+      "rules": {
+        "setsToWin": 3,
+        "startingHand": 5,
+        "handLimit": 7,
+        "playsPerTurn": 3,
+        "drawPerTurn": 2,
+        "dealBreaker": true,
+        "rearrange": true,
+        "ownTurnNoCostsPlay": false,
+        "responseSeconds": 0,
+        "turnSeconds": 0,
+        "autoPay": false
+      },
+      "mode": "single",
+      "games": 3,
+      "profileId": "classic",
+      "profileName": "Classic Monopoly Deal"
+    },
+    "phase": "PLAY",
+    "version": 5,
+    "revision": 4,
+    "generation": 1,
+    "round": 1,
+    "turn": "sampmkpb",
+    "playsLeft": 2,
+    "hands": {
+      "sampmkpb": [
+        {
+          "kind": "money",
+          "title": "4 Million",
+          "value": 4,
+          "colors": [],
+          "id": "g1r1-15"
+        },
+        {
+          "kind": "property",
+          "title": "East Station",
+          "value": 2,
+          "colors": [
+            "railroad"
+          ],
+          "id": "g1r1-43"
+        },
+        {
+          "kind": "money",
+          "title": "4 Million",
+          "value": 4,
+          "colors": [],
+          "id": "g1r1-14"
+        },
+        {
+          "kind": "action",
+          "title": "It’s My Birthday",
+          "value": 2,
+          "colors": [],
+          "effect": "birthday",
+          "id": "g1r1-88"
+        },
+        {
+          "kind": "action",
+          "title": "Pass Go",
+          "value": 1,
+          "colors": [],
+          "effect": "passGo",
+          "id": "g1r1-76"
+        },
+        {
+          "kind": "action",
+          "title": "Pass Go",
+          "value": 1,
+          "colors": [],
+          "effect": "passGo",
+          "id": "g1r1-72"
+        },
+        {
+          "kind": "action",
+          "title": "Just Say No",
+          "value": 4,
+          "colors": [],
+          "effect": "justSayNo",
+          "id": "g1r1-98"
+        }
+      ],
+      "ttabobwi": [
+        {
+          "kind": "money",
+          "title": "1 Million",
+          "value": 1,
+          "colors": [],
+          "id": "g1r1-3"
+        },
+        {
+          "kind": "action",
+          "title": "Wild Rent",
+          "value": 3,
+          "colors": [],
+          "effect": "wildRent",
+          "id": "g1r1-81"
+        },
+        {
+          "kind": "action",
+          "title": "Forced Deal",
+          "value": 3,
+          "colors": [],
+          "effect": "forcedDeal",
+          "id": "g1r1-95"
+        },
+        {
+          "kind": "action",
+          "title": "House",
+          "value": 3,
+          "colors": [],
+          "effect": "house",
+          "id": "g1r1-102"
+        },
+        {
+          "kind": "action",
+          "title": "Sly Deal",
+          "value": 3,
+          "colors": [],
+          "effect": "slyDeal",
+          "id": "g1r1-90"
+        }
+      ],
+      "gjv27frs": [
+        {
+          "kind": "action",
+          "title": "Just Say No",
+          "value": 4,
+          "colors": [],
+          "effect": "justSayNo",
+          "id": "g1r1-99"
+        },
+        {
+          "kind": "property",
+          "title": "Golden Mile",
+          "value": 3,
+          "colors": [
+            "yellow"
+          ],
+          "id": "g1r1-34"
+        },
+        {
+          "kind": "property",
+          "title": "Midnight Bay",
+          "value": 4,
+          "colors": [
+            "darkBlue"
+          ],
+          "id": "g1r1-40"
+        },
+        {
+          "kind": "wild",
+          "title": "Property Wild",
+          "value": 2,
+          "colors": [
+            "pink",
+            "orange"
+          ],
+          "id": "g1r1-49"
+        },
+        {
+          "kind": "wild",
+          "title": "Property Wild",
+          "value": 3,
+          "colors": [
+            "red",
+            "yellow"
+          ],
+          "id": "g1r1-51"
+        }
+      ]
+    },
+    "tables": {
+      "sampmkpb": {
+        "bank": [],
+        "sets": [],
+        "looseBuildings": []
+      },
+      "ttabobwi": {
+        "bank": [
+          {
+            "kind": "money",
+            "title": "1 Million",
+            "value": 1,
+            "colors": [],
+            "id": "g1r1-1"
+          }
+        ],
+        "sets": [
+          {
+            "id": "fixture-set-ttabobwi",
+            "color": "brown",
+            "cards": [
+              {
+                "kind": "property",
+                "title": "Acorn Court",
+                "value": 1,
+                "colors": [
+                  "brown"
+                ],
+                "id": "g1r1-21"
+              }
+            ],
+            "house": null,
+            "hotel": null
+          }
+        ],
+        "looseBuildings": []
+      },
+      "gjv27frs": {
+        "bank": [
+          {
+            "kind": "money",
+            "title": "1 Million",
+            "value": 1,
+            "colors": [],
+            "id": "g1r1-5"
+          }
+        ],
+        "sets": [
+          {
+            "id": "fixture-set-gjv27frs",
+            "color": "brown",
+            "cards": [
+              {
+                "kind": "property",
+                "title": "Ember Lane",
+                "value": 1,
+                "colors": [
+                  "brown"
+                ],
+                "id": "g1r1-20"
+              }
+            ],
+            "house": null,
+            "hotel": null
+          }
+        ],
+        "looseBuildings": []
+      }
+    },
+    "deck": [
+      {
+        "kind": "action",
+        "title": "Wild Rent",
+        "value": 3,
+        "colors": [],
+        "effect": "wildRent",
+        "id": "g1r1-79"
+      },
+      {
+        "kind": "money",
+        "title": "4 Million",
+        "value": 4,
+        "colors": [],
+        "id": "g1r1-16"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 2,
+        "colors": [
+          "railroad",
+          "utility"
+        ],
+        "id": "g1r1-56"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "railroad",
+          "utility"
+        ],
+        "effect": "rent",
+        "id": "g1r1-68"
+      },
+      {
+        "kind": "action",
+        "title": "It’s My Birthday",
+        "value": 2,
+        "colors": [],
+        "effect": "birthday",
+        "id": "g1r1-89"
+      },
+      {
+        "kind": "property",
+        "title": "Rose Arcade",
+        "value": 2,
+        "colors": [
+          "pink"
+        ],
+        "id": "g1r1-25"
+      },
+      {
+        "kind": "action",
+        "title": "Wild Rent",
+        "value": 3,
+        "colors": [],
+        "effect": "wildRent",
+        "id": "g1r1-80"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 4,
+        "colors": [
+          "green",
+          "darkBlue"
+        ],
+        "id": "g1r1-53"
+      },
+      {
+        "kind": "action",
+        "title": "Hotel",
+        "value": 4,
+        "colors": [],
+        "effect": "hotel",
+        "id": "g1r1-105"
+      },
+      {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-85"
+      },
+      {
+        "kind": "action",
+        "title": "Hotel",
+        "value": 4,
+        "colors": [],
+        "effect": "hotel",
+        "id": "g1r1-104"
+      },
+      {
+        "kind": "money",
+        "title": "2 Million",
+        "value": 2,
+        "colors": [],
+        "id": "g1r1-10"
+      },
+      {
+        "kind": "money",
+        "title": "2 Million",
+        "value": 2,
+        "colors": [],
+        "id": "g1r1-8"
+      },
+      {
+        "kind": "action",
+        "title": "Deal Breaker",
+        "value": 5,
+        "colors": [],
+        "effect": "dealBreaker",
+        "id": "g1r1-96"
+      },
+      {
+        "kind": "property",
+        "title": "Amber Avenue",
+        "value": 2,
+        "colors": [
+          "orange"
+        ],
+        "id": "g1r1-29"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 2,
+        "colors": [
+          "pink",
+          "orange"
+        ],
+        "id": "g1r1-50"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-77"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-70"
+      },
+      {
+        "kind": "property",
+        "title": "Ruby Market",
+        "value": 3,
+        "colors": [
+          "red"
+        ],
+        "id": "g1r1-31"
+      },
+      {
+        "kind": "action",
+        "title": "Forced Deal",
+        "value": 3,
+        "colors": [],
+        "effect": "forcedDeal",
+        "id": "g1r1-93"
+      },
+      {
+        "kind": "money",
+        "title": "1 Million",
+        "value": 1,
+        "colors": [],
+        "id": "g1r1-2"
+      },
+      {
+        "kind": "property",
+        "title": "Power Works",
+        "value": 2,
+        "colors": [
+          "utility"
+        ],
+        "id": "g1r1-46"
+      },
+      {
+        "kind": "action",
+        "title": "Deal Breaker",
+        "value": 5,
+        "colors": [],
+        "effect": "dealBreaker",
+        "id": "g1r1-97"
+      },
+      {
+        "kind": "property",
+        "title": "South Station",
+        "value": 2,
+        "colors": [
+          "railroad"
+        ],
+        "id": "g1r1-44"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "pink",
+          "orange"
+        ],
+        "effect": "rent",
+        "id": "g1r1-62"
+      },
+      {
+        "kind": "property",
+        "title": "Harbor View",
+        "value": 1,
+        "colors": [
+          "lightBlue"
+        ],
+        "id": "g1r1-23"
+      },
+      {
+        "kind": "wild",
+        "title": "Any-color Wild",
+        "value": 0,
+        "colors": [
+          "brown",
+          "lightBlue",
+          "pink",
+          "orange",
+          "red",
+          "yellow",
+          "green",
+          "darkBlue",
+          "railroad",
+          "utility"
+        ],
+        "id": "g1r1-57"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-74"
+      },
+      {
+        "kind": "money",
+        "title": "2 Million",
+        "value": 2,
+        "colors": [],
+        "id": "g1r1-7"
+      },
+      {
+        "kind": "money",
+        "title": "1 Million",
+        "value": 1,
+        "colors": [],
+        "id": "g1r1-4"
+      },
+      {
+        "kind": "property",
+        "title": "Water Works",
+        "value": 2,
+        "colors": [
+          "utility"
+        ],
+        "id": "g1r1-47"
+      },
+      {
+        "kind": "property",
+        "title": "Silver Street",
+        "value": 1,
+        "colors": [
+          "lightBlue"
+        ],
+        "id": "g1r1-24"
+      },
+      {
+        "kind": "property",
+        "title": "West Station",
+        "value": 2,
+        "colors": [
+          "railroad"
+        ],
+        "id": "g1r1-45"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "pink",
+          "orange"
+        ],
+        "effect": "rent",
+        "id": "g1r1-61"
+      },
+      {
+        "kind": "money",
+        "title": "2 Million",
+        "value": 2,
+        "colors": [],
+        "id": "g1r1-6"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-75"
+      },
+      {
+        "kind": "property",
+        "title": "Sunset Square",
+        "value": 2,
+        "colors": [
+          "orange"
+        ],
+        "id": "g1r1-28"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-73"
+      },
+      {
+        "kind": "action",
+        "title": "Just Say No",
+        "value": 4,
+        "colors": [],
+        "effect": "justSayNo",
+        "id": "g1r1-100"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 3,
+        "colors": [
+          "red",
+          "yellow"
+        ],
+        "id": "g1r1-52"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "red",
+          "yellow"
+        ],
+        "effect": "rent",
+        "id": "g1r1-64"
+      },
+      {
+        "kind": "property",
+        "title": "Cloud Walk",
+        "value": 1,
+        "colors": [
+          "lightBlue"
+        ],
+        "id": "g1r1-22"
+      },
+      {
+        "kind": "money",
+        "title": "2 Million",
+        "value": 2,
+        "colors": [],
+        "id": "g1r1-9"
+      },
+      {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-84"
+      },
+      {
+        "kind": "property",
+        "title": "Emerald Gardens",
+        "value": 4,
+        "colors": [
+          "green"
+        ],
+        "id": "g1r1-37"
+      },
+      {
+        "kind": "money",
+        "title": "5 Million",
+        "value": 5,
+        "colors": [],
+        "id": "g1r1-17"
+      },
+      {
+        "kind": "money",
+        "title": "3 Million",
+        "value": 3,
+        "colors": [],
+        "id": "g1r1-12"
+      },
+      {
+        "kind": "action",
+        "title": "Double the Rent",
+        "value": 1,
+        "colors": [],
+        "effect": "doubleRent",
+        "id": "g1r1-82"
+      },
+      {
+        "kind": "property",
+        "title": "Velvet Way",
+        "value": 2,
+        "colors": [
+          "pink"
+        ],
+        "id": "g1r1-27"
+      },
+      {
+        "kind": "action",
+        "title": "Sly Deal",
+        "value": 3,
+        "colors": [],
+        "effect": "slyDeal",
+        "id": "g1r1-92"
+      },
+      {
+        "kind": "money",
+        "title": "3 Million",
+        "value": 3,
+        "colors": [],
+        "id": "g1r1-13"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "brown",
+          "lightBlue"
+        ],
+        "effect": "rent",
+        "id": "g1r1-59"
+      },
+      {
+        "kind": "action",
+        "title": "Forced Deal",
+        "value": 3,
+        "colors": [],
+        "effect": "forcedDeal",
+        "id": "g1r1-94"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "red",
+          "yellow"
+        ],
+        "effect": "rent",
+        "id": "g1r1-63"
+      },
+      {
+        "kind": "action",
+        "title": "It’s My Birthday",
+        "value": 2,
+        "colors": [],
+        "effect": "birthday",
+        "id": "g1r1-87"
+      },
+      {
+        "kind": "property",
+        "title": "Lantern Row",
+        "value": 2,
+        "colors": [
+          "orange"
+        ],
+        "id": "g1r1-30"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "brown",
+          "lightBlue"
+        ],
+        "effect": "rent",
+        "id": "g1r1-60"
+      },
+      {
+        "kind": "property",
+        "title": "Scarlet Park",
+        "value": 3,
+        "colors": [
+          "red"
+        ],
+        "id": "g1r1-33"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-78"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 4,
+        "colors": [
+          "railroad",
+          "lightBlue"
+        ],
+        "id": "g1r1-55"
+      },
+      {
+        "kind": "money",
+        "title": "3 Million",
+        "value": 3,
+        "colors": [],
+        "id": "g1r1-11"
+      },
+      {
+        "kind": "property",
+        "title": "Willow Crescent",
+        "value": 4,
+        "colors": [
+          "green"
+        ],
+        "id": "g1r1-39"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "green",
+          "darkBlue"
+        ],
+        "effect": "rent",
+        "id": "g1r1-65"
+      },
+      {
+        "kind": "property",
+        "title": "Cedar Heights",
+        "value": 4,
+        "colors": [
+          "green"
+        ],
+        "id": "g1r1-38"
+      },
+      {
+        "kind": "property",
+        "title": "Lemon Grove",
+        "value": 3,
+        "colors": [
+          "yellow"
+        ],
+        "id": "g1r1-35"
+      },
+      {
+        "kind": "property",
+        "title": "Blossom Place",
+        "value": 2,
+        "colors": [
+          "pink"
+        ],
+        "id": "g1r1-26"
+      },
+      {
+        "kind": "money",
+        "title": "1 Million",
+        "value": 1,
+        "colors": [],
+        "id": "g1r1-0"
+      },
+      {
+        "kind": "action",
+        "title": "House",
+        "value": 3,
+        "colors": [],
+        "effect": "house",
+        "id": "g1r1-103"
+      },
+      {
+        "kind": "property",
+        "title": "Sapphire Terrace",
+        "value": 4,
+        "colors": [
+          "darkBlue"
+        ],
+        "id": "g1r1-41"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 1,
+        "colors": [
+          "brown",
+          "lightBlue"
+        ],
+        "id": "g1r1-48"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "railroad",
+          "utility"
+        ],
+        "effect": "rent",
+        "id": "g1r1-67"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-69"
+      },
+      {
+        "kind": "action",
+        "title": "Sly Deal",
+        "value": 3,
+        "colors": [],
+        "effect": "slyDeal",
+        "id": "g1r1-91"
+      },
+      {
+        "kind": "property",
+        "title": "Crimson Drive",
+        "value": 3,
+        "colors": [
+          "red"
+        ],
+        "id": "g1r1-32"
+      },
+      {
+        "kind": "action",
+        "title": "Pass Go",
+        "value": 1,
+        "colors": [],
+        "effect": "passGo",
+        "id": "g1r1-71"
+      },
+      {
+        "kind": "property",
+        "title": "Sunflower Hill",
+        "value": 3,
+        "colors": [
+          "yellow"
+        ],
+        "id": "g1r1-36"
+      },
+      {
+        "kind": "property",
+        "title": "North Station",
+        "value": 2,
+        "colors": [
+          "railroad"
+        ],
+        "id": "g1r1-42"
+      },
+      {
+        "kind": "action",
+        "title": "House",
+        "value": 3,
+        "colors": [],
+        "effect": "house",
+        "id": "g1r1-101"
+      },
+      {
+        "kind": "wild",
+        "title": "Any-color Wild",
+        "value": 0,
+        "colors": [
+          "brown",
+          "lightBlue",
+          "pink",
+          "orange",
+          "red",
+          "yellow",
+          "green",
+          "darkBlue",
+          "railroad",
+          "utility"
+        ],
+        "id": "g1r1-58"
+      },
+      {
+        "kind": "money",
+        "title": "5 Million",
+        "value": 5,
+        "colors": [],
+        "id": "g1r1-18"
+      },
+      {
+        "kind": "action",
+        "title": "Double the Rent",
+        "value": 1,
+        "colors": [],
+        "effect": "doubleRent",
+        "id": "g1r1-83"
+      },
+      {
+        "kind": "wild",
+        "title": "Property Wild",
+        "value": 4,
+        "colors": [
+          "railroad",
+          "green"
+        ],
+        "id": "g1r1-54"
+      },
+      {
+        "kind": "action",
+        "title": "Rent",
+        "value": 1,
+        "colors": [
+          "green",
+          "darkBlue"
+        ],
+        "effect": "rent",
+        "id": "g1r1-66"
+      },
+      {
+        "kind": "money",
+        "title": "10 Million",
+        "value": 10,
+        "colors": [],
+        "id": "g1r1-19"
+      }
+    ],
+    "discard": [
+      {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-86"
+      }
+    ],
+    "pending": {
+      "actor": "sampmkpb",
+      "kind": "debtCollector",
+      "targets": [
+        "ttabobwi"
+      ],
+      "amount": 5,
+      "index": 0,
+      "target": "ttabobwi",
+      "responder": "ttabobwi",
+      "cancelled": false,
+      "depth": 0,
+      "stage": "response",
+      "placements": [],
+      "deadline": null
+    },
+    "turnDeadline": null,
+    "turnRemaining": null,
+    "events": [
+      {
+        "id": 1,
+        "type": "notice",
+        "actor": null,
+        "message": "Game 1: Classic Monopoly Deal."
+      },
+      {
+        "id": 2,
+        "type": "turn",
+        "actor": "sampmkpb",
+        "message": "Fixture Host’s turn."
+      },
+      {
+        "target": "sampmkpb",
+        "id": 3,
+        "type": "draw",
+        "actor": "sampmkpb",
+        "message": "Fixture Host drew 2 cards."
+      },
+      {
+        "card": {
+          "kind": "action",
+          "title": "Debt Collector",
+          "value": 3,
+          "colors": [],
+          "effect": "debtCollector",
+          "id": "g1r1-86"
+        },
+        "target": "ttabobwi",
+        "id": 4,
+        "type": "action",
+        "actor": "sampmkpb",
+        "message": "Fixture Host played Debt Collector: 5M from Fixture Guest 1."
+      }
+    ],
+    "eventSequence": 4,
+    "setSequence": 0,
+    "result": null,
+    "history": [],
+    "wins": {
+      "sampmkpb": 0,
+      "ttabobwi": 0,
+      "gjv27frs": 0
+    },
+    "winners": [],
+    "expiresAt": 1790007200000,
+    "processed": [
+      {
+        "id": "fixture-action-1",
+        "actor": "sampmkpb"
+      },
+      {
+        "id": "fixture-action-2",
+        "actor": "sampmkpb"
+      }
+    ],
+    "rng": [
+      706429728,
+      -2125985727,
+      830672337,
+      1459479131
+    ]
+  },
+  "views": {
+    "sampmkpb": {
+      "gameType": "monopoly-deal",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "sampmkpb",
+      "yourRole": "HOST",
+      "order": [
+        "sampmkpb",
+        "ttabobwi",
+        "gjv27frs"
+      ],
+      "settings": {
+        "rules": {
+          "setsToWin": 3,
+          "startingHand": 5,
+          "handLimit": 7,
+          "playsPerTurn": 3,
+          "drawPerTurn": 2,
+          "dealBreaker": true,
+          "rearrange": true,
+          "ownTurnNoCostsPlay": false,
+          "responseSeconds": 0,
+          "turnSeconds": 0,
+          "autoPay": false
+        },
+        "mode": "single",
+        "games": 3,
+        "profileId": "classic",
+        "profileName": "Classic Monopoly Deal"
+      },
+      "players": [
+        {
+          "playerId": "sampmkpb",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "table": {
+            "bank": [],
+            "sets": [],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "ttabobwi",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-1"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-ttabobwi",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Acorn Court",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-21"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "gjv27frs",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-5"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-gjv27frs",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Ember Lane",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-20"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        }
+      ],
+      "round": 1,
+      "turn": "sampmkpb",
+      "playsLeft": 2,
+      "hand": [
+        {
+          "kind": "money",
+          "title": "4 Million",
+          "value": 4,
+          "colors": [],
+          "id": "g1r1-15"
+        },
+        {
+          "kind": "property",
+          "title": "East Station",
+          "value": 2,
+          "colors": [
+            "railroad"
+          ],
+          "id": "g1r1-43"
+        },
+        {
+          "kind": "money",
+          "title": "4 Million",
+          "value": 4,
+          "colors": [],
+          "id": "g1r1-14"
+        },
+        {
+          "kind": "action",
+          "title": "It’s My Birthday",
+          "value": 2,
+          "colors": [],
+          "effect": "birthday",
+          "id": "g1r1-88"
+        },
+        {
+          "kind": "action",
+          "title": "Pass Go",
+          "value": 1,
+          "colors": [],
+          "effect": "passGo",
+          "id": "g1r1-76"
+        },
+        {
+          "kind": "action",
+          "title": "Pass Go",
+          "value": 1,
+          "colors": [],
+          "effect": "passGo",
+          "id": "g1r1-72"
+        },
+        {
+          "kind": "action",
+          "title": "Just Say No",
+          "value": 4,
+          "colors": [],
+          "effect": "justSayNo",
+          "id": "g1r1-98"
+        }
+      ],
+      "deckCount": 84,
+      "discardCount": 1,
+      "top": {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-86"
+      },
+      "pending": {
+        "actor": "sampmkpb",
+        "kind": "debtCollector",
+        "targets": [
+          "ttabobwi"
+        ],
+        "amount": 5,
+        "index": 0,
+        "target": "ttabobwi",
+        "responder": "ttabobwi",
+        "cancelled": false,
+        "depth": 0,
+        "stage": "response",
+        "placements": [],
+        "deadline": null
+      },
+      "turnDeadline": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "notice",
+          "actor": null,
+          "message": "Game 1: Classic Monopoly Deal."
+        },
+        {
+          "id": 2,
+          "type": "turn",
+          "actor": "sampmkpb",
+          "message": "Fixture Host’s turn."
+        },
+        {
+          "target": "sampmkpb",
+          "id": 3,
+          "type": "draw",
+          "actor": "sampmkpb",
+          "message": "Fixture Host drew 2 cards."
+        },
+        {
+          "card": {
+            "kind": "action",
+            "title": "Debt Collector",
+            "value": 3,
+            "colors": [],
+            "effect": "debtCollector",
+            "id": "g1r1-86"
+          },
+          "target": "ttabobwi",
+          "id": 4,
+          "type": "action",
+          "actor": "sampmkpb",
+          "message": "Fixture Host played Debt Collector: 5M from Fixture Guest 1."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "serverNow": 1790000000000,
+      "displayToken": "fixture-monopoly-deal-display-capability"
+    },
+    "ttabobwi": {
+      "gameType": "monopoly-deal",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "ttabobwi",
+      "yourRole": "PLAYER",
+      "order": [
+        "sampmkpb",
+        "ttabobwi",
+        "gjv27frs"
+      ],
+      "settings": {
+        "rules": {
+          "setsToWin": 3,
+          "startingHand": 5,
+          "handLimit": 7,
+          "playsPerTurn": 3,
+          "drawPerTurn": 2,
+          "dealBreaker": true,
+          "rearrange": true,
+          "ownTurnNoCostsPlay": false,
+          "responseSeconds": 0,
+          "turnSeconds": 0,
+          "autoPay": false
+        },
+        "mode": "single",
+        "games": 3,
+        "profileId": "classic",
+        "profileName": "Classic Monopoly Deal"
+      },
+      "players": [
+        {
+          "playerId": "sampmkpb",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "table": {
+            "bank": [],
+            "sets": [],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "ttabobwi",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-1"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-ttabobwi",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Acorn Court",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-21"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "gjv27frs",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-5"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-gjv27frs",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Ember Lane",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-20"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        }
+      ],
+      "round": 1,
+      "turn": "sampmkpb",
+      "playsLeft": 2,
+      "hand": [
+        {
+          "kind": "money",
+          "title": "1 Million",
+          "value": 1,
+          "colors": [],
+          "id": "g1r1-3"
+        },
+        {
+          "kind": "action",
+          "title": "Wild Rent",
+          "value": 3,
+          "colors": [],
+          "effect": "wildRent",
+          "id": "g1r1-81"
+        },
+        {
+          "kind": "action",
+          "title": "Forced Deal",
+          "value": 3,
+          "colors": [],
+          "effect": "forcedDeal",
+          "id": "g1r1-95"
+        },
+        {
+          "kind": "action",
+          "title": "House",
+          "value": 3,
+          "colors": [],
+          "effect": "house",
+          "id": "g1r1-102"
+        },
+        {
+          "kind": "action",
+          "title": "Sly Deal",
+          "value": 3,
+          "colors": [],
+          "effect": "slyDeal",
+          "id": "g1r1-90"
+        }
+      ],
+      "deckCount": 84,
+      "discardCount": 1,
+      "top": {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-86"
+      },
+      "pending": {
+        "actor": "sampmkpb",
+        "kind": "debtCollector",
+        "targets": [
+          "ttabobwi"
+        ],
+        "amount": 5,
+        "index": 0,
+        "target": "ttabobwi",
+        "responder": "ttabobwi",
+        "cancelled": false,
+        "depth": 0,
+        "stage": "response",
+        "placements": [],
+        "deadline": null
+      },
+      "turnDeadline": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "notice",
+          "actor": null,
+          "message": "Game 1: Classic Monopoly Deal."
+        },
+        {
+          "id": 2,
+          "type": "turn",
+          "actor": "sampmkpb",
+          "message": "Fixture Host’s turn."
+        },
+        {
+          "target": "sampmkpb",
+          "id": 3,
+          "type": "draw",
+          "actor": "sampmkpb",
+          "message": "Fixture Host drew 2 cards."
+        },
+        {
+          "card": {
+            "kind": "action",
+            "title": "Debt Collector",
+            "value": 3,
+            "colors": [],
+            "effect": "debtCollector",
+            "id": "g1r1-86"
+          },
+          "target": "ttabobwi",
+          "id": 4,
+          "type": "action",
+          "actor": "sampmkpb",
+          "message": "Fixture Host played Debt Collector: 5M from Fixture Guest 1."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "serverNow": 1790000000000
+    },
+    "gjv27frs": {
+      "gameType": "monopoly-deal",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "gjv27frs",
+      "yourRole": "PLAYER",
+      "order": [
+        "sampmkpb",
+        "ttabobwi",
+        "gjv27frs"
+      ],
+      "settings": {
+        "rules": {
+          "setsToWin": 3,
+          "startingHand": 5,
+          "handLimit": 7,
+          "playsPerTurn": 3,
+          "drawPerTurn": 2,
+          "dealBreaker": true,
+          "rearrange": true,
+          "ownTurnNoCostsPlay": false,
+          "responseSeconds": 0,
+          "turnSeconds": 0,
+          "autoPay": false
+        },
+        "mode": "single",
+        "games": 3,
+        "profileId": "classic",
+        "profileName": "Classic Monopoly Deal"
+      },
+      "players": [
+        {
+          "playerId": "sampmkpb",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "table": {
+            "bank": [],
+            "sets": [],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "ttabobwi",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-1"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-ttabobwi",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Acorn Court",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-21"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "gjv27frs",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-5"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-gjv27frs",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Ember Lane",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-20"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        }
+      ],
+      "round": 1,
+      "turn": "sampmkpb",
+      "playsLeft": 2,
+      "hand": [
+        {
+          "kind": "action",
+          "title": "Just Say No",
+          "value": 4,
+          "colors": [],
+          "effect": "justSayNo",
+          "id": "g1r1-99"
+        },
+        {
+          "kind": "property",
+          "title": "Golden Mile",
+          "value": 3,
+          "colors": [
+            "yellow"
+          ],
+          "id": "g1r1-34"
+        },
+        {
+          "kind": "property",
+          "title": "Midnight Bay",
+          "value": 4,
+          "colors": [
+            "darkBlue"
+          ],
+          "id": "g1r1-40"
+        },
+        {
+          "kind": "wild",
+          "title": "Property Wild",
+          "value": 2,
+          "colors": [
+            "pink",
+            "orange"
+          ],
+          "id": "g1r1-49"
+        },
+        {
+          "kind": "wild",
+          "title": "Property Wild",
+          "value": 3,
+          "colors": [
+            "red",
+            "yellow"
+          ],
+          "id": "g1r1-51"
+        }
+      ],
+      "deckCount": 84,
+      "discardCount": 1,
+      "top": {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-86"
+      },
+      "pending": {
+        "actor": "sampmkpb",
+        "kind": "debtCollector",
+        "targets": [
+          "ttabobwi"
+        ],
+        "amount": 5,
+        "index": 0,
+        "target": "ttabobwi",
+        "responder": "ttabobwi",
+        "cancelled": false,
+        "depth": 0,
+        "stage": "response",
+        "placements": [],
+        "deadline": null
+      },
+      "turnDeadline": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "notice",
+          "actor": null,
+          "message": "Game 1: Classic Monopoly Deal."
+        },
+        {
+          "id": 2,
+          "type": "turn",
+          "actor": "sampmkpb",
+          "message": "Fixture Host’s turn."
+        },
+        {
+          "target": "sampmkpb",
+          "id": 3,
+          "type": "draw",
+          "actor": "sampmkpb",
+          "message": "Fixture Host drew 2 cards."
+        },
+        {
+          "card": {
+            "kind": "action",
+            "title": "Debt Collector",
+            "value": 3,
+            "colors": [],
+            "effect": "debtCollector",
+            "id": "g1r1-86"
+          },
+          "target": "ttabobwi",
+          "id": 4,
+          "type": "action",
+          "actor": "sampmkpb",
+          "message": "Fixture Host played Debt Collector: 5M from Fixture Guest 1."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "serverNow": 1790000000000
+    },
+    "$display": {
+      "gameType": "monopoly-deal",
+      "gameId": "1234",
+      "version": 5,
+      "revision": 4,
+      "generation": 1,
+      "phase": "PLAY",
+      "yourPlayerId": "$display",
+      "yourRole": "DISPLAY",
+      "order": [
+        "sampmkpb",
+        "ttabobwi",
+        "gjv27frs"
+      ],
+      "settings": {
+        "rules": {
+          "setsToWin": 3,
+          "startingHand": 5,
+          "handLimit": 7,
+          "playsPerTurn": 3,
+          "drawPerTurn": 2,
+          "dealBreaker": true,
+          "rearrange": true,
+          "ownTurnNoCostsPlay": false,
+          "responseSeconds": 0,
+          "turnSeconds": 0,
+          "autoPay": false
+        },
+        "mode": "single",
+        "games": 3,
+        "profileId": "classic",
+        "profileName": "Classic Monopoly Deal"
+      },
+      "players": [
+        {
+          "playerId": "sampmkpb",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "cardCount": 7,
+          "table": {
+            "bank": [],
+            "sets": [],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "ttabobwi",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-1"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-ttabobwi",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Acorn Court",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-21"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        },
+        {
+          "playerId": "gjv27frs",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "cardCount": 5,
+          "table": {
+            "bank": [
+              {
+                "kind": "money",
+                "title": "1 Million",
+                "value": 1,
+                "colors": [],
+                "id": "g1r1-5"
+              }
+            ],
+            "sets": [
+              {
+                "id": "fixture-set-gjv27frs",
+                "color": "brown",
+                "cards": [
+                  {
+                    "kind": "property",
+                    "title": "Ember Lane",
+                    "value": 1,
+                    "colors": [
+                      "brown"
+                    ],
+                    "id": "g1r1-20"
+                  }
+                ],
+                "house": null,
+                "hotel": null
+              }
+            ],
+            "looseBuildings": []
+          },
+          "completeSets": 0,
+          "wins": 0
+        }
+      ],
+      "round": 1,
+      "turn": "sampmkpb",
+      "playsLeft": 2,
+      "hand": [],
+      "deckCount": 84,
+      "discardCount": 1,
+      "top": {
+        "kind": "action",
+        "title": "Debt Collector",
+        "value": 3,
+        "colors": [],
+        "effect": "debtCollector",
+        "id": "g1r1-86"
+      },
+      "pending": {
+        "actor": "sampmkpb",
+        "kind": "debtCollector",
+        "targets": [
+          "ttabobwi"
+        ],
+        "amount": 5,
+        "index": 0,
+        "target": "ttabobwi",
+        "responder": "ttabobwi",
+        "cancelled": false,
+        "depth": 0,
+        "stage": "response",
+        "placements": [],
+        "deadline": null
+      },
+      "turnDeadline": null,
+      "events": [
+        {
+          "id": 1,
+          "type": "notice",
+          "actor": null,
+          "message": "Game 1: Classic Monopoly Deal."
+        },
+        {
+          "id": 2,
+          "type": "turn",
+          "actor": "sampmkpb",
+          "message": "Fixture Host’s turn."
+        },
+        {
+          "target": "sampmkpb",
+          "id": 3,
+          "type": "draw",
+          "actor": "sampmkpb",
+          "message": "Fixture Host drew 2 cards."
+        },
+        {
+          "card": {
+            "kind": "action",
+            "title": "Debt Collector",
+            "value": 3,
+            "colors": [],
+            "effect": "debtCollector",
+            "id": "g1r1-86"
+          },
+          "target": "ttabobwi",
+          "id": 4,
+          "type": "action",
+          "actor": "sampmkpb",
+          "message": "Fixture Host played Debt Collector: 5M from Fixture Guest 1."
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winners": [],
+      "serverNow": 1790000000000
+    }
+  },
+  "actor": "ttabobwi",
+  "token": "fixture-monopoly-deal-ttabobwi",
+  "command": {
+    "route": "action",
+    "body": {
+      "id": "fixture-action-3",
+      "type": "respond",
+      "payload": {
+        "no": false
+      },
+      "generation": 1,
+      "revision": 4,
+      "round": 1,
+      "phase": "PLAY"
+    }
+  }
+}

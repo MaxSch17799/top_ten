@@ -1,146 +1,103 @@
 # Refactoring roadmap
 
-Reviewed 2026-11-08 against the working checkout. This is a staged proposal; the larger changes below were not implemented. Each stage should be independently reviewable and preserve live-room compatibility.
+Revised after the independent architecture audit against `3003ddb` (the Deal choices/payment update). The earlier multi-game checkpoint is `a68d476`, tagged `checkpoint/multigame-2026-11-08`. Treat these as different compatibility baselines: current Deal decisions must survive rollback to `3003ddb`; an older engine need not understand a feature added after it.
 
-## Completed in this cleanup
+The direction remains one game-night platform with independent games, one website, one Worker and the existing lobby namespace. The correction is **compatibility protection before extraction**, with small composed utilities instead of a universal game framework. Each phase is a separately reviewable change.
 
-- Shared `GameType` identifiers replace duplicated frontend API unions and Worker ID allowlists. Existing IDs, homepage order, validation order and legacy Top 10 fallback remain intact.
-- Platform defaults move to `theme.css` with equal values. This establishes a small styling seam without restyling existing games.
-- All four generators skip unchanged output bytes. Existing validation, filenames, formatting, public/private split and generated content remain intact.
-- Root scripts provide consistent development, type-check, lint, test and build entry points. Existing commands and package boundaries remain available.
-- A documentation index, architecture map, new-game guide, styling guide, development/release instructions and historical notes replace the stale template/Just One-heavy entry documentation.
-- A Just One browser scenario waits for the server-confirmed result UI before reading its score. The score expectations remain unchanged; clicking alone does not wait for an asynchronous game action to finish.
+## Already established
 
-## Verification of this cleanup
+Shared game identifiers, equal-value theme tokens, generators that skip unchanged bytes, root quality commands and contributor guides are in place. The eight-game checkpoint passed 249 Node tests and 37 browser scenarios; the subsequent audit reported 256 passing Node tests and 48 discovered browser scenarios. These are historical results, not verification of every later checkout. Deployment is separate from repository cleanup.
 
-Checked locally on 2026-11-08:
+## 1. Compatibility fixtures and CI — first delivery
 
-- `npm run check`: content validation, frontend/backend TypeScript, frontend ESLint and **240 passing Node tests**.
-- `npm run build`: frontend production build and Worker deployment dry run passed.
-- **31 distinct browser scenarios across all eight games passed**, counting the full run and targeted reruns. The initial full run had 28 passes and three failures: an immediate Just One score read, a Deal reconnection assertion, and a complete Deal match timeout. After adding the result-UI waits, all three passed on targeted rerun; Deal application/test code was unchanged. The complete Deal rerun took about three minutes. Browser timing/reconnection flakiness remains a test-infrastructure follow-up, rather than evidence of a clean single-pass run.
-- All **18 generated output files** retained their original bytes and timestamps across repeated generation/build/dev hooks.
-- All **65 checked local documentation links** resolved, and `git diff --check` passed.
+The foundation is implemented in this cleanup; see [coverage and maintenance](compatibility.md). The runtime extractions below remain planned.
 
-At completion, this cleanup was local and uncommitted. It included no deployment, dependency upgrade, schema migration, stored-state format change or game-rule change. Later feature releases have their own verification and deployment records in the game guides.
+Freeze synthetic persisted rooms with source commits, scenario descriptions and fake credentials. Cover all eight games, checkpoint and current Deal state, private pending decisions, paused deadlines, Skyjo final turns and processed request IDs. Keep fixtures frozen: generating every test room with today's engine cannot establish historical compatibility.
 
-## Target: one platform, independent games
+Exercise the actual `GameDurableObject`, not just direct adapter factories:
 
-The repository should describe a game-night platform with Top 10 as one game. Keep one website, one Worker and the current lobby namespace; modularity does not require a service or database for every game.
+- Cold and warm routing; omitted `gameType` still means Top 10.
+- All 64 existing-game/new-game creation pairs, including ownership by completed rooms. Creating a different game must not add a second room key.
+- Load → authenticated command → serialized save → fresh object → readback. Retry identical request IDs after reload where supported.
+- Load newly saved state with the intended rollback code, including current Deal staged payments. Verify private projections separately for each viewer.
+- Freeze browser session/profile formats before extracting utilities. Preserve keys, limits, validation order, trimming, duplicates and storage-error behavior.
+- Check frontend/shared import boundaries and drift between the two Wrangler configs.
 
-An eventual source layout could be:
+Add CI with the **existing** root/backend workspace and separate frontend install. Run checks, builds and local browser scenarios without production credentials; retain failure artifacts. No lockfile consolidation, deployment-path changes, folder moves or dependency upgrades in this phase.
 
-```text
-frontend/src/
-  app/                       routes and frontend game registration
-  platform/                  lobby, invites, connection, host tools, profiles, language
-  ui/                        themed controls, surfaces, timers, score displays
-  games/<game>/              home, table, controller, display, cards and scoped styles
-backend-do/src/
-  index.ts                   thin public Worker router
-  game.ts                    existing Durable Object class, delegating to registered rooms
-  platform/                  auth, transport, commits, alarms, content, usage and admin
-  games/<game>/              engine, room adapter and game-specific persistence handling
-shared/
-  platform/                  public IDs, capabilities and common protocol contracts
-  games/<game>/              public settings, actions and viewer models
-tests/
-  platform/                  compatibility, transport and multi-game contracts
-  games/<game>/              rule and adapter tests
-  e2e/                       real multi-device user flows
-docs/                        contributor guides, game guides and release records
-```
+Node storage doubles establish serialization, routing and replay behavior, not Cloudflare transaction/output-gate guarantees. Current Playwright tests block service workers and mostly save screenshots without baseline comparisons. They do not establish PWA upgrade safety or visual equivalence.
 
-This is a destination, not a folder-move task to perform immediately. Extract one useful boundary, verify it, then move its files in a separate commit. Backend internal models stay outside browser-importable modules.
+## 2. Define and repair command failure recovery
 
-### Registration and capabilities
+The audit reproduced these failures with injected storage errors; they are not reported production incidents:
 
-Use a public, data-only descriptor for stable ID, player range and supported features. Keep separate frontend and backend maps: the frontend supplies lazy home/table/controller/display components; the backend supplies validation, room creation, loading and dispatch. Check that both maps cover every supported ID. A single registry must never pull an engine or private bank into the browser.
+- Just One assigns candidate state to memory before saving. A failed write can leave memory ahead of durable state.
+- Skyjo (and a similar Flip 7 path) writes before scheduling its alarm and updates memory afterward. A failed alarm operation can leave durable state ahead of memory.
+- Top 10 prompt choice broadcasts while a background save can fail silently.
 
-Capabilities should describe actual differences: dedicated displays, private cards, verbal play, local profiles, live presentation switching and timers. Common UI can show the tools each game supports without a growing list of checks such as `if game === 'skyjo'`. Each engine still decides legal actions and each game's renderer still owns its board and decisions.
+First reproduce write/alarm failures in the local Cloudflare runtime. Define when a command is committed, how memory and alarms recover, and how clients distinguish rejection from uncertain outcomes. Preserve the same request ID and replay metadata on uncertain retries; infrastructure failures must not masquerade as illegal moves. Verify recovery across eviction and the next alarm before sharing this mechanism.
 
-The intended new-game workflow is: create the game's public contract, engine/adapter and UI folder; register its frontend/backend entries; add focused tests and a guide. Repeated edits across transport, sessions, invites, global CSS and many route branches should gradually disappear.
+Keep this separate from Top 10 extraction. Do not freeze known inconsistencies as desired contracts or introduce a state-schema migration to solve transport problems.
 
-### What should be shared
+## 3. Isolate Top 10, then register games narrowly
 
-| Platform responsibility | Remains game-specific |
-| --- | --- |
-| Lobby identity, invites, reconnection and read-only display authentication | Legal decisions, role secrets and per-viewer serialization |
-| Serialized command/save/broadcast pipeline and retry plumbing | Decks, scoring, penalties, turn order and round endings |
-| Alarm scheduling and pause mechanics | What a timeout means and which choices it may make |
-| Host menu structure, notices, buttons, timers and results primitives | Game boards, card graphics, private decision controls and public events |
-| Profile persistence with injected validation and limits | House-rule schema, built-in presets and existing profile compatibility |
-| Semantic theme tokens and language service | Game palettes, artwork and game-specific translations |
+Move Top 10 mechanically into a room adapter in its own change. Preserve the exported Durable Object class, storage key `state`, public/legacy URLs, tokens, WebSockets, question-bank enrichment, alarms and viewer projections.
 
-### Branding and compatibility
+Registration follows separately:
 
-Rename internal concepts and documentation toward "Game Night" as they are extracted. Root package/workspace names can follow in a build-focused change. Retain `top-ten` Cloudflare resource identities, existing production URLs, legacy routes and browser session keys until there is a separate migration reason and tested transition. Renaming the repository is not a reason to replace the Durable Object namespace or strand saved players.
+- Frontend map: ID → home path/component and room component. Small wrappers accommodate Top 10/Just One props.
+- Backend map: settings preflight, room factory and storage-key ownership. Top 10 database enrichment stays server-side.
+- Resolve ownership **before creation**, preserving newest-first precedence: Skyjo, Flip 7, Deal, UNO, Wavelength, Fishy, Just One, then Top 10. `GAME_TYPES` order differs. Direct adapter collision checks are asymmetric.
+- Every occupied key, including completed rooms, reserves its code. Room recycling needs a separate decision.
+- Start with one consumed capability: dedicated-display support. Capabilities do not authorize actions; defer speculative private-card, verbal-play, profile and timer flags.
+- Check map completeness and actual routing/creation/dispatch. Eventually correlate settings types with game IDs.
 
-Before changing persistence, capture old-room fixtures for all games, including pending private draws, responses, paused deadlines and final turns. Keep the current loader as a fallback while introducing a versioned game discriminator. Verify rollback as well as forward loading.
+Cache the resolved adapter in memory if measurement justifies it. Existing `exists()` calls already cache reads after cold load. **Defer a persisted discriminator** until measured cold-load costs justify its migration and rollback burden.
 
-## 1. Split large frontend files along existing seams
+## 4. Compose shared transport mechanics
 
-**Benefit:** game additions and visual changes become easier to review; lobby/settings/host controls become reusable without mixing rules into presentation. **Scope/risk:** medium, one game at a time.
+Start with Skyjo and Flip 7 after phase 2. Share response construction, socket membership, serialized execution and the verified commit mechanism. Game-owned callbacks load/upgrade state, apply commands, project viewers, expire state and choose alarms.
 
-`MonopolyDealGame.tsx`, `WavelengthGame.tsx`, `JustOneGame.tsx`, `UnoGame.tsx`, `SkyjoGame.tsx`, and `AdminDashboard.tsx` contain substantial presentation and orchestration. Extract pure card/table/results views first, then game-specific hooks for authenticated action submission and display-token recovery. Keep current props, storage keys, request IDs, retry semantics, snapshots and keyboard/touch behavior.
+No universal room base class. Replay ordering/limits, revision semantics, pause representations and timeout decisions remain game-owned. Preserve concurrent Skyjo setup, presentation revisions, Flip 7's `nextAt`, and Just One's generation-before-dedup versus Skyjo's dedup-before-staleness behavior. Never reuse one player's projection for another identity.
 
-Use Skyjo/Flip 7 as an initial comparison for host controls and TV state, not a requirement that every game's UI look the same. A shared action hook must preserve generation/round/revision or phase differences, retain the same request ID on an uncertain retry, and never infer authoritative success from an animation.
+Migrate other adapters individually after permission, concurrency, replay, failure, alarm, reconnection and multi-lobby tests pass.
 
-**Completion evidence:** engine tests remain unchanged; multi-phone, refresh, pending-choice, display, reduced-motion and screenshot comparisons pass for the migrated game before another game adopts the extraction.
+## 5. UI, profiles, language and presentation
 
-## 2. Extract shared room transport without generalizing the engines
+These can follow phase 1 independently of backend extraction, in separate changes.
 
-**Benefit:** future games stop copying hundreds of lines of socket/auth/persistence code; transport fixes reach all adopters. **Scope/risk:** high because private information, serialization and persistence are involved.
+### Smaller game components
 
-Start with the closely related Skyjo and Flip 7 adapters. Extract small utilities or a composed transport layer for response headers, authenticated token lookup, socket lifecycle, serialized commit/save/broadcast and scheduling. Keep rule transitions, recovery, deadlines, viewer projection, expiry policy and state keys supplied by the game.
+Start with Deal's large composer/response/table/hand sections, then Wavelength, UNO and Just One. Skyjo/Flip 7 already have named subcomponents; file length alone does not justify extraction. Extract pure presentation before orchestration.
 
-Do not broadcast one cached snapshot to every player or let a shared base class serialize internal state by default. Keep clone-before-apply and persist-before-broadcast behavior, bounded replay logs and read-only display permissions. Plan how sockets behave during load/eviction and how malformed/duplicate commands are handled.
+All eight games already use `useGameConnection`; extend it instead of adding another connection manager. A small sender helper accepts a fully formed game action and retains its exact ID/replay metadata for uncertain retries. Awaiting `requestState()` is not authoritative readback: it swallows errors and returns no snapshot. Preserve explicit readback where needed. Do not impose Top 10's pending-join workflow on every lobby.
 
-**Completion evidence:** adapter compatibility tests for old persisted fixtures, token/display permissions, per-viewer secrets, failed-save/failed-command atomicity, concurrent actions, duplicate retry, alarms, disconnections and independent lobbies. Adopt in two games first, then migrate individually.
+### Presentation seams
 
-## 3. Complete registration and isolate legacy Top 10
+Extend semantic tokens with equal values first. Keep palettes/artwork separately replaceable using imported components and public props. Deal's semantic groups/rent rules stay shared; visual palettes move frontend when extracted. Hidden values must never affect backs, accessible labels, colors or animations.
 
-**Benefit:** a new game gets a predictable registration contract and fewer places to wire by hand; requests avoid sequentially probing every room type. **Scope/risk:** medium to high.
+The confirmed goal is developer-led redesigns: replaceable CSS and renderer imports, without a player-facing theme selector. Runtime theme/renderer registries are outside this plan. Add actual screenshot comparisons before claiming visual equivalence.
 
-Keep the shared ID contract, but add separate frontend and backend registration maps: frontend lazy home/game components and capabilities; backend validator, room factory and dispatch. Do not put server imports into a browser-readable manifest. Define completeness checks between these maps and the shared IDs.
+### Profiles and language
 
-Move Top 10 behind a `Top10Room` adapter while keeping the existing `GameDurableObject` class, storage key `state`, public URLs, action endpoints and data shape. A later persisted game-type discriminator can speed dispatch, with fallback detection for old rooms that lack it. Preserve code-collision behavior in both directions; simply replacing the existing dispatch chain with a map is insufficient because adapters have asymmetric legacy collision checks.
+Share small persistence utilities with injected validation. Retain UNO's 50-profile limit versus 30 elsewhere, slicing before validation, per-game trim/deduplication/description policies, malformed data behavior and write failures. No account system or key migration is needed.
 
-**Completion evidence:** restore fixtures for all room types, collision tests across different games, legacy `/host` and `/g/:code` flows, display routing, expiry/alarms and rollback-compatible state. Benchmark request/storage overhead before claiming a performance gain.
+The confirmed language model is one shared interface-language preference, with each game's content language selected independently. Extract a named preference service retaining `fishy-ui-language`, also used by Wavelength. Keep Just One's content key `just-one-language`, Fishy banks, Wavelength packs and dictionaries separate. Shared preference does not mean complete translations.
 
-## 4. Expand semantic themes and visual primitives
+The confirmed unsupported-display behavior is an explanatory page for Top 10 and Just One, with an explicit link to the regular room. This small routing follow-up is implemented independently of registration: opening `/display` no longer mounts player controls or starts a player connection. Display-token fragments are not carried to the normal room. The shared-language extraction and broader styling work remain future phases; no product questions block them.
 
-**Benefit:** consistent new-game UI and a practical route to a complete reskin. **Scope/risk:** medium, primarily visual and interaction regressions.
+## 6. Measure build, loading and deployment boundaries
 
-Extend the [styling foundation](styling.md) to surfaces, spacing, typography, focus, motion and game palettes. Extract shared buttons, fields, panels, connection notices, timers and score displays only where behavior agrees. Migrate literal styles one game at a time, first with equal values, then with intentional design changes.
+CI comes now; workspace, lockfile and Wrangler consolidation come later. Inventory Pages' frontend-root build, standalone backend installs, relative paths, D1 bindings/migrations, persistence directories and tooling first. Retain production resource identities, namespace IDs, URLs and browser keys even if internal branding becomes Game Night.
 
-Keep SVG card/board components replaceable using public props. Some colors live in code (`unoTheme.ts` and card renderers), so a full theme must address both CSS and generated artwork. Add component examples and visual regression coverage before introducing a runtime theme selector. Scope new styles to avoid changing other games through generic element selectors.
+Measure bundle/network output and cold room reads before optimizing. Admin XLSX/CSV parsers already import asynchronously. Before changing chunks, add genuine service-worker upgrade, old-asset/chunk failure and invite-refresh tests. Local fonts need separate licensing/rendering checks.
 
-**Completion evidence:** phone/tablet/TV screenshots, focus and accessible labels, touch target sizes, gestures without accidental moves, reduced motion, and private backs verified in every adopted theme.
+An eventual layout may group `app`, `platform`, `ui` and `games/<id>` in each package. Extract useful boundaries first; move files later in mechanical commits. Bulk directory moves are deferred.
 
-## 5. Consolidate profiles and language utilities with explicit compatibility
+## First reviewable changes
 
-**Benefit:** future games can reuse local persistence and localization instead of copying them. **Scope/risk:** medium.
+1. Fixtures, compatibility tests, CI and corrected documentation. No application behavior, dependency, state-schema or directory changes.
+2. Local-runtime failure reproduction and command commit/recovery repair. No framework, rules or visual changes.
+3. Mechanical Top 10 extraction with compatibility and rollback evidence.
 
-Profile wrappers are similar but not identical: UNO keeps up to 50 profiles and performs duplicate/trim handling; Deal, Flip 7 and Skyjo use 30, with different descriptions and validation behavior. Extract storage mechanics with injected per-game validation/limits while retaining exact existing keys and migration behavior. Add malformed/storage-unavailable and existing-profile fixtures before consolidation.
-
-`fishyI18n.ts` also supplies platform language, and `waveI18n.ts` shares the `fishy-ui-language` key. Introduce an explicitly named platform language service with a compatibility read/write path before splitting dictionaries. Do not silently rename the key or assume every game's language support matches.
-
-## 6. Standardize the build and release boundary, then optimize loading
-
-**Benefit:** reliable onboarding, repeatable checks, smaller initial frontend work, and fewer deployment surprises. **Scope/risk:** medium; public hosting/build contexts can change.
-
-Choose whether to add the frontend to the root workspace and retire redundant install/lock paths. First inventory Pages' frontend-root build, standalone backend scripts and any external tooling. Test a clean checkout using locked installs. Add CI that runs checks/builds and representative browser games without production credentials; keep live tests and deployments separate.
-
-Consolidate the two Wrangler configs only after validating relative entry paths, local persistence directories, secret access, D1 bindings/migrations and Worker/Pages commands. Preserve resource identities. Version current state fixtures and make migration tests a release prerequisite before changing stored structures.
-
-Measure the Vite output and browser network waterfall, then consider lazy loading currently eager game/admin routes and loading game CSS by route. XLSX and CSV parsing already use asynchronous imports in the admin UI; preserve that. Check loading/error boundaries, invite refreshes, offline/PWA cache behavior and old asset URLs before changing chunk boundaries. A local font strategy can reduce an external dependency, but should preserve licensing, rendering and fallback behavior.
-
-**Completion evidence:** clean installs, all quality checks, tested Pages/Worker build commands, old-room fixtures, chunk/network measurements, PWA navigation and an explicit release/rollback plan. New storage services or dependency upgrades should have their own demonstrated need.
-
-## Repository checkpoint verification — 2026-11-08
-
-The follow-up checkpoint includes eight games and Skyjo's provisional Keep decision. The complete working state passed **249 Node tests**, **37 browser scenarios on the first run**, frontend/backend TypeScript, ESLint, the frontend production build and the Worker dry run. The commit series separates shared support, six new games with their integration, and contributor documentation/type cleanup. The older Top 10 / Just One commits are retained. Production publication is separate from this local checkpoint.
-
-## Suggested sequence
-
-Start with one frontend extraction and a shared transport prototype for two games. Add their compatibility tests, then finish registration/Top 10 isolation. Broader themes, profile/language consolidation and workspace/deployment cleanup can follow as separately reviewed changes. Avoid a simultaneous folder move, state migration, transport rewrite and visual redesign: it makes a regression hard to attribute or roll back.
+Registration, shared transport and UI improvements follow using the evidence from these changes. Each step should be deployable and reversible independently.

@@ -1,0 +1,476 @@
+{
+  "source": {
+    "commit": "a68d476f57ec2ef8ed05ec32d7d5a3011c51ec59",
+    "captureTool": "scripts/capture-compatibility-fixtures.ts",
+    "synthetic": true,
+    "scenario": "Paused clue collection with a private draft and saved timer remainder."
+  },
+  "now": 1790000000000,
+  "gameType": "just-one",
+  "key": "just-one",
+  "state": {
+    "gameType": "just-one",
+    "gameId": "1234",
+    "hostToken": "fixture-just-one-host-capability",
+    "version": 6,
+    "generation": 1,
+    "phase": "CLUES",
+    "players": {
+      "sl8ns68v": {
+        "playerId": "sl8ns68v",
+        "nickname": "Fixture Host",
+        "role": "HOST",
+        "connected": false,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-just-one-sl8ns68v"
+      },
+      "en0he8c8": {
+        "playerId": "en0he8c8",
+        "nickname": "Fixture Guest 1",
+        "role": "PLAYER",
+        "connected": false,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-just-one-en0he8c8"
+      },
+      "ydvao7bz": {
+        "playerId": "ydvao7bz",
+        "nickname": "Fixture Guest 2",
+        "role": "PLAYER",
+        "connected": false,
+        "participating": true,
+        "pending": false,
+        "token": "fixture-just-one-ydvao7bz"
+      }
+    },
+    "order": [
+      "sl8ns68v",
+      "en0he8c8",
+      "ydvao7bz"
+    ],
+    "settings": {
+      "bankId": "just_one_en_classic_v1",
+      "scoring": "original",
+      "length": 13,
+      "selection": "automatic",
+      "guessing": "typed",
+      "cluesPerPlayer": 0,
+      "clueTimer": true,
+      "guessTimer": false,
+      "clueSeconds": 60,
+      "guessSeconds": 30,
+      "autoSubmitClues": true,
+      "autoSubmitGuess": true
+    },
+    "roundSettings": {
+      "bankId": "just_one_en_classic_v1",
+      "scoring": "original",
+      "length": 13,
+      "selection": "automatic",
+      "guessing": "typed",
+      "cluesPerPlayer": 0,
+      "clueTimer": true,
+      "guessTimer": false,
+      "clueSeconds": 60,
+      "guessSeconds": 30,
+      "autoSubmitClues": true,
+      "autoSubmitGuess": true
+    },
+    "round": 1,
+    "score": 0,
+    "remaining": 13,
+    "guesserId": "sl8ns68v",
+    "nextGuesserId": null,
+    "expected": [
+      "en0he8c8",
+      "ydvao7bz"
+    ],
+    "clueCount": 2,
+    "submissions": {},
+    "clueDrafts": {
+      "en0he8c8": [
+        "synthetic draft",
+        "synthetic draft"
+      ]
+    },
+    "guessDraft": null,
+    "clues": [],
+    "potential": [],
+    "word": "Bluetooth",
+    "options": [
+      "Bluetooth",
+      "Truck",
+      "Doctor",
+      "Vacuum",
+      "Renaissance"
+    ],
+    "usedWords": [
+      "bluetooth",
+      "truck",
+      "doctor",
+      "vacuum",
+      "renaissance"
+    ],
+    "committedGuess": null,
+    "result": null,
+    "history": [],
+    "deadline": null,
+    "paused": true,
+    "pausedRemaining": 60000,
+    "expiresAt": 1790007200000,
+    "endedReason": null,
+    "processed": [
+      "sl8ns68v:fixture-action-1",
+      "en0he8c8:fixture-action-2",
+      "sl8ns68v:fixture-action-3"
+    ]
+  },
+  "views": {
+    "sl8ns68v": {
+      "gameType": "just-one",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "serverNow": 1790000000000,
+      "phase": "CLUES",
+      "yourPlayerId": "sl8ns68v",
+      "yourRole": "HOST",
+      "players": [
+        {
+          "playerId": "sl8ns68v",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "en0he8c8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "ydvao7bz",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "sl8ns68v",
+        "en0he8c8",
+        "ydvao7bz"
+      ],
+      "settings": {
+        "bankId": "just_one_en_classic_v1",
+        "scoring": "original",
+        "length": 13,
+        "selection": "automatic",
+        "guessing": "typed",
+        "cluesPerPlayer": 0,
+        "clueTimer": true,
+        "guessTimer": false,
+        "clueSeconds": 60,
+        "guessSeconds": 30,
+        "autoSubmitClues": true,
+        "autoSubmitGuess": true
+      },
+      "roundSettings": {
+        "bankId": "just_one_en_classic_v1",
+        "scoring": "original",
+        "length": 13,
+        "selection": "automatic",
+        "guessing": "typed",
+        "cluesPerPlayer": 0,
+        "clueTimer": true,
+        "guessTimer": false,
+        "clueSeconds": 60,
+        "guessSeconds": 30,
+        "autoSubmitClues": true,
+        "autoSubmitGuess": true
+      },
+      "banks": [
+        {
+          "id": "just_one_de_classic_v1",
+          "name": "Classic German",
+          "language": "de",
+          "version": 1,
+          "development": false,
+          "cardCount": 110
+        },
+        {
+          "id": "just_one_en_classic_v1",
+          "name": "Classic English",
+          "language": "en",
+          "version": 1,
+          "development": false,
+          "cardCount": 110
+        }
+      ],
+      "round": 1,
+      "score": 0,
+      "remaining": 13,
+      "maxPlayers": 10,
+      "guesserId": "sl8ns68v",
+      "reviewerId": "en0he8c8",
+      "nextGuesserId": null,
+      "clueCount": 2,
+      "submitted": [],
+      "expected": [
+        "en0he8c8",
+        "ydvao7bz"
+      ],
+      "ownClues": null,
+      "ownClueDraft": null,
+      "ownGuessDraft": null,
+      "result": null,
+      "history": [],
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 60000,
+      "endedReason": null
+    },
+    "en0he8c8": {
+      "gameType": "just-one",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "serverNow": 1790000000000,
+      "phase": "CLUES",
+      "yourPlayerId": "en0he8c8",
+      "yourRole": "PLAYER",
+      "players": [
+        {
+          "playerId": "sl8ns68v",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "en0he8c8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "ydvao7bz",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "sl8ns68v",
+        "en0he8c8",
+        "ydvao7bz"
+      ],
+      "settings": {
+        "bankId": "just_one_en_classic_v1",
+        "scoring": "original",
+        "length": 13,
+        "selection": "automatic",
+        "guessing": "typed",
+        "cluesPerPlayer": 0,
+        "clueTimer": true,
+        "guessTimer": false,
+        "clueSeconds": 60,
+        "guessSeconds": 30,
+        "autoSubmitClues": true,
+        "autoSubmitGuess": true
+      },
+      "roundSettings": {
+        "bankId": "just_one_en_classic_v1",
+        "scoring": "original",
+        "length": 13,
+        "selection": "automatic",
+        "guessing": "typed",
+        "cluesPerPlayer": 0,
+        "clueTimer": true,
+        "guessTimer": false,
+        "clueSeconds": 60,
+        "guessSeconds": 30,
+        "autoSubmitClues": true,
+        "autoSubmitGuess": true
+      },
+      "banks": [
+        {
+          "id": "just_one_de_classic_v1",
+          "name": "Classic German",
+          "language": "de",
+          "version": 1,
+          "development": false,
+          "cardCount": 110
+        },
+        {
+          "id": "just_one_en_classic_v1",
+          "name": "Classic English",
+          "language": "en",
+          "version": 1,
+          "development": false,
+          "cardCount": 110
+        }
+      ],
+      "round": 1,
+      "score": 0,
+      "remaining": 13,
+      "maxPlayers": 10,
+      "guesserId": "sl8ns68v",
+      "reviewerId": "en0he8c8",
+      "nextGuesserId": null,
+      "clueCount": 2,
+      "submitted": [],
+      "expected": [
+        "en0he8c8",
+        "ydvao7bz"
+      ],
+      "ownClues": null,
+      "ownClueDraft": [
+        "synthetic draft",
+        "synthetic draft"
+      ],
+      "ownGuessDraft": null,
+      "result": null,
+      "history": [],
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 60000,
+      "endedReason": null,
+      "word": "Bluetooth"
+    },
+    "ydvao7bz": {
+      "gameType": "just-one",
+      "gameId": "1234",
+      "version": 6,
+      "generation": 1,
+      "serverNow": 1790000000000,
+      "phase": "CLUES",
+      "yourPlayerId": "ydvao7bz",
+      "yourRole": "PLAYER",
+      "players": [
+        {
+          "playerId": "sl8ns68v",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "en0he8c8",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        },
+        {
+          "playerId": "ydvao7bz",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "participating": true,
+          "pending": false
+        }
+      ],
+      "order": [
+        "sl8ns68v",
+        "en0he8c8",
+        "ydvao7bz"
+      ],
+      "settings": {
+        "bankId": "just_one_en_classic_v1",
+        "scoring": "original",
+        "length": 13,
+        "selection": "automatic",
+        "guessing": "typed",
+        "cluesPerPlayer": 0,
+        "clueTimer": true,
+        "guessTimer": false,
+        "clueSeconds": 60,
+        "guessSeconds": 30,
+        "autoSubmitClues": true,
+        "autoSubmitGuess": true
+      },
+      "roundSettings": {
+        "bankId": "just_one_en_classic_v1",
+        "scoring": "original",
+        "length": 13,
+        "selection": "automatic",
+        "guessing": "typed",
+        "cluesPerPlayer": 0,
+        "clueTimer": true,
+        "guessTimer": false,
+        "clueSeconds": 60,
+        "guessSeconds": 30,
+        "autoSubmitClues": true,
+        "autoSubmitGuess": true
+      },
+      "banks": [
+        {
+          "id": "just_one_de_classic_v1",
+          "name": "Classic German",
+          "language": "de",
+          "version": 1,
+          "development": false,
+          "cardCount": 110
+        },
+        {
+          "id": "just_one_en_classic_v1",
+          "name": "Classic English",
+          "language": "en",
+          "version": 1,
+          "development": false,
+          "cardCount": 110
+        }
+      ],
+      "round": 1,
+      "score": 0,
+      "remaining": 13,
+      "maxPlayers": 10,
+      "guesserId": "sl8ns68v",
+      "reviewerId": "en0he8c8",
+      "nextGuesserId": null,
+      "clueCount": 2,
+      "submitted": [],
+      "expected": [
+        "en0he8c8",
+        "ydvao7bz"
+      ],
+      "ownClues": null,
+      "ownClueDraft": null,
+      "ownGuessDraft": null,
+      "result": null,
+      "history": [],
+      "deadline": null,
+      "paused": true,
+      "pausedRemaining": 60000,
+      "endedReason": null,
+      "word": "Bluetooth"
+    }
+  },
+  "actor": "sl8ns68v",
+  "token": "fixture-just-one-sl8ns68v",
+  "command": {
+    "route": "action",
+    "body": {
+      "id": "fixture-action-4",
+      "type": "pause",
+      "payload": {},
+      "generation": 1,
+      "round": 1,
+      "phase": "CLUES"
+    }
+  }
+}

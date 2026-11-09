@@ -1,0 +1,14 @@
+{
+  "source": { "commit": "3003ddb433fc420afd54f505005a90d832f78539", "synthetic": true, "description": "Existing browser keys and deliberately awkward profile/session inputs; no production data." },
+  "session": { "gameId": "1234", "playerId": "fixture-player", "playerToken": "fixture-player-token", "hostToken": "fixture-host-token", "role": "HOST" },
+  "otherSession": { "gameId": "5678", "playerId": "fixture-guest", "playerToken": "fixture-guest-token", "role": "PLAYER" },
+  "profiles": [
+    { "id": "custom-first", "name": "  First profile  ", "description": "Previous description", "rules": {} },
+    { "id": "custom-first", "name": "Duplicate", "rules": {} },
+    null,
+    { "id": "classic", "name": "Not a custom profile", "rules": {} },
+    { "id": "custom-blank", "name": "   ", "rules": {} },
+    { "id": "custom-invalid", "name": "Wrong rule type", "rules": null },
+    { "id": "custom-last", "name": "Last profile", "rules": {} }
+  ]
+}

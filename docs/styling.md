@@ -40,6 +40,6 @@ Rendering should emit an intent such as a selected grid position; the action lay
 2. Replace platform literals using equal-valued tokens first; compare screenshots and computed styles before changing values.
 3. Migrate one game's wrapper to those tokens and extract its renderer behind the existing props. Leave game view/action types intact.
 4. Check portrait/landscape phones, large player counts, desktop, TV, focus order, private information, and reduced motion.
-5. Apply the design to other games after the first migration proves the component boundaries. A runtime theme selector can follow once all affected components have a consistent token contract.
+5. Apply the design to other games after the first migration proves the component boundaries. The confirmed goal is developer-led redesigns through tokens and imported renderers; a player-facing theme selector and runtime renderer registry are outside this plan.
 
 This cleanup does not change current game palettes, card artwork, layouts, or the global font-loading setup. A future font/asset strategy and broader component library are separate tasks in the [roadmap](roadmap.md).

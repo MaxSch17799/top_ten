@@ -49,7 +49,7 @@ Backend folders use `justOne`, `soundsFishy`, and `monopolyDeal`; public IDs use
 3. `GameDurableObject` routes to the correct room adapter. Existing room detection also protects the shared code namespace when a different game tries to create the same code. Top 10 currently falls back to its implementation inside `game.ts`.
 4. The adapter authenticates a player token or dedicated display capability. It restores persisted state and supplies a viewer-specific snapshot.
 5. `useGameConnection` receives WebSocket states, retries with backoff, falls back to polling, and refreshes on visibility/network changes. It isolates snapshots by room/token and ignores older versions.
-6. Commands pass through the adapter to the engine. Newer adapters clone state, validate a command, persist successful transitions, and broadcast separately serialized views. Rejected commands leave committed state intact.
+6. Commands pass through the adapter to the engine, then persistence and separately serialized broadcasts. Several newer adapters clone candidates, but commit/error ordering is not uniform: Just One can update memory before a failed save; Skyjo/Flip 7 save before a separately fallible alarm update; Top 10 has background persistence paths. The [roadmap](roadmap.md#2-define-and-repair-command-failure-recovery) records these audit findings and the required local-runtime investigation before sharing commit code.
 7. Durable Object alarms advance timers/automatic rounds and handle expiry. A connected TV or host browser is not the timer authority.
 
 ## Boundaries to preserve
@@ -69,6 +69,8 @@ The codebase has eight games and a useful engine/adapter/UI separation for seven
 The closest repeated room adapters are UNO, Monopoly Deal, Flip 7, and Skyjo. Repeated concerns include token lookup, socket membership, persistence, alarms, errors, and usage tracking. Their rules, recovery behavior, settings, and view projection differ. Extract transport incrementally with compatibility tests rather than replacing every adapter with a generic engine.
 
 Top 10's game implementation still shares a file with dispatch. The root and backend each have a Wrangler config describing the same Worker with paths relative to different directories. The frontend is not an npm workspace; it keeps its own install/lockfile. These boundaries remain unchanged in this cleanup.
+
+Top 10 and Just One have no dedicated TV display. Their `/g/:code/display` routes explain this and offer an explicit link to the regular room, without mounting a player interface or opening a player connection. The normal-room link omits any display-token fragment. The six games with dedicated displays retain their existing routes.
 
 ## Content and browser caching
 

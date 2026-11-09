@@ -10,6 +10,7 @@ Start with [architecture](architecture.md) to understand the application, then u
 | Change the platform appearance or introduce a new visual style | [Styling and UI boundaries](styling.md) |
 | Deploy or check the existing Cloudflare setup | [Deployment](deployment.md) |
 | Choose the next larger cleanup | [Refactoring roadmap](roadmap.md) |
+| Protect stored rooms, rollback, browser keys and platform boundaries | [Compatibility tests and CI](compatibility.md) |
 
 ## Game guides
 

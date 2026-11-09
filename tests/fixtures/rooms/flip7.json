@@ -1,0 +1,1371 @@
+{
+  "source": {
+    "commit": "a68d476f57ec2ef8ed05ec32d7d5a3011c51ec59",
+    "captureTool": "scripts/capture-compatibility-fixtures.ts",
+    "synthetic": true,
+    "scenario": "Paused target choice with automatic-deal continuation and replay IDs."
+  },
+  "now": 1790000000000,
+  "gameType": "flip7",
+  "key": "flip7",
+  "state": {
+    "gameId": "1234",
+    "players": {
+      "hppokm13": {
+        "playerId": "hppokm13",
+        "nickname": "Fixture Host",
+        "role": "HOST",
+        "connected": false,
+        "disconnectedAt": 1790000000000,
+        "token": "fixture-flip7-hppokm13"
+      },
+      "wnzokb1z": {
+        "playerId": "wnzokb1z",
+        "nickname": "Fixture Guest 1",
+        "role": "PLAYER",
+        "token": "fixture-flip7-wnzokb1z",
+        "connected": false,
+        "disconnectedAt": 1790000000000
+      },
+      "nm9mhj37": {
+        "playerId": "nm9mhj37",
+        "nickname": "Fixture Guest 2",
+        "role": "PLAYER",
+        "token": "fixture-flip7-nm9mhj37",
+        "connected": false,
+        "disconnectedAt": 1790000000000
+      }
+    },
+    "order": [
+      "hppokm13",
+      "wnzokb1z",
+      "nm9mhj37"
+    ],
+    "displayToken": "fixture-flip7-display-capability",
+    "settings": {
+      "profileId": "classic",
+      "rules": {
+        "target": 200,
+        "bonus": 15,
+        "unique": 7,
+        "fixedRounds": 0,
+        "turnSeconds": 45,
+        "actionSeconds": 45,
+        "timeout": "stay",
+        "freeze": 3,
+        "flipThree": 3,
+        "secondChance": 3
+      },
+      "displayMode": "normal",
+      "autoNext": true
+    },
+    "phase": "PLAY",
+    "version": 9,
+    "revision": 8,
+    "generation": 1,
+    "hands": {
+      "hppokm13": {
+        "cards": [
+          {
+            "id": "number-3-1",
+            "kind": "number",
+            "value": 3
+          }
+        ],
+        "status": "active",
+        "flip7": false
+      },
+      "wnzokb1z": {
+        "cards": [
+          {
+            "id": "number-1-0",
+            "kind": "number",
+            "value": 1
+          }
+        ],
+        "status": "active",
+        "flip7": false
+      },
+      "nm9mhj37": {
+        "cards": [
+          {
+            "id": "number-2-1",
+            "kind": "number",
+            "value": 2
+          }
+        ],
+        "status": "active",
+        "flip7": false
+      }
+    },
+    "totals": {
+      "hppokm13": 0,
+      "wnzokb1z": 0,
+      "nm9mhj37": 0
+    },
+    "deck": [
+      {
+        "id": "number-12-5",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-8-6",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-9-1",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-6-5",
+        "kind": "number",
+        "value": 6
+      },
+      {
+        "id": "number-11-0",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-9-4",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-4-2",
+        "kind": "number",
+        "value": 4
+      },
+      {
+        "id": "number-5-2",
+        "kind": "number",
+        "value": 5
+      },
+      {
+        "id": "number-5-1",
+        "kind": "number",
+        "value": 5
+      },
+      {
+        "id": "number-7-6",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "number-12-4",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-0-0",
+        "kind": "number",
+        "value": 0
+      },
+      {
+        "id": "second-chance-0-1",
+        "kind": "second-chance",
+        "value": 0
+      },
+      {
+        "id": "number-11-3",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-10-4",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-3-0",
+        "kind": "number",
+        "value": 3
+      },
+      {
+        "id": "double-0-0",
+        "kind": "double",
+        "value": 0
+      },
+      {
+        "id": "number-5-0",
+        "kind": "number",
+        "value": 5
+      },
+      {
+        "id": "number-9-6",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-10-8",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-10-2",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-11-2",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-9-2",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-7-2",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "number-12-2",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-11-4",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-9-3",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "freeze-0-0",
+        "kind": "freeze",
+        "value": 0
+      },
+      {
+        "id": "number-12-6",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-10-3",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-12-8",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-11-1",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-10-9",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-7-4",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "number-12-9",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-12-10",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-8-1",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-4-1",
+        "kind": "number",
+        "value": 4
+      },
+      {
+        "id": "number-8-3",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-9-0",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-7-0",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "number-8-4",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-4-3",
+        "kind": "number",
+        "value": 4
+      },
+      {
+        "id": "number-9-7",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-10-0",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-6-3",
+        "kind": "number",
+        "value": 6
+      },
+      {
+        "id": "flip-three-0-1",
+        "kind": "flip-three",
+        "value": 0
+      },
+      {
+        "id": "number-4-0",
+        "kind": "number",
+        "value": 4
+      },
+      {
+        "id": "bonus-4-0",
+        "kind": "bonus",
+        "value": 4
+      },
+      {
+        "id": "number-10-7",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-12-3",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-8-2",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-11-5",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-11-9",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-12-1",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-6-2",
+        "kind": "number",
+        "value": 6
+      },
+      {
+        "id": "bonus-6-0",
+        "kind": "bonus",
+        "value": 6
+      },
+      {
+        "id": "number-3-2",
+        "kind": "number",
+        "value": 3
+      },
+      {
+        "id": "number-6-1",
+        "kind": "number",
+        "value": 6
+      },
+      {
+        "id": "number-9-5",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-11-10",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-12-7",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-6-4",
+        "kind": "number",
+        "value": 6
+      },
+      {
+        "id": "number-9-8",
+        "kind": "number",
+        "value": 9
+      },
+      {
+        "id": "number-5-4",
+        "kind": "number",
+        "value": 5
+      },
+      {
+        "id": "number-11-7",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-11-6",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "flip-three-0-0",
+        "kind": "flip-three",
+        "value": 0
+      },
+      {
+        "id": "number-10-1",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "number-10-5",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "second-chance-0-2",
+        "kind": "second-chance",
+        "value": 0
+      },
+      {
+        "id": "number-2-0",
+        "kind": "number",
+        "value": 2
+      },
+      {
+        "id": "bonus-2-0",
+        "kind": "bonus",
+        "value": 2
+      },
+      {
+        "id": "number-8-0",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-10-6",
+        "kind": "number",
+        "value": 10
+      },
+      {
+        "id": "freeze-0-1",
+        "kind": "freeze",
+        "value": 0
+      },
+      {
+        "id": "number-5-3",
+        "kind": "number",
+        "value": 5
+      },
+      {
+        "id": "number-7-3",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "bonus-10-0",
+        "kind": "bonus",
+        "value": 10
+      },
+      {
+        "id": "bonus-8-0",
+        "kind": "bonus",
+        "value": 8
+      },
+      {
+        "id": "number-7-5",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "number-6-0",
+        "kind": "number",
+        "value": 6
+      },
+      {
+        "id": "number-12-11",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "second-chance-0-0",
+        "kind": "second-chance",
+        "value": 0
+      },
+      {
+        "id": "number-12-0",
+        "kind": "number",
+        "value": 12
+      },
+      {
+        "id": "number-8-7",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "number-7-1",
+        "kind": "number",
+        "value": 7
+      },
+      {
+        "id": "number-11-8",
+        "kind": "number",
+        "value": 11
+      },
+      {
+        "id": "number-8-5",
+        "kind": "number",
+        "value": 8
+      },
+      {
+        "id": "flip-three-0-2",
+        "kind": "flip-three",
+        "value": 0
+      }
+    ],
+    "discard": [],
+    "round": 1,
+    "dealer": "hppokm13",
+    "turn": "wnzokb1z",
+    "initial": false,
+    "tasks": [],
+    "pending": {
+      "owner": "wnzokb1z",
+      "card": {
+        "id": "freeze-0-2",
+        "kind": "freeze",
+        "value": 0
+      },
+      "eligible": [
+        "hppokm13",
+        "wnzokb1z",
+        "nm9mhj37"
+      ]
+    },
+    "continuation": "wnzokb1z",
+    "nextAt": null,
+    "deadline": 1790000045000,
+    "nextRoundAt": null,
+    "pausedAt": 1790000000000,
+    "result": null,
+    "history": [],
+    "winner": null,
+    "endedReason": null,
+    "events": [
+      {
+        "id": 1,
+        "at": 1790000000000,
+        "type": "round",
+        "actor": "hppokm13",
+        "message": "Round 1 · Fixture Host deals"
+      },
+      {
+        "card": {
+          "id": "number-1-0",
+          "kind": "number",
+          "value": 1
+        },
+        "id": 2,
+        "at": 1790000000400,
+        "type": "draw",
+        "actor": "wnzokb1z",
+        "message": "Fixture Guest 1 flips 1"
+      },
+      {
+        "card": {
+          "id": "number-2-1",
+          "kind": "number",
+          "value": 2
+        },
+        "id": 3,
+        "at": 1790000001050,
+        "type": "draw",
+        "actor": "nm9mhj37",
+        "message": "Fixture Guest 2 flips 2"
+      },
+      {
+        "card": {
+          "id": "number-3-1",
+          "kind": "number",
+          "value": 3
+        },
+        "id": 4,
+        "at": 1790000001700,
+        "type": "draw",
+        "actor": "hppokm13",
+        "message": "Fixture Host flips 3"
+      },
+      {
+        "card": {
+          "id": "freeze-0-2",
+          "kind": "freeze",
+          "value": 0
+        },
+        "id": 5,
+        "at": 1790000000000,
+        "type": "draw",
+        "actor": "wnzokb1z",
+        "message": "Fixture Guest 1 flips Freeze"
+      }
+    ],
+    "eventSequence": 5,
+    "expiresAt": 1790086400000,
+    "processed": [
+      {
+        "id": "fixture-action-1",
+        "actor": "hppokm13"
+      },
+      {
+        "id": "fixture-action-2",
+        "actor": "wnzokb1z"
+      },
+      {
+        "id": "fixture-action-3",
+        "actor": "hppokm13"
+      }
+    ]
+  },
+  "views": {
+    "hppokm13": {
+      "gameType": "flip7",
+      "gameId": "1234",
+      "version": 9,
+      "revision": 8,
+      "generation": 1,
+      "phase": "PLAY",
+      "paused": true,
+      "settings": {
+        "profileId": "classic",
+        "rules": {
+          "target": 200,
+          "bonus": 15,
+          "unique": 7,
+          "fixedRounds": 0,
+          "turnSeconds": 45,
+          "actionSeconds": 45,
+          "timeout": "stay",
+          "freeze": 3,
+          "flipThree": 3,
+          "secondChance": 3
+        },
+        "displayMode": "normal",
+        "autoNext": true
+      },
+      "round": 1,
+      "players": [
+        {
+          "playerId": "hppokm13",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-3-1",
+                "kind": "number",
+                "value": 3
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 3
+        },
+        {
+          "playerId": "wnzokb1z",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-1-0",
+                "kind": "number",
+                "value": 1
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 1
+        },
+        {
+          "playerId": "nm9mhj37",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-2-1",
+                "kind": "number",
+                "value": 2
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 2
+        }
+      ],
+      "dealer": "hppokm13",
+      "turn": "wnzokb1z",
+      "dealing": false,
+      "pending": {
+        "owner": "wnzokb1z",
+        "card": {
+          "id": "freeze-0-2",
+          "kind": "freeze",
+          "value": 0
+        },
+        "eligible": [
+          "hppokm13",
+          "wnzokb1z",
+          "nm9mhj37"
+        ]
+      },
+      "forced": null,
+      "deckCount": 90,
+      "discardCount": 0,
+      "events": [
+        {
+          "id": 1,
+          "at": 1790000000000,
+          "type": "round",
+          "actor": "hppokm13",
+          "message": "Round 1 · Fixture Host deals"
+        },
+        {
+          "card": {
+            "id": "number-1-0",
+            "kind": "number",
+            "value": 1
+          },
+          "id": 2,
+          "at": 1790000000400,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips 1"
+        },
+        {
+          "card": {
+            "id": "number-2-1",
+            "kind": "number",
+            "value": 2
+          },
+          "id": 3,
+          "at": 1790000001050,
+          "type": "draw",
+          "actor": "nm9mhj37",
+          "message": "Fixture Guest 2 flips 2"
+        },
+        {
+          "card": {
+            "id": "number-3-1",
+            "kind": "number",
+            "value": 3
+          },
+          "id": 4,
+          "at": 1790000001700,
+          "type": "draw",
+          "actor": "hppokm13",
+          "message": "Fixture Host flips 3"
+        },
+        {
+          "card": {
+            "id": "freeze-0-2",
+            "kind": "freeze",
+            "value": 0
+          },
+          "id": 5,
+          "at": 1790000000000,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips Freeze"
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winner": null,
+      "endedReason": null,
+      "deadline": 1790000045000,
+      "nextRoundAt": null,
+      "serverNow": 1790000000000,
+      "yourPlayerId": "hppokm13",
+      "yourRole": "HOST",
+      "canHit": false,
+      "canStay": false,
+      "displayUrl": "/g/1234/display#token=fixture-flip7-display-capability"
+    },
+    "wnzokb1z": {
+      "gameType": "flip7",
+      "gameId": "1234",
+      "version": 9,
+      "revision": 8,
+      "generation": 1,
+      "phase": "PLAY",
+      "paused": true,
+      "settings": {
+        "profileId": "classic",
+        "rules": {
+          "target": 200,
+          "bonus": 15,
+          "unique": 7,
+          "fixedRounds": 0,
+          "turnSeconds": 45,
+          "actionSeconds": 45,
+          "timeout": "stay",
+          "freeze": 3,
+          "flipThree": 3,
+          "secondChance": 3
+        },
+        "displayMode": "normal",
+        "autoNext": true
+      },
+      "round": 1,
+      "players": [
+        {
+          "playerId": "hppokm13",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-3-1",
+                "kind": "number",
+                "value": 3
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 3
+        },
+        {
+          "playerId": "wnzokb1z",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-1-0",
+                "kind": "number",
+                "value": 1
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 1
+        },
+        {
+          "playerId": "nm9mhj37",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-2-1",
+                "kind": "number",
+                "value": 2
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 2
+        }
+      ],
+      "dealer": "hppokm13",
+      "turn": "wnzokb1z",
+      "dealing": false,
+      "pending": {
+        "owner": "wnzokb1z",
+        "card": {
+          "id": "freeze-0-2",
+          "kind": "freeze",
+          "value": 0
+        },
+        "eligible": [
+          "hppokm13",
+          "wnzokb1z",
+          "nm9mhj37"
+        ]
+      },
+      "forced": null,
+      "deckCount": 90,
+      "discardCount": 0,
+      "events": [
+        {
+          "id": 1,
+          "at": 1790000000000,
+          "type": "round",
+          "actor": "hppokm13",
+          "message": "Round 1 · Fixture Host deals"
+        },
+        {
+          "card": {
+            "id": "number-1-0",
+            "kind": "number",
+            "value": 1
+          },
+          "id": 2,
+          "at": 1790000000400,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips 1"
+        },
+        {
+          "card": {
+            "id": "number-2-1",
+            "kind": "number",
+            "value": 2
+          },
+          "id": 3,
+          "at": 1790000001050,
+          "type": "draw",
+          "actor": "nm9mhj37",
+          "message": "Fixture Guest 2 flips 2"
+        },
+        {
+          "card": {
+            "id": "number-3-1",
+            "kind": "number",
+            "value": 3
+          },
+          "id": 4,
+          "at": 1790000001700,
+          "type": "draw",
+          "actor": "hppokm13",
+          "message": "Fixture Host flips 3"
+        },
+        {
+          "card": {
+            "id": "freeze-0-2",
+            "kind": "freeze",
+            "value": 0
+          },
+          "id": 5,
+          "at": 1790000000000,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips Freeze"
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winner": null,
+      "endedReason": null,
+      "deadline": 1790000045000,
+      "nextRoundAt": null,
+      "serverNow": 1790000000000,
+      "yourPlayerId": "wnzokb1z",
+      "yourRole": "PLAYER",
+      "canHit": false,
+      "canStay": false
+    },
+    "nm9mhj37": {
+      "gameType": "flip7",
+      "gameId": "1234",
+      "version": 9,
+      "revision": 8,
+      "generation": 1,
+      "phase": "PLAY",
+      "paused": true,
+      "settings": {
+        "profileId": "classic",
+        "rules": {
+          "target": 200,
+          "bonus": 15,
+          "unique": 7,
+          "fixedRounds": 0,
+          "turnSeconds": 45,
+          "actionSeconds": 45,
+          "timeout": "stay",
+          "freeze": 3,
+          "flipThree": 3,
+          "secondChance": 3
+        },
+        "displayMode": "normal",
+        "autoNext": true
+      },
+      "round": 1,
+      "players": [
+        {
+          "playerId": "hppokm13",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-3-1",
+                "kind": "number",
+                "value": 3
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 3
+        },
+        {
+          "playerId": "wnzokb1z",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-1-0",
+                "kind": "number",
+                "value": 1
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 1
+        },
+        {
+          "playerId": "nm9mhj37",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-2-1",
+                "kind": "number",
+                "value": 2
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 2
+        }
+      ],
+      "dealer": "hppokm13",
+      "turn": "wnzokb1z",
+      "dealing": false,
+      "pending": {
+        "owner": "wnzokb1z",
+        "card": {
+          "id": "freeze-0-2",
+          "kind": "freeze",
+          "value": 0
+        },
+        "eligible": [
+          "hppokm13",
+          "wnzokb1z",
+          "nm9mhj37"
+        ]
+      },
+      "forced": null,
+      "deckCount": 90,
+      "discardCount": 0,
+      "events": [
+        {
+          "id": 1,
+          "at": 1790000000000,
+          "type": "round",
+          "actor": "hppokm13",
+          "message": "Round 1 · Fixture Host deals"
+        },
+        {
+          "card": {
+            "id": "number-1-0",
+            "kind": "number",
+            "value": 1
+          },
+          "id": 2,
+          "at": 1790000000400,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips 1"
+        },
+        {
+          "card": {
+            "id": "number-2-1",
+            "kind": "number",
+            "value": 2
+          },
+          "id": 3,
+          "at": 1790000001050,
+          "type": "draw",
+          "actor": "nm9mhj37",
+          "message": "Fixture Guest 2 flips 2"
+        },
+        {
+          "card": {
+            "id": "number-3-1",
+            "kind": "number",
+            "value": 3
+          },
+          "id": 4,
+          "at": 1790000001700,
+          "type": "draw",
+          "actor": "hppokm13",
+          "message": "Fixture Host flips 3"
+        },
+        {
+          "card": {
+            "id": "freeze-0-2",
+            "kind": "freeze",
+            "value": 0
+          },
+          "id": 5,
+          "at": 1790000000000,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips Freeze"
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winner": null,
+      "endedReason": null,
+      "deadline": 1790000045000,
+      "nextRoundAt": null,
+      "serverNow": 1790000000000,
+      "yourPlayerId": "nm9mhj37",
+      "yourRole": "PLAYER",
+      "canHit": false,
+      "canStay": false
+    },
+    "$display": {
+      "gameType": "flip7",
+      "gameId": "1234",
+      "version": 9,
+      "revision": 8,
+      "generation": 1,
+      "phase": "PLAY",
+      "paused": true,
+      "settings": {
+        "profileId": "classic",
+        "rules": {
+          "target": 200,
+          "bonus": 15,
+          "unique": 7,
+          "fixedRounds": 0,
+          "turnSeconds": 45,
+          "actionSeconds": 45,
+          "timeout": "stay",
+          "freeze": 3,
+          "flipThree": 3,
+          "secondChance": 3
+        },
+        "displayMode": "normal",
+        "autoNext": true
+      },
+      "round": 1,
+      "players": [
+        {
+          "playerId": "hppokm13",
+          "nickname": "Fixture Host",
+          "role": "HOST",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-3-1",
+                "kind": "number",
+                "value": 3
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 3
+        },
+        {
+          "playerId": "wnzokb1z",
+          "nickname": "Fixture Guest 1",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-1-0",
+                "kind": "number",
+                "value": 1
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 1
+        },
+        {
+          "playerId": "nm9mhj37",
+          "nickname": "Fixture Guest 2",
+          "role": "PLAYER",
+          "connected": false,
+          "hand": {
+            "cards": [
+              {
+                "id": "number-2-1",
+                "kind": "number",
+                "value": 2
+              }
+            ],
+            "status": "active",
+            "flip7": false
+          },
+          "total": 0,
+          "potential": 2
+        }
+      ],
+      "dealer": "hppokm13",
+      "turn": "wnzokb1z",
+      "dealing": false,
+      "pending": {
+        "owner": "wnzokb1z",
+        "card": {
+          "id": "freeze-0-2",
+          "kind": "freeze",
+          "value": 0
+        },
+        "eligible": [
+          "hppokm13",
+          "wnzokb1z",
+          "nm9mhj37"
+        ]
+      },
+      "forced": null,
+      "deckCount": 90,
+      "discardCount": 0,
+      "events": [
+        {
+          "id": 1,
+          "at": 1790000000000,
+          "type": "round",
+          "actor": "hppokm13",
+          "message": "Round 1 · Fixture Host deals"
+        },
+        {
+          "card": {
+            "id": "number-1-0",
+            "kind": "number",
+            "value": 1
+          },
+          "id": 2,
+          "at": 1790000000400,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips 1"
+        },
+        {
+          "card": {
+            "id": "number-2-1",
+            "kind": "number",
+            "value": 2
+          },
+          "id": 3,
+          "at": 1790000001050,
+          "type": "draw",
+          "actor": "nm9mhj37",
+          "message": "Fixture Guest 2 flips 2"
+        },
+        {
+          "card": {
+            "id": "number-3-1",
+            "kind": "number",
+            "value": 3
+          },
+          "id": 4,
+          "at": 1790000001700,
+          "type": "draw",
+          "actor": "hppokm13",
+          "message": "Fixture Host flips 3"
+        },
+        {
+          "card": {
+            "id": "freeze-0-2",
+            "kind": "freeze",
+            "value": 0
+          },
+          "id": 5,
+          "at": 1790000000000,
+          "type": "draw",
+          "actor": "wnzokb1z",
+          "message": "Fixture Guest 1 flips Freeze"
+        }
+      ],
+      "result": null,
+      "history": [],
+      "winner": null,
+      "endedReason": null,
+      "deadline": 1790000045000,
+      "nextRoundAt": null,
+      "serverNow": 1790000000000,
+      "yourPlayerId": null,
+      "yourRole": "DISPLAY",
+      "canHit": false,
+      "canStay": false
+    }
+  },
+  "actor": "hppokm13",
+  "token": "fixture-flip7-hppokm13",
+  "command": {
+    "route": "action",
+    "body": {
+      "id": "fixture-action-4",
+      "type": "display-mode",
+      "payload": {
+        "mode": "tv"
+      },
+      "generation": 1,
+      "revision": 8,
+      "round": 1,
+      "phase": "PLAY"
+    }
+  }
+}

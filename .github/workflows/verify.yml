@@ -1,0 +1,57 @@
+name: Verify game platform
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: 'true'
+      VITE_BACKEND_URL: http://127.0.0.1:8787
+      PLAYWRIGHT_BACKEND_URL: http://127.0.0.1:8787
+      FLIP7_TEST_BACKEND: http://127.0.0.1:8787
+      DEAL_TEST_BACKEND: http://127.0.0.1:8787
+      SKYJO_TEST_BACKEND: http://127.0.0.1:8787
+      FISHY_BACKEND_URL: http://127.0.0.1:8787
+      WAVELENGTH_BACKEND_URL: http://127.0.0.1:8787
+      UNO_TEST_BACKEND: http://127.0.0.1:8787
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # Compatibility tests execute the pinned rollback Git revision.
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - run: npm ci
+      - run: npm --prefix frontend ci
+      - run: npm run check
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: browser-failure-artifacts
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
+          if-no-files-found: ignore

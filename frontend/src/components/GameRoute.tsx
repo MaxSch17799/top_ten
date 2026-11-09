@@ -63,6 +63,18 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
+  if (display && (info.gameType === 'top10' || info.gameType === 'just-one'))
+    return (
+      <main className="page sheet">
+        <section className="host-form stack" style={{ fontFamily: 'var(--font-body)' }}>
+          <p className="eyebrow">{info.gameType === 'top10' ? 'Top 10' : 'Just One'}</p>
+          <h1>TV display unavailable</h1>
+          <p>This game does not have a dedicated TV display. Play in the regular room on each player’s device.</p>
+          <Link to={`/g/${encodeURIComponent(gameId)}`}>Open game room</Link>
+          <Link to="/">All games</Link>
+        </section>
+      </main>
+    );
   return info.gameType === 'skyjo' ? (
     <Suspense fallback={<main className="page">Opening your table…</main>}><SkyjoGame key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
   ) : info.gameType === 'flip7' ? (
