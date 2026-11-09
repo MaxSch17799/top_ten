@@ -43,7 +43,7 @@ Keep this separate from Top 10 extraction. Do not freeze known inconsistencies a
 
 ## 3. Isolate Top 10, then register games narrowly
 
-Move Top 10 mechanically into a room adapter in its own change. Preserve the exported Durable Object class, storage key `state`, public/legacy URLs, tokens, WebSockets, question-bank enrichment, alarms and viewer projections.
+Implemented as a mechanical extraction into `backend-do/src/top10/room.ts`, with Worker binding types in `env.ts`. The exported Durable Object class, storage key `state`, public/legacy URLs, tokens, WebSockets, question-bank enrichment, alarms and viewer projections are preserved. Backend TypeScript and all 50 frozen-room/runtime recovery scenarios passed after extraction.
 
 Registration follows separately:
 

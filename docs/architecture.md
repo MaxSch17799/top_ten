@@ -22,7 +22,9 @@ flowchart LR
 | `shared/<game>.ts` | Public view/action models, rule settings, and reusable public calculations |
 | `shared/*.mjs` and matching `.d.mts` files | Plain-Node content validation shared with build scripts |
 | `backend-do/src/index.ts` | Public routing, creation/settings preflight, content catalogs, admin endpoints |
-| `backend-do/src/game.ts` | Durable Object dispatch and the original Top 10 implementation |
+| `backend-do/src/game.ts` | Stable Durable Object export and dispatch to game adapters |
+| `backend-do/src/top10/room.ts` | Legacy Top 10 implementation, isolated behind the same room interface |
+| `backend-do/src/env.ts` | Worker binding types, independent of any game implementation |
 | `backend-do/src/<game>/engine.ts` | Rules, state transitions, scoring, action validation, role-specific views |
 | `backend-do/src/<game>/room.ts` | Authentication, transport, serialized persistence, broadcasts, alarms, usage tracking |
 | `backend-do/src/auth.ts` | Admin and usage-override authentication |
@@ -46,7 +48,7 @@ Backend folders use `justOne`, `soundsFishy`, and `monopolyDeal`; public IDs use
 
 1. A home component submits `createGame` to the Worker. Omitted `gameType` continues to mean Top 10 for old clients.
 2. The Worker validates game/settings and the usage guard, generates a code, and asks the Durable Object for that code to create a room. Collisions are retried.
-3. `GameDurableObject` routes to the correct room adapter. Existing room detection also protects the shared code namespace when a different game tries to create the same code. Top 10 currently falls back to its implementation inside `game.ts`.
+3. `GameDurableObject` routes to the correct room adapter. Existing room detection also protects the shared code namespace when a different game tries to create the same code. Top 10 uses its own adapter with the legacy storage key `state`.
 4. The adapter authenticates a player token or dedicated display capability. It restores persisted state and supplies a viewer-specific snapshot.
 5. `useGameConnection` receives WebSocket states, retries with backoff, falls back to polling, and refreshes on visibility/network changes. It isolates snapshots by room/token and ignores older versions.
 6. Commands pass through the adapter to the engine. The adapter commits room state and the next alarm together, then broadcasts separately projected views. Unconfirmed writes invalidate its cache and reconnect sockets; HTTP errors distinguish retryable uncertainty from rejected moves. Top 10 prompt selection also persists before broadcasting. See [persistence and recovery](persistence.md) for the failure contract and local-runtime tests.
@@ -68,7 +70,7 @@ The codebase has eight games and a useful engine/adapter/UI separation for seven
 
 The closest repeated room adapters are UNO, Monopoly Deal, Flip 7, and Skyjo. Repeated concerns include token lookup, socket membership, persistence, alarms, errors, and usage tracking. Their rules, recovery behavior, settings, and view projection differ. Extract transport incrementally with compatibility tests rather than replacing every adapter with a generic engine.
 
-Top 10's game implementation still shares a file with dispatch. The root and backend each have a Wrangler config describing the same Worker with paths relative to different directories. The frontend is not an npm workspace; it keeps its own install/lockfile. These boundaries remain unchanged in this cleanup.
+Top 10 is isolated from dispatch without changing its state format or public protocol. The root and backend each retain a Wrangler config describing the same Worker with paths relative to different directories. The frontend remains a separate npm project with its own install/lockfile.
 
 Top 10 and Just One have no dedicated TV display. Their `/g/:code/display` routes explain this and offer an explicit link to the regular room, without mounting a player interface or opening a player connection. The normal-room link omits any display-token fragment. The six games with dedicated displays retain their existing routes.
 
