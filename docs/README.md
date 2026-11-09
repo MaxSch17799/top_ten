@@ -11,6 +11,7 @@ Start with [architecture](architecture.md) to understand the application, then u
 | Deploy or check the existing Cloudflare setup | [Deployment](deployment.md) |
 | Choose the next larger cleanup | [Refactoring roadmap](roadmap.md) |
 | Protect stored rooms, rollback, browser keys and platform boundaries | [Compatibility tests and CI](compatibility.md) |
+| Understand atomic saves, alarms and uncertain-action retries | [Persistence and recovery](persistence.md) |
 
 ## Game guides
 

@@ -12,44 +12,13 @@ import type {
 type HostActionResponse = { success: boolean };
 type JsonPayload = Record<string, unknown>;
 
-export class ApiError extends Error {
-  code: string;
-  payload: JsonPayload;
-
-  constructor(message: string, code = 'REQUEST_FAILED', payload: JsonPayload = {}) {
-    super(message);
-    this.name = 'ApiError';
-    this.code = code;
-    this.payload = payload;
-  }
-}
-
+import { ApiError, request, parseJson } from './lib/http';
+export { ApiError, request } from './lib/http';
 export const BACKEND_BASE = (import.meta.env.VITE_BACKEND_URL ?? 'https://top-ten.maxschimmel17799.workers.dev').replace(/\/$/, '');
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
 };
-
-async function parseJson<T>(response: Response): Promise<T> {
-  const text = await response.text();
-  if (!text) {
-    if (response.ok) {
-      return {} as T;
-    }
-    throw new ApiError('Empty response');
-  }
-
-  const payload = JSON.parse(text) as JsonPayload;
-  if (!response.ok) {
-    throw new ApiError((payload.message as string) ?? (payload.error as string) ?? 'Request failed', String(payload.error ?? 'REQUEST_FAILED'), payload);
-  }
-  return payload as T;
-}
-
-export async function request<T>(input: RequestInfo, init?: RequestInit): Promise<T> {
-  const response = await fetch(input, init);
-  return parseJson<T>(response);
-}
 
 function authHeaders(token?: string | null): Record<string, string> {
   return token ? { Authorization: `Bearer ${token}` } : {};

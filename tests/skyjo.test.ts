@@ -281,7 +281,7 @@ test('full games at 2, 6 and 8 players preserve all 150 physical cards across ev
 
 function adapter(stored: SkyState) {
   const data = new Map<string, unknown>([['skyjo', structuredClone(stored)]]);
-  const storage = { get: async (key: string) => structuredClone(data.get(key)), put: async (key: string, v: unknown) => { data.set(key, structuredClone(v)); }, setAlarm: async () => {}, deleteAlarm: async () => {} };
+  const storage = { transaction: async (fn: (tx: unknown) => Promise<unknown>) => fn(storage), get: async (key: string) => structuredClone(data.get(key)), put: async (key: string, v: unknown) => { data.set(key, structuredClone(v)); }, setAlarm: async () => {}, deleteAlarm: async () => {} };
   const ctx = { storage, blockConcurrencyWhile: async (f: () => Promise<unknown>) => f(), waitUntil: (p: Promise<unknown>) => { void p; } };
   return { room: new SkyjoRoom(ctx as unknown as DurableObjectState, {} as Env), data };
 }

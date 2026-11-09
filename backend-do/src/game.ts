@@ -1,3 +1,4 @@
+import { commitRoom, RoomCommitError, reconnectClients } from './platform/persistence.js';
 import { defaultQuestionBankId, questionBanks as staticQuestionBanks } from './generated/questionBanks.js';
 import type { DbEnv } from './questionBanksDb.js';
 import { JustOneRoom } from './justOne/room.js';
@@ -191,7 +192,7 @@ export class GameDurableObject {
 
   private async persistState(): Promise<void> {
     if (this.state) {
-      await this.storage.put('state', this.state);
+      await commitRoom(this.storage, 'state', this.state, this.nextAlarm());
     }
   }
 
@@ -248,23 +249,31 @@ export class GameDurableObject {
     this.state.inactivityWarningAt = null;
   }
 
-  private async scheduleNextAlarm(): Promise<void> {
-    if (!this.state || this.state.phase === 'ENDED') {
-      await this.storage.deleteAlarm();
-      return;
-    }
+  private nextAlarm(): number | null {
+    if (!this.state || this.state.phase === 'ENDED') return null;
     const candidates: number[] = [];
-    if (this.state.inactivityEndsAt) {
-      candidates.push(this.state.inactivityEndsAt);
-    }
-    if (this.state.phase === 'ACTIVE') {
-      candidates.push(this.state.hostLastSeenAt + HOST_TIMEOUT_MS);
-    }
-    if (!candidates.length) {
-      await this.storage.deleteAlarm();
-      return;
-    }
-    await this.storage.setAlarm(Math.min(...candidates));
+    if (this.state.inactivityEndsAt) candidates.push(this.state.inactivityEndsAt);
+    if (this.state.phase === 'ACTIVE') candidates.push(this.state.hostLastSeenAt + HOST_TIMEOUT_MS);
+    return candidates.length ? Math.max(Date.now() + 1, Math.min(...candidates)) : null;
+  }
+
+  private invalidate(): void {
+    this.state = null;
+    this.loadingStatePromise = null;
+    reconnectClients(this.clients);
+  }
+
+  private async runRequest(request: Request, work: () => Promise<Response>): Promise<Response> {
+    return this.stateController.blockConcurrencyWhile(async () => {
+      try { return await work(); }
+      catch (error) {
+        if (!(error instanceof RoomCommitError)) throw error;
+        this.invalidate();
+        return new Response(JSON.stringify({ error: 'ROOM_COMMIT_UNCERTAIN', message: error.message, retryable: true }), {
+          status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...this.createCorsHeaders(request) },
+        });
+      }
+    });
   }
 
   private createCorsHeaders(request: Request): Record<string, string> {
@@ -293,7 +302,7 @@ export class GameDurableObject {
       if (payload.gameType === 'wavelength' || await this.wavelength.exists()) return this.wavelength.fetch(request);
       if (payload.gameType === 'sounds-fishy' || await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
       if (payload.gameType === 'just-one' || await this.justOne.exists()) return this.justOne.fetch(request);
-      return this.handleInternalCreate(request, corsHeaders);
+      return this.runRequest(request, () => this.handleInternalCreate(request, corsHeaders));
     }
 
     if (await this.skyjo.exists()) return this.skyjo.fetch(request);
@@ -303,6 +312,11 @@ export class GameDurableObject {
     if (await this.wavelength.exists()) return this.wavelength.fetch(request);
     if (await this.soundsFishy.exists()) return this.soundsFishy.fetch(request);
     if (await this.justOne.exists()) return this.justOne.fetch(request);
+    return this.runRequest(request, () => this.handleTop10(request, corsHeaders));
+  }
+
+  private async handleTop10(request: Request, corsHeaders: Record<string, string>): Promise<Response> {
+    const url = new URL(request.url);
     await this.loadState();
     if (!this.state) {
       return new Response('Game not initialized', { status: 404, headers: corsHeaders });
@@ -352,8 +366,10 @@ export class GameDurableObject {
     if (await this.wavelength.exists()) return this.wavelength.alarm();
     if (await this.soundsFishy.exists()) return this.soundsFishy.alarm();
     if (await this.justOne.exists()) return this.justOne.alarm();
-    await this.loadState();
-    await this.checkAutoEndConditions();
+    await this.stateController.blockConcurrencyWhile(async () => {
+      try { await this.loadState(); await this.checkAutoEndConditions(); if (this.state && this.state.phase !== 'ENDED') await this.persistState(); }
+      catch (error) { if (error instanceof RoomCommitError) this.invalidate(); throw error; }
+    });
   }
 
   private async handleInternalCreate(request: Request, corsHeaders: Record<string, string>): Promise<Response> {
@@ -424,7 +440,6 @@ export class GameDurableObject {
     };
     this.updateInactivityWindow(now);
     await this.persistState();
-    await this.scheduleNextAlarm();
     this.trackUsage({ type: 'GAME_CREATED', gameId, connectedPlayers: 0 });
 
     return new Response(
@@ -495,7 +510,6 @@ export class GameDurableObject {
     }
     this.bumpVersion(now);
     await this.persistState();
-    await this.scheduleNextAlarm();
     this.notifyUsageStateChanged();
     this.broadcastState();
 
@@ -545,7 +559,6 @@ export class GameDurableObject {
     this.updateInactivityWindow(now);
     this.bumpVersion(now);
     await this.persistState();
-    await this.scheduleNextAlarm();
     this.notifyUsageStateChanged();
     this.broadcastState();
     return new Response(JSON.stringify({ success: true }), {
@@ -579,7 +592,6 @@ export class GameDurableObject {
     this.updateInactivityWindow(now);
     this.bumpVersion(now);
     await this.persistState();
-    await this.scheduleNextAlarm();
     this.notifyUsageStateChanged();
     this.broadcastState();
     return new Response(JSON.stringify({ success: true }), {
@@ -611,7 +623,6 @@ export class GameDurableObject {
     this.updateInactivityWindow(now);
     this.bumpVersion(now);
     await this.persistState();
-    await this.scheduleNextAlarm();
     this.notifyUsageStateChanged();
     this.broadcastState();
     return new Response(JSON.stringify({ success: true }), {
@@ -673,8 +684,8 @@ export class GameDurableObject {
     const [client, server] = Object.values(pair);
     server.accept();
     this.addClient(playerInfo.playerId, server);
-    server.addEventListener('message', (event) => this.handleSocketMessage(playerInfo.playerId, event));
-    server.addEventListener('close', () => void this.handleSocketClose(playerInfo.playerId, server));
+    server.addEventListener('message', (event) => this.stateController.waitUntil(this.runSocket(() => this.handleSocketMessage(playerInfo.playerId, event))));
+    server.addEventListener('close', () => this.stateController.waitUntil(this.runSocket(() => this.handleSocketClose(playerInfo.playerId, server))));
     await this.touchPlayerLastSeen(playerInfo.playerId);
     this.bumpVersion();
     await this.persistState();
@@ -711,7 +722,14 @@ export class GameDurableObject {
     }
   }
 
-  private handleSocketMessage(playerId: string, event: MessageEvent): void {
+  private async runSocket(work: () => Promise<void>): Promise<void> {
+    await this.stateController.blockConcurrencyWhile(async () => {
+      try { await this.loadState(); await work(); }
+      catch (error) { this.invalidate(); console.error('Top 10 connection update failed', error); }
+    });
+  }
+
+  private async handleSocketMessage(playerId: string, event: MessageEvent): Promise<void> {
     try {
       const data = typeof event.data === 'string' ? (JSON.parse(event.data) as ClientMessage) : null;
       if (!data || typeof data.type !== 'string') {
@@ -721,18 +739,19 @@ export class GameDurableObject {
         for (const socket of this.clients.get(playerId) ?? []) {
           try { socket.send('{"type":"PONG"}'); } catch { /* next connection will recover */ }
         }
-        void this.touchPlayerLastSeen(playerId);
+        await this.touchPlayerLastSeen(playerId);
         return;
       }
       if (data.type === 'HOST_CHOOSE_PROMPT') {
-        this.handleHostChoosePrompt(playerId, data.promptId);
+        await this.handleHostChoosePrompt(playerId, data.promptId);
       }
-    } catch {
+    } catch (error) {
+      if (error instanceof RoomCommitError) throw error;
       /* ignore malformed messages */
     }
   }
 
-  private handleHostChoosePrompt(playerId: string, promptId: string): void {
+  private async handleHostChoosePrompt(playerId: string, promptId: string): Promise<void> {
     if (!this.state) {
       return;
     }
@@ -740,9 +759,10 @@ export class GameDurableObject {
     if (!roundMeta || roundMeta.hostPlayerId !== playerId || !roundMeta.promptIds.includes(promptId)) {
       return;
     }
+    if (roundMeta.chosenPromptId === promptId) return;
     roundMeta.chosenPromptId = promptId;
     this.bumpVersion();
-    this.stateController.waitUntil(this.persistState().catch(() => undefined));
+    await this.persistState();
     this.broadcastState();
   }
 
@@ -758,7 +778,6 @@ export class GameDurableObject {
     player.lastSeenAt = now;
     if (player.role === 'HOST') {
       this.state.hostLastSeenAt = now;
-      await this.scheduleNextAlarm();
     }
     await this.persistState();
   }
@@ -795,7 +814,6 @@ export class GameDurableObject {
       await this.endGame(reason);
       return;
     }
-    await this.scheduleNextAlarm();
   }
 
   private async endGame(reason: GameEndReason): Promise<void> {
@@ -809,7 +827,6 @@ export class GameDurableObject {
     this.updateInactivityWindow(Date.now());
     this.bumpVersion();
     await this.persistState();
-    await this.scheduleNextAlarm();
     this.trackUsage({ type: 'GAME_ENDED', gameId: this.state.gameId });
     this.broadcastState();
   }

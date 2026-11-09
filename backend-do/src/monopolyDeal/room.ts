@@ -1,4 +1,5 @@
-﻿import type { DealAction } from "../../../shared/monopolyDeal.js";
+import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
+import type { DealAction } from "../../../shared/monopolyDeal.js";
 import type { Env } from "../game.js";
 import { checkedDealSettings } from "../../../shared/monopolyDeal.js";
 import { generateShortId, generateToken, normalizeNickname } from "../utils.js";
@@ -39,6 +40,10 @@ export class MonopolyDealRoom {
     }
     return this.state !== null;
   }
+  private invalidate() {
+    this.state = null; this.loaded = false;
+    reconnectClients(this.clients);
+  }
   private json(request: Request, data: unknown, status = 200) {
     return new Response(data === null ? null : JSON.stringify(data), {
       status,
@@ -52,14 +57,8 @@ export class MonopolyDealRoom {
       },
     });
   }
-  private async save(s = this.state!) {
-    // Bounded 106-card deck, 15 results, 35 events and 160 request IDs.
-    await this.ctx.storage.put("monopoly-deal", s);
-    if (s.phase === "COMPLETED") await this.ctx.storage.deleteAlarm();
-    else
-      await this.ctx.storage.setAlarm(
-        Math.max(Date.now() + 1, nextDeadline(s)),
-      );
+  private async save(s: DealState = this.state!): Promise<void> {
+    await commitRoom(this.ctx.storage, 'monopoly-deal', s, s.phase === 'COMPLETED' ? null : Math.max(Date.now() + 1, nextDeadline(s)));
   }
   private track(type: "GAME_CREATED" | "GAME_STATE_CHANGED" | "GAME_ENDED") {
     const s = this.state!;
@@ -117,9 +116,14 @@ export class MonopolyDealRoom {
   }
   async alarm() {
     await this.ctx.blockConcurrencyWhile(async () => {
-      if (await this.exists()) {
-        await this.expire();
-        await this.save();
+      try {
+        if (await this.exists()) {
+          await this.expire();
+          await this.save();
+        }
+      } catch (error) {
+        if (error instanceof RoomCommitError) this.invalidate();
+        throw error;
       }
     });
   }
@@ -128,6 +132,10 @@ export class MonopolyDealRoom {
       try {
         return await this.handle(request);
       } catch (e) {
+        if (e instanceof RoomCommitError) {
+          this.invalidate();
+          return this.json(request, { error: 'ROOM_COMMIT_UNCERTAIN', message: e.message, retryable: true }, 503);
+        }
         return this.json(
           request,
           {

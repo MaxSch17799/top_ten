@@ -29,13 +29,15 @@ Node storage doubles establish serialization, routing and replay behavior, not C
 
 ## 2. Define and repair command failure recovery
 
-The audit reproduced these failures with injected storage errors; they are not reported production incidents:
+The audit reproduced these failures with injected storage errors; they were not reported production incidents:
 
 - Just One assigns candidate state to memory before saving. A failed write can leave memory ahead of durable state.
 - Skyjo (and a similar Flip 7 path) writes before scheduling its alarm and updates memory afterward. A failed alarm operation can leave durable state ahead of memory.
 - Top 10 prompt choice broadcasts while a background save can fail silently.
 
-First reproduce write/alarm failures in the local Cloudflare runtime. Define when a command is committed, how memory and alarms recover, and how clients distinguish rejection from uncertain outcomes. Preserve the same request ID and replay metadata on uncertain retries; infrastructure failures must not masquerade as illegal moves. Verify recovery across eviction and the next alarm before sharing this mechanism.
+Implemented: room state and its next alarm now commit in one storage transaction. Unconfirmed writes invalidate cached state and reconnect sockets, and HTTP clients receive a retryable 503 rather than an illegal-move error. The existing card-game retry controls retain their original action IDs for these errors. Top 10 prompt choice now awaits persistence before broadcasting; its HTTP commands are not automatically replayed because their legacy protocol has no request IDs.
+
+The local Cloudflare SQLite runtime suite covers write/set-alarm/delete-alarm failures in all eight games, uncertain acknowledgements, physical eviction, an alarm firing without clients and Top 10 WebSocket prompt persistence. It uses the installed Wrangler runtime without production bindings. See [persistence and recovery](persistence.md).
 
 Keep this separate from Top 10 extraction. Do not freeze known inconsistencies as desired contracts or introduce a state-schema migration to solve transport problems.
 

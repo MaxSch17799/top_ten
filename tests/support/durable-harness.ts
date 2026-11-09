@@ -24,6 +24,11 @@ export class DurableHarness {
   }
   readonly ctx = {
     storage: {
+      transaction: async <T>(callback: (storage: DurableObjectTransaction) => Promise<T>) => {
+        const before = this.snapshot(), alarm = this.alarm, writes = this.writes.length;
+        try { return await callback(this.ctx.storage); }
+        catch (error) { this.values = new Map(Object.entries(before)); this.alarm = alarm; this.writes.length = writes; throw error; }
+      },
       get: async (key: string) => {
         this.reads.push(key);
         return structuredClone(this.values.get(key));

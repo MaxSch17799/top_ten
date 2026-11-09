@@ -1104,6 +1104,7 @@ test("real room adapter authenticates, persists, deduplicates concurrent command
     queue: Promise<unknown> = Promise.resolve();
   const ctx = {
     storage: {
+      transaction: async (fn: (tx: DurableObjectStorage) => Promise<unknown>) => fn(ctx.storage),
       get: async (k: string) => structuredClone(store.get(k)),
       put: async (k: string, v: unknown) => {
         store.set(k, structuredClone(v));

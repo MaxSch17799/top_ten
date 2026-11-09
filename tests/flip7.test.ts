@@ -217,7 +217,7 @@ function hasAny(s: FlipState, id: string) { return s.hands[id].cards.length > 0;
 
 function adapter(stored?: FlipState) {
   const data = new Map<string, unknown>(); if (stored) data.set('flip7', structuredClone(stored));
-  const storage = { get: async (key: string) => structuredClone(data.get(key)), put: async (key: string, value: unknown) => { data.set(key, structuredClone(value)); }, setAlarm: async () => {}, deleteAlarm: async () => {} };
+  const storage = { transaction: async (fn: (tx: unknown) => Promise<unknown>) => fn(storage), get: async (key: string) => structuredClone(data.get(key)), put: async (key: string, value: unknown) => { data.set(key, structuredClone(value)); }, setAlarm: async () => {}, deleteAlarm: async () => {} };
   const ctx = { storage, blockConcurrencyWhile: async (f: () => Promise<unknown>) => f(), waitUntil: (p: Promise<unknown>) => { void p; } };
   return { room: new Flip7Room(ctx as unknown as DurableObjectState, {} as Env), data };
 }

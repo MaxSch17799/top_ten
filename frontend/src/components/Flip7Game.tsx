@@ -160,7 +160,7 @@ export default function Flip7Game({ gameId, display = false }: { gameId: string;
     try {
       await request(`${BACKEND_BASE}/api/game/${gameId}/action`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.playerToken}` }, body: JSON.stringify(a), signal: AbortSignal.timeout(12_000) });
       await requestState(); return true;
-    } catch (e) { setError(e instanceof Error ? e.message : 'Connection failed'); if (!(e instanceof ApiError)) setRetry(a); await requestState(); return false; }
+    } catch (e) { setError(e instanceof Error ? e.message : 'Connection failed'); if (!(e instanceof ApiError) || e.retryable) setRetry(a); await requestState(); return false; }
     finally { lock.current = false; setBusy(false); }
   };
   const act: Act = async (type, payload = {}) => s ? send({ id: crypto.randomUUID(), type, payload, generation: s.generation, revision: s.revision, round: s.round }) : false;

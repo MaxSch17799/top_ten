@@ -591,6 +591,7 @@ test("real room HTTP adapter persists and restores secrets, authenticates tokens
   let alarm: number | null = null;
   const ctx = {
     storage: {
+      transaction: async (fn: (tx: DurableObjectStorage) => Promise<unknown>) => fn(ctx.storage),
       get: async (key: string) => structuredClone(values.get(key)),
       put: async (key: string, value: unknown) => {
         values.set(key, structuredClone(value));

@@ -1,3 +1,4 @@
+import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { JustOneAction } from '../../../shared/justOne.js';
 import type { Env } from '../game.js';
 import { generateShortId, generateToken, normalizeNickname } from '../utils.js';
@@ -37,6 +38,10 @@ export class JustOneRoom {
     }
     return this.state !== null;
   }
+  private invalidate() {
+    this.state = null; this.loaded = false;
+    reconnectClients(this.clients);
+  }
   private json(request: Request, data: unknown, status = 200): Response {
     return new Response(data === null ? null : JSON.stringify(data), {
       status,
@@ -69,14 +74,8 @@ export class JustOneRoom {
       }).catch(() => undefined),
     );
   }
-  private async save(): Promise<void> {
-    const s = this.state!;
-    await this.ctx.storage.put('just-one', s);
-    if (s.phase === 'COMPLETED') await this.ctx.storage.deleteAlarm();
-    else
-      await this.ctx.storage.setAlarm(
-        Math.max(Date.now() + 1, Math.min(s.expiresAt, s.deadline ?? Infinity)),
-      );
+  private async save(s: JustOneState = this.state!): Promise<void> {
+    await commitRoom(this.ctx.storage, 'just-one', s, s.phase === 'COMPLETED' ? null : Math.max(Date.now() + 1, Math.min(s.expiresAt, s.deadline ?? Infinity)));
   }
   private broadcast(): void {
     for (const [id, sockets] of this.clients) {
@@ -109,9 +108,14 @@ export class JustOneRoom {
   }
   async alarm(): Promise<void> {
     await this.ctx.blockConcurrencyWhile(async () => {
-      if (await this.exists()) {
-        await this.expire();
-        await this.save();
+      try {
+        if (await this.exists()) {
+          await this.expire();
+          await this.save();
+        }
+      } catch (error) {
+        if (error instanceof RoomCommitError) this.invalidate();
+        throw error;
       }
     });
   }
@@ -120,6 +124,10 @@ export class JustOneRoom {
       try {
         return await this.handle(request);
       } catch (error) {
+        if (error instanceof RoomCommitError) {
+          this.invalidate();
+          return this.json(request, { error: 'ROOM_COMMIT_UNCERTAIN', message: error.message, retryable: true }, 503);
+        }
         return this.json(
           request,
           {
@@ -176,12 +184,12 @@ export class JustOneRoom {
         { error: 'NOT_FOUND', message: 'Lobby not found' },
         404,
       );
+    await this.expire();
     const s = this.state;
     const match = url.pathname.match(/^\/api\/game\/([^/]+)\/([^/]+)$/);
     if (!match || match[1] !== s.gameId)
       return this.json(request, { error: 'NOT_FOUND' }, 404);
     const route = match[2];
-    await this.expire();
     if (route === 'info' && request.method === 'GET')
       return this.json(request, { gameType: 'just-one', phase: s.phase });
     if (route === 'join' && request.method === 'POST') {
@@ -229,8 +237,8 @@ export class JustOneRoom {
       // Copy first: invalid commands cannot partially change the authoritative state.
       const next = structuredClone(s);
       applyAction(next, player.playerId, action);
+      await this.save(next);
       this.state = next;
-      await this.save();
       // Draft text is private and does not need a room-wide update per keystroke.
       if (!action.type.startsWith('draft-')) this.broadcast();
       if (s.phase !== next.phase)
@@ -259,7 +267,8 @@ export class JustOneRoom {
       const close = () => {
         void this.ctx.blockConcurrencyWhile(async () => {
           sockets.delete(server);
-          const live = this.state!.players[player.playerId];
+          const live = this.state?.players[player.playerId];
+          if (!live) return;
           if (live.connected === sockets.size > 0) return;
           live.connected = sockets.size > 0;
           this.state!.version++;

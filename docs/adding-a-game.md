@@ -25,7 +25,7 @@ Pure public calculations can be shared. Private card values and hidden answers c
 
 Create `backend-do/src/<game>/room.ts`. Reuse the closest existing adapter's contract, not its game-specific behavior. Preserve serialized mutation/persistence and per-viewer broadcasts.
 
-Existing adapters do not yet share a verified command-commit mechanism. Read the [failure-recovery findings](roadmap.md#2-define-and-repair-command-failure-recovery) before copying save/alarm/error ordering. Specify how an uncertain write is recovered and retried; do not assume a returned error means no durable change occurred.
+Use the tested `commitRoom` mechanism for state and next-alarm persistence. Keep deadline selection game-owned, invalidate cached state on a `RoomCommitError`, and reconnect clients for authoritative readback. Retain the original command ID/replay fields on uncertain retries; a returned error does not necessarily mean no durable change occurred. See [persistence and recovery](persistence.md).
 
 The current integration points are intentionally explicit:
 

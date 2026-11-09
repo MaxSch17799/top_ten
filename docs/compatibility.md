@@ -55,7 +55,7 @@ The browser fixture/tests preserve existing session precedence and all four prof
 
 The storage double clones reads/writes and serializes the adapters' `blockConcurrencyWhile` callbacks. It can fail writes and alarm operations independently. It **does not emulate Cloudflare's transaction, output-gate, eviction or alarm-retry guarantees**. Phase 2 must reproduce failure behavior in the local Cloudflare runtime before choosing a shared commit design.
 
-The audit's memory/durable-state divergence findings remain open in [phase 2](roadmap.md#2-define-and-repair-command-failure-recovery); this phase does not repair them or assert that their current behavior is desirable. Browser scenarios exercise local Wrangler/Vite, but service workers remain blocked. PWA upgrades, chunk failures and visual screenshot comparisons need dedicated coverage before related refactors.
+The later [persistence repair](persistence.md) addresses the audit's memory/durable-state divergence findings and adds actual local SQLite runtime tests alongside this double. Browser scenarios exercise local Wrangler/Vite, but service workers remain blocked. PWA upgrades, chunk failures and visual screenshot comparisons need dedicated coverage before related refactors.
 
 The Flip 7 presentation harness controls browser time and acknowledges routed snapshot delivery before advancing animation frames. Reading-time, queue, mode-switch, dismissal and reduced-motion assertions remain in place. Screenshot capture and sequential device updates no longer consume the time interval being tested; screenshots remain diagnostic artifacts, not visual baseline comparisons. This test repair did not change game timers or application code.
 

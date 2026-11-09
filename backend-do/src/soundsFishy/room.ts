@@ -1,3 +1,4 @@
+import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { FishyAction } from '../../../shared/soundsFishy.js';
 import type { Env } from '../game.js';
 import { generateShortId, generateToken, normalizeNickname } from '../utils.js';
@@ -36,6 +37,10 @@ export class SoundsFishyRoom {
     }
     return this.state !== null;
   }
+  private invalidate() {
+    this.state = null; this.loaded = false;
+    reconnectClients(this.clients);
+  }
   private json(request: Request, data: unknown, status = 200): Response {
     return new Response(data === null ? null : JSON.stringify(data), {
       status,
@@ -69,12 +74,7 @@ export class SoundsFishyRoom {
     );
   }
   private async save(s: FishyState = this.state!): Promise<void> {
-    await this.ctx.storage.put('sounds-fishy', s);
-    if (s.phase === 'COMPLETED') await this.ctx.storage.deleteAlarm();
-    else
-      await this.ctx.storage.setAlarm(
-        Math.max(Date.now() + 1, Math.min(s.expiresAt, s.deadline ?? Infinity)),
-      );
+    await commitRoom(this.ctx.storage, 'sounds-fishy', s, s.phase === 'COMPLETED' ? null : Math.max(Date.now() + 1, Math.min(s.expiresAt, s.deadline ?? Infinity)));
   }
   private broadcast(): void {
     for (const [id, sockets] of this.clients) {
@@ -107,9 +107,14 @@ export class SoundsFishyRoom {
   }
   async alarm(): Promise<void> {
     await this.ctx.blockConcurrencyWhile(async () => {
-      if (await this.exists()) {
-        await this.expire();
-        await this.save();
+      try {
+        if (await this.exists()) {
+          await this.expire();
+          await this.save();
+        }
+      } catch (error) {
+        if (error instanceof RoomCommitError) this.invalidate();
+        throw error;
       }
     });
   }
@@ -118,6 +123,10 @@ export class SoundsFishyRoom {
       try {
         return await this.handle(request);
       } catch (error) {
+        if (error instanceof RoomCommitError) {
+          this.invalidate();
+          return this.json(request, { error: 'ROOM_COMMIT_UNCERTAIN', message: error.message, retryable: true }, 503);
+        }
         return this.json(
           request,
           {
@@ -175,12 +184,12 @@ export class SoundsFishyRoom {
         { error: 'NOT_FOUND', message: 'Lobby not found' },
         404,
       );
+    await this.expire();
     const s = this.state;
     const match = url.pathname.match(/^\/api\/game\/([^/]+)\/([^/]+)$/);
     if (!match || match[1] !== s.gameId)
       return this.json(request, { error: 'NOT_FOUND' }, 404);
     const route = match[2];
-    await this.expire();
     if (route === 'info' && request.method === 'GET')
       return this.json(request, { gameType: 'sounds-fishy', phase: s.phase });
     if (route === 'join' && request.method === 'POST') {

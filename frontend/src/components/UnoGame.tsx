@@ -604,7 +604,7 @@ export default function UnoGame({
       return true;
     } catch (e) {
       setError(e instanceof Error ? e.message : "Connection failed");
-      if (!(e instanceof ApiError)) setRetry(action);
+      if (!(e instanceof ApiError) || e.retryable) setRetry(action);
       await requestState();
       return false;
     } finally {
