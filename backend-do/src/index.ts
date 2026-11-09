@@ -1,3 +1,4 @@
+import { registrations } from './registration.js';
 import {
   createAdminToken,
   createOverrideToken,
@@ -23,18 +24,8 @@ import {
 import { fetchUsageStatus, trackUsageEvent, UsageMonitorDurableObject } from './usageMonitor.js';
 import { generateNumericCode } from './utils.js';
 import { justOneBankSummaries } from './generated/justOneBanks.js';
-import { checkedSettings } from './justOne/engine.js';
-import { defaultJustOneSettings } from '../../shared/justOne.js';
 import { fishyBankSummaries } from './generated/soundsFishyBanks.js';
-import { checkedSettings as checkedFishySettings } from './soundsFishy/engine.js';
-import { defaultFishySettings } from '../../shared/soundsFishy.js';
 import { wavePackSummaries } from './generated/wavelengthPacks.js';
-import { checkedSettings as checkedWaveSettings } from './wavelength/engine.js';
-import { defaultWaveSettings } from '../../shared/wavelength.js';
-import { checkedUnoSettings } from '../../shared/uno.js';
-import { checkedDealSettings } from '../../shared/monopolyDeal.js';
-import { checkedSkySettings } from '../../shared/skyjo.js';
-import { checkedFlipSettings } from '../../shared/flip7.js';
 import { isGameType, isStandaloneGameType } from '../../shared/games.js';
 
 type JsonPayload = Record<string, unknown>;
@@ -147,32 +138,9 @@ async function handleCreate(request: Request, env: Env, ctx: ExecutionContext): 
   if (payload.gameType !== undefined && !isGameType(String(payload.gameType))) {
     return errorResponse(request, 400, 'UNKNOWN_GAME', 'Unknown game type');
   }
-  if (payload.gameType === 'just-one') {
-    try { checkedSettings(defaultJustOneSettings, payload.settings ?? {}); }
-    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
-  }
-  if (payload.gameType === 'sounds-fishy') {
-    try { checkedFishySettings({ ...defaultFishySettings, bankId: fishyBankSummaries.some(b => b.bankId === defaultFishySettings.bankId) ? defaultFishySettings.bankId : fishyBankSummaries[0]?.bankId ?? '' }, payload.settings ?? {}); }
-    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
-  }
-  if (payload.gameType === 'wavelength') {
-    try { checkedWaveSettings(defaultWaveSettings, payload.settings ?? {}); }
-    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
-  }
-  if (payload.gameType === 'uno') {
-    try { checkedUnoSettings(payload.settings ?? {}); }
-    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
-  }
-  if (payload.gameType === 'monopoly-deal') {
-    try { checkedDealSettings(payload.settings ?? {}); }
-    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
-  }
-  if (payload.gameType === 'skyjo') {
-    try { checkedSkySettings(payload.settings ?? {}); }
-    catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
-  }
-  if (payload.gameType === 'flip7') {
-    try { checkedFlipSettings(payload.settings ?? {}); }
+  // Preserve the legacy boundary's strict dispatch after its String-based allowlist check.
+  if (isGameType(payload.gameType)) {
+    try { registrations[payload.gameType].preflight(payload.settings); }
     catch (error) { return errorResponse(request, 400, 'INVALID_SETTINGS', error instanceof Error ? error.message : 'Invalid settings'); }
   }
   const overrideRequired = await requireOverrideIfNeeded(request, env, payload);

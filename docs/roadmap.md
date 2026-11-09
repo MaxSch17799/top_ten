@@ -45,7 +45,7 @@ Keep this separate from Top 10 extraction. Do not freeze known inconsistencies a
 
 Implemented as a mechanical extraction into `backend-do/src/top10/room.ts`, with Worker binding types in `env.ts`. The exported Durable Object class, storage key `state`, public/legacy URLs, tokens, WebSockets, question-bank enrichment, alarms and viewer projections are preserved. Backend TypeScript and all 50 frozen-room/runtime recovery scenarios passed after extraction.
 
-Registration follows separately:
+Registration is implemented in a separate change:
 
 - Frontend map: ID → home path/component and room component. Small wrappers accommodate Top 10/Just One props.
 - Backend map: settings preflight, room factory and storage-key ownership. Top 10 database enrichment stays server-side.
@@ -54,7 +54,7 @@ Registration follows separately:
 - Start with one consumed capability: dedicated-display support. Capabilities do not authorize actions; defer speculative private-card, verbal-play, profile and timer flags.
 - Check map completeness and actual routing/creation/dispatch. Eventually correlate settings types with game IDs.
 
-Cache the resolved adapter in memory if measurement justifies it. Existing `exists()` calls already cache reads after cold load. **Defer a persisted discriminator** until measured cold-load costs justify its migration and rollback burden.
+The dispatcher caches the resolved adapter in memory; warm requests do not scan storage keys again. Concurrent creation is serialized and tested across all 64 game pairs. Creation settings are correlated with game IDs in the frontend payload type. **Defer a persisted discriminator** until measured cold-load costs justify its migration and rollback burden.
 
 ## 4. Compose shared transport mechanics
 

@@ -24,14 +24,27 @@ function authHeaders(token?: string | null): Record<string, string> {
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
-export interface CreateGamePayload {
-  gameType?: GameType;
-  settings?: import('../../shared/justOne').JustOneSettings | import('../../shared/soundsFishy').FishySettings | import('../../shared/wavelength').WaveSettings | import('../../shared/uno').UnoSettings | import('../../shared/monopolyDeal').DealSettings | import('../../shared/flip7').FlipSettings | import('../../shared/skyjo').SkySettings;
+interface CreateGameFields {
   hostNickname: string;
   seed?: string;
   questionBankId?: string;
   overrideToken?: string;
 }
+
+type SettingsByGame = {
+  'just-one': import('../../shared/justOne').JustOneSettings;
+  'sounds-fishy': import('../../shared/soundsFishy').FishySettings;
+  wavelength: import('../../shared/wavelength').WaveSettings;
+  uno: import('../../shared/uno').UnoSettings;
+  'monopoly-deal': import('../../shared/monopolyDeal').DealSettings;
+  flip7: import('../../shared/flip7').FlipSettings;
+  skyjo: import('../../shared/skyjo').SkySettings;
+};
+/** The ID selects its own settings type; omitted IDs retain legacy Top 10 creation. */
+export type CreateGamePayload = CreateGameFields & (
+  | { gameType?: 'top10'; settings?: never }
+  | { [K in keyof SettingsByGame]: { gameType: K; settings?: SettingsByGame[K] } }[keyof SettingsByGame]
+);
 
 export interface CreateGameResult {
   gameType?: GameType;

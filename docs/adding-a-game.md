@@ -32,12 +32,10 @@ The current integration points are intentionally explicit:
 | File | Change |
 | --- | --- |
 | `shared/games.ts` | Add a stable `GameType` ID. New standalone games automatically bypass Top 10's creation-time question-bank lookup. |
-| `backend-do/src/index.ts` | Add settings preflight using the new validator. Add a public content-summary endpoint only if the game needs one. |
-| `backend-do/src/game.ts` | Instantiate the adapter and route internal creation, normal requests, and alarms. |
-| New adapter's create path | Reject a code already occupied by any existing game, including Top 10's `state` key. |
-| Existing dispatch/collision handling | Verify creating either game over the other game's occupied code still returns a collision. Preserve dispatch precedence while adapters still have different collision checks. |
+| `backend-do/src/registration.ts` | Add the room factory, settings preflight and existing storage key. Add its position to `ROOM_PRECEDENCE`; that order is independent of homepage order. |
+| `backend-do/src/index.ts` | Add a public content-summary endpoint only if the game needs one. Top 10's database enrichment stays here. |
 
-Game IDs alone do not register a room or route. A future complete registration contract is described in the [roadmap](roadmap.md).
+The dispatcher resolves ownership before creation and serializes requests, so an occupied code cannot gain a second game key. Completed rooms also reserve their codes. The exhaustive registration type catches missing factories; the concurrent creation matrix verifies the actual boundary. Do not add another dispatch branch in `game.ts`.
 
 Normal additions use the existing `GAME_DO` binding. They do not require a new Durable Object class, namespace, D1 table, account system, or paid service. If a game truly needs a schema/resource change, plan it separately and test old saved rooms first.
 
@@ -55,9 +53,9 @@ Create home/game/settings components and a scoped game stylesheet. Card or board
 | Game-specific `*Profiles.ts` patterns | Browser-local custom profiles with validated rules |
 | `theme.css` and scoped game CSS | Platform defaults and per-game styling |
 
-Add the home route in `App.tsx`, dispatch in `GameRoute.tsx`, and a listing in `lib/games.ts`. The catalog test checks that every shared ID has exactly one homepage listing and distinct URL. Keep `/host` and `/g/:code` legacy paths working.
+Add a pure listing in `lib/games.ts` and home/room components in `app/games.tsx`. Routes and room dispatch consume that exhaustive component map. Set `hasDisplay` from the actual supported behavior; unsupported display links get an explanation without mounting a player connection. The catalog test checks that every shared ID has exactly one homepage listing and distinct URL. Keep `/host` and `/g/:code` legacy paths working.
 
-Extend `CreateGamePayload.settings` in `frontend/src/api.ts` to include the new public settings type. Its `gameType` fields already use shared `GameType`, but settings are still an explicit union until a later typed registration refactor.
+Extend `SettingsByGame` in `frontend/src/api.ts` with the public settings type. The discriminated creation payload correlates settings with the selected game ID. Keep the component map separate from the pure catalog so metadata consumers do not import React, network code or assets.
 
 Use an explicit lazy import when appropriate, with a useful loading fallback. Do not import the new engine, secret pack, or room adapter into the frontend to reuse a type; put the public type in `shared/` instead.
 

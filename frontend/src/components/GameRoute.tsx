@@ -1,14 +1,8 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { gameComponents } from '../app/games';
+import { isGameType } from '../../../shared/games';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BACKEND_BASE, request } from '../api';
-import GameShell from './GameShell';
-import JustOneGame from './JustOneGame';
-import SoundsFishyGame from './SoundsFishyGame';
-import WavelengthGame from './WavelengthGame';
-import UnoGame from './UnoGame';
-const MonopolyDealGame = lazy(() => import('./MonopolyDealGame'));
-const SkyjoGame = lazy(() => import('./SkyjoGame'));
-const Flip7Game = lazy(() => import('./Flip7Game'));
 
 export default function GameRoute({ display = false }: { display?: boolean }) {
   const { gameId = '' } = useParams();
@@ -63,11 +57,12 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
-  if (display && (info.gameType === 'top10' || info.gameType === 'just-one'))
+  const game = gameComponents[isGameType(info.gameType) ? info.gameType : 'top10'];
+  if (display && isGameType(info.gameType) && !game.hasDisplay)
     return (
       <main className="page sheet">
         <section className="host-form stack" style={{ fontFamily: 'var(--font-body)' }}>
-          <p className="eyebrow">{info.gameType === 'top10' ? 'Top 10' : 'Just One'}</p>
+          <p className="eyebrow">{game.title}</p>
           <h1>TV display unavailable</h1>
           <p>This game does not have a dedicated TV display. Play in the regular room on each player’s device.</p>
           <Link to={`/g/${encodeURIComponent(gameId)}`}>Open game room</Link>
@@ -75,21 +70,8 @@ export default function GameRoute({ display = false }: { display?: boolean }) {
         </section>
       </main>
     );
-  return info.gameType === 'skyjo' ? (
-    <Suspense fallback={<main className="page">Opening your table…</main>}><SkyjoGame key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
-  ) : info.gameType === 'flip7' ? (
-    <Suspense fallback={<main className="page">Opening the table…</main>}><Flip7Game key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
-  ) : info.gameType === 'monopoly-deal' ? (
-    <Suspense fallback={<main className="page">Opening your table…</main>}><MonopolyDealGame key={`${gameId}-${display}`} gameId={gameId} display={display} /></Suspense>
-  ) : info.gameType === 'uno' ? (
-    <UnoGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
-  ) : info.gameType === 'wavelength' ? (
-    <WavelengthGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
-  ) : info.gameType === 'sounds-fishy' ? (
-    <SoundsFishyGame key={`${gameId}-${display}`} gameId={gameId} display={display} />
-  ) : info.gameType === 'just-one' ? (
-    <JustOneGame key={gameId} gameId={gameId} />
-  ) : (
-    <GameShell key={gameId} />
-  );
+  const Room = game.Room;
+  return <Suspense fallback={<main className="page">{game.loading}</main>}>
+    <Room key={game.hasDisplay ? `${gameId}-${display}` : gameId} gameId={gameId} display={display} />
+  </Suspense>;
 }
