@@ -1,4 +1,4 @@
-import { roomJson, broadcastViews, runSocketMutation } from '../platform/transport.js';
+import { roomJson, broadcastViews, removeSocket, runSocketMutation } from '../platform/transport.js';
 import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { WaveAction } from "../../../shared/wavelength.js";
 import type { Env } from "../env.js";
@@ -283,8 +283,8 @@ export class WavelengthRoom {
       s.version++;
       const close = () => {
         runSocketMutation(this.ctx, async () => {
-          sockets.delete(server);
-          const live = this.state!.players[viewerId];
+          if (!removeSocket(this.clients, viewerId, sockets, server)) return;
+          const live = this.state?.players[viewerId];
           if (!live) return;
           if (live.connected === sockets.size > 0) return;
           if (sockets.size === 0) playerDisconnected(this.state!, viewerId);

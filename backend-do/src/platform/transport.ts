@@ -45,6 +45,13 @@ export function addSocket(clients: RoomClients, id: string, socket: WebSocket): 
   return sockets;
 }
 
+/** A late close from an invalidated connection must not disconnect its replacement. */
+export function removeSocket(clients: RoomClients, id: string, sockets: Set<WebSocket>, socket: WebSocket): boolean {
+  if (clients.get(id) !== sockets) return false;
+  sockets.delete(socket);
+  return true;
+}
+
 /** Presence writes need the same recovery as HTTP writes, even after a socket closes. */
 export function runSocketMutation(ctx: DurableObjectState, operation: () => Promise<void>, invalidate: () => void) {
   ctx.waitUntil(ctx.blockConcurrencyWhile(async () => {

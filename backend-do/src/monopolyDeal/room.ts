@@ -1,4 +1,4 @@
-import { roomJson, broadcastViews, runSocketMutation, addSocket } from '../platform/transport.js';
+import { roomJson, broadcastViews, removeSocket, runSocketMutation, addSocket } from '../platform/transport.js';
 import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { DealAction } from "../../../shared/monopolyDeal.js";
 import type { Env } from "../env.js";
@@ -259,7 +259,7 @@ export class MonopolyDealRoom {
         if (closed) return;
         closed = true;
         runSocketMutation(this.ctx, async () => {
-          sockets.delete(server);
+          if (!removeSocket(this.clients, id, sockets, server)) return;
           const live = this.state?.players[id];
           if (!live || live.connected === sockets.size > 0) return;
           live.connected = sockets.size > 0;

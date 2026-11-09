@@ -10,6 +10,10 @@ If a commit cannot be confirmed, the adapter discards its cached state and close
 
 Never invent a new ID to retry an unconfirmed action. Preserve its generation, round, phase and revision as supplied by that game. A transaction may have committed before its acknowledgement was lost; the engine's processed-action log makes an exact retry safe. Top 10's legacy HTTP commands do not have IDs and are not automatically replayed. A refresh establishes their current result.
 
+All seven modern UIs compose `useRoomCommand` for submission locking, timeouts and exact-ID retries. The helper receives complete game-owned actions and snapshots them before sending. A successful acknowledgement followed by a failed readback does not offer to replay the write. Wavelength retains separate dial coalescing and explicit authoritative readback.
+
+Socket presence writes use the same recovery path. Close handlers check that their socket group is still current, so a late close from an invalidated connection cannot mark a replacement connection offline.
+
 ## Verification
 
 `tests/runtime-recovery.test.ts` bundles a test-only Worker and runs it in the same local Cloudflare runtime supplied by the locked Wrangler installation. It uses SQLite-backed Durable Objects, isolated names for each scenario and fake historical room data. No test-control endpoint is imported into the production Worker.
@@ -21,6 +25,7 @@ Coverage includes:
 - A lost acknowledgement after a successful commit, followed by eviction and exact-ID retry in all seven action-ID protocols.
 - A decision alarm firing without clients after eviction, retaining Skyjo's pending private card.
 - Top 10 refusing to broadcast an unpersisted prompt and accepting the selection after reconnection.
+- Presence-write failure and subsequent reconnection in all seven modern adapters; separate transport tests cover late closes after membership replacement.
 
 These are injected I/O exceptions in the real local storage runtime, not claims to reproduce physical disk failure or every production outage. The existing frozen-fixture suite separately checks rollback to the pinned historical implementation. `tests/support/durable-harness.ts` provides a fast transaction-aware double for other adapter tests.
 

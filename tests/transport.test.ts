@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { addSocket, broadcastViews, roomJson } from '../backend-do/src/platform/transport.js';
+import { addSocket, removeSocket, broadcastViews, roomJson } from '../backend-do/src/platform/transport.js';
 
 function socket() {
   const sent: string[] = [], closed: unknown[][] = [];
@@ -31,4 +31,15 @@ test('room JSON preserves modern protocol headers and empty 204 bodies', async (
   assert.equal(response.status, 204); assert.equal(await response.text(), '');
   assert.equal(response.headers.get('Access-Control-Allow-Origin'), 'https://friends.test');
   assert.equal(response.headers.get('Cache-Control'), 'no-store');
+});
+
+test('late closes from invalidated sockets cannot change replacement membership', () => {
+  const clients = new Map<string, Set<WebSocket>>(), old = socket(), fresh = socket();
+  const previous = addSocket(clients, 'alice', old.ws);
+  previous.clear(); clients.clear();
+  const current = addSocket(clients, 'alice', fresh.ws);
+  assert.equal(removeSocket(clients, 'alice', previous, old.ws), false);
+  assert.deepEqual([...current], [fresh.ws]);
+  assert.equal(removeSocket(clients, 'alice', current, fresh.ws), true);
+  assert.equal(current.size, 0);
 });

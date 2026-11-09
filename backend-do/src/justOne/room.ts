@@ -1,4 +1,4 @@
-import { roomJson, broadcastViews, runSocketMutation } from '../platform/transport.js';
+import { roomJson, broadcastViews, removeSocket, runSocketMutation } from '../platform/transport.js';
 import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { JustOneAction } from '../../../shared/justOne.js';
 import type { Env } from '../env.js';
@@ -241,7 +241,7 @@ export class JustOneRoom {
       s.version++;
       const close = () => {
         runSocketMutation(this.ctx, async () => {
-          sockets.delete(server);
+          if (!removeSocket(this.clients, player.playerId, sockets, server)) return;
           const live = this.state?.players[player.playerId];
           if (!live) return;
           if (live.connected === sockets.size > 0) return;
