@@ -694,4 +694,3 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
     </main>
   );
 }
-

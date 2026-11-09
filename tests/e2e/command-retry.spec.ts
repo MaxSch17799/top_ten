@@ -22,8 +22,7 @@ for (const game of ['skyjo', 'flip7', 'just-one', 'sounds-fishy', 'wavelength'])
         : { json: { success: true } });
     });
     await page.goto(`/g/${room}`);
-    const summary = page.locator('summary').filter({ hasText: /^Host controls$/ });
-    if (await summary.count()) await summary.click();
+    await page.locator('summary').filter({ hasText: /^Host (?:settings & )?controls$/ }).click();
     await page.getByRole('button', { name: /^Resume(?: game)?$/ }).click();
     const retry = page.getByRole('button', { name: 'Retry same action safely' });
     await expect(retry).toBeVisible();
