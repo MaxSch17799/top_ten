@@ -1,6 +1,7 @@
+import { roomJson, broadcastViews, runSocketMutation } from '../platform/transport.js';
 import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { JustOneAction } from '../../../shared/justOne.js';
-import type { Env } from '../game.js';
+import type { Env } from '../env.js';
 import { generateShortId, generateToken, normalizeNickname } from '../utils.js';
 import { trackUsageEvent } from '../usageMonitor.js';
 import {
@@ -42,19 +43,8 @@ export class JustOneRoom {
     this.state = null; this.loaded = false;
     reconnectClients(this.clients);
   }
-  private json(request: Request, data: unknown, status = 200): Response {
-    return new Response(data === null ? null : JSON.stringify(data), {
-      status,
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-store',
-        'Access-Control-Allow-Origin': request.headers.get('Origin') ?? '*',
-        'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-        'Access-Control-Allow-Headers':
-          'Content-Type,Authorization,X-Player-Token,X-Host-Token',
-      },
-    });
-  }
+  private json = roomJson;
+
   private track(
     type: 'GAME_CREATED' | 'GAME_STATE_CHANGED' | 'GAME_ENDED',
   ): void {
@@ -77,25 +67,10 @@ export class JustOneRoom {
   private async save(s: JustOneState = this.state!): Promise<void> {
     await commitRoom(this.ctx.storage, 'just-one', s, s.phase === 'COMPLETED' ? null : Math.max(Date.now() + 1, Math.min(s.expiresAt, s.deadline ?? Infinity)));
   }
-  private broadcast(): void {
-    for (const [id, sockets] of this.clients) {
-      const data = JSON.stringify({
-        type: 'STATE',
-        payload: serializeForPlayer(this.state!, id),
-      });
-      for (const socket of sockets) {
-        try {
-          socket.send(data);
-        } catch {
-          try {
-            socket.close();
-          } catch {
-            /* close event normally updates presence */
-          }
-        }
-      }
-    }
+  private broadcast() {
+    broadcastViews(this.clients, id => serializeForPlayer(this.state!, id));
   }
+
   private async expire(): Promise<void> {
     if (this.state && expireState(this.state)) {
       this.state.version++;
@@ -265,7 +240,7 @@ export class JustOneRoom {
       player.connected = true;
       s.version++;
       const close = () => {
-        void this.ctx.blockConcurrencyWhile(async () => {
+        runSocketMutation(this.ctx, async () => {
           sockets.delete(server);
           const live = this.state?.players[player.playerId];
           if (!live) return;
@@ -275,7 +250,7 @@ export class JustOneRoom {
           await this.save();
           this.broadcast();
           this.track('GAME_STATE_CHANGED');
-        });
+        }, () => this.invalidate());
       };
       server.addEventListener('close', close);
       server.addEventListener('error', close);

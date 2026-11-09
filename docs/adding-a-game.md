@@ -23,7 +23,7 @@ Pure public calculations can be shared. Private card values and hidden answers c
 
 ## 3. Add the room adapter and Worker integration
 
-Create `backend-do/src/<game>/room.ts`. Reuse the closest existing adapter's contract, not its game-specific behavior. Preserve serialized mutation/persistence and per-viewer broadcasts.
+Create `backend-do/src/<game>/room.ts`. Reuse the closest existing adapter's contract, not its game-specific behavior. Compose `platform/transport.ts` for JSON responses, per-identity broadcasts, bounded socket membership and guarded presence writes. Preserve serialized mutation/persistence and game-owned viewer projections.
 
 Use the tested `commitRoom` mechanism for state and next-alarm persistence. Keep deadline selection game-owned, invalidate cached state on a `RoomCommitError`, and reconnect clients for authoritative readback. Retain the original command ID/replay fields on uncertain retries; a returned error does not necessarily mean no durable change occurred. See [persistence and recovery](persistence.md).
 

@@ -24,6 +24,30 @@ function liveFixture(name: string) {
 }
 
 for (const name of ['just-one', 'sounds-fishy', 'wavelength', 'uno', 'monopoly-deal', 'skyjo', 'flip7']) {
+  test(`local SQLite runtime: ${name} recovers a socket presence write failure`, { timeout: 30_000 }, async () => {
+    const f = liveFixture(name);
+    await call('seed', { key: f.key, state: f.state });
+    const connect = async (token: string) => {
+      const response = await runtime.dispatchFetch(`http://local.test/api/game/1234/ws?token=${token}`, { headers: { Upgrade: 'websocket', 'X-Probe-Room': roomName } });
+      assert.equal(response.status, 101);
+      const ws = response.webSocket!; ws.accept(); return ws;
+    };
+    const actor = await connect(f.token);
+    const other = Object.values(f.state.players).find((p: any) => p.token !== f.token) as any;
+    const observer = await connect(other.token);
+    const before = (await (await call('inspect')).json() as any).values[f.key];
+    const closed = new Promise(resolve => observer.addEventListener('close', resolve));
+    await call('fault', { operation: 'put' });
+    actor.close();
+    await closed;
+    assert.deepEqual((await (await call('inspect')).json() as any).values[f.key], before);
+    assert.equal((await call('api/game/1234/state', undefined, other.token)).status, 200);
+    const restored = await connect(other.token);
+    restored.close();
+  });
+}
+
+for (const name of ['just-one', 'sounds-fishy', 'wavelength', 'uno', 'monopoly-deal', 'skyjo', 'flip7']) {
   test(`local SQLite runtime: ${name} survives an unconfirmed committed action and eviction`, async () => {
     const f = liveFixture(name);
     await call('seed', { key: f.key, state: f.state });

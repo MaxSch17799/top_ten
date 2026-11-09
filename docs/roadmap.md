@@ -58,11 +58,11 @@ The dispatcher caches the resolved adapter in memory; warm requests do not scan 
 
 ## 4. Compose shared transport mechanics
 
-Start with Skyjo and Flip 7 after phase 2. Share response construction, socket membership, serialized execution and the verified commit mechanism. Game-owned callbacks load/upgrade state, apply commands, project viewers, expire state and choose alarms.
+Implemented: all seven modern adapters compose shared JSON responses, per-identity broadcasts and guarded socket presence writes. Skyjo, Flip 7, UNO and Deal also share bounded socket membership. Serialized dispatcher execution and atomic commits are separate utilities. Top 10 retains its legacy socket/HTTP protocol. Game-owned callbacks load/upgrade state, apply commands, project viewers, expire state and choose alarms.
 
 No universal room base class. Replay ordering/limits, revision semantics, pause representations and timeout decisions remain game-owned. Preserve concurrent Skyjo setup, presentation revisions, Flip 7's `nextAt`, and Just One's generation-before-dedup versus Skyjo's dedup-before-staleness behavior. Never reuse one player's projection for another identity.
 
-Migrate other adapters individually after permission, concurrency, replay, failure, alarm, reconnection and multi-lobby tests pass.
+Frozen compatibility tests and the local SQLite runtime suite passed after extraction, including presence-write failures and reconnects for all seven modern adapters. Game-specific presence callbacks and the older verbal games' socket membership remain local; they do not need identical behavior to share the verified transport pieces.
 
 ## 5. UI, profiles, language and presentation
 

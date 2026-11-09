@@ -1,6 +1,7 @@
+import { roomJson, broadcastViews, runSocketMutation, addSocket } from '../platform/transport.js';
 import { commitRoom, RoomCommitError, reconnectClients } from '../platform/persistence.js';
 import type { SkyAction } from "../../../shared/skyjo.js";
-import type { Env } from "../game.js";
+import type { Env } from "../env.js";
 import { generateShortId, generateToken, normalizeNickname } from "../utils.js";
 import { trackUsageEvent } from "../usageMonitor.js";
 import {
@@ -40,19 +41,8 @@ export class SkyjoRoom {
     this.state = null; this.loaded = false;
     reconnectClients(this.clients);
   }
-  private json(request: Request, data: unknown, status = 200) {
-    return new Response(data === null ? null : JSON.stringify(data), {
-      status,
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-        "Access-Control-Allow-Origin": request.headers.get("Origin") ?? "*",
-        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Content-Type,Authorization,X-Player-Token,X-Host-Token",
-      },
-    });
-  }
+  private json = roomJson;
+
   private async save(s: SkyState = this.state!): Promise<void> {
     await commitRoom(this.ctx.storage, 'skyjo', s, s.phase === 'COMPLETED' ? null : Math.max(Date.now() + 1, nextDeadline(s)));
   }
@@ -74,29 +64,9 @@ export class SkyjoRoom {
     );
   }
   private broadcast() {
-    for (const [id, sockets] of this.clients) {
-      if (id !== "$display" && !this.state!.players[id]) {
-        for (const ws of sockets) ws.close(1008, "Removed from lobby");
-        this.clients.delete(id);
-        continue;
-      }
-      const message = JSON.stringify({
-        type: "STATE",
-        payload: serializeForPlayer(this.state!, id),
-      });
-      for (const socket of sockets) {
-        try {
-          socket.send(message);
-        } catch {
-          try {
-            socket.close();
-          } catch {
-            /* already closed */
-          }
-        }
-      }
-    }
+    broadcastViews(this.clients, id => serializeForPlayer(this.state!, id), id => id === '$display' || !!this.state!.players[id]);
   }
+
   private async expire() {
     if (this.state) {
       const next = structuredClone(this.state);
@@ -274,14 +244,7 @@ export class SkyjoRoom {
     ) {
       const [client, server] = Object.values(new WebSocketPair());
       server.accept();
-      const sockets = this.clients.get(id) ?? new Set<WebSocket>();
-      if (sockets.size >= 3) {
-        const old = sockets.values().next().value!;
-        sockets.delete(old);
-        old.close(1000, "Replaced");
-      }
-      sockets.add(server);
-      this.clients.set(id, sockets);
+      const sockets = addSocket(this.clients, id, server);
       if (player) {
         player.connected = true;
         player.disconnectedAt = null;
@@ -291,7 +254,7 @@ export class SkyjoRoom {
       const close = () => {
         if (closed) return;
         closed = true;
-        void this.ctx.blockConcurrencyWhile(async () => {
+        runSocketMutation(this.ctx, async () => {
           sockets.delete(server);
           const live = this.state?.players[id];
           if (!live || live.connected === (sockets.size > 0)) return;
@@ -300,7 +263,7 @@ export class SkyjoRoom {
           this.state!.version++;
           await this.save();
           this.broadcast();
-        });
+        }, () => this.invalidate());
       };
       server.addEventListener("close", close);
       server.addEventListener("error", close);
