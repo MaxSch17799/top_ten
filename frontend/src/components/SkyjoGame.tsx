@@ -1,7 +1,8 @@
+import { useRoomCommand } from '../hooks/useRoomCommand';
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import type { SkyAction, SkyPlayer, SkyView } from '../../../shared/skyjo';
-import { ApiError, BACKEND_BASE, joinGame, request } from '../api';
+import { joinGame } from '../api';
 import { useGameConnection } from '../hooks/useGameConnection';
 import { loadSessionForGame, saveSession } from '../lib/session';
 import type { SessionData } from '../lib/types';
@@ -204,17 +205,11 @@ export default function SkyjoGame({ gameId, display = false }: { gameId: string;
   const token = display ? displayToken : session?.playerToken;
   const { state: s, wsStatus, lastError, requestState, receivedAt } = useGameConnection<SkyView>({ gameId, playerToken: token });
   const [nickname, setNickname] = useState(''), [busy, setBusy] = useState(false), [error, setError] = useState(''),
-    [invite, setInvite] = useState(false), [inspect, setInspect] = useState(false), [retry, setRetry] = useState<SkyAction | null>(null);
-  const lock = useRef(false);
-  const send = async (a: SkyAction) => {
-    if (!session || display || lock.current) return false;
-    lock.current = true; setBusy(true); setError(''); setRetry(null);
-    try {
-      await request(`${BACKEND_BASE}/api/game/${gameId}/action`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.playerToken}` }, body: JSON.stringify(a), signal: AbortSignal.timeout(12_000) });
-      await requestState(); return true;
-    } catch (e) { setError(e instanceof Error ? e.message : 'Connection failed'); if (!(e instanceof ApiError) || e.retryable) setRetry(a); await requestState(); return false; }
-    finally { lock.current = false; setBusy(false); }
-  };
+    [invite, setInvite] = useState(false), [inspect, setInspect] = useState(false);
+  const { send, retry } = useRoomCommand<SkyAction>({
+    gameId, token: display ? undefined : session?.playerToken,
+    refresh: requestState, setBusy, setError,
+  });
   const act: Act = async (type, payload = {}) => s ? send({ id: crypto.randomUUID(), type, payload, generation: s.generation, revision: s.revision, round: s.round }) : false;
   const join = async (e: FormEvent) => {
     e.preventDefault(); setBusy(true); setError('');

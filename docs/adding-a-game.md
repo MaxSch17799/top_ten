@@ -48,9 +48,11 @@ Create home/game/settings components and a scoped game stylesheet. Card or board
 | `api.ts` | Create/join requests, shared fetch/error handling, backend URL |
 | `lib/session.ts` | Save/load per-room sessions and maintain legacy compatibility |
 | `useGameConnection` | Reconnect, heartbeats, polling fallback, versioned snapshots |
+| `useRoomCommand` | Submission lock, timeout, errors and exact-ID uncertain retries; construct action metadata in the game |
 | `AddPlayerPanel` | Share links and QR invites |
 | `PasswordPromptDialog` and home patterns | Existing usage-limit override flow |
-| Game-specific `*Profiles.ts` patterns | Browser-local custom profiles with validated rules |
+| `lib/profileStorage.ts` and game-specific `*Profiles.ts` | Browser-local profile mechanics with game-owned validation, names and limits |
+| `useInterfaceLanguage` | Shared interface preference; content language and translation dictionaries remain game-owned |
 | `theme.css` and scoped game CSS | Platform defaults and per-game styling |
 
 Add a pure listing in `lib/games.ts` and home/room components in `app/games.tsx`. Routes and room dispatch consume that exhaustive component map. Set `hasDisplay` from the actual supported behavior; unsupported display links get an explanation without mounting a player connection. The catalog test checks that every shared ID has exactly one homepage listing and distinct URL. Keep `/host` and `/g/:code` legacy paths working.

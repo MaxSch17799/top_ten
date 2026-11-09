@@ -72,7 +72,7 @@ These can follow phase 1 independently of backend extraction, in separate change
 
 Start with Deal's large composer/response/table/hand sections, then Wavelength, UNO and Just One. Skyjo/Flip 7 already have named subcomponents; file length alone does not justify extraction. Extract pure presentation before orchestration.
 
-All eight games already use `useGameConnection`; extend it instead of adding another connection manager. A small sender helper accepts a fully formed game action and retains its exact ID/replay metadata for uncertain retries. Awaiting `requestState()` is not authoritative readback: it swallows errors and returns no snapshot. Preserve explicit readback where needed. Do not impose Top 10's pending-join workflow on every lobby.
+All eight games retain `useGameConnection`. Implemented: `useRoomCommand` composes a tested command sender for all seven modern games, accepting a fully formed action and retaining its exact ID/replay metadata for uncertain retries. It guards duplicate submissions and does not offer to replay an acknowledged write when only readback failed. Top 10 keeps its non-replayable legacy protocol; Wavelength keeps its separately ordered/coalesced dial movement. Awaiting `requestState()` is not authoritative readback: it swallows errors and returns no snapshot. Preserve explicit readback where needed. Do not impose Top 10's pending-join workflow on every lobby.
 
 ### Presentation seams
 
@@ -82,11 +82,11 @@ The confirmed goal is developer-led redesigns: replaceable CSS and renderer impo
 
 ### Profiles and language
 
-Share small persistence utilities with injected validation. Retain UNO's 50-profile limit versus 30 elsewhere, slicing before validation, per-game trim/deduplication/description policies, malformed data behavior and write failures. No account system or key migration is needed.
+Implemented: `profileStorage.ts` shares browser-local read/write mechanics with injected game-owned validation. Retain UNO's 50-profile limit versus 30 elsewhere, slicing before validation, per-game trim/deduplication/description policies, malformed data behavior and write failures. No account system or key migration is needed.
 
-The confirmed language model is one shared interface-language preference, with each game's content language selected independently. Extract a named preference service retaining `fishy-ui-language`, also used by Wavelength. Keep Just One's content key `just-one-language`, Fishy banks, Wavelength packs and dictionaries separate. Shared preference does not mean complete translations.
+The confirmed language model is one shared interface-language preference, with each game's content language selected independently. Implemented: a named preference service retains `fishy-ui-language`, also used by Wavelength, and synchronizes mounted views and other tabs. Keep Just One's content key `just-one-language`, Fishy banks, Wavelength packs and dictionaries separate. Shared preference does not mean complete translations.
 
-The confirmed unsupported-display behavior is an explanatory page for Top 10 and Just One, with an explicit link to the regular room. This small routing follow-up is implemented independently of registration: opening `/display` no longer mounts player controls or starts a player connection. Display-token fragments are not carried to the normal room. The shared-language extraction and broader styling work remain future phases; no product questions block them.
+The confirmed unsupported-display behavior is an explanatory page for Top 10 and Just One, with an explicit link to the regular room. This small routing follow-up is implemented independently of registration: opening `/display` no longer mounts player controls or starts a player connection. Display-token fragments are not carried to the normal room. The language preference extraction is implemented; translation dictionaries and independent content choices remain game-owned.
 
 ## 6. Measure build, loading and deployment boundaries
 

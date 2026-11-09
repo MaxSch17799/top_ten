@@ -1,7 +1,8 @@
+import { useRoomCommand } from '../hooks/useRoomCommand';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import type { FishyAction, FishyView } from '../../../shared/soundsFishy';
-import { BACKEND_BASE, joinGame, request } from '../api';
+import { joinGame } from '../api';
 import { useGameConnection } from '../hooks/useGameConnection';
 import type { SessionData } from '../lib/types';
 import { loadSessionForGame, saveSession } from '../lib/session';
@@ -61,15 +62,12 @@ export default function SoundsFishyGame({ gameId: propId, display = false }: { g
     try { const result = await joinGame(gameId, nickname); const next = { gameId, playerId: result.playerId, playerToken: result.playerToken, role: result.role }; saveSession(next); setSession(next); }
     catch(e) { setError(e instanceof Error ? e.message : 'Retry connection'); } finally { setBusy(false); }
   };
+  const { send, retry } = useRoomCommand<FishyAction>({
+    gameId, token: display ? undefined : session?.playerToken, refresh: requestState, setBusy, setError,
+  });
   const act: FishyAct = async (type, payload = {}) => {
     if (!s || !session || busy) return false;
-    setBusy(true); setError('');
-    const action: FishyAction = { id: crypto.randomUUID(), type, generation: s.generation, roundId: s.roundId, phase: s.phase, payload };
-    try {
-      await request(`${BACKEND_BASE}/api/game/${gameId}/action`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.playerToken}` }, body: JSON.stringify(action) });
-      await requestState(); return true;
-    } catch(e) { setError(e instanceof Error ? e.message : 'Retry connection'); await requestState(); return false; }
-    finally { setBusy(false); }
+    return send({ id: crypto.randomUUID(), type, generation: s.generation, roundId: s.roundId, phase: s.phase, payload });
   };
   const nav = <nav className="sf-top"><Link to="/">← {t('All games')}</Link><select aria-label={t('Interface language')} value={language} onChange={e => setLanguage(e.target.value)}><option value="en">English</option><option value="de">Deutsch</option></select></nav>;
   if (!session && !display) return <main className="page sheet sounds-fishy"><section className="host-form">{nav}<p className="eyebrow">Sounds Fishy · {gameId}</p><h1>{t('Join Sounds Fishy')}</h1><form className="stack" onSubmit={join}><label className="field"><span>{t('Your nickname')}</span><input className="input" maxLength={20} required autoComplete="nickname" value={nickname} onChange={e => setNickname(e.target.value)} /></label><button className="primary" disabled={busy}>{t('Join lobby')}</button>{error && <p className="error" role="alert">{t(error)}</p>}</form></section></main>;
@@ -87,7 +85,7 @@ export default function SoundsFishyGame({ gameId: propId, display = false }: { g
     <header className="sf-header"><div><p className="eyebrow">Sounds Fishy · {gameId}</p><h1>{t(titles[s.phase])}</h1></div>{!display && <button className="ghost" onClick={() => setInvite(true)}>{t('Invite players')}</button>}</header>
     <div className="score-strip sf-strip"><span>{t('Round')}<strong>{s.round} / {s.totalRounds}</strong></span><span>{t('Guesser')}<strong>{name(s.guesserId)}</strong></span><span>{t('At risk')}<strong>{s.phase === 'ELIMINATION' ? s.provisional : 0}</strong></span></div>
     {wsStatus !== 'open' && <p className="footnote" role="status">{t('Reconnecting… updates resume automatically.')}</p>}
-    {(error || lastError) && <p className="error" role="alert">{t(error || lastError || '')}</p>}
+    {(error || lastError) && <p className="error" role="alert">{t(error || lastError || '')}{retry && <button className="secondary" disabled={busy} onClick={() => void send(retry)}>{t('Retry same action safely')}</button>}</p>}
     {s.notice && <p className="warning-banner" role="status">{t(s.notice)}</p>}
     {roundBank?.development && (s.phase === 'LOBBY' || s.phase === 'RESULT') && <p className="warning-banner">{t('Sample questions only · full English and German banks are still to be supplied.')}</p>}
     <Countdown state={s} receivedAt={receivedAt} t={t} />

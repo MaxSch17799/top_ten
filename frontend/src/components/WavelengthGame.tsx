@@ -1,3 +1,4 @@
+import { useRoomCommand } from '../hooks/useRoomCommand';
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -697,56 +698,46 @@ export default function WavelengthGame({
       setBusy(false);
     }
   };
-  const send = async (type: string, payload: Record<string, unknown> = {}) => {
+  const makeAction = (type: string, payload: Record<string, unknown> = {}): WaveAction | null => {
     const current = stateRef.current;
-    if (!current || !session) return false;
-    const action: WaveAction = {
-      id: crypto.randomUUID(),
-      type,
-      generation: current.generation,
-      roundId: current.roundId,
-      phase: current.phase,
-      revision: current.revision,
-      payload,
-    };
+    return current ? { id: crypto.randomUUID(), type, generation: current.generation, roundId: current.roundId,
+      phase: current.phase, revision: current.revision, payload } : null;
+  };
+  const { send: submit, retry } = useRoomCommand<WaveAction>({
+    gameId, token: display ? undefined : session?.playerToken, refresh: requestState, setBusy, setError,
+    afterCommit: async () => {
+      // Explicit authoritative readback: requestState itself swallows read errors.
+      const fresh = await request<WaveView>(`${BACKEND_BASE}/api/game/${gameId}/state`, {
+        headers: { Authorization: `Bearer ${session!.playerToken}` },
+      });
+      if (!stateRef.current || fresh.version >= stateRef.current.version) stateRef.current = fresh;
+    },
+  });
+  // Dial movement is coalesced below and carries its own epoch/sequence ordering.
+  const send = async (type: string, payload: Record<string, unknown>) => {
+    const action = makeAction(type, payload);
+    if (!action || !session || display) return false;
     try {
       await request(`${BACKEND_BASE}/api/game/${gameId}/action`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.playerToken}`,
-        },
-        body: JSON.stringify(action),
+        method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.playerToken}` },
+        body: JSON.stringify(action), signal: AbortSignal.timeout(12_000),
       });
-      if (type === "move") return true;
-      // Read back authority before another phase-changing action; WebSockets may arrive in either order.
-      const fresh = await request<WaveView>(
-        `${BACKEND_BASE}/api/game/${gameId}/state`,
-        { headers: { Authorization: `Bearer ${session.playerToken}` } },
-      );
-      if (!stateRef.current || fresh.version >= stateRef.current.version)
-        stateRef.current = fresh;
-      await requestState();
       return true;
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Retry connection");
-      await requestState();
-      return false;
+      setError(e instanceof Error ? e.message : 'Retry connection');
+      await requestState(); return false;
     }
   };
-  const act: WaveAct = async (type, payload = {}) => {
+  const sendDecision = async (action: WaveAction) => {
     if (busyRef.current) return false;
     busyRef.current = true;
-    setBusy(true);
-    setError("");
-    // A lock carries the final pointer value; delayed movement cannot change a locked phase.
-    if (type === "lock") pendingMove.current = null;
-    try {
-      return await send(type, payload);
-    } finally {
-      busyRef.current = false;
-      setBusy(false);
-    }
+    if (action.type === 'lock') pendingMove.current = null;
+    try { return await submit(action); }
+    finally { busyRef.current = false; }
+  };
+  const act: WaveAct = async (type, payload = {}) => {
+    const action = makeAction(type, payload);
+    return action ? sendDecision(action) : false;
   };
   const move = (value: number) => {
     const current = stateRef.current;
@@ -946,7 +937,7 @@ export default function WavelengthGame({
         )}
         {(error || lastError) && (
           <p className="error" role="alert">
-            {t(error || lastError || "")}
+            {t(error || lastError || "")}{retry && <button className="secondary" disabled={busy} onClick={() => void sendDecision(retry)}>{t('Retry same action safely')}</button>}
           </p>
         )}
         {s.notice && (

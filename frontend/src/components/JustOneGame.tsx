@@ -1,3 +1,4 @@
+import { useRoomCommand } from '../hooks/useRoomCommand';
 import { useEffect, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import type {
@@ -5,7 +6,7 @@ import type {
   JustOneView,
   Outcome,
 } from '../../../shared/justOne';
-import { BACKEND_BASE, joinGame, request } from '../api';
+import { joinGame } from '../api';
 import { useGameConnection } from '../hooks/useGameConnection';
 import { useDraftSync } from '../hooks/useDraftSync';
 import type { SessionData } from '../lib/types';
@@ -271,34 +272,12 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
       setBusy(false);
     }
   };
+  const { send, retry } = useRoomCommand<JustOneAction>({
+    gameId, token: session?.playerToken, refresh: requestState, setBusy, setError,
+  });
   const act: Act = async (type, payload = {}) => {
     if (!state || !session || busy) return;
-    setBusy(true);
-    setError(null);
-    const action: JustOneAction = {
-      id: crypto.randomUUID(),
-      type,
-      generation: state.generation,
-      round: state.round,
-      phase: state.phase,
-      payload,
-    };
-    try {
-      await request(`${BACKEND_BASE}/api/game/${gameId}/action`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${session.playerToken}`,
-        },
-        body: JSON.stringify(action),
-      });
-      await requestState();
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'Action failed');
-      await requestState();
-    } finally {
-      setBusy(false);
-    }
+    await send({ id: crypto.randomUUID(), type, generation: state.generation, round: state.round, phase: state.phase, payload });
   };
   if (!session)
     return (
@@ -409,6 +388,7 @@ export default function JustOneGame({ gameId }: { gameId: string }) {
             {error}
           </p>
         )}
+        {retry && <button className="secondary" disabled={busy} onClick={() => void send(retry)}>Retry same action safely</button>}
         {lastError && (
           <p className="error" role="alert">
             {lastError}

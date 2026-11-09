@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useInterfaceLanguage } from '../hooks/useInterfaceLanguage';
 const de: Record<string, string> = {
   'Read the room. Find the frequency.': 'Spürt die Stimmung. Findet die Wellenlänge.',
   '2–24 players · together or online': '2–24 Personen · zusammen oder online', 'Discuss & connect': 'Diskutieren & Verbinden',
@@ -120,8 +120,7 @@ const de: Record<string, string> = {
 };
 export type FishyTranslate = (english: string) => string;
 export function useFishyLanguage() {
-  const [language, set] = useState(() => localStorage.getItem('fishy-ui-language') === 'de' ? 'de' : 'en');
-  const setLanguage = (value: string) => { localStorage.setItem('fishy-ui-language', value); set(value); };
+  const { language, setLanguage } = useInterfaceLanguage();
   const t: FishyTranslate = text => language === 'de' ? de[text] ?? text : text;
   return { language, setLanguage, t };
 }

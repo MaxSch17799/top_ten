@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useInterfaceLanguage } from "../hooks/useInterfaceLanguage";
 const de: Record<string, string> = {
   "Assign dial controller": "Reglersteuerung zuweisen",
   "Skip prediction · no bonus": "Vorhersage überspringen · kein Bonus",
@@ -200,18 +200,9 @@ const de: Record<string, string> = {
 };
 export type WaveTranslate = (text: string) => string;
 export function useWaveLanguage() {
-  const [language, set] = useState(() =>
-    localStorage.getItem("fishy-ui-language") === "de" ? "de" : "en",
-  );
-  return {
-    language,
-    setLanguage: (value: string) => {
-      localStorage.setItem("fishy-ui-language", value);
-      set(value);
-    },
-    t: ((text: string) =>
-      language === "de" ? (de[text] ?? text) : text) as WaveTranslate,
-  };
+  const { language, setLanguage } = useInterfaceLanguage();
+  const t: WaveTranslate = text => language === 'de' ? de[text] ?? text : text;
+  return { language, setLanguage, t };
 }
 export const waveRules = {
   en: "The Psychic privately sees the target and gives one clue along the spectrum. Their teammates talk and turn one shared dial. After lock-in, the other team predicts left or right of the needle. Reveal: center 4, adjacent 3, outer 2, otherwise 0. A correct prediction earns 1, except on a center hit. First team starts at 0, second at 1. Reach 10 to win; tied games use complete two-turn sudden-death pairs. A center hit while still behind earns an immediate turn with a different Psychic. Cooperative: one team, 7 rounds, no prediction; the center scores 3 and earns an extra round. Other 3-point wedges do not earn a round. Timers, automatic spectrum choice, shared dial control and automatic reveal are digital conveniences; custom scoring and lengths are house rules.",
