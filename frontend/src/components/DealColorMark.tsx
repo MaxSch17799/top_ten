@@ -1,3 +1,4 @@
+import { DEAL_PALETTE } from '../lib/dealTheme';
 import type { CSSProperties } from "react";
 import {
   DEAL_GROUPS,
@@ -18,7 +19,7 @@ export default function DealColorMark({
       className="deal-color-mark"
       style={
         {
-          "--property-color": DEAL_GROUPS[color].color,
+          "--property-color": DEAL_PALETTE[color],
           "--wild-stripe": card ? dealWildStripe(card, color) : undefined,
         } as CSSProperties
       }

@@ -1,3 +1,4 @@
+import { DEAL_PALETTE } from './dealTheme';
 import {
   DEAL_GROUPS,
   type DealCard,
@@ -51,5 +52,5 @@ export function dealWildStripe(
   if (card.kind !== "wild") return undefined;
   if (card.colors.length > 2)
     return "linear-gradient(90deg, #f87171 0% 17%, #fb923c 17% 34%, #fde047 34% 50%, #6ee7a0 50% 67%, #7dd3fc 67% 84%, #b9a0f7 84% 100%)";
-  return DEAL_GROUPS[card.colors.find((c) => c !== assigned) ?? assigned].color;
+  return DEAL_PALETTE[card.colors.find((c) => c !== assigned) ?? assigned];
 }

@@ -1,3 +1,4 @@
+import { DEAL_PALETTE } from '../lib/dealTheme';
 import {
   DEAL_EFFECTS,
   DEAL_GROUPS,
@@ -30,7 +31,7 @@ export default function DealCard({
     money = c?.kind === "money";
   const accent =
     c?.colors.length === 1
-      ? DEAL_GROUPS[c.colors[0]].color
+      ? DEAL_PALETTE[c.colors[0]]
       : wild
         ? "#b9a0f7"
         : money
@@ -257,7 +258,7 @@ export default function DealCard({
                       width={c.colors.length > 2 ? 24 : 66}
                       height={c.colors.length > 2 ? 7 : 10}
                       rx="3"
-                      fill={DEAL_GROUPS[color].color}
+                      fill={DEAL_PALETTE[color]}
                       stroke="#203542"
                       strokeWidth=".5"
                     />

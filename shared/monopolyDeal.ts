@@ -14,56 +14,49 @@ export const DEAL_COLORS = [
 export type DealColor = (typeof DEAL_COLORS)[number];
 export const DEAL_GROUPS: Record<
   DealColor,
-  { name: string; color: string; size: number; value: number; rent: number[] }
+  { name: string; size: number; value: number; rent: number[] }
 > = {
-  brown: { name: "Brown", color: "#b88762", size: 2, value: 1, rent: [1, 2] },
+  brown: { name: "Brown", size: 2, value: 1, rent: [1, 2] },
   lightBlue: {
     name: "Sky blue",
-    color: "#7dd3fc",
     size: 3,
     value: 1,
     rent: [1, 2, 3],
   },
-  pink: { name: "Pink", color: "#f29bc7", size: 3, value: 2, rent: [1, 2, 4] },
+  pink: { name: "Pink", size: 3, value: 2, rent: [1, 2, 4] },
   orange: {
     name: "Orange",
-    color: "#fb923c",
     size: 3,
     value: 2,
     rent: [1, 3, 5],
   },
-  red: { name: "Red", color: "#f87171", size: 3, value: 3, rent: [2, 3, 6] },
+  red: { name: "Red", size: 3, value: 3, rent: [2, 3, 6] },
   yellow: {
     name: "Yellow",
-    color: "#fde047",
     size: 3,
     value: 3,
     rent: [2, 4, 6],
   },
   green: {
     name: "Green",
-    color: "#6ee7a0",
     size: 3,
     value: 4,
     rent: [2, 4, 7],
   },
   darkBlue: {
     name: "Deep blue",
-    color: "#818cf8",
     size: 2,
     value: 4,
     rent: [3, 8],
   },
   railroad: {
     name: "Railroad",
-    color: "#c9b8eb",
     size: 4,
     value: 2,
     rent: [1, 2, 3, 4],
   },
   utility: {
     name: "Utility",
-    color: "#54d5c6",
     size: 2,
     value: 2,
     rent: [1, 2],
