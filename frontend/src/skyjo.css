@@ -181,6 +181,8 @@
 .sky-tv-overview .sky-grid { max-width: min(300px, calc((100dvh - 400px) / 2)); gap: clamp(4px, .55vw, 10px); }
 .sky-tv-overview .sky-seat-heading { margin-bottom: 10px; gap: 7px; }
 .sky-tv-overview .sky-seat-name h2 { font-size: clamp(.9rem, 1.2vw, 1.4rem); }
+/* Give wrapped status text its own line boxes instead of the larger parent strut. */
+.sky-tv-overview .sky-seat-name > span { display: block; line-height: 1.25; }
 .sky-tv-overview .sky-avatar { width: 28px; height: 28px; flex-basis: 28px; font-size: .8rem; }
 .sky-tv-overview .sky-seat-footer { margin-top: 8px; }
 .sky-tv-overview .sky-update { display: none; }
