@@ -10,7 +10,7 @@ Shared game identifiers, equal-value theme tokens, generators that skip unchange
 
 ## 1. Compatibility fixtures and CI — first delivery
 
-The foundation is implemented in this cleanup; see [coverage and maintenance](compatibility.md). The runtime extractions below remain planned.
+The compatibility foundation and runtime extractions below are implemented; see [coverage and maintenance](compatibility.md).
 
 Freeze synthetic persisted rooms with source commits, scenario descriptions and fake credentials. Cover all eight games, checkpoint and current Deal state, private pending decisions, paused deadlines, Skyjo final turns and processed request IDs. Keep fixtures frozen: generating every test room with today's engine cannot establish historical compatibility.
 
@@ -66,17 +66,17 @@ Frozen compatibility tests and the local SQLite runtime suite passed after extra
 
 ## 5. UI, profiles, language and presentation
 
-These can follow phase 1 independently of backend extraction, in separate changes.
+Implemented in separate browser-utility and presentation-extraction commits.
 
 ### Smaller game components
 
-Start with Deal's large composer/response/table/hand sections, then Wavelength, UNO and Just One. Skyjo/Flip 7 already have named subcomponents; file length alone does not justify extraction. Extract pure presentation before orchestration.
+Implemented: Deal's composer, response panel, table, hand, animation/deadline and rules sections are focused modules in `frontend/src/games/monopoly-deal/`. Wavelength, UNO and Just One also have focused forms/table/status/admin modules. Existing entry components retain session/connection/action orchestration. Function-body comparison against the preceding commit found 29 identical bodies and two palette-only changes; no gameplay logic was moved into rendering. Skyjo/Flip 7 retain their already named subcomponents.
 
 All eight games retain `useGameConnection`. Implemented: `useRoomCommand` composes a tested command sender for all seven modern games, accepting a fully formed action and retaining its exact ID/replay metadata for uncertain retries. It guards duplicate submissions and does not offer to replay an acknowledged write when only readback failed. Top 10 keeps its non-replayable legacy protocol; Wavelength keeps its separately ordered/coalesced dial movement. Awaiting `requestState()` is not authoritative readback: it swallows errors and returns no snapshot. Preserve explicit readback where needed. Do not impose Top 10's pending-join workflow on every lobby.
 
 ### Presentation seams
 
-Extend semantic tokens with equal values first. Keep palettes/artwork separately replaceable using imported components and public props. Deal's semantic groups/rent rules stay shared; visual palettes move frontend when extracted. Hidden values must never affect backs, accessible labels, colors or animations.
+Extend semantic tokens with equal values first. Keep palettes/artwork separately replaceable using imported components and public props. Deal's semantic groups/rent rules stay shared; its equal-valued visual palette is now frontend-only in `lib/dealTheme.ts`. Hidden values must never affect backs, accessible labels, colors or animations.
 
 The confirmed goal is developer-led redesigns: replaceable CSS and renderer imports, without a player-facing theme selector. Runtime theme/renderer registries are outside this plan. Add actual screenshot comparisons before claiming visual equivalence.
 
@@ -88,18 +88,22 @@ The confirmed language model is one shared interface-language preference, with e
 
 The confirmed unsupported-display behavior is an explanatory page for Top 10 and Just One, with an explicit link to the regular room. This small routing follow-up is implemented independently of registration: opening `/display` no longer mounts player controls or starts a player connection. Display-token fragments are not carried to the normal room. The language preference extraction is implemented; translation dictionaries and independent content choices remain game-owned.
 
-## 6. Measure build, loading and deployment boundaries
+## 6. Measured build and deployment boundaries
 
-CI comes now; workspace, lockfile and Wrangler consolidation come later. Inventory Pages' frontend-root build, standalone backend installs, relative paths, D1 bindings/migrations, persistence directories and tooling first. Retain production resource identities, namespace IDs, URLs and browser keys even if internal branding becomes Game Night.
+Implemented: `npm run analyze:build` reports the existing Vite assets without rebuilding or changing chunk configuration. On the 2026-11-09 checkout, the entry JS is 500.13 kB raw / 155.23 kB gzip, CSS is 121.83 / 26.38 kB, and the separately loaded Deal/Skyjo/Flip 7 room chunks are 39.83 / 31.60 / 29.09 kB raw. Admin XLSX/CSV parsers remain asynchronous. These are artifact sizes, not measured browser network transfer. Vite reports its 500 kB chunk advisory for the entry; the warning is retained rather than hidden by raising its limit.
 
-Measure bundle/network output and cold room reads before optimizing. Admin XLSX/CSV parsers already import asynchronously. Before changing chunks, add genuine service-worker upgrade, old-asset/chunk failure and invite-refresh tests. Local fonts need separate licensing/rendering checks.
+Cold ownership resolution reads one through eight room keys depending on historical precedence. Warm routing adds no repeated ownership reads, as verified against the actual dispatcher. A persisted game discriminator would require a storage migration and rollback policy for little demonstrated benefit at this scale; defer it.
 
-An eventual layout may group `app`, `platform`, `ui` and `games/<id>` in each package. Extract useful boundaries first; move files later in mechanical commits. Bulk directory moves are deferred.
+The current root/backend workspace and separate frontend installation are intentional retained deployment boundaries. Pages builds from `frontend/`; both Wrangler entry points describe the same existing Worker with directory-relative paths. The config drift test protects their bindings, D1 database, namespace and migration identities. No resource or URL was renamed to rebrand the platform.
 
-## First reviewable changes
+## Deliberately deferred migrations
 
-1. Fixtures, compatibility tests, CI and corrected documentation. No application behavior, dependency, state-schema or directory changes.
-2. Local-runtime failure reproduction and command commit/recovery repair. No framework, rules or visual changes.
-3. Mechanical Top 10 extraction with compatibility and rollback evidence.
+The safe modularization deliveries above are implemented and locally verified: 335 Node tests, 56 browser scenarios, TypeScript, lint and both builds passed. See [verification details](compatibility.md#modularization-delivery-2026-11-09). These larger changes need their own concrete benefit and migration evidence:
 
-Registration, shared transport and UI improvements follow using the evidence from these changes. Each step should be deployable and reversible independently.
+- **Further route/chunk splitting and PWA loading changes:** the entry bundle merits later work, but add real service-worker upgrade, old-asset/chunk failure and invite-refresh coverage first. Current browser tests block service workers. No chunk boundaries or cache versions changed here.
+- **Workspace/lockfile or Wrangler consolidation:** test both Pages' frontend-root install/build and standalone backend workflows before replacing either. Existing lockfiles/configs remain valid; consolidating them is not necessary to add another game.
+- **A complete visual redesign or component library:** choose a reference design, establish screenshot comparisons, then change semantic tokens and one game at a time. Imported renderers and frontend palettes provide the seams now. Keep local font licensing/rendering work separate.
+- **Full translations:** the interface preference is shared, while English-only screens and game-specific dictionaries remain. Content selection stays independent.
+- **Bulk directory moves or a universal room framework:** useful code boundaries are extracted now. Moving every file, renaming stored IDs, or forcing different replay/timer rules into a common superclass would add compatibility risk without a demonstrated requirement.
+
+Each delivered stage is separately committed and can be reviewed or reverted independently. See [the integration guide](adding-a-game.md) for the current new-game checklist, rather than adding fresh routing branches or copying an entire room implementation.

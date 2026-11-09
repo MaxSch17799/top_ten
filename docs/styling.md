@@ -42,4 +42,6 @@ Rendering should emit an intent such as a selected grid position; the action lay
 4. Check portrait/landscape phones, large player counts, desktop, TV, focus order, private information, and reduced motion.
 5. Apply the design to other games after the first migration proves the component boundaries. The confirmed goal is developer-led redesigns through tokens and imported renderers; a player-facing theme selector and runtime renderer registry are outside this plan.
 
-This cleanup does not change current game palettes, card artwork, layouts, or the global font-loading setup. A future font/asset strategy and broader component library are separate tasks in the [roadmap](roadmap.md).
+Deal's visual hex palette now lives in `frontend/src/lib/dealTheme.ts`; its semantic color IDs, set sizes, values and rents remain in shared rules. UNO has the corresponding `unoTheme.ts` seam. Values are preserved. Deal's composer, response, table, hand and animation components are individually importable under `games/monopoly-deal/`; Wavelength, UNO and Just One also have focused view modules.
+
+This cleanup preserves current card artwork, palettes, layouts and the global font-loading setup. Mechanical function-body comparisons establish the extraction scope; browser scenarios verify behavior. Existing screenshots are diagnostic captures, not a cross-platform visual regression baseline. A future font/asset strategy and broader component library are separate tasks in the [roadmap](roadmap.md).

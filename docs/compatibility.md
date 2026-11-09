@@ -69,8 +69,21 @@ The Flip 7 presentation harness controls browser time and acknowledges routed sn
 
 ## Confirmed product choices — 2026-11-09
 
-The user selected developer-led redesigns, one shared interface-language preference with independently selected game content languages, and an explanatory page for unsupported dedicated-display links. The [roadmap](roadmap.md) and [styling guide](styling.md) reflect these choices; the broader styling and language extractions remain planned.
+The user selected developer-led redesigns, one shared interface-language preference with independently selected game content languages, and an explanatory page for unsupported dedicated-display links. The [roadmap](roadmap.md) and [styling guide](styling.md) reflect these choices; the preference service, game presentation modules and frontend Deal palette have since been extracted without changing content-language keys. Full translations and a visual redesign remain separate work.
 
 The small display-routing follow-up now shows that explanation for Top 10 and Just One instead of mounting player controls. It includes a regular-room link that drops the display-token fragment. It uses existing presentation styles and changes no backend, stored state, rules or display behavior for the six supported games. Browser coverage checks authenticated sessions, refresh, phone-width layout, absence of player connections and explicit navigation to a working normal room.
 
 Follow-up verification passed: frontend/backend TypeScript, frontend ESLint, the frontend production build, and four focused browser scenarios across targeted runs (both unsupported-display cases, legacy Top 10 gameplay and Skyjo's live TV/controller flow). The new Top 10 test fixture was corrected to supply the same required question-bank ID as the existing host form. This follow-up remains local and undeployed.
+
+## Modularization delivery (2026-11-09)
+
+The later implementation adds atomic state/alarm commits and uncertain-action recovery, isolates Top 10, registers frontend/backend games explicitly, serializes code ownership before creation, and composes modern transport helpers. All seven modern UIs share a command sender with exact-ID retries. Profiles retain their frozen formats; Fishy/Wavelength share a synchronized interface preference without merging content choices. Deal, UNO, Wavelength and Just One have focused presentation modules; Deal's equal-valued palette is frontend-only.
+
+Verification on the final application code:
+
+- `npm run check`: content validation, both TypeScript projects, frontend ESLint and **335 Node tests passed**.
+- The Node suite includes **40 local Cloudflare SQLite runtime scenarios**, frozen-room save/reload and actual rollback execution, per-viewer secrets, browser storage compatibility, config/import boundaries, all 64 existing-game creation collision pairs and all 64 concurrent incoming creation pairs.
+- The final full Playwright run passed **56/56 scenarios in one run** against local Wrangler/Vite with tracing disabled on Windows. This includes the original 50 scenarios plus five exact-ID retry cases and cross-tab interface-language synchronization. Targeted mocked views support presentation/retry checks; multiplayer flows exercise the real local Worker. All earlier test-wait failures were corrected before this clean run.
+- `npm run build`: frontend production assets and the Worker deployment dry run passed. The entry JS is 500.13 kB raw / 155.23 kB gzip and triggers Vite's chunk-size advisory. `npm run analyze:build` reports all emitted JS/CSS assets without changing chunk boundaries.
+
+No lockfiles, Cloudflare resource identities, stored room schemas, browser keys, game rules or cache/chunk configuration were migrated. GitHub CI still needs its remote run after pushing. No push or deployment was performed. Screenshots remain diagnostic captures; service-worker upgrade and old-chunk failure coverage are still prerequisites for the deferred loading changes in the [roadmap](roadmap.md).

@@ -22,7 +22,9 @@ flowchart LR
 | `shared/<game>.ts` | Public view/action models, rule settings, and reusable public calculations |
 | `shared/*.mjs` and matching `.d.mts` files | Plain-Node content validation shared with build scripts |
 | `backend-do/src/index.ts` | Public routing, creation/settings preflight, content catalogs, admin endpoints |
-| `backend-do/src/game.ts` | Stable Durable Object export and dispatch to game adapters |
+| `backend-do/src/game.ts` | Stable Durable Object export and serialized ownership/dispatch |
+| `backend-do/src/registration.ts` | Exhaustive factories, settings preflight and legacy ownership precedence |
+| `backend-do/src/platform/` | Composed execution, persistence and transport mechanics |
 | `backend-do/src/top10/room.ts` | Legacy Top 10 implementation, isolated behind the same room interface |
 | `backend-do/src/env.ts` | Worker binding types, independent of any game implementation |
 | `backend-do/src/<game>/engine.ts` | Rules, state transitions, scoring, action validation, role-specific views |
@@ -32,10 +34,12 @@ flowchart LR
 | `backend-do/src/usageMonitor.ts` | Usage counters, estimates, warning thresholds, creation guard |
 | `frontend/src/App.tsx` | Homepage, game home routes, invite/display routes, legacy and admin routes |
 | `frontend/src/components/GameRoute.tsx` | Fetch `/info` and open the matching game UI |
-| `frontend/src/lib/games.ts` | Homepage copy/order, checked against the shared `GameType` |
-| `frontend/src/hooks/` | Shared connection and draft synchronization hooks |
+| `frontend/src/lib/games.ts` | Pure homepage copy/order, checked against the shared `GameType` |
+| `frontend/src/app/games.tsx` | Exhaustive home/room components, lazy imports and supported displays |
+| `frontend/src/games/<id>/` | Focused forms, tables, hands, responses and presentation |
+| `frontend/src/hooks/` | Connection, command sending, interface preference and draft synchronization |
 | `frontend/src/lib/session.ts` | Per-room browser sessions with legacy-key compatibility |
-| `frontend/src/lib/*Profiles.ts` | Per-game browser-local custom rules profiles |
+| `frontend/src/lib/profileStorage.ts`, `*Profiles.ts` | Shared storage mechanics and game-owned validation |
 | `frontend/src/theme.css`, `styles.css`, `party.css` | Platform tokens, legacy shared styles, and platform UI |
 | `frontend/src/*game*.css`, game components | Game-specific presentation and controls |
 | `scripts/` | Canonical content validation/generation and explicit live verification |
@@ -66,9 +70,9 @@ Backend folders use `justOne`, `soundsFishy`, and `monopolyDeal`; public IDs use
 
 ## Current extension points and remaining duplication
 
-The codebase has eight games and a useful engine/adapter/UI separation for seven of them. Game IDs are now shared, while settings validators, home routes, game renderers, and room dispatch remain explicit. This does **not** claim that adding one registry entry fully installs a game; follow the [integration guide](adding-a-game.md).
+The codebase has eight games and a useful engine/adapter/UI separation for seven of them. Game IDs are shared. Exhaustive frontend and backend maps register home/room components, supported displays, settings preflight and adapter factories. The dispatcher serializes ownership resolution and creation, caches the selected adapter, and preserves historical storage-key precedence. This does **not** claim that adding one registry entry fully installs a game; follow the [integration guide](adding-a-game.md).
 
-The closest repeated room adapters are UNO, Monopoly Deal, Flip 7, and Skyjo. Repeated concerns include token lookup, socket membership, persistence, alarms, errors, and usage tracking. Their rules, recovery behavior, settings, and view projection differ. Extract transport incrementally with compatibility tests rather than replacing every adapter with a generic engine.
+The closest repeated room adapters are UNO, Monopoly Deal, Flip 7, and Skyjo. Shared composed helpers cover JSON responses, per-identity broadcasts, bounded socket membership, presence-write recovery and atomic persistence. Token lookup, game deadlines, commands and usage tracking remain explicit. Their rules, recovery behavior, settings, and view projection differ. No universal room superclass or generic rules engine is introduced. Frozen rooms, rollback execution and local runtime recovery tests protect these boundaries.
 
 Top 10 is isolated from dispatch without changing its state format or public protocol. The root and backend each retain a Wrangler config describing the same Worker with paths relative to different directories. The frontend remains a separate npm project with its own install/lockfile.
 
@@ -81,3 +85,11 @@ Canonical banks/packs are validated by four `sync:*` scripts. Outputs go to `bac
 `scripts/lib/write-if-changed.mjs` compares encoded bytes before writing output, preserving unchanged mtimes. Repeated development/build hooks still validate content, but no longer rewrite identical banks and cause unnecessary watcher invalidations. Output formatting and distribution paths stay the same.
 
 `frontend/public/service-worker.js` supplies the PWA shell. Navigation/JSON are network-first; gameplay APIs and development source modules bypass caching. Do not introduce shared caching of authenticated game states. The usage monitor's estimates describe this application's recorded activity, not a replacement for Cloudflare billing data.
+
+## Frontend ownership
+
+`components/*Game.tsx` remains the route entry and owns session/connection/action orchestration. Focused components in `games/monopoly-deal`, `games/wavelength`, `games/uno` and `games/just-one` own their existing form or presentation state and receive public views and action callbacks. Their JSX/function bodies were moved mechanically; card renderers and scoped CSS remain separately replaceable.
+
+`useRoomCommand` complements the single connection hook. Games construct complete actions with their own generation/phase/revision fields; the sender snapshots that decision, rejects overlapping submissions, and retains it for an uncertain retry. An acknowledged write followed by a failed readback is not offered for replay. Wavelength keeps its coalesced dial movement and explicit authoritative readback. Legacy Top 10 commands still have no request IDs and are not automatically replayed.
+
+`profileStorage` shares browser-local mechanics while game wrappers preserve their existing keys, limits and validation policies. `useInterfaceLanguage` shares the existing interface preference across Fishy/Wavelength and tabs; content selections and dictionaries remain independent. See [styling](styling.md) for palette and renderer boundaries.

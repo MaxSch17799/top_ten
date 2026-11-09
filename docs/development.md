@@ -39,6 +39,8 @@ Use the local backend URL during local play. If `VITE_BACKEND_URL` is omitted, `
 
 The backend's `predev` and frontend's `predev` validate/generate content automatically. Repeated generation does not rewrite byte-identical outputs. Use one generator process per output set when editing content; builds are not intended to race an in-progress source edit.
 
+There are three retained lockfiles. The root `package-lock.json` installs the root/backend workspace used by CI. `frontend/package-lock.json` supports the separate frontend install and Pages' frontend-root build. `backend-do/package-lock.json` records the standalone backend installation path; root workspace CI does not use that lockfile. Review the relevant install paths when changing dependencies. This cleanup neither consolidates nor regenerates them.
+
 For local D1 admin features, run from `backend-do/` when needed:
 
 ```sh
@@ -57,6 +59,7 @@ The production admin configuration uses `ADMIN_PASSWORD` and `ADMIN_SESSION_SECR
 | `npm test` | Run Node engine, adapter, language, schema, catalog and generator tests |
 | `npm run check` | Sync content, check both TypeScript projects, lint, and run Node tests |
 | `npm run build` | Build the frontend and perform a Worker deployment **dry run** |
+| `npm run analyze:build` | Read the existing production assets and report raw/gzip sizes without rebuilding |
 | `npm run test:e2e` | Run multi-device Playwright browser tests against local servers |
 | `npm run check:all` | Run `check`, both builds, then browser tests |
 
